@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Mon Espace - Les Badges de Mickael</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 16.5px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        :root {
+            --orange: #f39c12;
+            --violet: #9b59b6;
+            --gris: #7f8c8d;
+            --jaune: #f1c40f;
+            --orange-clair: #ffe0b3;
+            --violet-clair: #e8d5f0;
+            --gris-clair: #ecf0f1;
+            --jaune-clair: #fff3cd;
+        }
+
+        .login-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-card {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-left: 8px solid var(--orange);
+        }
+
+        .login-card h1 {
+            color: var(--violet);
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--gris);
+        }
+
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(243,156,18,0.2);
+        }
+
+        button {
+            background: var(--orange);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            font-weight: bold;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            background: var(--violet);
+            transform: scale(1.02);
+        }
+
+        .btn-secour {
+            background: #e74c3c;
+            color: white;
+            font-size: 1.4rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+            transition: all 0.3s;
+        }
+
+        .btn-secour:hover {
+            background: #c0392b;
+            transform: scale(1.03);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--violet), var(--orange));
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: block;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo-placeholder {
+            max-width: 150px;
+            height: auto;
+            background: url('mickealimage1.png') center/cover no-repeat, var(--jaune);
+            border-radius: 12px;
+            border: 2px dashed var(--orange);
+        }
+
+        .logo-area span {
+            font-weight: bold;
+            color: var(--violet);
+            font-size: 1.2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-left: 8px solid var(--orange);
+        }
+
+        .geste-card {
+            background: var(--gris-clair);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border-left: 6px solid var(--jaune);
+        }
+
+        .info-badge {
+            background: var(--jaune);
+            color: #2c3e50;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--violet);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Écran de connexion utilisateur -->
+<div id="loginScreen" class="login-screen">
+    <div class="login-card">
+        <h1>🔐 Espace personnel</h1>
+        <p>Entrez votre identifiant et votre nom pour accéder à vos informations de secours.</p>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="userId">Identifiant (5 chiffres)</label>
+                <input type="text" id="userId" placeholder="12345" maxlength="5" required pattern="\d{5}">
+            </div>
+            <div class="form-group">
+                <label for="userName">Votre nom</label>
+                <input type="text" id="userName" placeholder="Votre nom de famille" required>
+            </div>
+            <button type="submit">Se connecter</button>
+        </form>
+        <p id="loginError" style="color: #e74c3c; margin-top: 1rem; display: none;"></p>
+    </div>
+</div>
+
+<!-- Interface utilisateur après connexion -->
+<div id="mainApp" class="hidden">
+    <div class="header">
+        <div class="header-content">
+           <div class="logo-area">
+                <img src="mickealimage1.png" alt="logo Mikael" style="max-width:150px; height:auto;">
+    <span>Les Badges de Mickael</span>
+
+                    <small>Faciliter l'accès aux secours</small>
+</div>
+            </div>
+            <button class="btn-secour" id="secourTabBtn">🚨 SECOURS</button>
+            <button class="tab-btn" data-tab="avis">✍️ Votre avis</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="secourContent" class="card">
+            <h2 style="color: var(--violet);">👤 Mes informations</h2>
+            <div id="userInfo"></div>
+            <div id="gestesSecours"></div>
+        </div>
+        <button id="logoutBtn" style="background: var(--gris); margin-top: 1rem;">🚪 Se déconnecter</button>
+    </div>
+</div>    
+    <div class="container">
+        <div id="infoTab" class="tab-content active">
+            <div class="card">
+             <h2>💬 Écrivez-nous</h2>
+                <div class="info-badge">Base de données locale (stockée dans votre navigateur)</div>
+    <div id="avisTab" class="tab-content">
+            <div class="card">
+   
+                <div class="avis-box">
+                    <form id="avisForm">
+                        <div class="form-group">
+                            <label>Votre nom (optionnel)</label>
+                            <input type="text" id="avisNom" placeholder="Votre nom">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Votre avis *</label>
+                            <textarea id="avisMessage" rows="5" required placeholder="Partagez votre expérience, suggestions ou témoignage..."></textarea>
+                        </div>
+
+                        <button type="submit">📧 Envoyer mon avis</button>
+                    </form>
+
+                    <p style="margin-top: 1rem; color: var(--gris);">
+                        ⚠️ L'avis sera envoyé par email via votre messagerie.
+                    </p>
+                </div>
+            </div>
+        </div>
+</script>
+
+<script>
+    // Récupération des personnes stockées par l'admin
+    function getPersonnes() {
+        const stored = localStorage.getItem('badges_mickael_personnes');
+        return stored ? JSON.parse(stored) : [];
+    }
+
+    // Connexion
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const id = document.getElementById('userId').value.trim();
+        const nom = document.getElementById('userName').value.trim().toLowerCase();
+        const errorP = document.getElementById('loginError');
+
+        if (!/^\d{5}$/.test(id)) {
+            errorP.textContent = "L'identifiant doit comporter exactement 5 chiffres.";
+            errorP.style.display = 'block';
+            return;
+        }
+
+        const personnes = getPersonnes();
+        const personne = personnes.find(p => p.identifiant === id && p.nom.toLowerCase() === nom);
+
+        if (!personne) {
+            errorP.textContent = "Aucun utilisateur trouvé avec cet identifiant et ce nom.";
+            errorP.style.display = 'block';
+            return;
+        }
+
+        // Connexion réussie
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('mainApp').classList.remove('hidden');
+        afficherInfos(personne);
+        showToast("✅ Bienvenue " + personne.prenom);
+    });
+
+    function afficherInfos(personne) {
+        const userDiv = document.getElementById('userInfo');
+        userDiv.innerHTML = `
+            <p><strong>🆔 Identifiant :</strong> ${echapper(personne.identifiant)}</p>
+            <p><strong>👤 Nom complet :</strong> ${echapper(personne.prenom)} ${echapper(personne.nom)}</p>
+            <p><strong>🏠 Domiciliation :</strong> ${echapper(personne.domiciliation || 'Non renseignée')}</p>
+            <p><strong>📞 Téléphone :</strong> ${echapper(personne.numero)}</p>
+            <p><strong>📅 Inscrit le :</strong> ${echapper(personne.dateInscription || 'Non renseignée')}</p>
+        `;
+
+        const gestesDiv = document.getElementById('gestesSecours');
+        gestesDiv.innerHTML = `
+            <div class="geste-card" style="margin-top: 1.5rem;">
+                <h3>🤝 Aide à apporter</h3>
+                <p>${echapper(personne.aideApporter || "Aucune information spécifique. En cas d'urgence, appelez les secours.")}</p>
+            </div>
+            <div class="geste-card">
+                <h3>🚑 Gestes de premiers secours</h3>
+                <p>${echapper(personne.gestesSecours || "Restez calme, sécurisez l'environnement, contactez les secours.")}</p>
+            </div>
+            <div style="margin-top: 1rem; background: var(--jaune-clair); padding: 1rem; border-radius: 12px;">
+                <strong>📞 Numéros d'urgence :</strong><br>
+                🚒 Pompiers : 18 ou 112 &nbsp;|&nbsp; 🚑 SAMU : 15 &nbsp;|&nbsp; 🚨 Police : 17
+            </div>
+        `;
+    }
+
+    // Bouton "SECOUR" (le gros rouge) : peut servir à ré-afficher les infos ou lancer un appel
+    document.getElementById('secourTabBtn').addEventListener('click', function() {
+        // Relance l'affichage (au cas où) mais surtout prépare un appel d'urgence
+        const userId = document.getElementById('userId').value.trim();
+        const personnes = getPersonnes();
+        const personne = personnes.find(p => p.identifiant === userId);
+        if (personne) {
+            // On pourrait ouvrir le composeur téléphonique pour le 15
+            window.location.href = 'tel:15';
+        }
+    });
+
+    // Déconnexion
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+        document.getElementById('mainApp').classList.add('hidden');
+        document.getElementById('loginScreen').classList.remove('hidden');
+        document.getElementById('userId').value = '';
+        document.getElementById('userName').value = '';
+        document.getElementById('loginError').style.display = 'none';
+    });
+
+    // Chargement du logo depuis le stockage admin (si défini)
+    function chargerLogo() {
+        const logoDiv = document.getElementById('logoPerso');
+        const savedLogo = localStorage.getItem('badges_mickael_logo');
+        if (savedLogo) {
+            logoDiv.style.backgroundImage = `url(${savedLogo})`;
+            logoDiv.style.backgroundSize = 'cover';
+            logoDiv.style.backgroundPosition = 'center';
+        }
+    }
+
+    function echapper(str) {
+        if (!str) return '';
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function showToast(msg) {
+        const toast = document.createElement('div');
+        toast.className = 'toast-msg';
+        toast.innerText = msg;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+
+function sendAvis(event) {
+        event.preventDefault();
+
+        const nomAvis = document.getElementById('avisNom').value.trim();
+        const message = document.getElementById('avisMessage').value.trim();
+
+        if (!message) {
+            alert("Veuillez écrire un avis.");
+            return;
+        }
+
+        const sujet = `Avis - Les Badges de Mickael de ${nomAvis || "Visiteur"}`;
+        const corps = `Nom: ${nomAvis || "Anonyme"}\n\nMessage:\n${message}\n\n---\nEnvoyé depuis l'application Les Badges de Mickael.`;
+
+        const mailtoLink = `mailto:ufcboy44@gmail.com,mickaelmartin@gmail.com?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
+        window.location.href = mailtoLink;
+
+        showToast("📧 Ouverture de votre messagerie pour envoyer l'avis.");
+        document.getElementById('avisForm').reset();
+    }
+</script>  
+</body>
+</html>
