@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://burgercoffee.sn/sitemap.xml
