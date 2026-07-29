@@ -12,6 +12,87 @@
 
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
+  /* ---------- Cinematic hero reels ---------- */
+  const heroVideos = Array.from(document.querySelectorAll(".hero__video"));
+  const heroFallback = document.getElementById("heroFallback");
+  const heroReels = document.getElementById("heroReels");
+  let heroIndex = 0;
+  let heroFailed = 0;
+
+  const loadHeroVideo = (video) => {
+    if (video.dataset.loaded === "1") return Promise.resolve(video);
+    return new Promise((resolve, reject) => {
+      const src = video.dataset.src;
+      if (!src) return reject(new Error("missing src"));
+      const onReady = () => {
+        video.dataset.loaded = "1";
+        cleanup();
+        resolve(video);
+      };
+      const onError = () => {
+        cleanup();
+        reject(new Error("video error"));
+      };
+      const cleanup = () => {
+        video.removeEventListener("loadeddata", onReady);
+        video.removeEventListener("canplay", onReady);
+        video.removeEventListener("error", onError);
+      };
+      video.addEventListener("loadeddata", onReady, { once: true });
+      video.addEventListener("canplay", onReady, { once: true });
+      video.addEventListener("error", onError, { once: true });
+      video.src = src;
+      video.load();
+    });
+  };
+
+  const playHeroAt = async (index) => {
+    if (!heroVideos.length) return;
+    const next = (index + heroVideos.length) % heroVideos.length;
+    const video = heroVideos[next];
+    try {
+      await loadHeroVideo(video);
+      heroVideos.forEach((v, i) => {
+        v.classList.toggle("is-active", i === next);
+        if (i !== next) {
+          v.pause();
+          try { v.currentTime = 0; } catch (_) { /* ignore */ }
+        }
+      });
+      heroIndex = next;
+      await video.play();
+    } catch (_) {
+      heroFailed += 1;
+      if (heroFailed >= heroVideos.length) startHeroImageFallback();
+      else playHeroAt(next + 1);
+    }
+  };
+
+  const startHeroImageFallback = () => {
+    if (!heroFallback) return;
+    heroReels?.setAttribute("hidden", "");
+    heroFallback.hidden = false;
+    const frames = Array.from(heroFallback.querySelectorAll("img"));
+    let i = 0;
+    frames[0]?.classList.add("is-active");
+    setInterval(() => {
+      frames[i]?.classList.remove("is-active");
+      i = (i + 1) % frames.length;
+      frames[i]?.classList.add("is-active");
+    }, 4200);
+  };
+
+  if (heroVideos.length) {
+    heroVideos.forEach((video) => {
+      video.addEventListener("ended", () => playHeroAt(heroIndex + 1));
+    });
+    // Respect data-saver / reduced motion: images only
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData = navigator.connection?.saveData;
+    if (reduceMotion || saveData) startHeroImageFallback();
+    else playHeroAt(0);
+  }
+
   /* ---------- Header scroll state ---------- */
   const onScrollHeader = () => {
     if (!header) return;
