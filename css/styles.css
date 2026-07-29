@@ -452,6 +452,16 @@ address {
   text-align: center;
 }
 
+.hero__kicker {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245, 232, 211, 0.8);
+  margin-bottom: 0.85rem;
+}
+
 .hero__brand {
   font-family: var(--font-display);
   font-weight: 800;
@@ -460,6 +470,27 @@ address {
   line-height: 0.95;
   margin-bottom: 1.1rem;
   text-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem 1.1rem;
+  margin-top: 1.75rem;
+  color: rgba(245, 232, 211, 0.78);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.hero__meta span {
+  position: relative;
+}
+
+.hero__meta span:not(:last-child)::after {
+  content: "·";
+  margin-left: 1.1rem;
+  opacity: 0.5;
 }
 
 .hero__title {
@@ -587,6 +618,33 @@ address {
   max-width: 42ch;
 }
 
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1.75rem;
+}
+
+.pillars li {
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-sm);
+  background: rgba(18, 53, 36, 0.04);
+  border: 1px solid var(--line);
+}
+
+.pillars strong {
+  display: block;
+  font-family: var(--font-display);
+  color: var(--forest);
+  font-size: 0.98rem;
+  margin-bottom: 0.15rem;
+}
+
+.pillars span {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -614,6 +672,178 @@ address {
 .stat__label {
   font-size: 0.82rem;
   color: var(--muted);
+}
+
+/* ---------- Services strip ---------- */
+.services {
+  background: var(--forest);
+  color: var(--cream);
+  padding: 1rem 0;
+}
+
+.services__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.services__row span {
+  position: relative;
+}
+
+.services__row span:not(:last-child)::after {
+  content: "•";
+  margin-left: 1.5rem;
+  color: var(--orange);
+}
+
+/* ---------- Formules ---------- */
+.formules__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.formule-card {
+  padding: 2rem 1.6rem;
+  border-radius: var(--radius-lg);
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
+}
+
+.formule-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+.formule-card--premium {
+  background: linear-gradient(145deg, var(--forest), var(--forest-soft));
+  color: var(--cream-soft);
+  border: 0;
+}
+
+.formule-card__label {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+.formule-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  color: var(--forest);
+}
+
+.formule-card--premium h3 {
+  color: var(--cream-soft);
+}
+
+.formule-card__price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--orange);
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.03em;
+}
+
+.formule-card__price small {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.formule-card p {
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  max-width: 36ch;
+}
+
+.formule-card--premium p {
+  color: rgba(245, 232, 211, 0.82);
+}
+
+/* ---------- Carte officielle ---------- */
+.carte__board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(ellipse at top, rgba(217, 119, 6, 0.12), transparent 45%),
+    linear-gradient(165deg, #0b2414, #123524 55%, #0a1f16);
+  color: #d1b48c;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(209, 180, 140, 0.2);
+}
+
+.carte__heading {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  color: #f5e8d3;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(209, 180, 140, 0.28);
+}
+
+.carte__list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.carte__list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px dashed rgba(209, 180, 140, 0.18);
+  font-size: 0.95rem;
+}
+
+.carte__list span {
+  color: rgba(245, 232, 211, 0.9);
+}
+
+.carte__list small {
+  display: block;
+  margin-top: 0.2rem;
+  color: rgba(209, 180, 140, 0.72);
+  font-size: 0.78rem;
+}
+
+.carte__list strong {
+  font-family: var(--font-display);
+  color: #f5e8d3;
+  white-space: nowrap;
+}
+
+.carte__note {
+  margin-top: 1.5rem;
+  padding: 1.15rem;
+  border-radius: var(--radius);
+  background: rgba(245, 232, 211, 0.06);
+  border: 1px solid rgba(209, 180, 140, 0.2);
+}
+
+.carte__note p {
+  color: rgba(245, 232, 211, 0.8);
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
 }
 
 /* ---------- Menu ---------- */
@@ -1174,18 +1404,30 @@ address {
   font-size: 1.2rem;
 }
 
+.location__phones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 0.85rem;
+}
+
 .location__phone {
   display: inline-block;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   color: var(--orange);
-  margin-bottom: 1.5rem;
   transition: transform 0.3s var(--ease);
 }
 
 .location__phone:hover {
   transform: scale(1.03);
+}
+
+.location__yassir {
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 1.35rem;
 }
 
 .socials {
@@ -1340,10 +1582,12 @@ address {
 }
 
 /* Stagger helpers via nth */
-.hero__brand { --delay: 80ms; }
-.hero__title { --delay: 220ms; }
+.hero__kicker { --delay: 40ms; }
+.hero__brand { --delay: 120ms; }
+.hero__title { --delay: 240ms; }
 .hero__subtitle { --delay: 360ms; }
 .hero__actions { --delay: 480ms; }
+.hero__meta { --delay: 580ms; }
 
 .menu-card:nth-child(1) { --delay: 40ms; }
 .menu-card:nth-child(2) { --delay: 100ms; }
@@ -1389,6 +1633,11 @@ address {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
+  .carte__board,
+  .formules__grid {
+    grid-template-columns: 1fr;
+  }
+
   .menu__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1485,8 +1734,14 @@ address {
     columns: 1;
   }
 
-  .stats {
+  .stats,
+  .pillars {
     grid-template-columns: 1fr;
+  }
+
+  .hero__meta span:not(:last-child)::after,
+  .services__row span:not(:last-child)::after {
+    display: none;
   }
 
   .hero__actions,
