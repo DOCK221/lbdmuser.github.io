@@ -230,9 +230,73 @@
         <div class="section__header">
           <p class="eyebrow reveal" data-reveal>La carte</p>
           <h2 class="section__title reveal" data-reveal>Menu Burger Coffee</h2>
-          <p class="section__lead reveal" data-reveal>Tarifs officiels en FCFA — barista, rafraîchissements et salades.</p>
+          <p class="section__lead reveal" data-reveal>Tarifs officiels en FCFA — food, barista et boissons.</p>
         </div>
-        <div class="carte__board reveal" data-reveal>
+
+        <!-- Food menu -->
+        <div class="carte__board carte__board--food reveal" data-reveal>
+          <div class="carte__col">
+            <h3 class="carte__heading">Sandwichs</h3>
+            <ul class="carte__list">
+              <li>
+                <span>Sandwich poulet<small>baguette fraîche, blanc de poulet, roquette, emmental, sauce à l’ail</small></span>
+                <strong>3 500</strong>
+              </li>
+              <li>
+                <span>Sandwich bœuf<small>baguette fraîche, steak de bœuf, sauce algérienne, guacamole</small></span>
+                <strong>2 500</strong>
+              </li>
+              <li>
+                <span>Sandwich du chef<small>selon les envies de notre chef, chaque jour</small></span>
+                <strong>3 000</strong>
+              </li>
+            </ul>
+            <h3 class="carte__heading carte__heading--spaced">Plats</h3>
+            <ul class="carte__list">
+              <li><span>Linguine crevette</span><strong>4 000</strong></li>
+              <li><span>Plat du jour</span><strong>3 000</strong></li>
+            </ul>
+          </div>
+          <div class="carte__col">
+            <h3 class="carte__heading">Smashs</h3>
+            <ul class="carte__list">
+              <li>
+                <span>Smash classic<small>pain brioché, steak de bœuf, cheddar, sauce maison, oignons grillés</small></span>
+                <strong>3 000</strong>
+              </li>
+              <li>
+                <span>Smash double<small>pain brioché, double steak, double cheddar, sauce maison, oignons confits</small></span>
+                <strong>4 000</strong>
+              </li>
+              <li>
+                <span>Smash bacon halal<small>pain brioché, steak, bacon, cheddar, sauce maison, oignons rouges, roquette</small></span>
+                <strong>4 000</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="carte__col">
+            <h3 class="carte__heading">Burgers</h3>
+            <ul class="carte__list">
+              <li>
+                <span>Burger poulet<small>pain brioché, steak de poulet, cheddar, sauce à l’ail, oignons, choux, carottes, roquette</small></span>
+                <strong>3 500</strong>
+              </li>
+              <li>
+                <span>Burger du chef<small>pain brioché, steak de bœuf, cheddar, sauce maison, guacamole</small></span>
+                <strong>3 500</strong>
+              </li>
+            </ul>
+            <div class="carte__deal">
+              <p class="carte__deal-label">Menu Burger</p>
+              <p class="carte__deal-text">Burger au choix + frites + boisson</p>
+              <p class="carte__deal-price">5 000 <small>FCFA</small></p>
+              <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20le%20Menu%20Burger" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drinks + salads -->
+        <div class="carte__board reveal" data-reveal style="margin-top:1.25rem">
           <div class="carte__col">
             <h3 class="carte__heading">Barista</h3>
             <ul class="carte__list">
@@ -288,8 +352,8 @@
               </li>
             </ul>
             <div class="carte__note">
-              <p>Smashs, burgers &amp; sandwichs disponibles sur place — demandez la carte food du jour.</p>
-              <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20voudrais%20voir%20la%20carte%20burgers" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander via WhatsApp</a>
+              <p>Sur place · À emporter · Livraison Yassir</p>
+              <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20commander" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander via WhatsApp</a>
             </div>
           </div>
         </div>
@@ -307,40 +371,161 @@
 
         <div class="menu__filters reveal" data-reveal role="tablist" aria-label="Catégories du menu">
           <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">Tout</button>
+          <button class="filter-btn" data-filter="smashs" role="tab" aria-selected="false">🍔 Smashs</button>
           <button class="filter-btn" data-filter="burgers" role="tab" aria-selected="false">🍔 Burgers</button>
+          <button class="filter-btn" data-filter="sandwichs" role="tab" aria-selected="false">🥪 Sandwichs</button>
+          <button class="filter-btn" data-filter="plats" role="tab" aria-selected="false">🍝 Plats</button>
           <button class="filter-btn" data-filter="salades" role="tab" aria-selected="false">🥗 Salades</button>
           <button class="filter-btn" data-filter="coffee" role="tab" aria-selected="false">☕ Coffee</button>
-          <button class="filter-btn" data-filter="drinks" role="tab" aria-selected="false">🥤 Boissons</button>
-          <button class="filter-btn" data-filter="breakfast" role="tab" aria-selected="false">🥐 Breakfast</button>
         </div>
 
         <div class="menu__grid" id="menuGrid">
-          <article class="menu-card reveal" data-reveal data-category="burgers">
+          <article class="menu-card reveal" data-reveal data-category="smashs">
             <div class="menu-card__media">
-              <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&q=80" alt="Bacon cheeseburger avec frites" loading="lazy" decoding="async" width="700" height="500">
+              <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=700&q=80" alt="Smash classic" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
-              <span class="menu-card__cat">🍔 Smashs &amp; Burgers</span>
-              <h3 class="menu-card__title">Bacon Cheese Smash</h3>
-              <p class="menu-card__desc">Brioche dorée, cheddar fondant, bacon croustillant, roquette — servi avec frites.</p>
+              <span class="menu-card__cat">🍔 Smashs</span>
+              <h3 class="menu-card__title">Smash classic</h3>
+              <p class="menu-card__desc">Pain brioché, steak de bœuf, cheddar, sauce maison, oignons grillés.</p>
               <div class="menu-card__footer">
-                <span class="menu-card__price">Dès 2 500 F</span>
-                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20commander%20un%20Bacon%20Cheese%20Smash" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+                <span class="menu-card__price">3 000 F</span>
+                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20un%20Smash%20classic" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-reveal data-category="smashs">
+            <div class="menu-card__media">
+              <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&q=80" alt="Smash double" loading="lazy" decoding="async" width="700" height="500">
+            </div>
+            <div class="menu-card__body">
+              <span class="menu-card__cat">🍔 Smashs</span>
+              <h3 class="menu-card__title">Smash double</h3>
+              <p class="menu-card__desc">Pain brioché, double steak, double cheddar, sauce maison, oignons confits.</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">4 000 F</span>
+                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20un%20Smash%20double" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-reveal data-category="smashs">
+            <div class="menu-card__media">
+              <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=700&q=80" alt="Smash bacon halal" loading="lazy" decoding="async" width="700" height="500">
+            </div>
+            <div class="menu-card__body">
+              <span class="menu-card__cat">🍔 Smashs</span>
+              <h3 class="menu-card__title">Smash bacon halal</h3>
+              <p class="menu-card__desc">Pain brioché, steak, bacon, cheddar, sauce maison, oignons rouges, roquette.</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">4 000 F</span>
+                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20un%20Smash%20bacon%20halal" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="burgers">
             <div class="menu-card__media">
-              <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=700&q=80" alt="Double smash burger" loading="lazy" decoding="async" width="700" height="500">
+              <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=700&q=80" alt="Burger poulet" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
-              <span class="menu-card__cat">🍔 Smashs &amp; Burgers</span>
-              <h3 class="menu-card__title">Double Smash</h3>
-              <p class="menu-card__desc">Deux smash patties, double fromage, sauce maison — ultra gourmand.</p>
+              <span class="menu-card__cat">🍔 Burgers</span>
+              <h3 class="menu-card__title">Burger poulet</h3>
+              <p class="menu-card__desc">Pain brioché, steak de poulet, cheddar, sauce à l’ail, oignons, choux, carottes, roquette.</p>
               <div class="menu-card__footer">
-                <span class="menu-card__price">Sur place</span>
-                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20commander%20un%20Double%20Smash" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+                <span class="menu-card__price">3 500 F</span>
+                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20un%20Burger%20poulet" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-reveal data-category="burgers">
+            <div class="menu-card__media">
+              <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=700&q=80" alt="Burger du chef" loading="lazy" decoding="async" width="700" height="500">
+            </div>
+            <div class="menu-card__body">
+              <span class="menu-card__cat">🍔 Burgers</span>
+              <h3 class="menu-card__title">Burger du chef</h3>
+              <p class="menu-card__desc">Pain brioché, steak de bœuf, cheddar, sauce maison, guacamole.</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">3 500 F</span>
+                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20un%20Burger%20du%20chef" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-reveal data-category="burgers">
+            <div class="menu-card__media">
+              <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?w=700&q=80" alt="Menu burger frites boisson" loading="lazy" decoding="async" width="700" height="500">
+            </div>
+            <div class="menu-card__body">
+              <span class="menu-card__cat">🔥 Menu</span>
+              <h3 class="menu-card__title">Menu Burger</h3>
+              <p class="menu-card__desc">Burger au choix + frites + boisson.</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">5 000 F</span>
+                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20le%20Menu%20Burger" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-reveal data-category="sandwichs">
+            <div class="menu-card__media">
+              <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=700&q=80" alt="Sandwich poulet" loading="lazy" decoding="async" width="700" height="500">
+            </div>
+            <div class="menu-card__body">
+              <span class="menu-card__cat">🥪 Sandwichs</span>
+              <h3 class="menu-card__title">Sandwich poulet</h3>
+              <p class="menu-card__desc">Baguette fraîche, blanc de poulet, roquette, emmental, sauce à l’ail.</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">3 500 F</span>
+                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20un%20Sandwich%20poulet" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-reveal data-category="sandwichs">
+            <div class="menu-card__media">
+              <img src="https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=700&q=80" alt="Sandwich boeuf" loading="lazy" decoding="async" width="700" height="500">
+            </div>
+            <div class="menu-card__body">
+              <span class="menu-card__cat">🥪 Sandwichs</span>
+              <h3 class="menu-card__title">Sandwich bœuf</h3>
+              <p class="menu-card__desc">Baguette fraîche, steak de bœuf, sauce algérienne, guacamole.</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">2 500 F</span>
+                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20un%20Sandwich%20boeuf" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-reveal data-category="plats">
+            <div class="menu-card__media">
+              <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=700&q=80" alt="Linguine crevette" loading="lazy" decoding="async" width="700" height="500">
+            </div>
+            <div class="menu-card__body">
+              <span class="menu-card__cat">🍝 Plats</span>
+              <h3 class="menu-card__title">Linguine crevette</h3>
+              <p class="menu-card__desc">Pâtes linguine aux crevettes grillées, poivrons et herbes fraîches.</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">4 000 F</span>
+                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20des%20Linguine%20crevette" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-reveal data-category="plats">
+            <div class="menu-card__media">
+              <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=700&q=80" alt="Plat du jour" loading="lazy" decoding="async" width="700" height="500">
+            </div>
+            <div class="menu-card__body">
+              <span class="menu-card__cat">🍝 Plats</span>
+              <h3 class="menu-card__title">Plat du jour</h3>
+              <p class="menu-card__desc">Fait maison avec des produits frais — demandez la suggestion du jour.</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">3 000 F</span>
+                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20le%20plat%20du%20jour" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
               </div>
             </div>
           </article>
@@ -355,22 +540,7 @@
               <p class="menu-card__desc">Salade verte, poulet, pomme, mangue, tomate, avocat, sauce cocktail.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">5 000 F</span>
-                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20commander%20une%20Salade%20tropicale" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-card reveal" data-reveal data-category="salades">
-            <div class="menu-card__media">
-              <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=700&q=80" alt="Salade avocat crevettes" loading="lazy" decoding="async" width="700" height="500">
-            </div>
-            <div class="menu-card__body">
-              <span class="menu-card__cat">🥗 Salades</span>
-              <h3 class="menu-card__title">Salade du chef</h3>
-              <p class="menu-card__desc">Selon les envies de notre chef cuisinier, chaque jour.</p>
-              <div class="menu-card__footer">
-                <span class="menu-card__price">4 000 F</span>
-                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20commander%20la%20Salade%20du%20chef" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20une%20Salade%20tropicale" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
               </div>
             </div>
           </article>
@@ -385,52 +555,7 @@
               <p class="menu-card__desc">Espresso, lait onctueux et caramel — signature barista.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">3 500 F</span>
-                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20commander%20un%20Caramel%20macchiato" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-card reveal" data-reveal data-category="coffee">
-            <div class="menu-card__media">
-              <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=700&q=80" alt="Cappuccino" loading="lazy" decoding="async" width="700" height="500">
-            </div>
-            <div class="menu-card__body">
-              <span class="menu-card__cat">☕ Barista</span>
-              <h3 class="menu-card__title">Cappuccino</h3>
-              <p class="menu-card__desc">Moussant, intense, parfait pour la terrasse.</p>
-              <div class="menu-card__footer">
-                <span class="menu-card__price">3 000 F</span>
-                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20commander%20un%20Cappuccino" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-card reveal" data-reveal data-category="drinks">
-            <div class="menu-card__media">
-              <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=700&q=80" alt="Thé glacé maison" loading="lazy" decoding="async" width="700" height="500">
-            </div>
-            <div class="menu-card__body">
-              <span class="menu-card__cat">🥤 Rafraîchissements</span>
-              <h3 class="menu-card__title">Thé glacé maison</h3>
-              <p class="menu-card__desc">Au choix : pêche, passion, fraise, citron ou mangue.</p>
-              <div class="menu-card__footer">
-                <span class="menu-card__price">2 500 F</span>
-                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20commander%20un%20th%C3%A9%20glac%C3%A9" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-card reveal" data-reveal data-category="breakfast">
-            <div class="menu-card__media">
-              <img src="https://images.unsplash.com/photo-1504754524776-8f4f46914501?w=700&q=80" alt="Petit déjeuner croissant jus orange" loading="lazy" decoding="async" width="700" height="500">
-            </div>
-            <div class="menu-card__body">
-              <span class="menu-card__cat">🥐 Breakfast</span>
-              <h3 class="menu-card__title">Formule Petit Déjeuner</h3>
-              <p class="menu-card__desc">Jus d’orange + café ou thé + croissant ou pain chocolat.</p>
-              <div class="menu-card__footer">
-                <span class="menu-card__price">3 000 F</span>
-                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20la%20formule%20Petit%20D%C3%A9jeuner" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
+                <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20un%20Caramel%20macchiato" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander</a>
               </div>
             </div>
           </article>
