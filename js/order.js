@@ -360,7 +360,7 @@
     );
 
     const message = [
-      "🍔 Nouvelle commande Burger Coffee",
+      "🍔 Nouvelle commande Burger Coffee Saly",
       "",
       `Client : ${name}`,
       `Tél : ${phone}`,

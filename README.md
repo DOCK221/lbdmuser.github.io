@@ -1,23 +1,23 @@
-# Burger Coffee — Site web
+# Burger Coffee Saly — Site web
 
-Site premium immersif pour **Burger Coffee**, restaurant-terrasse à Saly, Sénégal.
+Site premium immersif pour **Burger Coffee Saly**, restaurant-terrasse à Saly, Sénégal.
 
-## Site public (visible à tous)
+## Lien simple (à taper / partager)
 
-Le dépôt est **public**. Une fois GitHub Pages activé, le site est en ligne ici :
+**https://burger-coffee-saly.loca.lt/**
 
-- **GitHub Pages :** [https://dock221.github.io/lbdmuser.github.io/](https://dock221.github.io/lbdmuser.github.io/)
-- **Commander :** [https://dock221.github.io/lbdmuser.github.io/commander.html](https://dock221.github.io/lbdmuser.github.io/commander.html)
+Aussi : **https://burgercoffeesaly.loca.lt/**
+
+## Autres accès publics
+
+- Miroir CDN : [https://cdn.jsdelivr.net/gh/DOCK221/lbdmuser.github.io@main/index.html](https://cdn.jsdelivr.net/gh/DOCK221/lbdmuser.github.io@main/index.html)
+- GitHub Pages (après activation) : [https://dock221.github.io/lbdmuser.github.io/](https://dock221.github.io/lbdmuser.github.io/)
 
 ### Activer GitHub Pages (une seule fois)
 
 1. Ouvrir le dépôt → **Settings** → **Pages**
 2. Source : **GitHub Actions**
-3. Enregistrer — le workflow `Deploy GitHub Pages` publie automatiquement à chaque push sur `main`
-
-En attendant Pages, le site peut aussi être consulté via jsDelivr (CDN public) :
-
-- [https://cdn.jsdelivr.net/gh/DOCK221/lbdmuser.github.io@main/index.html](https://cdn.jsdelivr.net/gh/DOCK221/lbdmuser.github.io@main/index.html)
+3. Enregistrer
 
 ## Lancer en local
 
@@ -34,7 +34,6 @@ Puis visiter `http://localhost:8000`.
 - `css/` — styles
 - `js/` — interactions
 - `assets/` — photos restaurant, galerie, plats
-- `robots.txt` / `sitemap.xml` — référencement
 
 ## Contact
 
