@@ -376,9 +376,15 @@
 }
 
 .checkout-form header p,
-.checkout-hint {
+.checkout-hint,
+.field-hint {
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.field-hint {
+  font-weight: 500;
+  font-size: 0.82rem;
 }
 
 .checkout-form label {
