@@ -404,7 +404,9 @@ address {
   inset: 0;
 }
 
+.hero__slide,
 .hero__video,
+.hero__photo,
 .hero__fallback img {
   position: absolute;
   inset: 0;
@@ -417,7 +419,9 @@ address {
   animation: heroDrift 28s ease-in-out infinite alternate;
 }
 
+.hero__slide.is-active,
 .hero__video.is-active,
+.hero__photo.is-active,
 .hero__fallback img.is-active {
   opacity: 1;
 }
@@ -706,7 +710,7 @@ address {
 /* ---------- Formules ---------- */
 .formules__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
 }
 

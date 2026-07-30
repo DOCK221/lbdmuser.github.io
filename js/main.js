@@ -12,12 +12,13 @@
 
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* ---------- Cinematic hero reels ---------- */
-  const heroVideos = Array.from(document.querySelectorAll(".hero__video"));
+  /* ---------- Cinematic hero reels (videos + photos) ---------- */
+  const heroSlides = Array.from(document.querySelectorAll(".hero__slide"));
   const heroFallback = document.getElementById("heroFallback");
   const heroReels = document.getElementById("heroReels");
   let heroIndex = 0;
   let heroFailed = 0;
+  let photoTimer = null;
 
   const loadHeroVideo = (video) => {
     if (video.dataset.loaded === "1") return Promise.resolve(video);
@@ -46,30 +47,45 @@
     });
   };
 
+  const activateSlide = (index) => {
+    heroSlides.forEach((slide, i) => {
+      const active = i === index;
+      slide.classList.toggle("is-active", active);
+      if (slide.tagName === "VIDEO" && !active) {
+        slide.pause();
+        try { slide.currentTime = 0; } catch (_) { /* ignore */ }
+      }
+    });
+    heroIndex = index;
+  };
+
   const playHeroAt = async (index) => {
-    if (!heroVideos.length) return;
-    const next = (index + heroVideos.length) % heroVideos.length;
-    const video = heroVideos[next];
+    if (!heroSlides.length) return;
+    clearTimeout(photoTimer);
+    const next = (index + heroSlides.length) % heroSlides.length;
+    const slide = heroSlides[next];
+
+    if (slide.tagName === "IMG") {
+      activateSlide(next);
+      const duration = Number(slide.dataset.duration || 5000);
+      photoTimer = setTimeout(() => playHeroAt(next + 1), duration);
+      return;
+    }
+
     try {
-      await loadHeroVideo(video);
-      heroVideos.forEach((v, i) => {
-        v.classList.toggle("is-active", i === next);
-        if (i !== next) {
-          v.pause();
-          try { v.currentTime = 0; } catch (_) { /* ignore */ }
-        }
-      });
-      heroIndex = next;
-      await video.play();
+      await loadHeroVideo(slide);
+      activateSlide(next);
+      await slide.play();
     } catch (_) {
       heroFailed += 1;
-      if (heroFailed >= heroVideos.length) startHeroImageFallback();
+      if (heroFailed >= heroSlides.length) startHeroImageFallback();
       else playHeroAt(next + 1);
     }
   };
 
   const startHeroImageFallback = () => {
     if (!heroFallback) return;
+    clearTimeout(photoTimer);
     heroReels?.setAttribute("hidden", "");
     heroFallback.hidden = false;
     const frames = Array.from(heroFallback.querySelectorAll("img"));
@@ -82,11 +98,12 @@
     }, 4200);
   };
 
-  if (heroVideos.length) {
-    heroVideos.forEach((video) => {
-      video.addEventListener("ended", () => playHeroAt(heroIndex + 1));
+  if (heroSlides.length) {
+    heroSlides.forEach((slide) => {
+      if (slide.tagName === "VIDEO") {
+        slide.addEventListener("ended", () => playHeroAt(heroIndex + 1));
+      }
     });
-    // Respect data-saver / reduced motion: images only
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const saveData = navigator.connection?.saveData;
     if (reduceMotion || saveData) startHeroImageFallback();
