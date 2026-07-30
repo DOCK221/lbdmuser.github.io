@@ -2,38 +2,39 @@
 
 Site premium immersif pour **Burger Coffee Saly**, restaurant-terrasse à Saly, Sénégal.
 
-## Lien simple (à taper / partager)
+## Lien public (Safari / mobile)
 
-**https://burger-coffee-saly.loca.lt/**
+**https://posts-conventional-power-international.trycloudflare.com/**
 
-Aussi : **https://burgercoffeesaly.loca.lt/**
+Aussi :
 
-## Autres accès publics
+**https://ancient-shadow-5317.zerodeploy.app/**
 
-- Miroir CDN : [https://cdn.jsdelivr.net/gh/DOCK221/lbdmuser.github.io@main/index.html](https://cdn.jsdelivr.net/gh/DOCK221/lbdmuser.github.io@main/index.html)
-- GitHub Pages (après activation) : [https://dock221.github.io/lbdmuser.github.io/](https://dock221.github.io/lbdmuser.github.io/)
+Pour le garder définitivement :  
+https://dashboard.zerodeploy.dev/drop-claim?token=zdr_380b65cfcb84d1848867009eb774db811a2531204b8845034ccbe95b1fc095ce
 
-### Activer GitHub Pages (une seule fois)
+## Apparaitre sur Google
 
-1. Ouvrir le dépôt → **Settings** → **Pages**
+Safari ouvre le lien ; **Google Search** n’affiche le site qu’après indexation.
+
+1. **Rendre l’URL permanente** (claim ZeroDeploy ci-dessus, ou activer GitHub Pages).
+2. Aller sur [Google Search Console](https://search.google.com/search-console) → ajouter la propriété (URL du site).
+3. Demander l’indexation de `https://ancient-shadow-5317.zerodeploy.app/` et envoyer le sitemap : `/sitemap.xml`
+4. Pour le restaurant dans Google Maps / « Burger Coffee Saly » : créer ou revendiquer une [fiche Google Business](https://business.google.com/).
+
+L’indexation peut prendre quelques jours.
+
+### Activer GitHub Pages (option permanente)
+
+1. Dépôt → **Settings** → **Pages**
 2. Source : **GitHub Actions**
-3. Enregistrer
+3. URL : https://dock221.github.io/lbdmuser.github.io/
 
 ## Lancer en local
 
 ```bash
 python3 -m http.server 8000
 ```
-
-Puis visiter `http://localhost:8000`.
-
-## Structure
-
-- `index.html` — page d’accueil
-- `commander.html` — commande en ligne (panier + Wave + WhatsApp)
-- `css/` — styles
-- `js/` — interactions
-- `assets/` — photos restaurant, galerie, plats
 
 ## Contact
 
