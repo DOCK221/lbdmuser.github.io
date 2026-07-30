@@ -366,6 +366,7 @@
       `Tél : ${phone}`,
       `Mode : ${modeLabel}`,
       mode === "livraison" ? `Adresse : ${address}` : null,
+      mode === "livraison" ? "Livraison : gratuite (tout Saly)" : null,
       note ? `Note : ${note}` : null,
       "",
       "Commande :",
