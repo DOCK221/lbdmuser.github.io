@@ -289,6 +289,10 @@ address {
   gap: 1rem;
 }
 
+.order-page .nav {
+  gap: 0.75rem;
+}
+
 .nav__logo {
   display: inline-flex;
   align-items: center;
