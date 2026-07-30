@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://white-mountain-1050.zerodeploy.app/sitemap.xml
+Sitemap: https://hidden-star-3169.zerodeploy.app/sitemap.xml
