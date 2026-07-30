@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://burgercoffeesaly.com/sitemap.xml
+Sitemap: https://white-mountain-1050.zerodeploy.app/sitemap.xml

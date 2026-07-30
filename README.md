@@ -2,38 +2,35 @@
 
 Site premium immersif pour **Burger Coffee Saly**, restaurant-terrasse à Saly, Sénégal.
 
-## Lien simple (à taper / partager)
+## Lien public (Safari / mobile)
 
-**https://burger-coffee-saly.loca.lt/**
+**https://white-mountain-1050.zerodeploy.app/**
 
-Aussi : **https://burgercoffeesaly.loca.lt/**
+Pour le garder définitivement :  
+https://dashboard.zerodeploy.dev/drop-claim?token=zdr_ecdfad9f710dd578df1153847cd5c364d72d809e5abdeef0ffed3ac30b2207c2
 
-## Autres accès publics
+## Apparaitre sur Google
 
-- Miroir CDN : [https://cdn.jsdelivr.net/gh/DOCK221/lbdmuser.github.io@main/index.html](https://cdn.jsdelivr.net/gh/DOCK221/lbdmuser.github.io@main/index.html)
-- GitHub Pages (après activation) : [https://dock221.github.io/lbdmuser.github.io/](https://dock221.github.io/lbdmuser.github.io/)
+Safari ouvre le lien ; **Google Search** n’affiche le site qu’après indexation.
 
-### Activer GitHub Pages (une seule fois)
+1. **Rendre l’URL permanente** (claim ZeroDeploy ci-dessus, ou activer GitHub Pages).
+2. Aller sur [Google Search Console](https://search.google.com/search-console) → ajouter la propriété (URL du site).
+3. Demander l’indexation de `https://white-mountain-1050.zerodeploy.app/` et envoyer le sitemap : `/sitemap.xml`
+4. Pour le restaurant dans Google Maps / « Burger Coffee Saly » : créer ou revendiquer une [fiche Google Business](https://business.google.com/).
 
-1. Ouvrir le dépôt → **Settings** → **Pages**
+L’indexation peut prendre quelques jours.
+
+### Activer GitHub Pages (option permanente)
+
+1. Dépôt → **Settings** → **Pages**
 2. Source : **GitHub Actions**
-3. Enregistrer
+3. URL : https://dock221.github.io/lbdmuser.github.io/
 
 ## Lancer en local
 
 ```bash
 python3 -m http.server 8000
 ```
-
-Puis visiter `http://localhost:8000`.
-
-## Structure
-
-- `index.html` — page d’accueil
-- `commander.html` — commande en ligne (panier + Wave + WhatsApp)
-- `css/` — styles
-- `js/` — interactions
-- `assets/` — photos restaurant, galerie, plats
 
 ## Contact
 
