@@ -2,6 +2,15 @@
 
 Site premium immersif pour **Burger Coffee Saly**, restaurant-terrasse à Saly, Sénégal.
 
+## QR code
+
+Fichiers prêts à imprimer / partager :
+- `assets/qr/burger-coffee-saly-qr.png`
+- `assets/qr/burger-coffee-saly-qr-print.png` (plus grand)
+- Page : `qr.html`
+
+Le QR ouvre : https://ancient-shadow-5317.zerodeploy.app/
+
 ## Lien public (Safari / mobile)
 
 **https://posts-conventional-power-international.trycloudflare.com/**
