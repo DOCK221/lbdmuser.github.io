@@ -268,7 +268,7 @@
   }
 
   /* ---------- Parallax (lightweight) ---------- */
-  const parallaxNodes = document.querySelectorAll(".parallax-img img, .hero__video.is-active");
+  const parallaxNodes = document.querySelectorAll(".parallax-img img, .hero__slide.is-active");
   let ticking = false;
 
   const updateParallax = () => {
@@ -277,7 +277,7 @@
       const rect = node.getBoundingClientRect();
       const center = rect.top + rect.height / 2;
       const offset = (center - window.innerHeight / 2) * -0.04;
-      if (node.matches(".hero__video")) {
+      if (node.matches(".hero__slide")) {
         node.style.translate = `0 ${Math.min(Math.max(y * 0.08, 0), 80)}px`;
       } else if (rect.bottom > 0 && rect.top < window.innerHeight) {
         node.style.translate = `0 ${offset}px`;
