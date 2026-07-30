@@ -4,10 +4,14 @@ Site premium immersif pour **Burger Coffee Saly**, restaurant-terrasse à Saly, 
 
 ## Lien public (Safari / mobile)
 
-**https://hidden-star-3169.zerodeploy.app/**
+**https://posts-conventional-power-international.trycloudflare.com/**
+
+Aussi :
+
+**https://ancient-shadow-5317.zerodeploy.app/**
 
 Pour le garder définitivement :  
-https://dashboard.zerodeploy.dev/drop-claim?token=zdr_a1b04230f74fb66e367b768548a17f6023c3a5cd8221163510492a895507abca
+https://dashboard.zerodeploy.dev/drop-claim?token=zdr_380b65cfcb84d1848867009eb774db811a2531204b8845034ccbe95b1fc095ce
 
 ## Apparaitre sur Google
 
@@ -15,7 +19,7 @@ Safari ouvre le lien ; **Google Search** n’affiche le site qu’après indexat
 
 1. **Rendre l’URL permanente** (claim ZeroDeploy ci-dessus, ou activer GitHub Pages).
 2. Aller sur [Google Search Console](https://search.google.com/search-console) → ajouter la propriété (URL du site).
-3. Demander l’indexation de `https://hidden-star-3169.zerodeploy.app/` et envoyer le sitemap : `/sitemap.xml`
+3. Demander l’indexation de `https://ancient-shadow-5317.zerodeploy.app/` et envoyer le sitemap : `/sitemap.xml`
 4. Pour le restaurant dans Google Maps / « Burger Coffee Saly » : créer ou revendiquer une [fiche Google Business](https://business.google.com/).
 
 L’indexation peut prendre quelques jours.
