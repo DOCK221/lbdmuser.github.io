@@ -1251,27 +1251,14 @@ address {
 .review-card__author {
   display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
-  text-align: left;
-}
-
-.review-card__author img {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: var(--shadow-sm);
+  justify-content: center;
+  text-align: center;
 }
 
 .review-card__author strong {
   display: block;
   color: var(--forest);
   font-size: 0.98rem;
-}
-
-.review-card__author span {
-  color: var(--muted);
-  font-size: 0.85rem;
 }
 
 .reviews__dots {
