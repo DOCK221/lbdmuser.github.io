@@ -223,38 +223,6 @@
       price: 2500,
       img: "assets/dishes/jus-orange.jpg",
     },
-    {
-      id: "tiramisu",
-      cat: "desserts",
-      name: "Tiramisu",
-      desc: "Mascarpone, café, cacao — fait maison.",
-      price: 3000,
-      img: "assets/dishes/dessert-tiramisu.jpg",
-    },
-    {
-      id: "brownie",
-      cat: "desserts",
-      name: "Brownie chocolat",
-      desc: "Moelleux au chocolat, intensément gourmand.",
-      price: 2500,
-      img: "assets/dishes/dessert-brownie.jpg",
-    },
-    {
-      id: "mousse-choco",
-      cat: "desserts",
-      name: "Mousse au chocolat",
-      desc: "Légère et onctueuse.",
-      price: 2500,
-      img: "assets/dishes/dessert-mousse.jpg",
-    },
-    {
-      id: "cheesecake",
-      cat: "desserts",
-      name: "Cheesecake",
-      desc: "Crémeux, base biscuitée.",
-      price: 3500,
-      img: "assets/dishes/dessert-cheesecake.jpg",
-    },
   ];
 
   /* Re-tag sandwiches/linguine as plats visually but keep under tacos filter group
