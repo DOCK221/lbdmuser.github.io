@@ -173,7 +173,7 @@
       name: "Caramel macchiato",
       desc: "Espresso, lait onctueux et caramel.",
       price: 3500,
-      img: "assets/dishes/caramel-macchiato.jpg",
+      img: "assets/dishes/caramel-macchiato.jpg?v=3",
     },
     {
       id: "frappuccino-caramel",
@@ -181,7 +181,7 @@
       name: "Frappuccino caramel",
       desc: "Café glacé crémeux, caramel et mousse onctueuse.",
       price: 3500,
-      img: "assets/dishes/frappuccino-caramel.jpg",
+      img: "assets/dishes/frappuccino-caramel.jpg?v=3",
     },
     {
       id: "cappuccino",
