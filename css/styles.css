@@ -907,6 +907,31 @@ address {
   margin-bottom: 2.25rem;
 }
 
+
+@media (max-width: 760px) {
+  .menu__filters {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.25rem;
+  }
+
+  .menu__filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .menu__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .filter-btn {
   padding: 0.65rem 1rem;
   border-radius: 999px;
@@ -1796,4 +1821,45 @@ address {
   .order__contact {
     width: 100%;
   }
+}
+
+
+/* ---------- Menu Burger choice dialog ---------- */
+.menu-burger-dialog {
+  border: none;
+  border-radius: 18px;
+  padding: 0;
+  max-width: min(440px, calc(100vw - 1.5rem));
+  width: 100%;
+  background: #fff;
+}
+.menu-burger-dialog::backdrop { background: rgba(10, 31, 22, 0.55); }
+.menu-burger-dialog .checkout-form {
+  display: grid;
+  gap: 1rem;
+  padding: 1.35rem;
+}
+.menu-burger-dialog header h2 {
+  font-family: var(--font-display);
+  color: var(--forest);
+  margin: 0 0 0.25rem;
+}
+.menu-burger-dialog header p { color: var(--muted); margin: 0; font-size: 0.92rem; }
+.menu-choice-list { display: grid; gap: 0.55rem; }
+.menu-choice-btn {
+  width: 100%; text-align: left; padding: 0.85rem 1rem;
+  border-radius: 12px; border: 1px solid rgba(18,53,36,0.12);
+  background: #fff; color: var(--forest); font: inherit; font-weight: 600;
+  cursor: pointer; transition: 0.25s var(--ease);
+}
+.menu-choice-btn:hover { border-color: var(--forest); background: rgba(18,53,36,0.05); }
+.menu-burger-dialog .checkout-actions { display: flex; justify-content: flex-end; }
+.btn--ghost-dark {
+  background: rgba(18, 53, 36, 0.08);
+  color: var(--forest);
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
 }

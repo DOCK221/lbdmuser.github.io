@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Commander en ligne — Burger Coffee Saly</title>
-  <meta name="description" content="Commandez en ligne chez Burger Coffee Saly. Smashs, burgers, salades, café. Paiement Wave. Sur place, à emporter ou livraison gratuite sur tout Saly.">
+  <meta name="description" content="Commandez en ligne chez Burger Coffee Saly. Smashs, burgers, tacos, salades, café. Sur place, à emporter ou livraison gratuite sur tout Saly.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://ancient-shadow-5317.zerodeploy.app/commander.html">
   <meta name="theme-color" content="#123524">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,104 +28,45 @@
         <span class="order-nav-meta__open">Ouvert 7h30 — 02h00</span>
       </div>
       <a href="index.html" class="nav__cta">Accueil</a>
-      <button class="cart-fab" id="cartFab" type="button" aria-controls="cartPanel" aria-expanded="false">
-        <span class="cart-fab__count" id="cartCount">0</span>
-        Panier · <strong id="cartFabTotal">0 F</strong>
-      </button>
     </nav>
   </header>
 
-  <main id="orderMain" class="order-layout">
+  <main id="orderMain" class="order-layout order-layout--wa">
     <aside class="order-cats" aria-label="Catégories">
       <button class="order-cat is-active" data-cat="all">Tout</button>
-      <button class="order-cat" data-cat="smashs">Smashs</button>
-      <button class="order-cat" data-cat="burgers">Burgers</button>
-      <button class="order-cat" data-cat="sandwichs">Sandwichs</button>
-      <button class="order-cat" data-cat="plats">Plats</button>
-      <button class="order-cat" data-cat="salades">Salades</button>
-      <button class="order-cat" data-cat="breakfast">Breakfast</button>
-      <button class="order-cat" data-cat="coffee">Café</button>
-      <button class="order-cat" data-cat="boissons">Boissons</button>
+      <button class="order-cat" data-cat="burgers">🍔 Burgers</button>
+      <button class="order-cat" data-cat="smashs">🍔 Smashs</button>
+      <button class="order-cat" data-cat="menus">🔥 Menus</button>
+      <button class="order-cat" data-cat="tacos">🌮 Tacos</button>
+      <button class="order-cat" data-cat="salades">🥗 Salades</button>
+      <button class="order-cat" data-cat="boissons">☕ Boissons</button>
+      <button class="order-cat" data-cat="desserts">🍰 Desserts</button>
     </aside>
 
     <section class="order-menu">
       <div class="order-hero-banner">
         <div>
-          <p class="eyebrow">Commander en ligne</p>
+          <p class="eyebrow">Commander via WhatsApp</p>
           <h1>Burger Coffee Saly</h1>
-          <p>Sur place · À emporter · Livraison gratuite sur tout Saly · Paiement Wave</p>
+          <p>Sur place · À emporter · Livraison gratuite sur tout Saly</p>
         </div>
         <div class="order-hero-banner__badge">Dès 2 500 F</div>
       </div>
 
       <div id="orderGrid" class="order-grid" aria-live="polite"></div>
     </section>
-
-    <aside class="cart-panel" id="cartPanel" aria-label="Panier">
-      <div class="cart-panel__head">
-        <h2>Votre panier</h2>
-        <button type="button" class="cart-panel__close" id="cartClose" aria-label="Fermer le panier">✕</button>
-      </div>
-      <div class="cart-panel__body" id="cartBody">
-        <p class="cart-empty">Votre panier est vide.<br>Ajoutez des plats pour commencer.</p>
-      </div>
-      <div class="cart-panel__foot">
-        <div class="cart-total">
-          <span>Total</span>
-          <strong id="cartTotal">0 F</strong>
-        </div>
-        <button type="button" class="btn btn--primary btn--xl cart-checkout" id="checkoutBtn" disabled>
-          Commander · payer par Wave
-        </button>
-        <p class="cart-wave-note">Paiement sécurisé via Wave</p>
-      </div>
-    </aside>
   </main>
 
-  <!-- Checkout modal -->
-  <dialog class="checkout-dialog" id="checkoutDialog">
-    <form method="dialog" class="checkout-form" id="checkoutForm">
+  <dialog class="checkout-dialog menu-burger-dialog" id="menuBurgerDialog">
+    <form method="dialog" class="checkout-form">
       <header>
-        <h2>Finaliser la commande</h2>
-        <p>Remplissez vos infos, puis payez avec Wave.</p>
+        <h2>Menu Burger — 5 000 F</h2>
+        <p>Choisissez obligatoirement votre burger ou smash.</p>
       </header>
-
-      <label>
-        Nom complet
-        <input type="text" name="name" required autocomplete="name" placeholder="Votre nom">
-      </label>
-      <label>
-        Téléphone WhatsApp
-        <input type="tel" name="phone" required autocomplete="tel" placeholder="77 XXX XX XX" pattern="[0-9 +\-]{8,}">
-      </label>
-      <fieldset>
-        <legend>Mode</legend>
-        <label class="radio"><input type="radio" name="mode" value="sur_place" checked> Sur place</label>
-        <label class="radio"><input type="radio" name="mode" value="emporter"> À emporter</label>
-        <label class="radio"><input type="radio" name="mode" value="livraison"> Livraison (gratuite sur tout Saly)</label>
-      </fieldset>
-      <label id="addressField" class="is-hidden">
-        Adresse de livraison
-        <input type="text" name="address" placeholder="Quartier à Saly, repère…">
-        <small class="field-hint">Livraison gratuite sur tout Saly.</small>
-      </label>
-      <label>
-        Note (optionnel)
-        <textarea name="note" rows="2" placeholder="Sans oignons, sauce à part…"></textarea>
-      </label>
-
-      <div class="checkout-summary">
-        <span>Total à payer</span>
-        <strong id="checkoutTotal">0 F</strong>
-      </div>
-
+      <div id="menuBurgerChoices" class="menu-choice-list" role="listbox" aria-label="Choix burger ou smash"></div>
       <div class="checkout-actions">
-        <button type="submit" value="cancel" class="btn btn--ghost-dark">Annuler</button>
-        <button type="submit" value="pay" class="btn btn--primary" id="payWaveBtn">
-          Payer avec Wave
-        </button>
+        <button type="button" class="btn btn--ghost-dark" id="menuBurgerCancel">Annuler</button>
       </div>
-      <p class="checkout-hint">Après paiement Wave, votre commande est aussi envoyée sur WhatsApp.</p>
     </form>
   </dialog>
 

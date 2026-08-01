@@ -210,7 +210,10 @@
 
       menuCards.forEach((card, index) => {
         const category = card.dataset.category;
-        const show = filter === "all" || category === filter;
+        const show =
+          filter === "all" ||
+          category === filter ||
+          (filter === "tacos" && category === "plats");
         card.classList.toggle("is-hidden", !show);
         if (show) {
           card.classList.remove("is-visible");
