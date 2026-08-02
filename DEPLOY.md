@@ -1,20 +1,20 @@
 # Déploiement — Portfolio Aminata Sow
 
-## Site en ligne (ZeroDeploy)
+## Site en ligne
 
-**URL :** https://bitter-hill-8613.zerodeploy.app
+**https://small-thunder-5101.zerodeploy.app**
 
-Claim (rendre permanent) :
-https://dashboard.zerodeploy.dev/drop-claim?token=zdr_cbb8883a42f5ec43148f4c291e4d47691222d326fa72405ffe945d81fa3d8523
+Rendre permanent (claim) :
+https://dashboard.zerodeploy.dev/drop-claim?token=zdr_c03a7911d40e3d6b328c86d7c291b3c7f33cd7b49c425243475b2d9b2e7d97a8
 
-> Les drops ZeroDeploy expirent en 72 h sauf claim. Un redeploy avec le claim token remet le compteur à zéro.
+> Expire en 72 h sauf claim. Redeploy avec le claim token pour renouveler.
 
-## Build local (site statique)
+## Build local
 
 ```bash
 npm install
 npm run build   # génère /out
-npx serve out   # preview local
+npx serve out
 ```
 
 ## Redeploy ZeroDeploy
@@ -24,10 +24,10 @@ npm run build
 tar -czf site.tar.gz -C out .
 curl -X POST https://api.zerodeploy.dev/drop \
   -H "Content-Type: application/gzip" \
-  -H "X-Claim-Token: zdr_cbb8883a42f5ec43148f4c291e4d47691222d326fa72405ffe945d81fa3d8523" \
+  -H "X-Claim-Token: zdr_c03a7911d40e3d6b328c86d7c291b3c7f33cd7b49c425243475b2d9b2e7d97a8" \
   --data-binary @site.tar.gz
 ```
 
 ## GitHub Pages
 
-Après merge sur `main`, le workflow `.github/workflows/deploy-pages.yml` publie le site sur GitHub Pages.
+Après merge sur `main`, le workflow `.github/workflows/deploy-pages.yml` publie sur GitHub Pages.
