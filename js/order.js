@@ -66,6 +66,22 @@
       needsChoice: true,
     },
     {
+      id: "petit-dej",
+      cat: "breakfast",
+      name: "Petit Déjeuner",
+      desc: "Jus d’orange + café ou thé + croissant ou pain chocolat.",
+      price: 3000,
+      img: "assets/dishes/petit-dejeuner.webp",
+    },
+    {
+      id: "petit-dej-gourmand",
+      cat: "breakfast",
+      name: "Petit Déjeuner Gourmand",
+      desc: "Jus + café/thé + viennoiserie + œuf jambon fromage ou carpaccio tomates.",
+      price: 5000,
+      img: "assets/dishes/petit-dejeuner.webp",
+    },
+    {
       id: "taco-poulet",
       cat: "tacos",
       name: "Tacos poulet",
@@ -506,4 +522,17 @@
 
   renderMenu("all");
   renderCart();
+
+  // Support homepage deep-link: commander.html?add=petit-dej
+  try {
+    const addId = new URLSearchParams(window.location.search).get("add");
+    if (addId && MENU.some((m) => m.id === addId && !m.needsChoice)) {
+      addToCart(addId);
+      openCart();
+      const cleanUrl = window.location.pathname;
+      window.history.replaceState({}, "", cleanUrl);
+    }
+  } catch {
+    /* ignore */
+  }
 })();
