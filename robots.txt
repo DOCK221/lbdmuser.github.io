@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://ancient-shadow-5317.zerodeploy.app/sitemap.xml
