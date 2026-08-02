@@ -1,29 +1,37 @@
 # Déploiement — Portfolio Aminata Sow
 
-## Site en ligne
+## Site en ligne (principal)
 
-**https://empty-snow-3685.zerodeploy.app**
+**https://cool-river-3612.zerodeploy.app**
 
-## Build local (site statique)
+Claim (rendre permanent) :
+https://dashboard.zerodeploy.dev/drop-claim?token=zdr_7d44b717a9ec908d87cdf1facb7d794fe86af4ddc0b0dc1aaf3f8553d3db8434
+
+## GitHub Pages (permanent)
+
+Branche `gh-pages` déjà poussée.
+
+Activer dans GitHub :
+1. Repo → **Settings** → **Pages**
+2. Source : Deploy from branch
+3. Branch : `gh-pages` / `/ (root)`
+4. URL : https://dock221.github.io/lbdmuser.github.io/
+
+## Build local
 
 ```bash
 npm install
-npm run build   # génère /out
-npx serve out   # preview
+npm run build
+npx serve out
 ```
 
-## Publier sur ZeroDeploy (Drop API)
+## Republier ZeroDeploy
 
 ```bash
 npm run build
 tar -czf site.tar.gz -C out .
 curl -X POST https://api.zerodeploy.dev/drop \
   -H "Content-Type: application/gzip" \
+  -H "X-Claim-Token: zdr_7d44b717a9ec908d87cdf1facb7d794fe86af4ddc0b0dc1aaf3f8553d3db8434" \
   --data-binary @site.tar.gz
 ```
-
-La réponse JSON contient l’URL publique et un lien `claim` pour rendre le site permanent.
-
-## GitHub Pages
-
-Après merge sur `main`, le workflow `.github/workflows/deploy-pages.yml` publie le site sur GitHub Pages.
