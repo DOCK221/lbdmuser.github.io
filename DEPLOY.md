@@ -23,3 +23,9 @@ npx serve out
 ## GitHub Pages
 
 Branche `gh-pages` disponible. Activer : Settings → Pages → branch `gh-pages`.
+
+## ZIP prêts à publier
+
+- Site statique : https://litter.catbox.moe/2lv9n7.zip
+- Page de téléchargement : https://damp-frost-1608.zerodeploy.app
+- Code source Next.js : https://litter.catbox.moe/ujfm2a.zip
