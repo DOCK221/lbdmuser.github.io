@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "npx serve out -l 3000",
+    "lint": "eslint",
+    "export": "next build"
   },
   "dependencies": {
     "clsx": "^2.1.1",

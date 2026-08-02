@@ -1,85 +1,48 @@
 # Aminata Sow — Portfolio
 
-Portfolio créatif haut de gamme pour **Aminata Sow** — Creative Director, Web Designer, Content Creator, Photographer & Digital Strategist.
+Portfolio créatif haut de gamme — Creative Director, Web Designer, Content Creator, Photographer & Digital Strategist.
+
+## Site en ligne
+
+**https://bitter-hill-8613.zerodeploy.app**
 
 ## Stack
 
-- Next.js 15 (App Router)
+- Next.js 15 (App Router, export statique)
 - TypeScript
 - Tailwind CSS v4
-- Framer Motion
-- GSAP + ScrollTrigger
-- Lenis (smooth scroll)
+- Framer Motion + GSAP + Lenis
 - React Icons
 
-## Démarrage
+## Lancer en local
 
 ```bash
 npm install
 npm run dev
 ```
 
-Ouvrir [http://localhost:3000](http://localhost:3000).
-
-## Scripts
+Build production (dossier `out/`) :
 
 ```bash
-npm run dev      # développement
-npm run build    # build production
-npm run start    # serveur production
-npm run lint     # eslint
+npm run build
+npx serve out
 ```
 
 ## Contenu modifiable
 
-Tout le contenu éditorial vit dans `/src/data` :
-
 | Fichier | Contenu |
 |---|---|
-| `site.ts` | Identité, hero, about, SEO |
-| `projects.ts` | Projets & détails |
-| `services.ts` | Services |
-| `process.ts` | Timeline process |
-| `stats.ts` | Chiffres clés |
-| `testimonials.ts` | Témoignages |
-| `photography.ts` | Galerie photo |
-| `socials.ts` | Réseaux sociaux |
+| `src/data/site.ts` | Identité, hero, about, SEO |
+| `src/data/projects.ts` | Projets |
+| `src/data/services.ts` | Services |
+| `src/data/process.ts` | Process |
+| `src/data/stats.ts` | Chiffres |
+| `src/data/testimonials.ts` | Témoignages |
+| `src/data/photography.ts` | Galerie |
+| `src/data/socials.ts` | Réseaux |
 
-## Images
+Images : `/public/images/`
 
-Placer les médias dans `/public/images` :
+## Déploiement
 
-```
-public/images/
-  hero/
-  about/
-  projects/
-  photography/
-    portrait/
-    food/
-    lifestyle/
-    sport/
-    business/
-```
-
-## Structure
-
-```
-src/
-  app/                 # pages + SEO
-  components/
-    layout/            # Navbar, Footer, SmoothScroll
-    sections/          # Hero, About, Projects…
-    ui/                # Boutons, Reveal, Lightbox…
-  data/                # contenu
-  lib/                 # utilitaires
-  types/               # types TypeScript
-```
-
-## Direction artistique
-
-- Noir profond `#090909`
-- Accent beige `#D8C3A5`
-- Typographie Geist
-- Animations fade / blur / parallax / tilt 3D
-- Scroll Lenis ultra fluide
+Voir [DEPLOY.md](./DEPLOY.md).

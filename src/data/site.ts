@@ -3,7 +3,7 @@ export const siteConfig = {
   title: "Aminata Sow — Creative Director & Digital Strategist",
   description:
     "Creative Director, Web Designer, Content Creator, Photographer and Digital Strategist. I create digital experiences that combine creativity, strategy and emotion.",
-  url: "https://aminatasow.com",
+  url: "https://bitter-hill-8613.zerodeploy.app",
   locale: "fr_FR",
   email: "hello@aminatasow.com",
   phone: "+221 77 000 00 00",
