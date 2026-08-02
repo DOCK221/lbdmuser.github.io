@@ -17,7 +17,7 @@
   <meta property="og:locale" content="fr_SN">
   <meta property="og:url" content="https://ancient-shadow-5317.zerodeploy.app/">
   <meta property="og:site_name" content="Burger Coffee Saly">
-  <meta property="og:image" content="https://ancient-shadow-5317.zerodeploy.app/assets/hero/restaurant.jpeg">
+  <meta property="og:image" content="https://ancient-shadow-5317.zerodeploy.app/assets/hero/restaurant.webp">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -30,7 +30,8 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preload" as="image" href="assets/hero/restaurant.webp" fetchpriority="high">
+  <link rel="stylesheet" href="css/styles.min.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>">
 
   <script type="application/ld+json">
@@ -99,19 +100,19 @@
     <section class="hero" id="hero">
       <div class="hero__media" aria-hidden="true">
         <div class="hero__reels" id="heroReels">
-          <img class="hero__slide hero__photo is-active" src="assets/hero/restaurant.jpeg" alt="Restaurant Burger Coffee à Saly" decoding="async" data-duration="5500">
-          <video class="hero__slide hero__video" muted playsinline preload="none" poster="assets/hero/restaurant.jpeg" data-src="https://cdn.coverr.co/videos/coverr-grilling-a-burger-4184/1080p.mp4"></video>
-          <img class="hero__slide hero__photo" src="assets/hero/terrasse.jpeg" alt="Terrasse Burger Coffee" decoding="async" loading="lazy" data-duration="5000">
-          <video class="hero__slide hero__video" muted playsinline preload="none" poster="assets/gallery/image00003.jpeg" data-src="https://cdn.coverr.co/videos/coverr-preparing-coffee-in-a-cafe-5629/1080p.mp4"></video>
-          <video class="hero__slide hero__video" muted playsinline preload="none" poster="assets/gallery/image00009.jpeg" data-src="https://cdn.coverr.co/videos/coverr-friends-having-lunch-together-5534/1080p.mp4"></video>
+          <img class="hero__slide hero__photo is-active" src="assets/hero/restaurant.webp" alt="Restaurant Burger Coffee à Saly" decoding="async" fetchpriority="high" data-duration="5500">
+          <video class="hero__slide hero__video" muted playsinline preload="none" poster="assets/hero/restaurant.webp" data-src="https://cdn.coverr.co/videos/coverr-grilling-a-burger-4184/1080p.mp4"></video>
+          <img class="hero__slide hero__photo" src="assets/hero/terrasse.webp" alt="Terrasse Burger Coffee" decoding="async" loading="lazy" data-duration="5000">
+          <video class="hero__slide hero__video" muted playsinline preload="none" poster="assets/gallery/image00003.webp" data-src="https://cdn.coverr.co/videos/coverr-preparing-coffee-in-a-cafe-5629/1080p.mp4"></video>
+          <video class="hero__slide hero__video" muted playsinline preload="none" poster="assets/gallery/image00009.webp" data-src="https://cdn.coverr.co/videos/coverr-friends-having-lunch-together-5534/1080p.mp4"></video>
         </div>
         <div class="hero__fallback" id="heroFallback" hidden>
-          <img src="assets/hero/restaurant.jpeg" alt="Restaurant Burger Coffee à Saly" decoding="async">
-          <img src="assets/hero/terrasse.jpeg" alt="Terrasse Burger Coffee" decoding="async" loading="lazy">
-          <img src="assets/gallery/image00003.jpeg" alt="Barista Burger Coffee" decoding="async" loading="lazy">
-          <img src="assets/gallery/image00008.jpeg" alt="Service Burger Coffee" decoding="async" loading="lazy">
-          <img src="assets/gallery/image00009.jpeg" alt="Boissons en terrasse" decoding="async" loading="lazy">
-          <img src="assets/gallery/image00004.jpeg" alt="Cocktails Burger Coffee" decoding="async" loading="lazy">
+          <img src="assets/hero/restaurant.webp" alt="Restaurant Burger Coffee à Saly" decoding="async">
+          <img src="assets/hero/terrasse.webp" alt="Terrasse Burger Coffee" decoding="async" loading="lazy">
+          <img src="assets/gallery/image00003.webp" alt="Barista Burger Coffee" decoding="async" loading="lazy">
+          <img src="assets/gallery/image00008.webp" alt="Service Burger Coffee" decoding="async" loading="lazy">
+          <img src="assets/gallery/image00009.webp" alt="Boissons en terrasse" decoding="async" loading="lazy">
+          <img src="assets/gallery/image00004.webp" alt="Cocktails Burger Coffee" decoding="async" loading="lazy">
         </div>
         <div class="hero__overlay"></div>
         <div class="hero__grain"></div>
@@ -150,7 +151,7 @@
         <div class="story__media reveal" data-reveal>
           <div class="story__image-wrap parallax-img">
             <img
-              src="assets/story/restaurant.jpeg"
+              src="assets/story/restaurant.webp"
               alt="Restaurant Burger Coffee à Saly"
               width="960"
               height="1280"
@@ -217,14 +218,14 @@
             <h3>Petit Déjeuner</h3>
             <p class="formule-card__price">3 000 <small>FCFA</small></p>
             <p>Jus d’orange + café ou thé. Accompagné au choix d’un croissant ou d’un pain chocolat.</p>
-            <button type="button" class="btn btn--sm btn--primary" data-wa-product="Formule Petit Déjeuner">Commander</button>
+            <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
           </article>
           <article class="formule-card formule-card--premium reveal" data-reveal>
             <p class="formule-card__label">Formule</p>
             <h3>Petit Déjeuner Gourmand</h3>
             <p class="formule-card__price">5 000 <small>FCFA</small></p>
             <p>Jus d’orange + café ou thé + viennoiserie au choix + œuf au plat jambon fromage <em>ou</em> carpaccio de tomates.</p>
-            <button type="button" class="btn btn--sm btn--cream" data-wa-product="Petit Déjeuner Gourmand">Commander</button>
+            <a href="commander.html" class="btn btn--sm btn--cream">Commander</a>
           </article>
           <article class="formule-card reveal" data-reveal>
             <p class="formule-card__label">Menu</p>
@@ -269,11 +270,7 @@
               <li><span>Linguine crevette</span><strong>4 000</strong></li>
               <li><span>Plat du jour</span><strong>3 000</strong></li>
               <li><span>Tacos poulet</span><strong>3 000</strong></li>
-              <li><span>Tacos bœuf</span><strong>3 000</strong></li>
-              <li><span>Tacos mixte</span><strong>3 500</strong></li>
-              <li><span>Tacos merguez</span><strong>3 500</strong></li>
-              <li><span>Tacos nuggets</span><strong>3 500</strong></li>
-              <li><span>Tacos cordon bleu</span><strong>4 000</strong></li>
+              <li><span>Tacos viande</span><strong>3 000</strong></li>
             </ul>
           </div>
           <div class="carte__col">
@@ -372,7 +369,7 @@
             </ul>
             <div class="carte__note">
               <p>Sur place · À emporter · Livraison gratuite sur tout Saly</p>
-              <a href="https://wa.me/221781508788?text=Bonjour%2C%20je%20souhaite%20commander" class="btn btn--sm btn--primary" target="_blank" rel="noopener">Commander via WhatsApp</a>
+              <a href="commander.html" class="btn btn--sm btn--primary">Commander en ligne</a>
             </div>
           </div>
         </div>
@@ -401,7 +398,7 @@
         <div class="menu__grid" id="menuGrid">
           <article class="menu-card reveal" data-reveal data-category="burgers">
             <div class="menu-card__media">
-              <img src="assets/dishes/burger-poulet.jpg" alt="Burger poulet" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/burger-poulet.webp" alt="Burger poulet" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">🍔 Burgers</span>
@@ -409,14 +406,14 @@
               <p class="menu-card__desc">Pain brioché, steak de poulet, cheddar, sauce à l’ail, oignons, choux, carottes, roquette.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">3 500 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Burger poulet">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="burgers">
             <div class="menu-card__media">
-              <img src="assets/dishes/burger-chef.jpg" alt="Burger du chef" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/burger-chef.webp" alt="Burger du chef" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">🍔 Burgers</span>
@@ -424,14 +421,14 @@
               <p class="menu-card__desc">Pain brioché, steak de bœuf, cheddar, sauce maison, guacamole.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">3 500 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Burger du chef">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="smashs">
             <div class="menu-card__media">
-              <img src="assets/dishes/smash-classic.jpg" alt="Smash classic" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/smash-classic.webp" alt="Smash classic" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">🍔 Smashs</span>
@@ -439,14 +436,14 @@
               <p class="menu-card__desc">Pain brioché, steak de bœuf, cheddar, sauce maison, oignons grillés.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">3 000 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Smash classic">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="smashs">
             <div class="menu-card__media">
-              <img src="assets/dishes/smash-double.jpg" alt="Smash double" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/smash-double.webp" alt="Smash double" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">🍔 Smashs</span>
@@ -454,14 +451,14 @@
               <p class="menu-card__desc">Pain brioché, double steak, double cheddar, sauce maison, oignons confits.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">4 000 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Smash double">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="smashs">
             <div class="menu-card__media">
-              <img src="assets/dishes/smash-bacon.jpg" alt="Smash bacon halal" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/smash-bacon.webp" alt="Smash bacon halal" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">🍔 Smashs</span>
@@ -469,14 +466,14 @@
               <p class="menu-card__desc">Pain brioché, steak, bacon, cheddar, sauce maison, oignons rouges, roquette.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">4 000 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Smash bacon halal">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="menus">
             <div class="menu-card__media">
-              <img src="assets/dishes/menu-burger.jpg" alt="Menu Burger" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/menu-burger.webp" alt="Menu Burger" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">🔥 Menus</span>
@@ -491,97 +488,37 @@
 
           <article class="menu-card reveal" data-reveal data-category="tacos">
             <div class="menu-card__media">
-              <img src="assets/dishes/taco-poulet.jpg" alt="Tacos poulet" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/taco-poulet.webp" alt="Tacos poulet" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
-              <span class="menu-card__cat">🌮 Tacos / Plats</span>
+              <span class="menu-card__cat">🌮 Tacos</span>
               <h3 class="menu-card__title">Tacos poulet</h3>
-              <p class="menu-card__desc">Galette, poulet croustillant, frites, sauce fromagère.</p>
+              <p class="menu-card__desc">Tacos français : galette, poulet, frites, sauce fromagère.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">3 000 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Tacos poulet">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="tacos">
             <div class="menu-card__media">
-              <img src="assets/dishes/taco-boeuf.jpg" alt="Tacos bœuf" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/taco-viande.webp" alt="Tacos viande" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
-              <span class="menu-card__cat">🌮 Tacos / Plats</span>
-              <h3 class="menu-card__title">Tacos bœuf</h3>
-              <p class="menu-card__desc">Galette, viande hachée assaisonnée, frites, sauce algérienne.</p>
+              <span class="menu-card__cat">🌮 Tacos</span>
+              <h3 class="menu-card__title">Tacos viande</h3>
+              <p class="menu-card__desc">Tacos français : galette, viande, frites, sauce fromagère.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">3 000 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Tacos bœuf">Commander</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-card reveal" data-reveal data-category="tacos">
-            <div class="menu-card__media">
-              <img src="assets/dishes/taco-mixte.jpg" alt="Tacos mixte" loading="lazy" decoding="async" width="700" height="500">
-            </div>
-            <div class="menu-card__body">
-              <span class="menu-card__cat">🌮 Tacos / Plats</span>
-              <h3 class="menu-card__title">Tacos mixte</h3>
-              <p class="menu-card__desc">Galette, poulet &amp; bœuf, frites, double sauce.</p>
-              <div class="menu-card__footer">
-                <span class="menu-card__price">3 500 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Tacos mixte">Commander</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-card reveal" data-reveal data-category="tacos">
-            <div class="menu-card__media">
-              <img src="assets/dishes/taco-merguez.jpg" alt="Tacos merguez" loading="lazy" decoding="async" width="700" height="500">
-            </div>
-            <div class="menu-card__body">
-              <span class="menu-card__cat">🌮 Tacos / Plats</span>
-              <h3 class="menu-card__title">Tacos merguez</h3>
-              <p class="menu-card__desc">Galette, merguez épicée, frites, sauce harissa douce.</p>
-              <div class="menu-card__footer">
-                <span class="menu-card__price">3 500 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Tacos merguez">Commander</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-card reveal" data-reveal data-category="tacos">
-            <div class="menu-card__media">
-              <img src="assets/dishes/taco-cordon.jpg" alt="Tacos cordon bleu" loading="lazy" decoding="async" width="700" height="500">
-            </div>
-            <div class="menu-card__body">
-              <span class="menu-card__cat">🌮 Tacos / Plats</span>
-              <h3 class="menu-card__title">Tacos cordon bleu</h3>
-              <p class="menu-card__desc">Galette, cordon bleu, frites, sauce fromagère.</p>
-              <div class="menu-card__footer">
-                <span class="menu-card__price">4 000 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Tacos cordon bleu">Commander</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-card reveal" data-reveal data-category="tacos">
-            <div class="menu-card__media">
-              <img src="assets/dishes/taco-nuggets.jpg" alt="Tacos nuggets" loading="lazy" decoding="async" width="700" height="500">
-            </div>
-            <div class="menu-card__body">
-              <span class="menu-card__cat">🌮 Tacos / Plats</span>
-              <h3 class="menu-card__title">Tacos nuggets</h3>
-              <p class="menu-card__desc">Galette, nuggets de poulet, frites, sauce barbecue.</p>
-              <div class="menu-card__footer">
-                <span class="menu-card__price">3 500 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Tacos nuggets">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="plats">
             <div class="menu-card__media">
-              <img src="assets/dishes/linguine-crevette.jpg" alt="Linguine crevette" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/linguine-crevette.webp" alt="Linguine crevette" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">🌮 Tacos / Plats</span>
@@ -589,14 +526,14 @@
               <p class="menu-card__desc">Pâtes linguine aux crevettes grillées, poivrons et herbes fraîches.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">4 000 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Linguine crevette">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="plats">
             <div class="menu-card__media">
-              <img src="assets/dishes/plat-jour.jpg" alt="Plat du jour" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/plat-jour.webp" alt="Plat du jour" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">🌮 Tacos / Plats</span>
@@ -604,14 +541,14 @@
               <p class="menu-card__desc">Fait maison avec des produits frais — demandez la suggestion du jour.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">3 000 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Plat du jour">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="salades">
             <div class="menu-card__media">
-              <img src="assets/dishes/salade-tropicale.jpg" alt="Salade tropicale" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/salade-tropicale.webp" alt="Salade tropicale" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">🥗 Salades</span>
@@ -619,14 +556,14 @@
               <p class="menu-card__desc">Salade verte, poulet, pomme, mangue, tomate, avocat, sauce cocktail.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">5 000 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Salade tropicale">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="salades">
             <div class="menu-card__media">
-              <img src="assets/dishes/salade-chef.jpg" alt="Salade du chef" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/salade-chef.webp" alt="Salade du chef" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">🥗 Salades</span>
@@ -634,14 +571,14 @@
               <p class="menu-card__desc">Selon les envies de notre chef cuisinier, chaque jour.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">4 000 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Salade du chef">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="boissons">
             <div class="menu-card__media">
-              <img src="assets/dishes/caramel-macchiato.jpg?v=3" alt="Caramel macchiato" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/caramel-macchiato.webp" alt="Caramel macchiato" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">☕ Boissons</span>
@@ -649,14 +586,14 @@
               <p class="menu-card__desc">Espresso, lait onctueux et caramel — signature barista.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">3 500 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Caramel macchiato">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="boissons">
             <div class="menu-card__media">
-              <img src="assets/dishes/frappuccino-caramel.jpg?v=3" alt="Frappuccino caramel" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/frappuccino-caramel.webp" alt="Frappuccino caramel" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">☕ Boissons</span>
@@ -664,14 +601,14 @@
               <p class="menu-card__desc">Café glacé crémeux, caramel et mousse onctueuse.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">3 500 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Frappuccino caramel">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
 
           <article class="menu-card reveal" data-reveal data-category="boissons">
             <div class="menu-card__media">
-              <img src="assets/dishes/cappuccino.jpg" alt="Cappuccino" loading="lazy" decoding="async" width="700" height="500">
+              <img src="assets/dishes/cappuccino.webp" alt="Cappuccino" loading="lazy" decoding="async" width="700" height="500">
             </div>
             <div class="menu-card__body">
               <span class="menu-card__cat">☕ Boissons</span>
@@ -679,7 +616,7 @@
               <p class="menu-card__desc">Moussant, intense, parfait pour la terrasse.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">3 000 F</span>
-                <button type="button" class="btn btn--sm btn--primary" data-wa-product="Cappuccino">Commander</button>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
           </article>
@@ -738,40 +675,40 @@
         </div>
         <div class="gallery__masonry">
           <figure class="gallery__item gallery__item--tall reveal" data-reveal>
-            <img src="assets/gallery/image00001.jpeg" alt="Façade Burger Coffee à Saly" loading="lazy" decoding="async" width="960" height="1280">
+            <img src="assets/gallery/image00001.webp" alt="Façade Burger Coffee à Saly" loading="lazy" decoding="async" width="960" height="1280">
           </figure>
           <figure class="gallery__item gallery__item--tall reveal" data-reveal>
-            <img src="assets/gallery/image00002.jpeg" alt="Terrasse Burger Coffee au coucher du soleil" loading="lazy" decoding="async" width="960" height="1280">
+            <img src="assets/gallery/image00002.webp" alt="Terrasse Burger Coffee au coucher du soleil" loading="lazy" decoding="async" width="960" height="1280">
           </figure>
           <figure class="gallery__item gallery__item--tall reveal" data-reveal>
-            <img src="assets/gallery/image00003.jpeg" alt="Barista Burger Coffee avec cafés signatures" loading="lazy" decoding="async" width="960" height="1280">
+            <img src="assets/gallery/image00003.webp" alt="Barista Burger Coffee avec cafés signatures" loading="lazy" decoding="async" width="960" height="1280">
           </figure>
           <figure class="gallery__item gallery__item--tall reveal" data-reveal>
-            <img src="assets/gallery/image00004.jpeg" alt="Cocktails et café au bar" loading="lazy" decoding="async" width="1260" height="2240">
+            <img src="assets/gallery/image00004.webp" alt="Cocktails et café au bar" loading="lazy" decoding="async" width="1260" height="2240">
           </figure>
           <figure class="gallery__item gallery__item--tall reveal" data-reveal>
-            <img src="assets/gallery/image00005.jpeg" alt="Préparation d’un cocktail maison" loading="lazy" decoding="async" width="1260" height="2240">
+            <img src="assets/gallery/image00005.webp" alt="Préparation d’un cocktail maison" loading="lazy" decoding="async" width="1260" height="2240">
           </figure>
           <figure class="gallery__item gallery__item--tall reveal" data-reveal>
-            <img src="assets/gallery/image00008.jpeg" alt="Bartender qui secoue un cocktail" loading="lazy" decoding="async" width="1260" height="2240">
+            <img src="assets/gallery/image00008.webp" alt="Bartender qui secoue un cocktail" loading="lazy" decoding="async" width="1260" height="2240">
           </figure>
           <figure class="gallery__item gallery__item--tall reveal" data-reveal>
-            <img src="assets/gallery/image00009.jpeg" alt="Boissons en terrasse Burger Coffee" loading="lazy" decoding="async" width="3024" height="4536">
+            <img src="assets/gallery/image00009.webp" alt="Boissons en terrasse Burger Coffee" loading="lazy" decoding="async" width="3024" height="4536">
           </figure>
           <figure class="gallery__item gallery__item--tall reveal" data-reveal>
-            <img src="assets/gallery/image00010.jpeg" alt="Ambiance Burger Coffee" loading="lazy" decoding="async" width="3024" height="4536">
+            <img src="assets/gallery/image00010.webp" alt="Ambiance Burger Coffee" loading="lazy" decoding="async" width="3024" height="4536">
           </figure>
           <figure class="gallery__item gallery__item--tall reveal" data-reveal>
-            <img src="assets/gallery/image00011.jpeg" alt="Moment Burger Coffee" loading="lazy" decoding="async" width="3024" height="4536">
+            <img src="assets/gallery/image00011.webp" alt="Moment Burger Coffee" loading="lazy" decoding="async" width="3024" height="4536">
           </figure>
           <figure class="gallery__item gallery__item--tall reveal" data-reveal>
-            <img src="assets/gallery/image00012.jpeg" alt="Équipe et ambiance du restaurant" loading="lazy" decoding="async" width="3024" height="4536">
+            <img src="assets/gallery/image00012.webp" alt="Équipe et ambiance du restaurant" loading="lazy" decoding="async" width="3024" height="4536">
           </figure>
           <figure class="gallery__item gallery__item--tall reveal" data-reveal>
-            <img src="assets/gallery/image00013.jpeg" alt="Détail Burger Coffee" loading="lazy" decoding="async" width="1260" height="2240">
+            <img src="assets/gallery/image00013.webp" alt="Détail Burger Coffee" loading="lazy" decoding="async" width="1260" height="2240">
           </figure>
           <figure class="gallery__item gallery__item--tall reveal" data-reveal>
-            <img src="assets/gallery/image00014.jpeg" alt="Terrasse et vibe Saly" loading="lazy" decoding="async" width="3024" height="4536">
+            <img src="assets/gallery/image00014.webp" alt="Terrasse et vibe Saly" loading="lazy" decoding="async" width="3024" height="4536">
           </figure>
         </div>
       </div>
@@ -1020,7 +957,7 @@
     </form>
   </dialog>
 
-  <script src="js/main.js" defer></script>
-  <script src="js/wa-order.js" defer></script>
+  <script src="js/main.min.js" defer></script>
+  <script src="js/wa-order.min.js" defer></script>
 </body>
 </html>

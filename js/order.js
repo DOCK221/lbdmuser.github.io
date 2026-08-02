@@ -1,9 +1,11 @@
-/* Burger Coffee Saly — commande WhatsApp + Menu Burger */
+/* Burger Coffee Saly — panier + paiement Wave + Menu Burger */
 
 (() => {
   "use strict";
 
   const WA_NUMBER = "221781508788";
+  const WAVE_URL = "https://pay.wave.com/m/M_sn_emG7ozKw9upn";
+  const CART_KEY = "bc_cart";
 
   const MENU_BURGER_CHOICES = [
     "Burger poulet",
@@ -20,7 +22,7 @@
       name: "Burger poulet",
       desc: "Pain brioché, steak de poulet, cheddar, sauce à l’ail, oignons, choux, carottes, roquette.",
       price: 3500,
-      img: "assets/dishes/burger-poulet.jpg",
+      img: "assets/dishes/burger-poulet.webp",
     },
     {
       id: "burger-chef",
@@ -28,7 +30,7 @@
       name: "Burger du chef",
       desc: "Pain brioché, steak de bœuf, cheddar, sauce maison, guacamole.",
       price: 3500,
-      img: "assets/dishes/burger-chef.jpg",
+      img: "assets/dishes/burger-chef.webp",
     },
     {
       id: "smash-classic",
@@ -36,7 +38,7 @@
       name: "Smash classic",
       desc: "Pain brioché, steak de bœuf, cheddar, sauce maison, oignons grillés.",
       price: 3000,
-      img: "assets/dishes/smash-classic.jpg",
+      img: "assets/dishes/smash-classic.webp",
     },
     {
       id: "smash-double",
@@ -44,7 +46,7 @@
       name: "Smash double",
       desc: "Pain brioché, double steak, double cheddar, sauce maison, oignons confits.",
       price: 4000,
-      img: "assets/dishes/smash-double.jpg",
+      img: "assets/dishes/smash-double.webp",
     },
     {
       id: "smash-bacon",
@@ -52,7 +54,7 @@
       name: "Smash bacon halal",
       desc: "Pain brioché, steak, bacon, cheddar, sauce maison, oignons rouges, roquette.",
       price: 4000,
-      img: "assets/dishes/smash-bacon.jpg",
+      img: "assets/dishes/smash-bacon.webp",
     },
     {
       id: "menu-burger",
@@ -60,56 +62,24 @@
       name: "Menu Burger",
       desc: "Burger ou smash au choix + frites + boisson.",
       price: 5000,
-      img: "assets/dishes/menu-burger.jpg",
+      img: "assets/dishes/menu-burger.webp",
       needsChoice: true,
     },
     {
       id: "taco-poulet",
       cat: "tacos",
       name: "Tacos poulet",
-      desc: "Galette, poulet croustillant, frites, sauce fromagère.",
+      desc: "Tacos français : galette, poulet, frites, sauce fromagère.",
       price: 3000,
-      img: "assets/dishes/taco-poulet.jpg",
+      img: "assets/dishes/taco-poulet.webp",
     },
     {
-      id: "taco-boeuf",
+      id: "taco-viande",
       cat: "tacos",
-      name: "Tacos bœuf",
-      desc: "Galette, viande hachée assaisonnée, frites, sauce algérienne.",
+      name: "Tacos viande",
+      desc: "Tacos français : galette, viande, frites, sauce fromagère.",
       price: 3000,
-      img: "assets/dishes/taco-boeuf.jpg",
-    },
-    {
-      id: "taco-mixte",
-      cat: "tacos",
-      name: "Tacos mixte",
-      desc: "Galette, poulet & bœuf, frites, double sauce.",
-      price: 3500,
-      img: "assets/dishes/taco-mixte.jpg",
-    },
-    {
-      id: "taco-merguez",
-      cat: "tacos",
-      name: "Tacos merguez",
-      desc: "Galette, merguez épicée, frites, sauce harissa douce.",
-      price: 3500,
-      img: "assets/dishes/taco-merguez.jpg",
-    },
-    {
-      id: "taco-cordon",
-      cat: "tacos",
-      name: "Tacos cordon bleu",
-      desc: "Galette, cordon bleu, frites, sauce fromagère.",
-      price: 4000,
-      img: "assets/dishes/taco-cordon.jpg",
-    },
-    {
-      id: "taco-nuggets",
-      cat: "tacos",
-      name: "Tacos nuggets",
-      desc: "Galette, nuggets de poulet, frites, sauce barbecue.",
-      price: 3500,
-      img: "assets/dishes/taco-nuggets.jpg",
+      img: "assets/dishes/taco-viande.webp",
     },
     {
       id: "sandwich-poulet",
@@ -117,7 +87,7 @@
       name: "Sandwich poulet",
       desc: "Baguette fraîche, blanc de poulet, roquette, emmental, sauce à l’ail.",
       price: 3500,
-      img: "assets/dishes/sandwich-poulet.jpg",
+      img: "assets/dishes/sandwich-poulet.webp",
     },
     {
       id: "sandwich-boeuf",
@@ -125,7 +95,7 @@
       name: "Sandwich bœuf",
       desc: "Baguette fraîche, steak de bœuf, sauce algérienne, guacamole.",
       price: 2500,
-      img: "assets/dishes/sandwich-boeuf.jpg",
+      img: "assets/dishes/sandwich-boeuf.webp",
     },
     {
       id: "sandwich-chef",
@@ -133,7 +103,7 @@
       name: "Sandwich du chef",
       desc: "Selon les envies de notre chef, chaque jour.",
       price: 3000,
-      img: "assets/dishes/sandwich-chef.jpg",
+      img: "assets/dishes/sandwich-chef.webp",
     },
     {
       id: "linguine",
@@ -141,7 +111,7 @@
       name: "Linguine crevette",
       desc: "Pâtes linguine aux crevettes grillées, poivrons et herbes fraîches.",
       price: 4000,
-      img: "assets/dishes/linguine-crevette.jpg",
+      img: "assets/dishes/linguine-crevette.webp",
     },
     {
       id: "plat-jour",
@@ -149,7 +119,7 @@
       name: "Plat du jour",
       desc: "Fait maison avec des produits frais — suggestion du chef.",
       price: 3000,
-      img: "assets/dishes/plat-jour.jpg",
+      img: "assets/dishes/plat-jour.webp",
     },
     {
       id: "salade-tropicale",
@@ -157,7 +127,7 @@
       name: "Salade tropicale",
       desc: "Salade verte, poulet, pomme, mangue, tomate, avocat, sauce cocktail.",
       price: 5000,
-      img: "assets/dishes/salade-tropicale.jpg",
+      img: "assets/dishes/salade-tropicale.webp",
     },
     {
       id: "salade-chef",
@@ -165,7 +135,7 @@
       name: "Salade du chef",
       desc: "Selon les envies de notre chef cuisinier, chaque jour.",
       price: 4000,
-      img: "assets/dishes/salade-chef.jpg",
+      img: "assets/dishes/salade-chef.webp",
     },
     {
       id: "caramel-macchiato",
@@ -173,7 +143,7 @@
       name: "Caramel macchiato",
       desc: "Espresso, lait onctueux et caramel.",
       price: 3500,
-      img: "assets/dishes/caramel-macchiato.jpg?v=3",
+      img: "assets/dishes/caramel-macchiato.webp",
     },
     {
       id: "frappuccino-caramel",
@@ -181,7 +151,7 @@
       name: "Frappuccino caramel",
       desc: "Café glacé crémeux, caramel et mousse onctueuse.",
       price: 3500,
-      img: "assets/dishes/frappuccino-caramel.jpg?v=3",
+      img: "assets/dishes/frappuccino-caramel.webp",
     },
     {
       id: "cappuccino",
@@ -189,15 +159,15 @@
       name: "Cappuccino",
       desc: "Moussant, intense, parfait pour la terrasse.",
       price: 3000,
-      img: "assets/dishes/cappuccino.jpg",
+      img: "assets/dishes/cappuccino.webp",
     },
     {
       id: "expresso",
       cat: "boissons",
       name: "Expresso",
-      desc: "Court et intense.",
+      desc: "Court et intense, servi en petite tasse.",
       price: 1000,
-      img: "assets/dishes/expresso.jpg",
+      img: "assets/dishes/expresso.webp",
     },
     {
       id: "the-glace",
@@ -205,7 +175,7 @@
       name: "Thé glacé maison",
       desc: "Pêche, passion, fraise, citron ou mangue.",
       price: 2500,
-      img: "assets/dishes/the-glace.jpg",
+      img: "assets/dishes/the-glace.webp",
     },
     {
       id: "limonade",
@@ -213,7 +183,7 @@
       name: "Limonade glacée",
       desc: "Citron, pêche, passion, fraise ou mangue.",
       price: 3000,
-      img: "assets/dishes/limonade.jpg",
+      img: "assets/dishes/limonade.webp",
     },
     {
       id: "jus-orange",
@@ -221,49 +191,162 @@
       name: "Jus d’orange pressé",
       desc: "Fraîchement pressé.",
       price: 2500,
-      img: "assets/dishes/jus-orange.jpg",
+      img: "assets/dishes/jus-orange.webp",
     },
   ];
 
-  /* Re-tag sandwiches/linguine as plats visually but keep under tacos filter group
-     for the requested Burgers/Smash/Menus/Tacos bucket — show as cat tacos above.
-     Separate plats items that are not tacos still listed with tacos filter as "food". */
-
   const grid = document.getElementById("orderGrid");
+  const cartBody = document.getElementById("cartBody");
+  const cartTotalEl = document.getElementById("cartTotal");
+  const cartFabTotal = document.getElementById("cartFabTotal");
+  const cartCount = document.getElementById("cartCount");
+  const checkoutBtn = document.getElementById("checkoutBtn");
+  const cartPanel = document.getElementById("cartPanel");
+  const cartFab = document.getElementById("cartFab");
+  const cartClose = document.getElementById("cartClose");
+  const checkoutDialog = document.getElementById("checkoutDialog");
+  const checkoutForm = document.getElementById("checkoutForm");
+  const checkoutTotal = document.getElementById("checkoutTotal");
+  const addressField = document.getElementById("addressField");
   const menuDialog = document.getElementById("menuBurgerDialog");
   const menuChoiceList = document.getElementById("menuBurgerChoices");
   const menuCancel = document.getElementById("menuBurgerCancel");
+  const confirmDialog = document.getElementById("orderConfirmDialog");
+  const confirmClose = document.getElementById("orderConfirmClose");
+
+  let cart = {};
+  try {
+    cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}") || {};
+  } catch {
+    cart = {};
+  }
 
   const formatPrice = (n) =>
     `${n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0")} F`;
 
-  const waUrl = (text) =>
-    `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+  const menuBurgerKey = (choice) => `menu-burger::${choice}`;
 
-  const openWhatsAppProduct = (productName) => {
-    const message = [
-      "Bonjour, je souhaite commander :",
-      "",
-      `• ${productName}`,
-      "",
-      "Merci.",
-    ].join("\n");
-    window.open(waUrl(message), "_blank", "noopener");
+  const resolveKey = (key) => {
+    if (key.startsWith("menu-burger::")) {
+      const choice = key.slice("menu-burger::".length);
+      const base = MENU.find((m) => m.id === "menu-burger");
+      if (!base) return null;
+      return {
+        key,
+        item: {
+          ...base,
+          name: `Menu Burger — ${choice}`,
+          choice,
+        },
+      };
+    }
+    const item = MENU.find((m) => m.id === key);
+    return item ? { key, item } : null;
   };
 
-  const openWhatsAppMenuBurger = (choice) => {
-    const message = [
-      "Bonjour,",
-      "",
-      "Je souhaite commander :",
-      "",
-      "Menu Burger",
-      "",
-      `Burger choisi : ${choice}`,
-      "",
-      "Merci.",
-    ].join("\n");
-    window.open(waUrl(message), "_blank", "noopener");
+  const cartEntries = () =>
+    Object.entries(cart)
+      .map(([key, qty]) => {
+        const resolved = resolveKey(key);
+        if (!resolved || !qty) return null;
+        return { ...resolved, qty };
+      })
+      .filter(Boolean);
+
+  const cartTotal = () =>
+    cartEntries().reduce((sum, { item, qty }) => sum + item.price * qty, 0);
+
+  const cartQty = () => cartEntries().reduce((sum, { qty }) => sum + qty, 0);
+
+  const persist = () => {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  };
+
+  const renderMenu = (cat = "all") => {
+    if (!grid) return;
+    grid.innerHTML = MENU.map(
+      (item) => `
+      <article class="order-item" data-cat="${item.cat}" data-id="${item.id}">
+        <div class="order-item__info">
+          <h3>${item.name}</h3>
+          <p>${item.desc}</p>
+          <div class="order-item__row">
+            <span class="order-item__price">${formatPrice(item.price)}</span>
+            <button type="button" class="order-item__add" data-add="${item.id}">
+              Ajouter
+            </button>
+          </div>
+        </div>
+        <div class="order-item__media">
+          <img src="${item.img}" alt="${item.name}" loading="lazy" decoding="async" width="220" height="220">
+        </div>
+      </article>`
+    ).join("");
+    filterCat(cat);
+  };
+
+  const filterCat = (cat) => {
+    document.querySelectorAll(".order-item").forEach((el) => {
+      const itemCat = el.dataset.cat;
+      const show =
+        cat === "all" ||
+        itemCat === cat ||
+        (cat === "tacos" && itemCat === "plats");
+      el.classList.toggle("is-hidden", !show);
+    });
+  };
+
+  const renderCart = () => {
+    const entries = cartEntries();
+    const total = cartTotal();
+    const qty = cartQty();
+
+    if (cartCount) cartCount.textContent = String(qty);
+    if (cartTotalEl) cartTotalEl.textContent = formatPrice(total);
+    if (cartFabTotal) cartFabTotal.textContent = formatPrice(total);
+    if (checkoutTotal) checkoutTotal.textContent = formatPrice(total);
+    if (checkoutBtn) checkoutBtn.disabled = qty === 0;
+
+    if (!cartBody) return;
+
+    if (!entries.length) {
+      cartBody.innerHTML =
+        '<p class="cart-empty">Votre panier est vide.<br>Ajoutez des plats pour commencer.</p>';
+      return;
+    }
+
+    cartBody.innerHTML = entries
+      .map(
+        ({ key, item, qty: q }) => `
+      <div class="cart-line" data-key="${key}">
+        <div class="cart-line__name">${item.name}</div>
+        <div class="cart-line__price">${formatPrice(item.price * q)}</div>
+        <div class="cart-line__ctrl">
+          <button type="button" data-dec="${key}" aria-label="Retirer">−</button>
+          <span>${q}</span>
+          <button type="button" data-inc="${key}" aria-label="Ajouter">+</button>
+        </div>
+      </div>`
+      )
+      .join("");
+  };
+
+  const addToCart = (key, delta = 1) => {
+    const next = (cart[key] || 0) + delta;
+    if (next <= 0) delete cart[key];
+    else cart[key] = next;
+    persist();
+    renderCart();
+  };
+
+  const openCart = () => {
+    cartPanel?.classList.add("is-open");
+    cartFab?.setAttribute("aria-expanded", "true");
+  };
+
+  const closeCart = () => {
+    cartPanel?.classList.remove("is-open");
+    cartFab?.setAttribute("aria-expanded", "false");
   };
 
   const closeMenuDialog = () => {
@@ -281,39 +364,9 @@
     else menuDialog?.setAttribute("open", "");
   };
 
-  const renderMenu = (cat = "all") => {
-    if (!grid) return;
-    grid.innerHTML = MENU.map(
-      (item) => `
-      <article class="order-item" data-cat="${item.cat}" data-id="${item.id}">
-        <div class="order-item__info">
-          <h3>${item.name}</h3>
-          <p>${item.desc}</p>
-          <div class="order-item__row">
-            <span class="order-item__price">${formatPrice(item.price)}</span>
-            <button type="button" class="order-item__add" data-order="${item.id}">
-              Commander
-            </button>
-          </div>
-        </div>
-        <div class="order-item__media">
-          <img src="${item.img}" alt="${item.name}" loading="lazy" width="220" height="220">
-        </div>
-      </article>`
-    ).join("");
-
-    filterCat(cat);
-  };
-
-  const filterCat = (cat) => {
-    document.querySelectorAll(".order-item").forEach((el) => {
-      const itemCat = el.dataset.cat;
-      const show =
-        cat === "all" ||
-        itemCat === cat ||
-        (cat === "tacos" && itemCat === "plats");
-      el.classList.toggle("is-hidden", !show);
-    });
+  const showConfirmation = () => {
+    if (typeof confirmDialog?.showModal === "function") confirmDialog.showModal();
+    else confirmDialog?.setAttribute("open", "");
   };
 
   document.querySelectorAll(".order-cat").forEach((btn) => {
@@ -327,19 +380,35 @@
   });
 
   grid?.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-order]");
+    const btn = e.target.closest("[data-add]");
     if (!btn) return;
-    const item = MENU.find((m) => m.id === btn.dataset.order);
+    const id = btn.dataset.add;
+    const item = MENU.find((m) => m.id === id);
     if (!item) return;
-    if (item.needsChoice) openMenuDialog();
-    else openWhatsAppProduct(item.name);
+    if (item.needsChoice) {
+      openMenuDialog();
+      return;
+    }
+    addToCart(id);
+    openCart();
   });
+
+  cartBody?.addEventListener("click", (e) => {
+    const inc = e.target.closest("[data-inc]");
+    const dec = e.target.closest("[data-dec]");
+    if (inc) addToCart(inc.dataset.inc, 1);
+    if (dec) addToCart(dec.dataset.dec, -1);
+  });
+
+  cartFab?.addEventListener("click", openCart);
+  cartClose?.addEventListener("click", closeCart);
 
   menuChoiceList?.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-choice]");
     if (!btn) return;
-    openWhatsAppMenuBurger(btn.dataset.choice);
+    addToCart(menuBurgerKey(btn.dataset.choice));
     closeMenuDialog();
+    openCart();
   });
 
   menuCancel?.addEventListener("click", (e) => {
@@ -347,5 +416,94 @@
     closeMenuDialog();
   });
 
+  checkoutBtn?.addEventListener("click", () => {
+    if (cartQty() === 0) return;
+    if (checkoutTotal) checkoutTotal.textContent = formatPrice(cartTotal());
+    if (typeof checkoutDialog?.showModal === "function") checkoutDialog.showModal();
+    else checkoutDialog?.setAttribute("open", "");
+  });
+
+  checkoutForm?.addEventListener("change", (e) => {
+    if (e.target.name === "mode") {
+      const isDelivery = e.target.value === "livraison";
+      addressField?.classList.toggle("is-hidden", !isDelivery);
+      const input = addressField?.querySelector("input");
+      if (input) input.required = isDelivery;
+    }
+  });
+
+  checkoutForm?.addEventListener("submit", (e) => {
+    const submitter = e.submitter;
+    if (submitter?.value === "cancel") return;
+
+    e.preventDefault();
+    if (cartQty() === 0) return;
+
+    const data = new FormData(checkoutForm);
+    const name = String(data.get("name") || "").trim();
+    const phone = String(data.get("phone") || "").trim();
+    const mode = String(data.get("mode") || "sur_place");
+    const address = String(data.get("address") || "").trim();
+    const note = String(data.get("note") || "").trim();
+
+    if (!name || !phone) return;
+    if (mode === "livraison" && !address) return;
+
+    const modeLabel = {
+      sur_place: "Sur place",
+      emporter: "À emporter",
+      livraison: "Livraison",
+    }[mode];
+
+    const lines = cartEntries().map(
+      ({ item, qty }) =>
+        `• ${qty}× ${item.name} — ${formatPrice(item.price * qty)}`
+    );
+
+    const message = [
+      "🍔 Nouvelle commande Burger Coffee Saly",
+      "",
+      `Client : ${name}`,
+      `Tél : ${phone}`,
+      `Mode : ${modeLabel}`,
+      mode === "livraison" ? `Adresse : ${address}` : null,
+      mode === "livraison" ? "Livraison : gratuite (tout Saly)" : null,
+      note ? `Note : ${note}` : null,
+      "",
+      "Commande :",
+      ...lines,
+      "",
+      `TOTAL : ${formatPrice(cartTotal())}`,
+      "",
+      "Paiement : Wave",
+      WAVE_URL,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    window.open(WAVE_URL, "_blank", "noopener");
+
+    const wa = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
+    setTimeout(() => {
+      window.open(wa, "_blank", "noopener");
+    }, 700);
+
+    cart = {};
+    persist();
+    renderCart();
+    checkoutDialog?.close?.();
+    closeCart();
+    checkoutForm.reset();
+    addressField?.classList.add("is-hidden");
+    showConfirmation();
+  });
+
+  confirmClose?.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (typeof confirmDialog?.close === "function") confirmDialog.close();
+    else confirmDialog?.removeAttribute("open");
+  });
+
   renderMenu("all");
+  renderCart();
 })();

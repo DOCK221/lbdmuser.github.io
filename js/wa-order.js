@@ -1,10 +1,9 @@
-/* Burger Coffee Saly — WhatsApp order helpers (index) */
+/* Burger Coffee Saly — Menu Burger → panier (page d’accueil) */
 
 (() => {
   "use strict";
 
-  const WA_NUMBER = "221781508788";
-
+  const CART_KEY = "bc_cart";
   const MENU_BURGER_CHOICES = [
     "Burger poulet",
     "Burger du chef",
@@ -13,38 +12,21 @@
     "Smash bacon halal",
   ];
 
-  const waUrl = (text) =>
-    `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
-
-  const openWhatsAppProduct = (productName) => {
-    const message = [
-      "Bonjour, je souhaite commander :",
-      "",
-      `• ${productName}`,
-      "",
-      "Merci.",
-    ].join("\n");
-    window.open(waUrl(message), "_blank", "noopener");
-  };
-
-  const openWhatsAppMenuBurger = (choice) => {
-    const message = [
-      "Bonjour,",
-      "",
-      "Je souhaite commander :",
-      "",
-      "Menu Burger",
-      "",
-      `Burger choisi : ${choice}`,
-      "",
-      "Merci.",
-    ].join("\n");
-    window.open(waUrl(message), "_blank", "noopener");
-  };
-
   const dialog = document.getElementById("menuBurgerDialog");
   const list = document.getElementById("menuBurgerChoices");
   const cancel = document.getElementById("menuBurgerCancel");
+
+  const readCart = () => {
+    try {
+      return JSON.parse(localStorage.getItem(CART_KEY) || "{}") || {};
+    } catch {
+      return {};
+    }
+  };
+
+  const writeCart = (cart) => {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  };
 
   const closeDialog = () => {
     if (typeof dialog?.close === "function") dialog.close();
@@ -63,25 +45,20 @@
 
   document.addEventListener("click", (e) => {
     const menuBtn = e.target.closest("[data-menu-burger]");
-    if (menuBtn) {
-      e.preventDefault();
-      openDialog();
-      return;
-    }
-
-    const productBtn = e.target.closest("[data-wa-product]");
-    if (productBtn) {
-      e.preventDefault();
-      const name = productBtn.getAttribute("data-wa-product");
-      if (name) openWhatsAppProduct(name);
-    }
+    if (!menuBtn) return;
+    e.preventDefault();
+    openDialog();
   });
 
   list?.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-choice]");
     if (!btn) return;
-    openWhatsAppMenuBurger(btn.dataset.choice);
+    const cart = readCart();
+    const key = `menu-burger::${btn.dataset.choice}`;
+    cart[key] = (cart[key] || 0) + 1;
+    writeCart(cart);
     closeDialog();
+    window.location.href = "commander.html";
   });
 
   cancel?.addEventListener("click", (e) => {
