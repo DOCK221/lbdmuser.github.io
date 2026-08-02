@@ -2,10 +2,10 @@
 
 ## Site en ligne
 
-**https://small-thunder-5101.zerodeploy.app**
+**https://winter-dew-3115.zerodeploy.app**
 
 Rendre permanent (claim) :
-https://dashboard.zerodeploy.dev/drop-claim?token=zdr_c03a7911d40e3d6b328c86d7c291b3c7f33cd7b49c425243475b2d9b2e7d97a8
+https://dashboard.zerodeploy.dev/drop-claim?token=zdr_4ce4add822c7488bd4cae3fd1fbaba48782ae46e232f19d294cda18ede2562f5
 
 > Expire en 72 h sauf claim. Redeploy avec le claim token pour renouveler.
 
@@ -24,7 +24,7 @@ npm run build
 tar -czf site.tar.gz -C out .
 curl -X POST https://api.zerodeploy.dev/drop \
   -H "Content-Type: application/gzip" \
-  -H "X-Claim-Token: zdr_c03a7911d40e3d6b328c86d7c291b3c7f33cd7b49c425243475b2d9b2e7d97a8" \
+  -H "X-Claim-Token: zdr_4ce4add822c7488bd4cae3fd1fbaba48782ae46e232f19d294cda18ede2562f5" \
   --data-binary @site.tar.gz
 ```
 
