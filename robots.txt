@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://twilight-water-4004.zerodeploy.app/sitemap.xml
