@@ -10,6 +10,14 @@ export const photoCategories: PhotoCategory[] = [
 
 export const photos: Photo[] = [
   {
+    id: "p0",
+    src: "/images/photography/portrait/aminata-portrait.jpg",
+    alt: "Aminata Sow — portrait signature",
+    category: "Portrait",
+    width: 677,
+    height: 1035,
+  },
+  {
     id: "p1",
     src: "/images/photography/portrait/portrait-01.jpg",
     alt: "Portrait éditorial",

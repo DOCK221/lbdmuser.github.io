@@ -53,11 +53,11 @@ export default function Hero() {
           alt={`${siteConfig.name} — Creative Director`}
           fill
           priority
-          className="object-cover object-[center_20%]"
+          className="object-cover object-[center_18%] md:object-[center_22%]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/50 to-ink" />
-        <div className="absolute inset-0 bg-ink/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/45 to-ink" />
+        <div className="absolute inset-0 bg-ink/30" />
       </motion.div>
 
       <motion.div

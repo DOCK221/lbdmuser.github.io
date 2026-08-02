@@ -46,7 +46,7 @@ export default function About() {
                   src={siteConfig.about.image}
                   alt={`${siteConfig.name} portrait`}
                   fill
-                  className="object-cover"
+                  className="object-cover object-[center_20%]"
                   sizes="(max-width: 768px) 100vw, 45vw"
                 />
               </motion.div>
