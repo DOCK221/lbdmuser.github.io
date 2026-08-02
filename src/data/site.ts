@@ -3,9 +3,9 @@ export const siteConfig = {
   title: "Aminata Sow — Creative Director & Digital Strategist",
   description:
     "Creative Director, Web Designer, Content Creator, Photographer and Digital Strategist. I create digital experiences that combine creativity, strategy and emotion.",
-  url: "https://cool-river-3612.zerodeploy.app",
+  url: "https://twilight-water-4004.zerodeploy.app",
   locale: "fr_FR",
-  email: "hello@aminatasow.com",
+  email: "aminatasoraya@proton.me",
   phone: "+221 77 000 00 00",
   whatsapp: "https://wa.me/221770000000",
   roles: [

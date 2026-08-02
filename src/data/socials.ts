@@ -4,7 +4,7 @@ export const socials: SocialLink[] = [
   {
     id: "instagram",
     label: "Instagram",
-    href: "https://instagram.com/",
+    href: "https://instagram.com/so.aminaa",
     icon: "FaInstagram",
   },
   {
@@ -22,7 +22,7 @@ export const socials: SocialLink[] = [
   {
     id: "email",
     label: "Email",
-    href: "mailto:hello@aminatasow.com",
+    href: "mailto:aminatasoraya@proton.me",
     icon: "FiMail",
   },
   {
