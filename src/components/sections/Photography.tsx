@@ -25,7 +25,7 @@ export default function Photography() {
   };
 
   return (
-    <section id="photography" className="relative py-28 md:py-36">
+    <section id="photography" className="relative overflow-hidden py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
           eyebrow="Visual World"
@@ -54,16 +54,15 @@ export default function Photography() {
         </Reveal>
 
         <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence initial={false}>
             {filtered.map((photo, index) => (
               <motion.button
                 key={photo.id}
                 type="button"
-                layout
-                initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.45, delay: index * 0.03 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35, delay: Math.min(index * 0.02, 0.2) }}
                 className="group mb-4 block w-full break-inside-avoid overflow-hidden"
                 onClick={() => openAt(photo.id)}
               >

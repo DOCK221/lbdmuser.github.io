@@ -88,7 +88,8 @@ export default function Projects() {
 
                       <Link
                         href={`/projects/${project.slug}`}
-                        className="mt-8 inline-flex items-center gap-2 text-sm tracking-[0.2em] text-accent uppercase transition hover:gap-3"
+                        className="relative z-20 mt-8 inline-flex items-center gap-2 text-sm tracking-[0.2em] text-accent uppercase transition hover:gap-3"
+                        style={{ transform: "translateZ(40px)" }}
                       >
                         Voir le projet
                         <FiArrowUpRight />
