@@ -1,43 +1,37 @@
-/* Burger Coffee — online ordering (Uber Eats style) + Wave */
+/* Burger Coffee Saly — panier + paiement Wave + Menu Burger */
 
 (() => {
   "use strict";
 
-  const WAVE_URL = "https://pay.wave.com/m/M_sn_emG7ozKw9upn";
   const WA_NUMBER = "221781508788";
+  const WAVE_URL = "https://pay.wave.com/m/M_sn_emG7ozKw9upn";
+  const CART_KEY = "bc_cart";
+
+  const MENU_BURGER_CHOICES = [
+    "Burger poulet",
+    "Burger du chef",
+    "Smash classic",
+    "Smash double",
+    "Smash bacon halal",
+  ];
+
+  const MENU_DRINK_CHOICES = [
+    "Petite bouteille d’eau",
+    "Coca-Cola",
+    "Coca-Cola Zéro",
+    "Sprite",
+    "Fanta",
+    "Un jus local",
+  ];
 
   const MENU = [
-    {
-      id: "smash-classic",
-      cat: "smashs",
-      name: "Smash classic",
-      desc: "Pain brioché, steak de bœuf, cheddar, sauce maison, oignons grillés.",
-      price: 3000,
-      img: "assets/dishes/smash-classic.jpg",
-    },
-    {
-      id: "smash-double",
-      cat: "smashs",
-      name: "Smash double",
-      desc: "Pain brioché, double steak, double cheddar, sauce maison, oignons confits.",
-      price: 4000,
-      img: "assets/dishes/smash-double.jpg",
-    },
-    {
-      id: "smash-bacon",
-      cat: "smashs",
-      name: "Smash bacon halal",
-      desc: "Pain brioché, steak, bacon, cheddar, sauce maison, oignons rouges, roquette.",
-      price: 4000,
-      img: "assets/dishes/smash-bacon.jpg",
-    },
     {
       id: "burger-poulet",
       cat: "burgers",
       name: "Burger poulet",
       desc: "Pain brioché, steak de poulet, cheddar, sauce à l’ail, oignons, choux, carottes, roquette.",
       price: 3500,
-      img: "assets/dishes/burger-poulet.jpg",
+      img: "assets/dishes/burger-poulet.webp",
     },
     {
       id: "burger-chef",
@@ -45,71 +39,48 @@
       name: "Burger du chef",
       desc: "Pain brioché, steak de bœuf, cheddar, sauce maison, guacamole.",
       price: 3500,
-      img: "assets/dishes/smash-classic.jpg",
+      img: "assets/dishes/burger-chef.webp",
+    },
+    {
+      id: "smash-classic",
+      cat: "smashs",
+      name: "Smash classic",
+      desc: "Pain brioché, steak de bœuf, cheddar, sauce maison, oignons grillés.",
+      price: 3000,
+      img: "assets/dishes/smash-classic.webp",
+    },
+    {
+      id: "smash-double",
+      cat: "smashs",
+      name: "Smash double",
+      desc: "Pain brioché, double steak, double cheddar, sauce maison, oignons confits.",
+      price: 4000,
+      img: "assets/dishes/smash-double.webp",
+    },
+    {
+      id: "smash-bacon",
+      cat: "smashs",
+      name: "Smash bacon halal",
+      desc: "Pain brioché, steak, bacon, cheddar, sauce maison, oignons rouges, roquette.",
+      price: 4000,
+      img: "assets/dishes/smash-bacon.webp",
     },
     {
       id: "menu-burger",
-      cat: "burgers",
+      cat: "menus",
       name: "Menu Burger",
-      desc: "Burger au choix + frites + boisson.",
+      desc: "Burger ou smash au choix + frites + boisson incluse.",
       price: 5000,
-      img: "assets/dishes/smash-double.jpg",
-    },
-    {
-      id: "sandwich-poulet",
-      cat: "sandwichs",
-      name: "Sandwich poulet",
-      desc: "Baguette fraîche, blanc de poulet, roquette, emmental, sauce à l’ail.",
-      price: 3500,
-      img: "assets/dishes/sandwich-poulet.jpg",
-    },
-    {
-      id: "sandwich-boeuf",
-      cat: "sandwichs",
-      name: "Sandwich bœuf",
-      desc: "Baguette fraîche, steak de bœuf, sauce algérienne, guacamole.",
-      price: 2500,
-      img: "assets/dishes/sandwich-poulet.jpg",
-    },
-    {
-      id: "linguine",
-      cat: "plats",
-      name: "Linguine crevette",
-      desc: "Pâtes linguine aux crevettes grillées, poivrons et herbes fraîches.",
-      price: 4000,
-      img: "assets/dishes/linguine-crevette.jpg",
-    },
-    {
-      id: "plat-jour",
-      cat: "plats",
-      name: "Plat du jour",
-      desc: "Fait maison avec des produits frais — suggestion du chef.",
-      price: 3000,
-      img: "assets/dishes/linguine-crevette.jpg",
-    },
-    {
-      id: "salade-tropicale",
-      cat: "salades",
-      name: "Salade tropicale",
-      desc: "Salade verte, poulet, pomme, mangue, tomate, avocat, sauce cocktail.",
-      price: 5000,
-      img: "assets/dishes/salade-tropicale.jpg",
-    },
-    {
-      id: "salade-chef",
-      cat: "salades",
-      name: "Salade du chef",
-      desc: "Selon les envies de notre chef cuisinier, chaque jour.",
-      price: 4000,
-      img: "assets/dishes/salade-tropicale.jpg",
+      img: "assets/dishes/menu-burger.webp",
+      needsChoice: true,
     },
     {
       id: "petit-dej",
       cat: "breakfast",
-      name: "Formule Petit Déjeuner",
+      name: "Petit Déjeuner",
       desc: "Jus d’orange + café ou thé + croissant ou pain chocolat.",
       price: 3000,
-      img: "assets/dishes/petit-dejeuner.jpg",
+      img: "assets/dishes/petit-dejeuner.webp",
     },
     {
       id: "petit-dej-gourmand",
@@ -117,31 +88,119 @@
       name: "Petit Déjeuner Gourmand",
       desc: "Jus + café/thé + viennoiserie + œuf jambon fromage ou carpaccio tomates.",
       price: 5000,
-      img: "assets/dishes/petit-dejeuner.jpg",
+      img: "assets/dishes/petit-dejeuner.webp",
+    },
+    {
+      id: "taco-poulet",
+      cat: "tacos",
+      name: "Tacos poulet",
+      desc: "Tacos français : galette, poulet, frites, sauce fromagère.",
+      price: 4000,
+      img: "assets/dishes/taco-poulet.webp",
+    },
+    {
+      id: "taco-viande",
+      cat: "tacos",
+      name: "Tacos viande",
+      desc: "Tacos français : galette, viande, frites, sauce fromagère.",
+      price: 4000,
+      img: "assets/dishes/taco-viande.webp",
+    },
+    {
+      id: "sandwich-poulet",
+      cat: "plats",
+      name: "Sandwich poulet",
+      desc: "Baguette fraîche, blanc de poulet, roquette, emmental, sauce à l’ail.",
+      price: 3000,
+      img: "assets/dishes/sandwich-poulet.webp",
+    },
+    {
+      id: "sandwich-boeuf",
+      cat: "plats",
+      name: "Sandwich bœuf",
+      desc: "Baguette fraîche, steak de bœuf, sauce algérienne, guacamole.",
+      price: 3000,
+      img: "assets/dishes/sandwich-boeuf.webp",
+    },
+    {
+      id: "sandwich-chef",
+      cat: "plats",
+      name: "Sandwich du chef",
+      desc: "Selon les envies de notre chef, chaque jour.",
+      price: 2500,
+      img: "assets/dishes/sandwich-chef.webp",
+    },
+    {
+      id: "linguine",
+      cat: "plats",
+      name: "Linguine crevette",
+      desc: "Pâtes linguine aux crevettes grillées, poivrons et herbes fraîches.",
+      price: 4000,
+      img: "assets/dishes/linguine-crevette.webp",
+    },
+    {
+      id: "spaghetti-bolognaise",
+      cat: "plats",
+      name: "Spaghetti Bolognaise",
+      desc: "Spaghetti, sauce tomate à la viande hachée, parmesan.",
+      price: 4000,
+      img: "assets/dishes/spaghetti-bolognaise.webp",
+    },
+    {
+      id: "plat-jour",
+      cat: "plats",
+      name: "Plat du jour",
+      desc: "Fait maison avec des produits frais — suggestion du chef.",
+      price: 3000,
+      img: "assets/dishes/plat-jour.webp",
+    },
+    {
+      id: "salade-tropicale",
+      cat: "salades",
+      name: "Salade tropicale",
+      desc: "Salade verte, poulet, pomme, mangue, tomate, avocat, sauce cocktail.",
+      price: 4000,
+      img: "assets/dishes/salade-tropicale.webp",
+    },
+    {
+      id: "salade-chef",
+      cat: "salades",
+      name: "Salade du chef",
+      desc: "Selon les envies de notre chef cuisinier, chaque jour.",
+      price: 3500,
+      img: "assets/dishes/salade-chef.webp",
     },
     {
       id: "caramel-macchiato",
-      cat: "coffee",
+      cat: "boissons",
       name: "Caramel macchiato",
       desc: "Espresso, lait onctueux et caramel.",
-      price: 3500,
-      img: "assets/dishes/caramel-macchiato.jpg",
+      price: 4000,
+      img: "assets/dishes/caramel-macchiato.webp",
+    },
+    {
+      id: "frappuccino-caramel",
+      cat: "boissons",
+      name: "Frappuccino caramel",
+      desc: "Café glacé crémeux, caramel et mousse onctueuse.",
+      price: 4500,
+      img: "assets/dishes/frappuccino-caramel.webp",
     },
     {
       id: "cappuccino",
-      cat: "coffee",
+      cat: "boissons",
       name: "Cappuccino",
       desc: "Moussant, intense, parfait pour la terrasse.",
       price: 3000,
-      img: "assets/dishes/caramel-macchiato.jpg",
+      img: "assets/dishes/cappuccino.webp",
     },
     {
       id: "expresso",
-      cat: "coffee",
+      cat: "boissons",
       name: "Expresso",
-      desc: "Court et intense.",
+      desc: "Court et intense, servi en petite tasse.",
       price: 1000,
-      img: "assets/dishes/caramel-macchiato.jpg",
+      img: "assets/dishes/expresso.webp",
     },
     {
       id: "the-glace",
@@ -149,7 +208,7 @@
       name: "Thé glacé maison",
       desc: "Pêche, passion, fraise, citron ou mangue.",
       price: 2500,
-      img: "assets/dishes/caramel-macchiato.jpg",
+      img: "assets/dishes/the-glace.webp",
     },
     {
       id: "limonade",
@@ -157,7 +216,7 @@
       name: "Limonade glacée",
       desc: "Citron, pêche, passion, fraise ou mangue.",
       price: 3000,
-      img: "assets/dishes/caramel-macchiato.jpg",
+      img: "assets/dishes/limonade.webp",
     },
     {
       id: "jus-orange",
@@ -165,7 +224,87 @@
       name: "Jus d’orange pressé",
       desc: "Fraîchement pressé.",
       price: 2500,
-      img: "assets/dishes/petit-dejeuner.jpg",
+      img: "assets/dishes/jus-orange.webp",
+    },
+    {
+      id: "soda-coca",
+      cat: "boissons",
+      name: "Coca-Cola",
+      desc: "Soda 33 cl.",
+      price: 1500,
+      img: "assets/dishes/sodas.webp",
+    },
+    {
+      id: "soda-coca-zero",
+      cat: "boissons",
+      name: "Coca-Cola Zéro",
+      desc: "Soda 33 cl.",
+      price: 1500,
+      img: "assets/dishes/sodas.webp",
+    },
+    {
+      id: "soda-sprite",
+      cat: "boissons",
+      name: "Sprite",
+      desc: "Soda 33 cl.",
+      price: 1500,
+      img: "assets/dishes/sodas.webp",
+    },
+    {
+      id: "soda-fanta",
+      cat: "boissons",
+      name: "Fanta",
+      desc: "Soda 33 cl.",
+      price: 1500,
+      img: "assets/dishes/sodas.webp",
+    },
+    {
+      id: "jus-locaux",
+      cat: "boissons",
+      name: "Jus locaux",
+      desc: "Jus locaux du jour.",
+      price: 1500,
+      img: "assets/dishes/jus-locaux.webp",
+    },
+    {
+      id: "eau-plate-50",
+      cat: "boissons",
+      name: "Eau plate 50CL",
+      desc: "Petite bouteille d’eau plate.",
+      price: 1000,
+      img: "assets/dishes/eau.webp",
+    },
+    {
+      id: "eau-plate-1l",
+      cat: "boissons",
+      name: "Eau plate 1L",
+      desc: "Grande bouteille d’eau plate.",
+      price: 2000,
+      img: "assets/dishes/eau.webp",
+    },
+    {
+      id: "eau-gazeuse-50",
+      cat: "boissons",
+      name: "Eau gazeuse 50CL",
+      desc: "Petite bouteille d’eau gazeuse.",
+      price: 1000,
+      img: "assets/dishes/eau.webp",
+    },
+    {
+      id: "eau-gazeuse-1l",
+      cat: "boissons",
+      name: "Eau gazeuse 1L",
+      desc: "Grande bouteille d’eau gazeuse.",
+      price: 2000,
+      img: "assets/dishes/eau.webp",
+    },
+    {
+      id: "churros-nutella",
+      cat: "desserts",
+      name: "Churros au Nutella",
+      desc: "Churros croustillants servis avec Nutella.",
+      price: 3000,
+      img: "assets/dishes/churros-nutella.webp",
     },
   ];
 
@@ -182,28 +321,69 @@
   const checkoutForm = document.getElementById("checkoutForm");
   const checkoutTotal = document.getElementById("checkoutTotal");
   const addressField = document.getElementById("addressField");
+  const menuDialog = document.getElementById("menuBurgerDialog");
+  const menuChoiceList = document.getElementById("menuBurgerChoices");
+  const menuDrinkList = document.getElementById("menuDrinkChoices");
+  const menuConfirm = document.getElementById("menuBurgerConfirm");
+  const menuCancel = document.getElementById("menuBurgerCancel");
+  const confirmDialog = document.getElementById("orderConfirmDialog");
+  const confirmClose = document.getElementById("orderConfirmClose");
 
-  /** @type {Record<string, number>} */
-  let cart = JSON.parse(localStorage.getItem("bc_cart") || "{}");
+  let selectedPlat = null;
+  let selectedDrink = null;
+
+  let cart = {};
+  try {
+    cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}") || {};
+  } catch {
+    cart = {};
+  }
 
   const formatPrice = (n) =>
     `${n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0")} F`;
 
-  const getItem = (id) => MENU.find((m) => m.id === id);
+  const menuBurgerKey = (plat, drink) => `menu-burger::${plat}::${drink}`;
+
+  const resolveKey = (key) => {
+    if (key.startsWith("menu-burger::")) {
+      const rest = key.slice("menu-burger::".length);
+      const parts = rest.split("::");
+      const base = MENU.find((m) => m.id === "menu-burger");
+      if (!base) return null;
+      // Legacy keys: menu-burger::Plat (no drink) — ignore incomplete
+      if (parts.length < 2 || !parts[0] || !parts[1]) return null;
+      const plat = parts[0];
+      const drink = parts.slice(1).join("::");
+      return {
+        key,
+        item: {
+          ...base,
+          name: `Menu Burger — ${plat} · ${drink}`,
+          choice: plat,
+          drink,
+        },
+      };
+    }
+    const item = MENU.find((m) => m.id === key);
+    return item ? { key, item } : null;
+  };
 
   const cartEntries = () =>
     Object.entries(cart)
-      .map(([id, qty]) => ({ item: getItem(id), qty }))
-      .filter((e) => e.item && e.qty > 0);
+      .map(([key, qty]) => {
+        const resolved = resolveKey(key);
+        if (!resolved || !qty) return null;
+        return { ...resolved, qty };
+      })
+      .filter(Boolean);
 
   const cartTotal = () =>
     cartEntries().reduce((sum, { item, qty }) => sum + item.price * qty, 0);
 
-  const cartQty = () =>
-    cartEntries().reduce((sum, { qty }) => sum + qty, 0);
+  const cartQty = () => cartEntries().reduce((sum, { qty }) => sum + qty, 0);
 
   const persist = () => {
-    localStorage.setItem("bc_cart", JSON.stringify(cart));
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
   };
 
   const renderMenu = (cat = "all") => {
@@ -216,21 +396,26 @@
           <p>${item.desc}</p>
           <div class="order-item__row">
             <span class="order-item__price">${formatPrice(item.price)}</span>
-            <button type="button" class="order-item__add" data-add="${item.id}">Ajouter</button>
+            <button type="button" class="order-item__add" data-add="${item.id}">
+              Ajouter
+            </button>
           </div>
         </div>
         <div class="order-item__media">
-          <img src="${item.img}" alt="${item.name}" loading="lazy" width="220" height="220">
+          <img src="${item.img}" alt="${item.name}" loading="lazy" decoding="async" width="220" height="220">
         </div>
       </article>`
     ).join("");
-
     filterCat(cat);
   };
 
   const filterCat = (cat) => {
     document.querySelectorAll(".order-item").forEach((el) => {
-      const show = cat === "all" || el.dataset.cat === cat;
+      const itemCat = el.dataset.cat;
+      const show =
+        cat === "all" ||
+        itemCat === cat ||
+        (cat === "tacos" && itemCat === "plats");
       el.classList.toggle("is-hidden", !show);
     });
   };
@@ -256,24 +441,24 @@
 
     cartBody.innerHTML = entries
       .map(
-        ({ item, qty: q }) => `
-      <div class="cart-line" data-id="${item.id}">
+        ({ key, item, qty: q }) => `
+      <div class="cart-line" data-key="${key}">
         <div class="cart-line__name">${item.name}</div>
         <div class="cart-line__price">${formatPrice(item.price * q)}</div>
         <div class="cart-line__ctrl">
-          <button type="button" data-dec="${item.id}" aria-label="Retirer">−</button>
+          <button type="button" data-dec="${key}" aria-label="Retirer">−</button>
           <span>${q}</span>
-          <button type="button" data-inc="${item.id}" aria-label="Ajouter">+</button>
+          <button type="button" data-inc="${key}" aria-label="Ajouter">+</button>
         </div>
       </div>`
       )
       .join("");
   };
 
-  const addToCart = (id, delta = 1) => {
-    const next = (cart[id] || 0) + delta;
-    if (next <= 0) delete cart[id];
-    else cart[id] = next;
+  const addToCart = (key, delta = 1) => {
+    const next = (cart[key] || 0) + delta;
+    if (next <= 0) delete cart[key];
+    else cart[key] = next;
     persist();
     renderCart();
   };
@@ -288,24 +473,63 @@
     cartFab?.setAttribute("aria-expanded", "false");
   };
 
-  // Categories
+  const syncMenuConfirm = () => {
+    if (menuConfirm) menuConfirm.disabled = !(selectedPlat && selectedDrink);
+  };
+
+  const closeMenuDialog = () => {
+    selectedPlat = null;
+    selectedDrink = null;
+    if (typeof menuDialog?.close === "function") menuDialog.close();
+    else menuDialog?.removeAttribute("open");
+  };
+
+  const openMenuDialog = () => {
+    if (!menuChoiceList || !menuDrinkList) return;
+    selectedPlat = null;
+    selectedDrink = null;
+    menuChoiceList.innerHTML = MENU_BURGER_CHOICES.map(
+      (name) =>
+        `<button type="button" class="menu-choice-btn" data-plat="${name}">${name}</button>`
+    ).join("");
+    menuDrinkList.innerHTML = MENU_DRINK_CHOICES.map(
+      (name) =>
+        `<button type="button" class="menu-choice-btn" data-drink="${name}">${name}</button>`
+    ).join("");
+    syncMenuConfirm();
+    if (typeof menuDialog?.showModal === "function") menuDialog.showModal();
+    else menuDialog?.setAttribute("open", "");
+  };
+
+  const showConfirmation = () => {
+    if (typeof confirmDialog?.showModal === "function") confirmDialog.showModal();
+    else confirmDialog?.setAttribute("open", "");
+  };
+
   document.querySelectorAll(".order-cat").forEach((btn) => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".order-cat").forEach((b) => b.classList.remove("is-active"));
+      document
+        .querySelectorAll(".order-cat")
+        .forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
       filterCat(btn.dataset.cat || "all");
     });
   });
 
-  // Menu clicks
   grid?.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-add]");
     if (!btn) return;
-    addToCart(btn.dataset.add);
+    const id = btn.dataset.add;
+    const item = MENU.find((m) => m.id === id);
+    if (!item) return;
+    if (item.needsChoice) {
+      openMenuDialog();
+      return;
+    }
+    addToCart(id);
     openCart();
   });
 
-  // Cart qty
   cartBody?.addEventListener("click", (e) => {
     const inc = e.target.closest("[data-inc]");
     const dec = e.target.closest("[data-dec]");
@@ -316,9 +540,42 @@
   cartFab?.addEventListener("click", openCart);
   cartClose?.addEventListener("click", closeCart);
 
+  menuChoiceList?.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-plat]");
+    if (!btn) return;
+    selectedPlat = btn.dataset.plat;
+    menuChoiceList
+      .querySelectorAll(".menu-choice-btn")
+      .forEach((b) => b.classList.toggle("is-selected", b === btn));
+    syncMenuConfirm();
+  });
+
+  menuDrinkList?.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-drink]");
+    if (!btn) return;
+    selectedDrink = btn.dataset.drink;
+    menuDrinkList
+      .querySelectorAll(".menu-choice-btn")
+      .forEach((b) => b.classList.toggle("is-selected", b === btn));
+    syncMenuConfirm();
+  });
+
+  menuConfirm?.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (!selectedPlat || !selectedDrink) return;
+    addToCart(menuBurgerKey(selectedPlat, selectedDrink));
+    closeMenuDialog();
+    openCart();
+  });
+
+  menuCancel?.addEventListener("click", (e) => {
+    e.preventDefault();
+    closeMenuDialog();
+  });
+
   checkoutBtn?.addEventListener("click", () => {
     if (cartQty() === 0) return;
-    checkoutTotal.textContent = formatPrice(cartTotal());
+    if (checkoutTotal) checkoutTotal.textContent = formatPrice(cartTotal());
     if (typeof checkoutDialog?.showModal === "function") checkoutDialog.showModal();
     else checkoutDialog?.setAttribute("open", "");
   });
@@ -356,7 +613,8 @@
     }[mode];
 
     const lines = cartEntries().map(
-      ({ item, qty }) => `• ${qty}× ${item.name} — ${formatPrice(item.price * qty)}`
+      ({ item, qty }) =>
+        `• ${qty}× ${item.name} — ${formatPrice(item.price * qty)}`
     );
 
     const message = [
@@ -380,15 +638,13 @@
       .filter(Boolean)
       .join("\n");
 
-    // Open Wave payment first, then WhatsApp confirmation
     window.open(WAVE_URL, "_blank", "noopener");
 
     const wa = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
     setTimeout(() => {
       window.open(wa, "_blank", "noopener");
-    }, 600);
+    }, 700);
 
-    // Clear cart after order intent
     cart = {};
     persist();
     renderCart();
@@ -396,8 +652,26 @@
     closeCart();
     checkoutForm.reset();
     addressField?.classList.add("is-hidden");
+    showConfirmation();
+  });
+
+  confirmClose?.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (typeof confirmDialog?.close === "function") confirmDialog.close();
+    else confirmDialog?.removeAttribute("open");
   });
 
   renderMenu("all");
   renderCart();
+
+  try {
+    const addId = new URLSearchParams(window.location.search).get("add");
+    if (addId && MENU.some((m) => m.id === addId && !m.needsChoice)) {
+      addToCart(addId);
+      openCart();
+      window.history.replaceState({}, "", window.location.pathname);
+    }
+  } catch {
+    /* ignore */
+  }
 })();
