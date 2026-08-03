@@ -15,6 +15,15 @@
     "Smash bacon halal",
   ];
 
+  const MENU_DRINK_CHOICES = [
+    "Petite bouteille d’eau",
+    "Coca-Cola",
+    "Coca-Cola Zéro",
+    "Sprite",
+    "Fanta",
+    "Un jus local",
+  ];
+
   const MENU = [
     {
       id: "burger-poulet",
@@ -60,7 +69,7 @@
       id: "menu-burger",
       cat: "menus",
       name: "Menu Burger",
-      desc: "Burger ou smash au choix + frites + boisson.",
+      desc: "Burger ou smash au choix + frites + boisson incluse.",
       price: 5000,
       img: "assets/dishes/menu-burger.webp",
       needsChoice: true,
@@ -128,6 +137,14 @@
       desc: "Pâtes linguine aux crevettes grillées, poivrons et herbes fraîches.",
       price: 4000,
       img: "assets/dishes/linguine-crevette.webp",
+    },
+    {
+      id: "spaghetti-bolognaise",
+      cat: "plats",
+      name: "Spaghetti Bolognaise",
+      desc: "Spaghetti, sauce tomate à la viande hachée, parmesan.",
+      price: 4000,
+      img: "assets/dishes/spaghetti-bolognaise.webp",
     },
     {
       id: "plat-jour",
@@ -210,6 +227,78 @@
       img: "assets/dishes/jus-orange.webp",
     },
     {
+      id: "soda-coca",
+      cat: "boissons",
+      name: "Coca-Cola",
+      desc: "Soda 33 cl.",
+      price: 1500,
+      img: "assets/dishes/sodas.webp",
+    },
+    {
+      id: "soda-coca-zero",
+      cat: "boissons",
+      name: "Coca-Cola Zéro",
+      desc: "Soda 33 cl.",
+      price: 1500,
+      img: "assets/dishes/sodas.webp",
+    },
+    {
+      id: "soda-sprite",
+      cat: "boissons",
+      name: "Sprite",
+      desc: "Soda 33 cl.",
+      price: 1500,
+      img: "assets/dishes/sodas.webp",
+    },
+    {
+      id: "soda-fanta",
+      cat: "boissons",
+      name: "Fanta",
+      desc: "Soda 33 cl.",
+      price: 1500,
+      img: "assets/dishes/sodas.webp",
+    },
+    {
+      id: "jus-locaux",
+      cat: "boissons",
+      name: "Jus locaux",
+      desc: "Jus locaux du jour.",
+      price: 1500,
+      img: "assets/dishes/jus-locaux.webp",
+    },
+    {
+      id: "eau-plate-50",
+      cat: "boissons",
+      name: "Eau plate 50CL",
+      desc: "Petite bouteille d’eau plate.",
+      price: 1000,
+      img: "assets/dishes/eau.webp",
+    },
+    {
+      id: "eau-plate-1l",
+      cat: "boissons",
+      name: "Eau plate 1L",
+      desc: "Grande bouteille d’eau plate.",
+      price: 2000,
+      img: "assets/dishes/eau.webp",
+    },
+    {
+      id: "eau-gazeuse-50",
+      cat: "boissons",
+      name: "Eau gazeuse 50CL",
+      desc: "Petite bouteille d’eau gazeuse.",
+      price: 1000,
+      img: "assets/dishes/eau.webp",
+    },
+    {
+      id: "eau-gazeuse-1l",
+      cat: "boissons",
+      name: "Eau gazeuse 1L",
+      desc: "Grande bouteille d’eau gazeuse.",
+      price: 2000,
+      img: "assets/dishes/eau.webp",
+    },
+    {
       id: "churros-nutella",
       cat: "desserts",
       name: "Churros au Nutella",
@@ -234,9 +323,14 @@
   const addressField = document.getElementById("addressField");
   const menuDialog = document.getElementById("menuBurgerDialog");
   const menuChoiceList = document.getElementById("menuBurgerChoices");
+  const menuDrinkList = document.getElementById("menuDrinkChoices");
+  const menuConfirm = document.getElementById("menuBurgerConfirm");
   const menuCancel = document.getElementById("menuBurgerCancel");
   const confirmDialog = document.getElementById("orderConfirmDialog");
   const confirmClose = document.getElementById("orderConfirmClose");
+
+  let selectedPlat = null;
+  let selectedDrink = null;
 
   let cart = {};
   try {
@@ -248,19 +342,25 @@
   const formatPrice = (n) =>
     `${n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0")} F`;
 
-  const menuBurgerKey = (choice) => `menu-burger::${choice}`;
+  const menuBurgerKey = (plat, drink) => `menu-burger::${plat}::${drink}`;
 
   const resolveKey = (key) => {
     if (key.startsWith("menu-burger::")) {
-      const choice = key.slice("menu-burger::".length);
+      const rest = key.slice("menu-burger::".length);
+      const parts = rest.split("::");
       const base = MENU.find((m) => m.id === "menu-burger");
       if (!base) return null;
+      // Legacy keys: menu-burger::Plat (no drink) — ignore incomplete
+      if (parts.length < 2 || !parts[0] || !parts[1]) return null;
+      const plat = parts[0];
+      const drink = parts.slice(1).join("::");
       return {
         key,
         item: {
           ...base,
-          name: `Menu Burger — ${choice}`,
-          choice,
+          name: `Menu Burger — ${plat} · ${drink}`,
+          choice: plat,
+          drink,
         },
       };
     }
@@ -373,17 +473,30 @@
     cartFab?.setAttribute("aria-expanded", "false");
   };
 
+  const syncMenuConfirm = () => {
+    if (menuConfirm) menuConfirm.disabled = !(selectedPlat && selectedDrink);
+  };
+
   const closeMenuDialog = () => {
+    selectedPlat = null;
+    selectedDrink = null;
     if (typeof menuDialog?.close === "function") menuDialog.close();
     else menuDialog?.removeAttribute("open");
   };
 
   const openMenuDialog = () => {
-    if (!menuChoiceList) return;
+    if (!menuChoiceList || !menuDrinkList) return;
+    selectedPlat = null;
+    selectedDrink = null;
     menuChoiceList.innerHTML = MENU_BURGER_CHOICES.map(
       (name) =>
-        `<button type="button" class="menu-choice-btn" data-choice="${name}">${name}</button>`
+        `<button type="button" class="menu-choice-btn" data-plat="${name}">${name}</button>`
     ).join("");
+    menuDrinkList.innerHTML = MENU_DRINK_CHOICES.map(
+      (name) =>
+        `<button type="button" class="menu-choice-btn" data-drink="${name}">${name}</button>`
+    ).join("");
+    syncMenuConfirm();
     if (typeof menuDialog?.showModal === "function") menuDialog.showModal();
     else menuDialog?.setAttribute("open", "");
   };
@@ -428,9 +541,29 @@
   cartClose?.addEventListener("click", closeCart);
 
   menuChoiceList?.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-choice]");
+    const btn = e.target.closest("[data-plat]");
     if (!btn) return;
-    addToCart(menuBurgerKey(btn.dataset.choice));
+    selectedPlat = btn.dataset.plat;
+    menuChoiceList
+      .querySelectorAll(".menu-choice-btn")
+      .forEach((b) => b.classList.toggle("is-selected", b === btn));
+    syncMenuConfirm();
+  });
+
+  menuDrinkList?.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-drink]");
+    if (!btn) return;
+    selectedDrink = btn.dataset.drink;
+    menuDrinkList
+      .querySelectorAll(".menu-choice-btn")
+      .forEach((b) => b.classList.toggle("is-selected", b === btn));
+    syncMenuConfirm();
+  });
+
+  menuConfirm?.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (!selectedPlat || !selectedDrink) return;
+    addToCart(menuBurgerKey(selectedPlat, selectedDrink));
     closeMenuDialog();
     openCart();
   });
@@ -531,14 +664,12 @@
   renderMenu("all");
   renderCart();
 
-  // Support homepage deep-link: commander.html?add=petit-dej
   try {
     const addId = new URLSearchParams(window.location.search).get("add");
     if (addId && MENU.some((m) => m.id === addId && !m.needsChoice)) {
       addToCart(addId);
       openCart();
-      const cleanUrl = window.location.pathname;
-      window.history.replaceState({}, "", cleanUrl);
+      window.history.replaceState({}, "", window.location.pathname);
     }
   } catch {
     /* ignore */

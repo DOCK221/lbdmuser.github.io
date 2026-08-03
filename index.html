@@ -231,7 +231,7 @@
             <p class="formule-card__label">Menu</p>
             <h3>Menu Burger</h3>
             <p class="formule-card__price">5 000 <small>FCFA</small></p>
-            <p>Burger au choix + frites + boisson. Mangez copieux, payez léger.</p>
+            <p>Burger ou smash au choix + frites + boisson incluse. Mangez copieux, payez léger.</p>
             <button type="button" class="btn btn--sm btn--primary" data-menu-burger>Commander</button>
           </article>
         </div>
@@ -268,7 +268,7 @@
             <h3 class="carte__heading carte__heading--spaced">Plats &amp; Tacos</h3>
             <ul class="carte__list">
               <li><span>Linguine crevette</span><strong>4 000</strong></li>
-              <li><span>Spaghetti bolognaise</span><strong>4 000</strong></li>
+              <li><span>Spaghetti Bolognaise</span><strong>4 000</strong></li>
               <li><span>Plat du jour</span><strong>3 000</strong></li>
               <li><span>Tacos poulet</span><strong>4 000</strong></li>
               <li><span>Tacos viande</span><strong>4 000</strong></li>
@@ -305,7 +305,7 @@
             </ul>
             <div class="carte__deal">
               <p class="carte__deal-label">Menu Burger</p>
-              <p class="carte__deal-text">Burger ou smash au choix + frites + boisson</p>
+              <p class="carte__deal-text">Burger ou smash au choix + frites + boisson incluse</p>
               <p class="carte__deal-price">5 000 <small>FCFA</small></p>
               <button type="button" class="btn btn--sm btn--primary" data-menu-burger>Commander</button>
             </div>
@@ -364,13 +364,25 @@
                 <span>Jus de fruit<small>ananas, mangue, coco-ananas</small></span>
                 <strong>1 500</strong>
               </li>
+            </ul>
+            <h3 class="carte__heading carte__heading--spaced">Sodas</h3>
+            <ul class="carte__list">
+              <li><span>Coca-Cola</span><strong>1 500</strong></li>
+              <li><span>Coca-Cola Zéro</span><strong>1 500</strong></li>
+              <li><span>Sprite</span><strong>1 500</strong></li>
+              <li><span>Fanta</span><strong>1 500</strong></li>
+            </ul>
+            <h3 class="carte__heading carte__heading--spaced">Jus locaux</h3>
+            <ul class="carte__list">
               <li><span>Jus locaux</span><strong>1 500</strong></li>
-              <li>
-                <span>Soda<small>coca, coca zero, sprite, fanta</small></span>
-                <strong>1 500</strong>
-              </li>
+            </ul>
+            <h3 class="carte__heading carte__heading--spaced">Eau plate</h3>
+            <ul class="carte__list">
               <li><span>Eau plate 1L</span><strong>2 000</strong></li>
               <li><span>Eau plate 50CL</span><strong>1 000</strong></li>
+            </ul>
+            <h3 class="carte__heading carte__heading--spaced">Eau gazeuse</h3>
+            <ul class="carte__list">
               <li><span>Eau gazeuse 1L</span><strong>2 000</strong></li>
               <li><span>Eau gazeuse 50CL</span><strong>1 000</strong></li>
             </ul>
@@ -486,7 +498,7 @@
             <div class="menu-card__body">
               <span class="menu-card__cat">🔥 Menus</span>
               <h3 class="menu-card__title">Menu Burger</h3>
-              <p class="menu-card__desc">Burger ou smash au choix + frites + boisson.</p>
+              <p class="menu-card__desc">Burger ou smash au choix + frites + boisson incluse.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">5 000 F</span>
                 <button type="button" class="btn btn--sm btn--primary" data-menu-burger>Commander</button>
@@ -532,6 +544,21 @@
               <span class="menu-card__cat">🌮 Tacos / Plats</span>
               <h3 class="menu-card__title">Linguine crevette</h3>
               <p class="menu-card__desc">Pâtes linguine aux crevettes grillées, poivrons et herbes fraîches.</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">4 000 F</span>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-reveal data-category="plats">
+            <div class="menu-card__media">
+              <img src="assets/dishes/spaghetti-bolognaise.webp" alt="Spaghetti Bolognaise" loading="lazy" decoding="async" width="700" height="500">
+            </div>
+            <div class="menu-card__body">
+              <span class="menu-card__cat">🌮 Tacos / Plats</span>
+              <h3 class="menu-card__title">Spaghetti Bolognaise</h3>
+              <p class="menu-card__desc">Spaghetti, sauce tomate à la viande hachée, parmesan.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">4 000 F</span>
                 <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
@@ -624,6 +651,51 @@
               <p class="menu-card__desc">Moussant, intense, parfait pour la terrasse.</p>
               <div class="menu-card__footer">
                 <span class="menu-card__price">3 000 F</span>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-reveal data-category="boissons">
+            <div class="menu-card__media">
+              <img src="assets/dishes/sodas.webp" alt="Sodas" loading="lazy" decoding="async" width="700" height="500">
+            </div>
+            <div class="menu-card__body">
+              <span class="menu-card__cat">☕ Boissons</span>
+              <h3 class="menu-card__title">Sodas</h3>
+              <p class="menu-card__desc">Coca-Cola, Coca-Cola Zéro, Sprite ou Fanta — 33 cl.</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">1 500 F</span>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-reveal data-category="boissons">
+            <div class="menu-card__media">
+              <img src="assets/dishes/jus-locaux.webp" alt="Jus locaux" loading="lazy" decoding="async" width="700" height="500">
+            </div>
+            <div class="menu-card__body">
+              <span class="menu-card__cat">☕ Boissons</span>
+              <h3 class="menu-card__title">Jus locaux</h3>
+              <p class="menu-card__desc">Jus locaux du jour, frais et fruités.</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">1 500 F</span>
+                <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-reveal data-category="boissons">
+            <div class="menu-card__media">
+              <img src="assets/dishes/eau.webp" alt="Eau plate et eau gazeuse" loading="lazy" decoding="async" width="700" height="500">
+            </div>
+            <div class="menu-card__body">
+              <span class="menu-card__cat">☕ Boissons</span>
+              <h3 class="menu-card__title">Eau plate &amp; gazeuse</h3>
+              <p class="menu-card__desc">50CL à 1 000 F · 1L à 2 000 F.</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">dès 1 000 F</span>
                 <a href="commander.html" class="btn btn--sm btn--primary">Commander</a>
               </div>
             </div>
@@ -971,11 +1043,15 @@
     <form method="dialog" class="checkout-form">
       <header>
         <h2>Menu Burger — 5 000 F</h2>
-        <p>Choisissez obligatoirement votre burger ou smash.</p>
+        <p>Choisissez votre plat et votre boisson incluse (obligatoire).</p>
       </header>
+      <p class="menu-choice-label">1. Burger ou smash</p>
       <div id="menuBurgerChoices" class="menu-choice-list" role="listbox" aria-label="Choix burger ou smash"></div>
+      <p class="menu-choice-label">2. Boisson incluse</p>
+      <div id="menuDrinkChoices" class="menu-choice-list" role="listbox" aria-label="Choix boisson incluse"></div>
       <div class="checkout-actions">
         <button type="button" class="btn btn--ghost-dark" id="menuBurgerCancel">Annuler</button>
+        <button type="button" class="btn btn--primary" id="menuBurgerConfirm" disabled>Ajouter au panier</button>
       </div>
     </form>
   </dialog>

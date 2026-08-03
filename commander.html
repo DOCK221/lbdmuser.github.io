@@ -86,11 +86,15 @@
     <form method="dialog" class="checkout-form">
       <header>
         <h2>Menu Burger — 5 000 F</h2>
-        <p>Choisissez obligatoirement votre burger ou smash.</p>
+        <p>Choisissez votre plat et votre boisson incluse (obligatoire).</p>
       </header>
+      <p class="menu-choice-label">1. Burger ou smash</p>
       <div id="menuBurgerChoices" class="menu-choice-list" role="listbox" aria-label="Choix burger ou smash"></div>
+      <p class="menu-choice-label">2. Boisson incluse</p>
+      <div id="menuDrinkChoices" class="menu-choice-list" role="listbox" aria-label="Choix boisson incluse"></div>
       <div class="checkout-actions">
         <button type="button" class="btn btn--ghost-dark" id="menuBurgerCancel">Annuler</button>
+        <button type="button" class="btn btn--primary" id="menuBurgerConfirm" disabled>Ajouter au panier</button>
       </div>
     </form>
   </dialog>
