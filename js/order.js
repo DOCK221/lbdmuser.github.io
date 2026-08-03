@@ -86,7 +86,7 @@
       cat: "tacos",
       name: "Tacos poulet",
       desc: "Tacos français : galette, poulet, frites, sauce fromagère.",
-      price: 3000,
+      price: 4000,
       img: "assets/dishes/taco-poulet.webp",
     },
     {
@@ -94,7 +94,7 @@
       cat: "tacos",
       name: "Tacos viande",
       desc: "Tacos français : galette, viande, frites, sauce fromagère.",
-      price: 3000,
+      price: 4000,
       img: "assets/dishes/taco-viande.webp",
     },
     {
@@ -102,7 +102,7 @@
       cat: "plats",
       name: "Sandwich poulet",
       desc: "Baguette fraîche, blanc de poulet, roquette, emmental, sauce à l’ail.",
-      price: 3500,
+      price: 3000,
       img: "assets/dishes/sandwich-poulet.webp",
     },
     {
@@ -110,7 +110,7 @@
       cat: "plats",
       name: "Sandwich bœuf",
       desc: "Baguette fraîche, steak de bœuf, sauce algérienne, guacamole.",
-      price: 2500,
+      price: 3000,
       img: "assets/dishes/sandwich-boeuf.webp",
     },
     {
@@ -118,7 +118,7 @@
       cat: "plats",
       name: "Sandwich du chef",
       desc: "Selon les envies de notre chef, chaque jour.",
-      price: 3000,
+      price: 2500,
       img: "assets/dishes/sandwich-chef.webp",
     },
     {
@@ -142,7 +142,7 @@
       cat: "salades",
       name: "Salade tropicale",
       desc: "Salade verte, poulet, pomme, mangue, tomate, avocat, sauce cocktail.",
-      price: 5000,
+      price: 4000,
       img: "assets/dishes/salade-tropicale.webp",
     },
     {
@@ -150,7 +150,7 @@
       cat: "salades",
       name: "Salade du chef",
       desc: "Selon les envies de notre chef cuisinier, chaque jour.",
-      price: 4000,
+      price: 3500,
       img: "assets/dishes/salade-chef.webp",
     },
     {
@@ -158,7 +158,7 @@
       cat: "boissons",
       name: "Caramel macchiato",
       desc: "Espresso, lait onctueux et caramel.",
-      price: 3500,
+      price: 4000,
       img: "assets/dishes/caramel-macchiato.webp",
     },
     {
@@ -166,7 +166,7 @@
       cat: "boissons",
       name: "Frappuccino caramel",
       desc: "Café glacé crémeux, caramel et mousse onctueuse.",
-      price: 3500,
+      price: 4500,
       img: "assets/dishes/frappuccino-caramel.webp",
     },
     {
@@ -208,6 +208,14 @@
       desc: "Fraîchement pressé.",
       price: 2500,
       img: "assets/dishes/jus-orange.webp",
+    },
+    {
+      id: "churros-nutella",
+      cat: "desserts",
+      name: "Churros au Nutella",
+      desc: "Churros croustillants servis avec Nutella.",
+      price: 3000,
+      img: "assets/dishes/churros-nutella.webp",
     },
   ];
 
