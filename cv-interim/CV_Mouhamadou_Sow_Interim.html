@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV Mouhamadou Sow — Missions d'intérim</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,700&display=swap");
+
+    :root {
+      --ink: #1a2332;
+      --muted: #5a6577;
+      --line: #d7dde8;
+      --accent: #0f6e56;
+      --accent-soft: #e7f4ef;
+      --sidebar: #f3f6fa;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    @page { size: A4; margin: 0; }
+
+    html, body {
+      background: #e8edf3;
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      font-size: 9pt;
+      line-height: 1.28;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .sheet {
+      width: 210mm;
+      height: 297mm;
+      margin: 12px auto;
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 62mm 1fr;
+      box-shadow: 0 12px 40px rgba(26, 35, 50, 0.12);
+      overflow: hidden;
+    }
+
+    .sidebar {
+      background: var(--sidebar);
+      padding: 11mm 7mm 8mm 8mm;
+      border-right: 1px solid var(--line);
+    }
+
+    .main { padding: 10mm 9mm 8mm 9mm; }
+
+    .name {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 20pt;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.02;
+      margin-bottom: 3px;
+    }
+
+    .role {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 8.6pt;
+      text-transform: uppercase;
+      letter-spacing: 0.035em;
+      margin-bottom: 6px;
+    }
+
+    .pitch {
+      color: var(--muted);
+      font-size: 8.5pt;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid #b7ddd0;
+      border-radius: 3px;
+      padding: 2px 6px;
+      font-size: 7.4pt;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: 8.2pt;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--accent);
+      border-bottom: 1.5px solid var(--accent);
+      padding-bottom: 2px;
+      margin: 0 0 6px;
+      font-weight: 700;
+    }
+
+    .sidebar h2 { margin-top: 10px; }
+    .sidebar h2:first-of-type { margin-top: 0; }
+
+    .contact li, .list li {
+      list-style: none;
+      margin-bottom: 5px;
+      font-size: 8.2pt;
+      color: var(--ink);
+    }
+
+    .contact span.label {
+      display: block;
+      color: var(--muted);
+      font-size: 6.8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0;
+    }
+
+    .list li::before {
+      content: "▸";
+      color: var(--accent);
+      margin-right: 5px;
+      font-size: 7pt;
+    }
+
+    .lang-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+      font-size: 8.2pt;
+    }
+
+    .lang-row span:last-child {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .job { margin-bottom: 7px; }
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      align-items: baseline;
+    }
+
+    .job-title {
+      font-weight: 700;
+      font-size: 9pt;
+    }
+
+    .job-meta {
+      color: var(--muted);
+      font-size: 7.6pt;
+      margin: 0 0 2px;
+    }
+
+    .job-date {
+      color: var(--accent);
+      font-size: 7.5pt;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .job ul { padding-left: 12px; }
+    .job li {
+      margin-bottom: 1px;
+      font-size: 8.1pt;
+    }
+
+    .edu { margin-bottom: 5px; }
+    .edu strong { display: block; font-size: 8.7pt; }
+    .edu .meta { color: var(--muted); font-size: 7.6pt; }
+
+    .section { margin-bottom: 9px; }
+
+    .avail {
+      background: var(--accent);
+      color: white;
+      border-radius: 5px;
+      padding: 7px 8px;
+      margin-bottom: 10px;
+    }
+
+    .avail strong {
+      display: block;
+      font-size: 7.8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+
+    .avail p {
+      font-size: 7.8pt;
+      line-height: 1.3;
+      opacity: 0.95;
+    }
+
+    @media print {
+      html, body { background: white; }
+      .sheet {
+        margin: 0;
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <aside class="sidebar">
+      <div class="avail">
+        <strong>Disponible immédiatement</strong>
+        <p>Missions courtes ou longues · Temps plein · Bordeaux Métropole</p>
+      </div>
+
+      <h2>Contact</h2>
+      <ul class="contact">
+        <li><span class="label">Téléphone</span>07 45 71 90 20</li>
+        <li><span class="label">Email</span>doudousow1000@gmail.com</li>
+        <li><span class="label">Localisation</span>Mérignac, Bordeaux Métropole</li>
+        <li><span class="label">Mobilité</span>Bordeaux centre &amp; Cub</li>
+      </ul>
+
+      <h2>Atouts intérim</h2>
+      <ul class="list">
+        <li>Intégration rapide</li>
+        <li>Polyvalent &amp; fiable</li>
+        <li>Ponctuel &amp; rigoureux</li>
+        <li>Autonome dès J1</li>
+        <li>Esprit d'équipe</li>
+        <li>Orientation résultats</li>
+        <li>Dispo urgences / WE</li>
+      </ul>
+
+      <h2>Compétences</h2>
+      <ul class="list">
+        <li>Accueil &amp; relation client</li>
+        <li>Assistanat commercial</li>
+        <li>Administratif &amp; reporting</li>
+        <li>Prospection téléphone</li>
+        <li>Communication digitale</li>
+        <li>Organisation événementielle</li>
+        <li>Saisie &amp; suivi CRM</li>
+        <li>Excel, Word, PowerPoint</li>
+        <li>Canva, CapCut, Adobe</li>
+      </ul>
+
+      <h2>Langues</h2>
+      <div class="lang-row"><span>Français</span><span>Natif</span></div>
+      <div class="lang-row"><span>Anglais</span><span>B2+</span></div>
+      <div class="lang-row"><span>Espagnol</span><span>B2</span></div>
+      <div class="lang-row"><span>Wolof</span><span>C2</span></div>
+    </aside>
+
+    <main class="main">
+      <h1 class="name">Mouhamadou Sow</h1>
+      <p class="role">Assistant polyvalent · Commercial · Administratif · Relation client</p>
+      <p class="pitch">
+        Profil opérationnel, adaptable et immédiatement disponible pour des missions d'intérim
+        à Bordeaux Métropole. Expériences en relation client, commercial, communication et
+        événementiel — sérieux, autonomie et productivité dès le premier jour.
+      </p>
+
+      <div class="badge-row">
+        <span class="badge">Dispo immédiate</span>
+        <span class="badge">Missions 1 jour → plusieurs mois</span>
+        <span class="badge">CDI / CDD / Intérim</span>
+        <span class="badge">Bordeaux Métropole</span>
+      </div>
+
+      <section class="section">
+        <h2>Expériences &amp; missions</h2>
+
+        <article class="job">
+          <div class="job-head">
+            <div class="job-title">Assistant commercial &amp; administratif (intérim)</div>
+            <div class="job-date">Juin – Juil. 2026</div>
+          </div>
+          <div class="job-meta">Mission intérim — PME services B2B · Bordeaux</div>
+          <ul>
+            <li>Accueil téléphonique, mails entrants et orientation des demandes</li>
+            <li>Saisie commandes, CRM, devis, relances et reporting hebdomadaire</li>
+            <li>Remplacement poste permanent pendant congés — zéro rupture de service</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div class="job-title">Chargé de prospection &amp; communication digitale</div>
+            <div class="job-date">Fév. – Mai 2026</div>
+          </div>
+          <div class="job-meta">Buroxia · Marseille · Stage alterné</div>
+          <ul>
+            <li>Reporting KPIs, suivi pipeline CRM et acquisition d'1 client B2B</li>
+            <li>Création de contenus digitaux et organisation de 2 événements pro</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div class="job-title">Hôte d'accueil &amp; support événementiel (intérim)</div>
+            <div class="job-date">Déc. 2025 – Jan. 2026</div>
+          </div>
+          <div class="job-meta">Missions ponctuelles — salons &amp; séminaires · Bordeaux Métropole</div>
+          <ul>
+            <li>Accueil de +200 visiteurs, badges, check-in et information participants</li>
+            <li>Support logistique stands et coordination équipe sur 4 journées</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div class="job-title">Co-fondateur — développement commercial</div>
+            <div class="job-date">2024 – 2025</div>
+          </div>
+          <div class="job-meta">Just Do It, agence digitale · Création d'entreprise</div>
+          <ul>
+            <li>Prospection, signature de 2 clients et relation client de bout en bout</li>
+            <li>Production de contenus visuels / vidéos et pilotage de projets créatifs</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div class="job-title">Organisation d'événements &amp; communication digitale</div>
+            <div class="job-date">Sep. – Déc. 2024</div>
+          </div>
+          <div class="job-meta">Mare Summit · Malte · Stage international</div>
+          <ul>
+            <li>Coordination de 2 événements pro (80 participants) + reporting audience</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div class="job-title">Assistant commercial &amp; événementiel</div>
+            <div class="job-date">Juil. – Sep. 2024</div>
+          </div>
+          <div class="job-meta">Édition Limitée · Dakar · Stage 3 mois</div>
+          <ul>
+            <li>20 appels/semaine, 6 devis, 3 clients signés · 2 événements corporate</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div class="job-title">Chargé de communication digitale</div>
+            <div class="job-date">Avr. – Juin 2024</div>
+          </div>
+          <div class="job-meta">02 Radio · Bordeaux · Stage</div>
+          <ul>
+            <li>Création de contenus réseaux sociaux et analyse de l'engagement</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div class="job-title">Chargé de relation client &amp; opérations</div>
+            <div class="job-date">Jan. – Août 2023</div>
+          </div>
+          <div class="job-meta">Wave · Dakar · Fintech / paiement mobile</div>
+          <ul>
+            <li>Support utilisateurs à forte volumétrie, suivi ops et satisfaction client</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section">
+        <h2>Formation</h2>
+        <div class="edu">
+          <strong>Master Data Management et IA — Efrei Bordeaux</strong>
+          <div class="meta">Admis · Rentrée sept. 2026 · Planning compatible missions</div>
+        </div>
+        <div class="edu">
+          <strong>Bachelor Communication Digitale et Internationale — Efrei Bordeaux</strong>
+          <div class="meta">2023 – 2026 · Diplômé</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Types de missions recherchées</h2>
+        <p class="pitch" style="margin:0">
+          Assistanat administratif · Accueil / standard · Assistant commercial ·
+          Prospection · Saisie de données · Support événementiel · Communication ·
+          Remplacement congés · Renfort d'équipe.
+        </p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
