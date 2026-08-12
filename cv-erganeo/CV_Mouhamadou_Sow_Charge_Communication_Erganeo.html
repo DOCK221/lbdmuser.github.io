@@ -9,30 +9,27 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #1a2332;
-      --muted: #4a5568;
-      --line: #d8dee8;
-      --accent: #0d5c63;
-      --accent-soft: #e6f3f4;
-      --sidebar: #0f2f35;
-      --sidebar-text: #e8f2f3;
-      --sidebar-muted: #a8c5c9;
-      --paper: #fafbfc;
+      --ink: #0f1720;
+      --muted: #243041;
+      --line: #b7c4d4;
+      --accent: #085056;
+      --accent-soft: #d7eef0;
+      --sidebar: #0a2429;
+      --sidebar-text: #ffffff;
+      --sidebar-muted: #e7f4f6;
+      --paper: #ffffff;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    @page {
-      size: A4;
-      margin: 0;
-    }
+    @page { size: A4; margin: 0; }
 
     html, body {
-      background: #e5e7eb;
+      background: #d6dee7;
       color: var(--ink);
       font-family: "DM Sans", sans-serif;
-      font-size: 8.7pt;
-      line-height: 1.28;
+      font-size: 11pt;
+      line-height: 1.38;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
@@ -43,7 +40,7 @@
       margin: 0 auto;
       background: var(--paper);
       display: grid;
-      grid-template-columns: 58mm 1fr;
+      grid-template-columns: 66mm 1fr;
       overflow: hidden;
       box-shadow: 0 8px 30px rgba(0,0,0,.12);
     }
@@ -51,22 +48,22 @@
     .sidebar {
       background: var(--sidebar);
       color: var(--sidebar-text);
-      padding: 12mm 6mm 10mm 7mm;
+      padding: 12mm 7.5mm 10mm 8mm;
       display: flex;
       flex-direction: column;
-      gap: 5.2mm;
+      gap: 5.5mm;
     }
 
     .main {
-      padding: 10mm 9mm 8mm 8mm;
+      padding: 11mm 10mm 9mm 9mm;
       display: flex;
       flex-direction: column;
-      gap: 4mm;
+      gap: 5mm;
     }
 
     .brand-name {
       font-family: "Fraunces", serif;
-      font-size: 15.5pt;
+      font-size: 20pt;
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.05;
@@ -74,47 +71,56 @@
     }
 
     .brand-role {
-      margin-top: 2mm;
-      font-size: 7.4pt;
-      font-weight: 600;
+      margin-top: 2.5mm;
+      font-size: 10pt;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #7fd4db;
+      letter-spacing: 0.04em;
+      color: #9aebf1;
     }
 
     .brand-target {
-      margin-top: 1.2mm;
-      font-size: 7.2pt;
+      margin-top: 1.6mm;
+      font-size: 10pt;
       color: var(--sidebar-muted);
       line-height: 1.35;
+      font-weight: 600;
     }
 
     .rhythm {
-      margin-top: 2.5mm;
-      background: rgba(127, 212, 219, 0.14);
-      border: 1px solid rgba(127, 212, 219, 0.35);
-      border-radius: 4px;
-      padding: 2.2mm 2.4mm;
-      font-size: 7pt;
-      line-height: 1.32;
-      color: #d7f4f7;
+      margin-top: 3mm;
+      background: rgba(154, 235, 241, 0.18);
+      border: 1.5px solid rgba(154, 235, 241, 0.5);
+      border-radius: 5px;
+      padding: 3mm;
+      font-size: 10pt;
+      line-height: 1.38;
+      color: #ffffff;
+      font-weight: 600;
     }
 
     .rhythm strong {
       display: block;
-      color: #9eecf2;
-      font-size: 6.6pt;
+      color: #9aebf1;
+      font-size: 8.5pt;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.6mm;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.2mm;
+      font-weight: 700;
+    }
+
+    .rhythm b {
+      color: #fff;
+      font-size: 11pt;
+      font-weight: 700;
     }
 
     .side-block h2 {
-      font-size: 7pt;
+      font-size: 10pt;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #7fd4db;
-      margin-bottom: 1.6mm;
+      letter-spacing: 0.08em;
+      color: #9aebf1;
+      margin-bottom: 2.2mm;
       font-weight: 700;
     }
 
@@ -125,32 +131,34 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 1.1mm;
+      gap: 1.8mm;
     }
 
     .contact-list li,
     .skill-list li,
     .lang-list li,
     .interest-list li {
-      font-size: 7.1pt;
+      font-size: 10pt;
       color: var(--sidebar-muted);
-      line-height: 1.3;
+      line-height: 1.35;
+      font-weight: 600;
     }
 
     .contact-list strong,
     .lang-list strong {
       color: #fff;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .skill-list li::before {
       content: "▸ ";
-      color: #7fd4db;
+      color: #9aebf1;
+      font-weight: 700;
     }
 
     .main-header h1 {
       font-family: "Fraunces", serif;
-      font-size: 18pt;
+      font-size: 24pt;
       font-weight: 700;
       letter-spacing: -0.025em;
       color: var(--ink);
@@ -158,38 +166,34 @@
     }
 
     .headline {
-      margin-top: 1.5mm;
-      font-size: 9pt;
-      font-weight: 600;
+      margin-top: 2.4mm;
+      font-size: 12pt;
+      font-weight: 700;
       color: var(--accent);
     }
 
     .pitch {
-      margin-top: 2.2mm;
+      margin-top: 3mm;
       color: var(--muted);
-      font-size: 8pt;
-      line-height: 1.38;
+      font-size: 10.8pt;
+      line-height: 1.45;
       text-align: justify;
+      font-weight: 500;
     }
 
     .section-title {
-      font-size: 7.6pt;
+      font-size: 11pt;
       text-transform: uppercase;
-      letter-spacing: 0.11em;
+      letter-spacing: 0.09em;
       color: var(--accent);
       font-weight: 700;
-      border-bottom: 1.4px solid var(--line);
-      padding-bottom: 1.1mm;
-      margin-bottom: 2.2mm;
+      border-bottom: 2.5px solid var(--line);
+      padding-bottom: 1.6mm;
+      margin-bottom: 3mm;
     }
 
-    .job, .edu {
-      margin-bottom: 2.6mm;
-    }
-
-    .job:last-child, .edu:last-child {
-      margin-bottom: 0;
-    }
+    .job, .edu { margin-bottom: 3.5mm; }
+    .job:last-child, .edu:last-child { margin-bottom: 0; }
 
     .job-head, .edu-head {
       display: flex;
@@ -200,68 +204,70 @@
 
     .job-title, .edu-title {
       font-weight: 700;
-      font-size: 8.5pt;
+      font-size: 11.2pt;
       color: var(--ink);
     }
 
     .job-meta, .edu-meta {
-      font-size: 7.2pt;
+      font-size: 10pt;
       color: var(--muted);
-      margin-top: 0.3mm;
+      margin-top: 0.6mm;
+      font-weight: 600;
     }
 
     .job-date, .edu-date {
       flex-shrink: 0;
-      font-size: 7pt;
-      font-weight: 600;
+      font-size: 10pt;
+      font-weight: 700;
       color: var(--accent);
       white-space: nowrap;
     }
 
     .bullets {
-      margin-top: 0.9mm;
-      padding-left: 3.2mm;
+      margin-top: 1.4mm;
+      padding-left: 4.5mm;
       color: var(--muted);
-      font-size: 7.6pt;
-      line-height: 1.3;
+      font-size: 10.4pt;
+      line-height: 1.38;
+      font-weight: 500;
     }
 
-    .bullets li + li {
-      margin-top: 0.35mm;
-    }
+    .bullets li + li { margin-top: 0.8mm; }
 
     .fit-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.8mm 4mm;
+      gap: 2.8mm 5mm;
     }
 
     .fit-item {
-      font-size: 7.3pt;
+      font-size: 10pt;
       color: var(--muted);
-      line-height: 1.28;
+      line-height: 1.35;
+      font-weight: 500;
     }
 
     .fit-item strong {
       display: block;
       color: var(--ink);
-      font-size: 7.5pt;
-      margin-bottom: 0.2mm;
+      font-size: 10.6pt;
+      margin-bottom: 0.6mm;
+      font-weight: 700;
     }
 
     .badge-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.2mm;
+      gap: 2mm;
     }
 
     .badge {
       background: var(--accent-soft);
       color: var(--accent);
-      font-size: 6.6pt;
-      font-weight: 600;
-      padding: 0.8mm 1.8mm;
-      border-radius: 3px;
+      font-size: 9.5pt;
+      font-weight: 700;
+      padding: 1.5mm 2.8mm;
+      border-radius: 4px;
     }
 
     @media print {
@@ -280,8 +286,8 @@
         <div class="rhythm">
           <strong>Rythme d’alternance</strong>
           Exactement aligné à votre besoin :<br />
-          <b style="color:#fff">2 sem. entreprise / 1 sem. école</b><br />
-          Dispo. sept. 2026 · Mobilité Paris / Saint-Denis
+          <b>2 sem. entreprise / 1 sem. école</b><br />
+          Dispo. sept. 2026 · Paris / Saint-Denis
         </div>
       </div>
 
