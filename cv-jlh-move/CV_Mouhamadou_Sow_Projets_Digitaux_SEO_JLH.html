@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV Mouhamadou Sow — Projets digitaux &amp; SEO · JLH Move Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,500&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #101820;
+      --muted: #243447;
+      --line: #c2cedb;
+      --accent: #0b4f8a;
+      --accent-soft: #e3f0fb;
+      --sidebar: #0b2740;
+      --sidebar-muted: #e8f2fb;
+      --paper: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 0; }
+
+    html, body {
+      background: #d7dee6;
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.32;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: 64mm 1fr;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.12);
+    }
+
+    .sidebar {
+      background: var(--sidebar);
+      color: #fff;
+      padding: 9mm 6.5mm 7mm 7mm;
+      display: flex;
+      flex-direction: column;
+      gap: 3.8mm;
+    }
+
+    .main {
+      padding: 8mm 8mm 6mm 7.5mm;
+      display: flex;
+      flex-direction: column;
+      gap: 3mm;
+    }
+
+    .brand-name {
+      font-family: "Fraunces", serif;
+      font-size: 18pt;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-role {
+      margin-top: 2mm;
+      font-size: 9.2pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.035em;
+      color: #8ec8ff;
+    }
+
+    .brand-target {
+      margin-top: 1.2mm;
+      font-size: 9.5pt;
+      color: var(--sidebar-muted);
+      font-weight: 600;
+    }
+
+    .highlight {
+      margin-top: 2.4mm;
+      background: rgba(142, 200, 255, 0.16);
+      border: 1.5px solid rgba(142, 200, 255, 0.45);
+      border-radius: 5px;
+      padding: 2.4mm;
+      font-size: 9.4pt;
+      line-height: 1.32;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .highlight strong {
+      display: block;
+      color: #8ec8ff;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1mm;
+    }
+
+    .side-block h2 {
+      font-size: 9.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #8ec8ff;
+      margin-bottom: 1.7mm;
+      font-weight: 700;
+    }
+
+    .contact-list,
+    .skill-list,
+    .lang-list,
+    .interest-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.35mm;
+    }
+
+    .contact-list li,
+    .skill-list li,
+    .lang-list li,
+    .interest-list li {
+      font-size: 9.5pt;
+      color: var(--sidebar-muted);
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    .contact-list strong,
+    .lang-list strong { color: #fff; font-weight: 700; }
+
+    .skill-list li::before {
+      content: "▸ ";
+      color: #8ec8ff;
+      font-weight: 700;
+    }
+
+    .main-header h1 {
+      font-family: "Fraunces", serif;
+      font-size: 21pt;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1;
+    }
+
+    .headline {
+      margin-top: 2mm;
+      font-size: 11.2pt;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .pitch {
+      margin-top: 2mm;
+      color: var(--muted);
+      font-size: 9.8pt;
+      line-height: 1.35;
+      text-align: justify;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-size: 10.4pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      font-weight: 700;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.2mm;
+      margin-bottom: 2.3mm;
+    }
+
+    .job, .edu { margin-bottom: 2.2mm; }
+    .job:last-child, .edu:last-child { margin-bottom: 0; }
+
+    .job-head, .edu-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 3mm;
+    }
+
+    .job-title, .edu-title {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: var(--ink);
+    }
+
+    .job-meta, .edu-meta {
+      font-size: 9.4pt;
+      color: var(--muted);
+      margin-top: 0.4mm;
+      font-weight: 600;
+    }
+
+    .job-date, .edu-date {
+      flex-shrink: 0;
+      font-size: 9.4pt;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .bullets {
+      margin-top: 1mm;
+      padding-left: 4mm;
+      color: var(--muted);
+      font-size: 9.9pt;
+      line-height: 1.32;
+      font-weight: 500;
+    }
+
+    .bullets li + li { margin-top: 0.45mm; }
+
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2mm 4mm;
+    }
+
+    .fit-item {
+      font-size: 9.5pt;
+      color: var(--muted);
+      line-height: 1.3;
+      font-weight: 500;
+    }
+
+    .fit-item strong {
+      display: block;
+      color: var(--ink);
+      font-size: 10pt;
+      margin-bottom: 0.4mm;
+      font-weight: 700;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5mm;
+    }
+
+    .badge {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 9pt;
+      font-weight: 700;
+      padding: 1.2mm 2.3mm;
+      border-radius: 4px;
+    }
+
+    @media print {
+      html, body { background: white; }
+      .page { box-shadow: none; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar">
+      <div>
+        <div class="brand-name">Mouhamadou<br />Sow</div>
+        <div class="brand-role">Projets digitaux &amp; SEO</div>
+        <div class="brand-target">Alternance · JLH Move Services</div>
+        <div class="highlight">
+          <strong>Focus candidature</strong>
+          Visibilité en ligne · SEO · contenus<br />
+          Pilotage de projets digitaux<br />
+          Master en cours · Bac+4/5 · IA &amp; data
+        </div>
+      </div>
+
+      <div class="side-block">
+        <h2>Contact</h2>
+        <ul class="contact-list">
+          <li><strong>07 45 71 90 20</strong></li>
+          <li><strong>doudousow1000@gmail.com</strong></li>
+          <li>Bordeaux · Mobilité France</li>
+          <li>Disponible dès septembre 2026</li>
+        </ul>
+      </div>
+
+      <div class="side-block">
+        <h2>Compétences digitales</h2>
+        <ul class="skill-list">
+          <li>SEO : mots-clés, optimisation contenus</li>
+          <li>Rédaction web &amp; articles de blog</li>
+          <li>Analyse de performances / KPI</li>
+          <li>Community management &amp; réseaux</li>
+          <li>Canva, Adobe, CapCut, PowerPoint</li>
+          <li>WordPress · supports digitaux</li>
+          <li>Veille digital &amp; outils IA</li>
+        </ul>
+      </div>
+
+      <div class="side-block">
+        <h2>Qualités</h2>
+        <ul class="skill-list">
+          <li>Curiosité &amp; créativité</li>
+          <li>Polyvalence &amp; autonomie</li>
+          <li>Organisation &amp; rigueur</li>
+          <li>Sens du relationnel client</li>
+          <li>Force de proposition</li>
+          <li>Qualités rédactionnelles</li>
+        </ul>
+      </div>
+
+      <div class="side-block">
+        <h2>Langues</h2>
+        <ul class="lang-list">
+          <li><strong>Français</strong> — maternelle</li>
+          <li><strong>Anglais</strong> — opérationnel (B2+)</li>
+          <li><strong>Espagnol</strong> — B2</li>
+          <li><strong>Wolof</strong> — C2</li>
+        </ul>
+      </div>
+
+      <div class="side-block">
+        <h2>Centres d’intérêt</h2>
+        <ul class="interest-list">
+          <li>Marketing digital &amp; SEO</li>
+          <li>Intelligence artificielle</li>
+          <li>Événementiel · Sport · Musique</li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="main-header">
+        <h1>Mouhamadou Sow</h1>
+        <p class="headline">Alternance Projets digitaux &amp; SEO · Septembre 2026</p>
+        <p class="pitch">
+          Diplômé en Communication Digitale Internationale et admis en Master Data Management et IA à l’Efrei
+          (Bac+4/5), je candidate pour piloter vos projets digitaux et renforcer la visibilité en ligne du
+          <strong>groupe JLH Move Services</strong>. Curieux, polyvalent et créatif, j’aime imaginer une
+          stratégie de contenus, suivre un projet de A à Z et échanger avec des clients. À l’aise avec les
+          outils digitaux, les réseaux sociaux et l’IA, je souhaite contribuer à l’analyse SEO, à
+          l’optimisation des contenus et à la rédaction d’articles de blog à fort impact organique.
+        </p>
+      </header>
+
+      <section>
+        <h2 class="section-title">Formation</h2>
+        <div class="edu">
+          <div class="edu-head">
+            <div>
+              <div class="edu-title">Master Data Management et IA</div>
+              <div class="edu-meta">Efrei · Admis · Bac+4/5 · Rentrée septembre 2026 · Data, IA &amp; projets digitaux</div>
+            </div>
+            <div class="edu-date">2026 – 2028</div>
+          </div>
+        </div>
+        <div class="edu">
+          <div class="edu-head">
+            <div>
+              <div class="edu-title">Bachelor Communication Digitale et Internationale</div>
+              <div class="edu-meta">Efrei Bordeaux · Diplômé · Marketing digital, contenus, communication &amp; stratégie</div>
+            </div>
+            <div class="edu-date">2023 – 2026</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Expériences professionnelles</h2>
+
+        <article class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Chargé de communication digitale</div>
+              <div class="job-meta">02 Radio · Bordeaux · Stage</div>
+            </div>
+            <div class="job-date">Avr. – Juin 2024</div>
+          </div>
+          <ul class="bullets">
+            <li>Rédaction et production de contenus digitaux pour renforcer la visibilité de la marque</li>
+            <li>Analyse de l’engagement des publications et optimisation des formats / messages</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Organisation d’événements &amp; communication digitale</div>
+              <div class="job-meta">Mare Summit · Malte · Stage international</div>
+            </div>
+            <div class="job-date">Sep. – Déc. 2024</div>
+          </div>
+          <ul class="bullets">
+            <li>Actions marketing digital, veille tendances et reporting mensuel des KPI de performance</li>
+            <li>Production de contenus pour valoriser 2 événements (~80 participants) et booster la portée</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Chargé de prospection &amp; communication digitale</div>
+              <div class="job-meta">Buroxia · Marseille · Stage alterné</div>
+            </div>
+            <div class="job-date">Fév. – Mai 2026</div>
+          </div>
+          <ul class="bullets">
+            <li>Création de contenus et supports pour améliorer la visibilité de l’offre en ligne</li>
+            <li>Pilotage de 2 événements professionnels de A à Z (logistique, communication, suivi)</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Co-fondateur · Communication &amp; projets digitaux</div>
+              <div class="job-meta">Just Do It · Agence digitale · Création d’entreprise</div>
+            </div>
+            <div class="job-date">2024 – 2025</div>
+          </div>
+          <ul class="bullets">
+            <li>Conception de dispositifs digitaux et contenus clients, de la proposition à la livraison</li>
+            <li>Relation client, priorisation des missions et actions marketing pour gagner en visibilité</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Assistant commercial &amp; événementiel</div>
+              <div class="job-meta">Édition Limitée · Dakar · Stage 3 mois</div>
+            </div>
+            <div class="job-date">Juil. – Sep. 2024</div>
+          </div>
+          <ul class="bullets">
+            <li>Organisation de 2 événements corporate et coordination d’équipe (relationnel client)</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">Compétences clés pour le poste</h2>
+        <div class="badge-row">
+          <span class="badge">SEO &amp; mots-clés</span>
+          <span class="badge">Rédaction blog</span>
+          <span class="badge">Optimisation contenus</span>
+          <span class="badge">Analyse KPI</span>
+          <span class="badge">Projets digitaux</span>
+          <span class="badge">WordPress</span>
+          <span class="badge">Réseaux sociaux</span>
+          <span class="badge">Canva / Adobe</span>
+          <span class="badge">Outils IA</span>
+          <span class="badge">Relation client</span>
+          <span class="badge">Autonomie</span>
+          <span class="badge">Créativité</span>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
