@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mouhamadou Sow — Portfolio</title>
+  <meta name="description" content="Portfolio de Mouhamadou Sow — communicant digital, création de contenu, événementiel, data & IA. Disponible en alternance dès septembre 2026." />
+  <meta name="theme-color" content="#0e151c" />
+  <meta property="og:title" content="Mouhamadou Sow — Portfolio" />
+  <meta property="og:description" content="Création, communication digitale, projets internationaux et approche data & IA." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/portrait.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a class="logo" href="#top">Mouhamadou <span>Sow</span></a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#work">Réalisations</a>
+        <a href="#about">À propos</a>
+        <a href="#experience">Parcours</a>
+        <a href="#skills">Compétences</a>
+        <a class="btn btn-primary" href="#contact">Me contacter</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu"><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav" hidden>
+    <button class="close" id="closeMenu" aria-label="Fermer">×</button>
+    <a href="#work">Réalisations</a>
+    <a href="#about">À propos</a>
+    <a href="#experience">Parcours</a>
+    <a href="#skills">Compétences</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-kicker">Portfolio personnel · Alternance 2026</div>
+          <h1 class="hero-title">Mouhamadou<br /><em>Sow</em></h1>
+          <p class="hero-lead">
+            Communicant digital entre création, stratégie et data.
+            Je conçois des contenus, des expériences de marque et des projets
+            qui se voient — de Bordeaux à Dakar, en passant par Malte.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Discutons d’un projet</a>
+            <a class="btn btn-ghost" href="#work">Voir mes réalisations</a>
+          </div>
+          <div class="hero-meta">
+            <div><strong>7+</strong> expériences pro</div>
+            <div><strong>4</strong> langues</div>
+            <div><strong>Sept. 2026</strong> disponible</div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-frame">
+            <img src="assets/portrait.webp" alt="Portrait de Mouhamadou Sow" width="800" height="1000" fetchpriority="high" />
+          </div>
+          <div class="hero-badge">
+            <strong>Master Data &amp; IA</strong>
+            Efrei · rentrée septembre 2026
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Social Media <i>✦</i> Content Creation <i>✦</i> Branding <i>✦</i> Community <i>✦</i> Data &amp; IA <i>✦</i> Adobe Suite <i>✦</i> Événementiel <i>✦</i> WordPress <i>✦</i> Montage vidéo <i>✦</i> Direction artistique <i>✦</i></span>
+        <span>Social Media <i>✦</i> Content Creation <i>✦</i> Branding <i>✦</i> Community <i>✦</i> Data &amp; IA <i>✦</i> Adobe Suite <i>✦</i> Événementiel <i>✦</i> WordPress <i>✦</i> Montage vidéo <i>✦</i> Direction artistique <i>✦</i></span>
+      </div>
+    </div>
+
+    <section id="work">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Réalisations</div>
+          <h2>Des projets qui montrent le style.</h2>
+          <p>3D, vidéo événementielle, branding et direction artistique — sélection de travaux récents.</p>
+        </div>
+
+        <div class="work-grid reveal">
+          <article class="work-card tall">
+            <video src="assets/realisations/jetour-3d.mp4" poster="assets/realisations/jetour-3d-poster.jpg" muted loop playsinline autoplay></video>
+            <div class="work-content">
+              <div class="work-tags"><span>3D</span><span>Événementiel</span><span>Automobile</span></div>
+              <h3>Jetour × Terrou Bi</h3>
+              <p>Prévisualisation 3D d’un événement automobile à Dakar.</p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <video src="assets/realisations/bmw-mondial-auto.mp4" poster="assets/realisations/bmw-mondial-auto-poster.jpg" muted loop playsinline autoplay></video>
+            <div class="work-content">
+              <div class="work-tags"><span>Vidéo</span><span>International</span></div>
+              <h3>BMW × Mondial de l’Auto</h3>
+              <p>Couverture vidéo du partenariat pendant mon stage à Malte.</p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <img src="assets/realisations/logo-bhs.webp" alt="Logo BHS — From DK to the World" />
+            <div class="work-content">
+              <div class="work-tags"><span>Logo</span><span>Branding</span></div>
+              <h3>Logo BHS</h3>
+              <p>Identité pour un groupe de rap sénégalais, inspirée de Dakar.</p>
+            </div>
+          </article>
+
+          <article class="work-card" style="grid-column: 1 / -1; min-height: 320px;">
+            <img src="assets/realisations/affiche-new-york-911.webp" alt="Affiche de film New York 911" style="object-position: center;" />
+            <div class="work-content">
+              <div class="work-tags"><span>Photoshop</span><span>After Effects</span><span>Illustrator</span></div>
+              <h3>New York 911 — Affiche de film</h3>
+              <p>Direction artistique académique : affiche cinématographique multi-outils.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-layout">
+        <div class="section-head reveal" style="margin-bottom:0">
+          <div class="eyebrow">À propos</div>
+          <h2>Créatif, curieux, orienté impact.</h2>
+          <div class="about-text" style="margin-top:1rem">
+            <p>
+              Je suis Mouhamadou Sow, diplômé en Communication Digitale &amp; Internationale à l’Efrei Bordeaux.
+              J’aime autant imaginer une idée visuelle que construire le dispositif qui la fait vivre :
+              contenus, social, événements, branding.
+            </p>
+            <p>
+              En septembre 2026, je démarre un Master Data Management &amp; IA. Mon objectif :
+              croiser intuition créative et lecture des données pour des stratégies plus justes,
+              plus efficaces, plus mémorables.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-points reveal">
+          <div class="about-point">
+            <strong>Communication digitale</strong>
+            <p>Contenus, social media et identité visuelle pour des marques qui veulent exister vraiment.</p>
+          </div>
+          <div class="about-point">
+            <strong>Data &amp; IA</strong>
+            <p>Une approche plus analytique pour mesurer, optimiser et décider.</p>
+          </div>
+          <div class="about-point">
+            <strong>Dimension internationale</strong>
+            <p>Expérience à Malte, parcours entre France et Sénégal, 4 langues au quotidien.</p>
+          </div>
+          <div class="about-point">
+            <strong>Musique &amp; culture</strong>
+            <p>Passion forte pour la musique — je pratique, j’écoute, je crée autour de ça.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container two-col">
+        <div>
+          <div class="section-head reveal">
+            <div class="eyebrow">Parcours</div>
+            <h2>Expériences qui construisent le profil.</h2>
+          </div>
+          <div class="timeline reveal">
+            <article class="timeline-item">
+              <div class="timeline-meta">Fév. – Mai 2026 · Stage alterné</div>
+              <h3>Chargé de communication digitale</h3>
+              <div class="place">Buroxia · Marseille</div>
+              <ul>
+                <li>Contenus social media &amp; campagnes publicitaires</li>
+                <li>Organisation d’événements et suivi de site web</li>
+              </ul>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-meta">2024 – 2025 · Création d’entreprise</div>
+              <h3>Co-fondateur</h3>
+              <div class="place">Just Do It · Agence digitale</div>
+              <ul>
+                <li>Stratégie, vidéos, photos et présence en ligne pour restaurants</li>
+                <li>Pilotage de projets créatifs et relation client</li>
+              </ul>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-meta">Sep. – Déc. 2024 · Stage international</div>
+              <h3>Événements &amp; communication digitale</h3>
+              <div class="place">Mare Summit · Malte</div>
+              <ul>
+                <li>Logistique d’événements professionnels</li>
+                <li>Réseaux sociaux et mise à jour web</li>
+              </ul>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-meta">Avr. – Juin 2024 · Stage</div>
+              <h3>Communication digitale &amp; régie antenne</h3>
+              <div class="place">02 Radio · Bordeaux</div>
+              <ul>
+                <li>Contenus réseaux sociaux et régie en direct</li>
+              </ul>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-meta">Juil. – Août 2024 · Stage</div>
+              <h3>Assistant événementiel</h3>
+              <div class="place">Édition Limitée · Dakar</div>
+              <ul>
+                <li>Événements corporate &amp; culturels, coordination prestataires</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="section-head">
+            <div class="eyebrow">Formation</div>
+            <h2>Académie.</h2>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-meta">2026 – 2028 · À venir</div>
+              <h3>Master Data Management &amp; IA</h3>
+              <div class="place">Efrei Bordeaux</div>
+              <ul>
+                <li>Data, management et IA appliqués aux stratégies business</li>
+                <li>Rythme : 2 semaines entreprise / 1 semaine école</li>
+              </ul>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-meta">2023 – 2026 · Diplômé</div>
+              <h3>Bachelor Communication Digitale &amp; Internationale</h3>
+              <div class="place">Efrei Bordeaux</div>
+              <ul>
+                <li>Social media, contenus, communication internationale</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Compétences</div>
+          <h2>Ce que je mets sur la table.</h2>
+        </div>
+        <div class="skills-wrap reveal">
+          <div class="skill-row">
+            <h3>Communication</h3>
+            <p>Rédaction, création de contenu, identité visuelle, gestion des réseaux sociaux, aisance à l’oral.</p>
+          </div>
+          <div class="skill-row">
+            <h3>Création</h3>
+            <p>Photoshop, Illustrator, CapCut, montage vidéo, web design, direction artistique.</p>
+          </div>
+          <div class="skill-row">
+            <h3>Stratégie &amp; data</h3>
+            <p>Planification éditoriale, campagnes pub, analyse de performance, prospection, outils IA.</p>
+          </div>
+          <div class="skill-row">
+            <h3>Langues</h3>
+            <div class="lang-list">
+              <div class="lang-item">Français <span>Natif</span></div>
+              <div class="lang-item">Wolof <span>Natif</span></div>
+              <div class="lang-item">Anglais <span>B2+</span></div>
+              <div class="lang-item">Espagnol <span>B2</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div>
+            <h2>Un projet, une alternance, une idée&nbsp;?</h2>
+            <p>
+              Disponible dès septembre 2026 pour 12 à 24 mois.
+              Écrivons quelque chose qui a du style — et des résultats.
+            </p>
+            <div class="contact-actions">
+              <a class="btn btn-primary" href="mailto:doncopa9@gmail.com?subject=Contact%20portfolio%20-%20Mouhamadou%20Sow">Envoyer un email</a>
+              <a class="btn btn-ghost" href="tel:+33745719020">07 45 71 90 20</a>
+            </div>
+          </div>
+          <div class="contact-details">
+            <a href="mailto:doncopa9@gmail.com">
+              <strong>Email</strong>
+              doncopa9@gmail.com
+            </a>
+            <a href="tel:+33745719020">
+              <strong>Téléphone</strong>
+              07 45 71 90 20
+            </a>
+            <div>
+              <strong>Localisation</strong>
+              Mérignac · Mobilité France
+            </div>
+            <div>
+              <strong>Disponibilité</strong>
+              Septembre 2026 · 2 sem. entreprise / 1 sem. école
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Mouhamadou Sow</div>
+      <div>Portfolio personnel · Création, digital, data &amp; IA</div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
