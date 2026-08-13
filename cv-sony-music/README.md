@@ -15,4 +15,4 @@ CV de **Mouhamadou Sow** pour l’alternance **Assistant(e) Chef de Projet Marke
 - Passion musique mise en avant (pratique + culture)
 - Missions RCA : projets FR/intl, plannings promo, événements, supports, admin
 - Anglais courant
-- Rythme 4j entreprise / 1j école · dispo sept. 2026 · Paris
+- Rythme 2 sem. entreprise / 1 sem. école · dispo sept. 2026 · Paris
