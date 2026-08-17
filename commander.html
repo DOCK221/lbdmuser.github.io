@@ -4,15 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Commander en ligne — Burger Coffee Saly</title>
-  <meta name="description" content="Commandez en ligne chez Burger Coffee Saly. Smashs, burgers, salades, café. Paiement Wave. Sur place, à emporter ou livraison gratuite sur tout Saly.">
+  <meta name="description" content="Commandez en ligne chez Burger Coffee Saly. Smashs, burgers, tacos, salades, café. Paiement Wave. Sur place, à emporter ou livraison gratuite sur tout Saly.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://ancient-shadow-5317.zerodeploy.app/commander.html">
   <meta name="theme-color" content="#123524">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/order.css">
+  <link rel="stylesheet" href="css/styles.min.css">
+  <link rel="stylesheet" href="css/order.min.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>">
 </head>
 <body class="order-page">
@@ -39,14 +38,14 @@
   <main id="orderMain" class="order-layout">
     <aside class="order-cats" aria-label="Catégories">
       <button class="order-cat is-active" data-cat="all">Tout</button>
-      <button class="order-cat" data-cat="smashs">Smashs</button>
-      <button class="order-cat" data-cat="burgers">Burgers</button>
-      <button class="order-cat" data-cat="sandwichs">Sandwichs</button>
-      <button class="order-cat" data-cat="plats">Plats</button>
-      <button class="order-cat" data-cat="salades">Salades</button>
-      <button class="order-cat" data-cat="breakfast">Breakfast</button>
-      <button class="order-cat" data-cat="coffee">Café</button>
-      <button class="order-cat" data-cat="boissons">Boissons</button>
+      <button class="order-cat" data-cat="breakfast">🥐 Petit-déj</button>
+      <button class="order-cat" data-cat="burgers">🍔 Burgers</button>
+      <button class="order-cat" data-cat="smashs">🍔 Smashs</button>
+      <button class="order-cat" data-cat="menus">🔥 Menus</button>
+      <button class="order-cat" data-cat="tacos">🌮 Tacos</button>
+      <button class="order-cat" data-cat="salades">🥗 Salades</button>
+      <button class="order-cat" data-cat="boissons">☕ Boissons</button>
+      <button class="order-cat" data-cat="desserts">🍰 Desserts</button>
     </aside>
 
     <section class="order-menu">
@@ -83,7 +82,23 @@
     </aside>
   </main>
 
-  <!-- Checkout modal -->
+  <dialog class="checkout-dialog menu-burger-dialog" id="menuBurgerDialog">
+    <form method="dialog" class="checkout-form">
+      <header>
+        <h2>Menu Burger — 5 000 F</h2>
+        <p>Choisissez votre plat et votre boisson incluse (obligatoire).</p>
+      </header>
+      <p class="menu-choice-label">1. Burger ou smash</p>
+      <div id="menuBurgerChoices" class="menu-choice-list" role="listbox" aria-label="Choix burger ou smash"></div>
+      <p class="menu-choice-label">2. Boisson incluse</p>
+      <div id="menuDrinkChoices" class="menu-choice-list" role="listbox" aria-label="Choix boisson incluse"></div>
+      <div class="checkout-actions">
+        <button type="button" class="btn btn--ghost-dark" id="menuBurgerCancel">Annuler</button>
+        <button type="button" class="btn btn--primary" id="menuBurgerConfirm" disabled>Ajouter au panier</button>
+      </div>
+    </form>
+  </dialog>
+
   <dialog class="checkout-dialog" id="checkoutDialog">
     <form method="dialog" class="checkout-form" id="checkoutForm">
       <header>
@@ -126,10 +141,22 @@
           Payer avec Wave
         </button>
       </div>
-      <p class="checkout-hint">Après paiement Wave, votre commande est aussi envoyée sur WhatsApp.</p>
+      <p class="checkout-hint">Après validation, vous payez via Wave et la commande est transmise au restaurant par WhatsApp.</p>
     </form>
   </dialog>
 
-  <script src="js/order.js" defer></script>
+  <dialog class="checkout-dialog" id="orderConfirmDialog">
+    <div class="checkout-form">
+      <header>
+        <h2>Commande confirmée</h2>
+        <p>Merci ! Payez avec Wave, puis validez le message WhatsApp pour transmettre votre commande au restaurant.</p>
+      </header>
+      <div class="checkout-actions">
+        <button type="button" class="btn btn--primary" id="orderConfirmClose">Fermer</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/order.min.js" defer></script>
 </body>
 </html>
