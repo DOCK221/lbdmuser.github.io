@@ -26,7 +26,7 @@ export function Lifestyle() {
       </motion.div>
       <div className="absolute inset-0 bg-ink/40" />
       <div className="relative z-10 flex h-full items-center justify-center px-6 text-center">
-        <blockquote className="editorial max-w-4xl text-3xl text-ivory sm:text-5xl md:text-6xl">
+        <blockquote className="editorial max-w-4xl text-3xl italic text-ivory sm:text-5xl md:text-6xl">
           Une chambre n’est pas simplement un espace.
           <br />
           C’est une expérience.
