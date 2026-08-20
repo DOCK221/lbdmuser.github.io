@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifs - Hébergement Données Utilisateurs | Les Badges de Mickael</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        :root {
+            --orange: #f39c12;
+            --violet: #9b59b6;
+            --vert: #27ae60;
+            --bleu: #3498db;
+            --rouge: #e74c3c;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--orange);
+        }
+
+        h1 {
+            color: var(--violet);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+
+        .intro {
+            background: #fff3cd;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--orange);
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .pricing-table thead {
+            background: linear-gradient(135deg, var(--violet), var(--orange));
+            color: white;
+        }
+
+        .pricing-table th {
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .pricing-table td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .pricing-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .pricing-table tbody tr:nth-child(even) {
+            background: #fafbfc;
+        }
+
+        .pricing-table tbody tr:nth-child(even):hover {
+            background: #f0f2f5;
+        }
+
+        .plan-name {
+            font-weight: bold;
+            color: var(--violet);
+            font-size: 1.1rem;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: var(--vert);
+        }
+
+        .price-unit {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-popular {
+            background: var(--orange);
+            color: white;
+        }
+
+        .badge-recommended {
+            background: var(--vert);
+            color: white;
+        }
+
+        .badge-entreprise {
+            background: var(--violet);
+            color: white;
+        }
+
+        .features-section {
+            margin: 3rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #fafbfc, #ffffff);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--orange);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .feature-card h3 {
+            color: var(--violet);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .calculation-section {
+            background: #e8f5e9;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--vert);
+        }
+
+        .calculation-section h2 {
+            color: var(--vert);
+            margin-bottom: 1rem;
+        }
+
+        .example {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .example strong {
+            color: var(--violet);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, var(--violet), var(--orange));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-section a {
+            color: white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .btn-download {
+            background: var(--vert);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-download:hover {
+            background: #229954;
+            transform: scale(1.05);
+        }
+
+        .notes {
+            background: #fff3cd;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--orange);
+        }
+
+        .notes h3 {
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+
+        .notes ul {
+            margin-left: 1.5rem;
+        }
+
+        .notes li {
+            margin-bottom: 0.5rem;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .btn-download {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .pricing-table {
+                font-size: 0.9rem;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏷️ Tarifs d'Hébergement des Données Utilisateurs</h1>
+            <p class="subtitle">Système de Gestion des Badges de Secours - Les Badges de Mickael</p>
+        </header>
+
+        <div class="intro">
+            <h2 style="color: var(--orange); margin-bottom: 1rem;">📋 À propos de ce document</h2>
+            <p><strong>Ce tableau détaille les coûts d'hébergement</strong> pour une base de données en ligne sécurisée permettant de stocker les informations personnelles et médicales des utilisateurs du système "Les Badges de Mickael".</p>
+            <p style="margin-top: 0.5rem;">Actuellement, les données sont stockées localement dans le navigateur (localStorage). Pour une solution professionnelle avec hébergement cloud, voici les tarifs recommandés.</p>
+        </div>
+
+        <h2 style="color: var(--violet); margin-bottom: 1rem;">💰 Grille Tarifaire Mensuelle</h2>
+
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th>Formule</th>
+                    <th>Nombre d'utilisateurs</th>
+                    <th>Prix Mensuel</th>
+                    <th>Prix Annuel (économie)</th>
+                    <th>Stockage</th>
+                    <th>Support</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="plan-name">🌱 Starter</span><br>
+                        <small>Idéal pour débuter</small>
+                    </td>
+                    <td><strong>1 - 50 utilisateurs</strong></td>
+                    <td>
+                        <span class="price">9 500 FCFA</span><br>
+                        <span class="price-unit">≈ 15 €</span>
+                    </td>
+                    <td>
+                        <span class="price">95 000 FCFA</span><br>
+                        <span class="price-unit">2 mois offerts</span>
+                    </td>
+                    <td>5 GB</td>
+                    <td>Email uniquement</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="plan-name">🚀 Professionnel</span>
+                        <span class="badge badge-popular">POPULAIRE</span><br>
+                        <small>Pour associations et PME</small>
+                    </td>
+                    <td><strong>51 - 200 utilisateurs</strong></td>
+                    <td>
+                        <span class="price">25 000 FCFA</span><br>
+                        <span class="price-unit">≈ 38 €</span>
+                    </td>
+                    <td>
+                        <span class="price">250 000 FCFA</span><br>
+                        <span class="price-unit">2 mois offerts</span>
+                    </td>
+                    <td>20 GB</td>
+                    <td>Email + Chat</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="plan-name">💼 Business</span>
+                        <span class="badge badge-recommended">RECOMMANDÉ</span><br>
+                        <small>Solution complète</small>
+                    </td>
+                    <td><strong>201 - 500 utilisateurs</strong></td>
+                    <td>
+                        <span class="price">55 000 FCFA</span><br>
+                        <span class="price-unit">≈ 84 €</span>
+                    </td>
+                    <td>
+                        <span class="price">550 000 FCFA</span><br>
+                        <span class="price-unit">2 mois offerts</span>
+                    </td>
+                    <td>50 GB</td>
+                    <td>Prioritaire 24/7</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="plan-name">🏢 Entreprise</span>
+                        <span class="badge badge-entreprise">PREMIUM</span><br>
+                        <small>Sur mesure</small>
+                    </td>
+                    <td><strong>501 - 1000 utilisateurs</strong></td>
+                    <td>
+                        <span class="price">95 000 FCFA</span><br>
+                        <span class="price-unit">≈ 145 €</span>
+                    </td>
+                    <td>
+                        <span class="price">950 000 FCFA</span><br>
+                        <span class="price-unit">2 mois offerts</span>
+                    </td>
+                    <td>100 GB</td>
+                    <td>Dédié 24/7</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="plan-name">🌍 Illimité</span><br>
+                        <small>Grandes organisations</small>
+                    </td>
+                    <td><strong>1000+ utilisateurs</strong></td>
+                    <td colspan="3" style="text-align: center;">
+                        <span class="price">Sur devis</span><br>
+                        <span class="price-unit">Contactez-nous pour un tarif personnalisé</span>
+                    </td>
+                    <td>Illimité</td>
+                    <td>Manager dédié</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="calculation-section">
+            <h2>🧮 Exemples de Calcul</h2>
+            
+            <div class="example">
+                <h3>💡 Exemple 1 : Petit groupe familial (15 personnes)</h3>
+                <p><strong>Formule :</strong> Starter</p>
+                <p><strong>Coût mensuel :</strong> 9 500 FCFA (≈ 15 €)</p>
+                <p><strong>Coût par utilisateur :</strong> 633 FCFA/mois (≈ 1 €/mois)</p>
+                <p><strong>Coût annuel :</strong> 95 000 FCFA (≈ 145 €) - <em>Économie de 19 000 FCFA</em></p>
+            </div>
+
+            <div class="example">
+                <h3>💡 Exemple 2 : Association moyenne (120 membres)</h3>
+                <p><strong>Formule :</strong> Professionnel</p>
+                <p><strong>Coût mensuel :</strong> 25 000 FCFA (≈ 38 €)</p>
+                <p><strong>Coût par utilisateur :</strong> 208 FCFA/mois (≈ 0,32 €/mois)</p>
+                <p><strong>Coût annuel :</strong> 250 000 FCFA (≈ 381 €) - <em>Économie de 50 000 FCFA</em></p>
+            </div>
+
+            <div class="example">
+                <h3>💡 Exemple 3 : Entreprise moyenne (350 employés)</h3>
+                <p><strong>Formule :</strong> Business</p>
+                <p><strong>Coût mensuel :</strong> 55 000 FCFA (≈ 84 €)</p>
+                <p><strong>Coût par utilisateur :</strong> 157 FCFA/mois (≈ 0,24 €/mois)</p>
+                <p><strong>Coût annuel :</strong> 550 000 FCFA (≈ 839 €) - <em>Économie de 110 000 FCFA</em></p>
+            </div>
+
+            <div class="example">
+                <h3>💡 Exemple 4 : Grande organisation (750 personnes)</h3>
+                <p><strong>Formule :</strong> Entreprise</p>
+                <p><strong>Coût mensuel :</strong> 95 000 FCFA (≈ 145 €)</p>
+                <p><strong>Coût par utilisateur :</strong> 127 FCFA/mois (≈ 0,19 €/mois)</p>
+                <p><strong>Coût annuel :</strong> 950 000 FCFA (≈ 1 449 €) - <em>Économie de 190 000 FCFA</em></p>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <h2 style="color: var(--violet); margin-bottom: 1rem;">✨ Fonctionnalités Incluses (Toutes les Formules)</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🔒 Sécurité Maximale</h3>
+                    <p>Chiffrement SSL/TLS, sauvegardes quotidiennes automatiques, conformité RGPD</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>☁️ Hébergement Cloud</h3>
+                    <p>Infrastructure hautement disponible (99,9% uptime), serveurs sécurisés en Europe</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>👥 Gestion Multi-Utilisateurs</h3>
+                    <p>Interface administrateur complète, gestion des droits et des accès</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📱 Accès Mobile</h3>
+                    <p>Application responsive, accessible depuis smartphone, tablette et ordinateur</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🆘 Données Médicales</h3>
+                    <p>Stockage sécurisé des informations de santé, allergies, contacts d'urgence</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📊 Tableaux de Bord</h3>
+                    <p>Statistiques, rapports, export des données (Excel, PDF, CSV)</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🔄 Mises à Jour Automatiques</h3>
+                    <p>Nouvelles fonctionnalités, correctifs de sécurité sans frais supplémentaires</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📧 Notifications Email</h3>
+                    <p>Alertes automatiques, rappels, notifications personnalisables</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🎨 Personnalisation</h3>
+                    <p>Logo personnalisé, couleurs de la marque, domaine personnalisé (formules Business+)</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📞 Support Technique</h3>
+                    <p>Assistance selon la formule choisie, documentation complète en français</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🔗 API d'Intégration</h3>
+                    <p>Connexion avec d'autres systèmes (formules Business+)</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🌍 Multi-Langue</h3>
+                    <p>Interface disponible en français, anglais et autres langues</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="notes">
+            <h3>📝 Notes Importantes</h3>
+            <ul>
+                <li><strong>Frais de mise en place :</strong> 25 000 FCFA (≈ 38 €) - payable une seule fois à l'activation</li>
+                <li><strong>Migration des données :</strong> Gratuite pour toutes les formules (import depuis Excel, CSV ou autre base)</li>
+                <li><strong>Formation initiale :</strong> 2 heures de formation gratuite pour l'administrateur</li>
+                <li><strong>Taux de change :</strong> 1 € ≈ 655 FCFA (taux indicatif, peut varier)</li>
+                <li><strong>Moyens de paiement :</strong> Virement bancaire, Mobile Money (Orange Money, Wave, MTN), carte bancaire</li>
+                <li><strong>Période d'essai :</strong> 30 jours gratuits pour toutes les formules (sans engagement)</li>
+                <li><strong>Résiliation :</strong> Sans frais, préavis de 30 jours</li>
+                <li><strong>Garantie de remboursement :</strong> 60 jours si non satisfait</li>
+            </ul>
+        </div>
+
+        <div class="features-section">
+            <h2 style="color: var(--violet); margin-bottom: 1rem;">🆚 Comparaison : Actuel vs. Solution Cloud</h2>
+            
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Critère</th>
+                        <th>🖥️ Solution Actuelle (localStorage)</th>
+                        <th>☁️ Solution Cloud Recommandée</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Coût</strong></td>
+                        <td>Gratuit</td>
+                        <td>À partir de 9 500 FCFA/mois</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Accessibilité</strong></td>
+                        <td>Un seul appareil (navigateur local)</td>
+                        <td>Tous appareils, partout dans le monde</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sauvegardes</strong></td>
+                        <td>Aucune (perte si navigateur réinitialisé)</td>
+                        <td>Automatiques quotidiennes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sécurité</strong></td>
+                        <td>Limitée (accessible localement)</td>
+                        <td>Chiffrement SSL, authentification forte</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Partage de données</strong></td>
+                        <td>Impossible</td>
+                        <td>Multi-utilisateurs avec permissions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conformité RGPD</strong></td>
+                        <td>À gérer manuellement</td>
+                        <td>Incluse et automatisée</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Support technique</strong></td>
+                        <td>Aucun</td>
+                        <td>Email, chat ou téléphone selon formule</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Capacité</strong></td>
+                        <td>Limitée (5-10 MB max)</td>
+                        <td>De 5 GB à illimité</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="contact-section">
+            <h2>📧 Besoin d'un Devis Personnalisé ?</h2>
+            <p style="margin-bottom: 1rem;">Notre équipe est à votre disposition pour répondre à toutes vos questions et établir un devis sur mesure adapté à vos besoins spécifiques.</p>
+            <p><strong>📞 Contact :</strong> <a href="mailto:ufcboy44@gmail.com">ufcboy44@gmail.com</a></p>
+            <p><strong>💬 WhatsApp :</strong> <a href="tel:+221781508788">+221 78 150 87 88</a></p>
+            <p style="margin-top: 1rem;"><em>Réponse sous 24h ouvrées</em></p>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <button class="btn-download" onclick="window.print()">🖨️ Imprimer ce Document</button>
+            <a href="mailto:?subject=Tarifs Hébergement - Les Badges de Mickael&body=Consultez les tarifs d'hébergement pour le système Les Badges de Mickael" class="btn-download">📧 Envoyer par Email</a>
+        </div>
+
+        <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #ecf0f1; text-align: center; color: #7f8c8d;">
+            <p><strong>Les Badges de Mickael</strong> - Système de Gestion des Informations d'Urgence</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Document généré le 20 août 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Fonction pour exporter vers Excel (simulation)
+        function exportToExcel() {
+            alert("Cette fonctionnalité nécessite une bibliothèque JavaScript externe comme SheetJS.\n\nPour l'instant, vous pouvez :\n1. Imprimer ce document en PDF\n2. Copier-coller le tableau dans Excel\n3. Utiliser la fonction 'Enregistrer sous' de votre navigateur");
+        }
+
+        // Afficher la date actuelle
+        document.addEventListener('DOMContentLoaded', function() {
+            const date = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const dateStr = date.toLocaleDateString('fr-FR', options);
+            console.log('Document généré le : ' + dateStr);
+        });
+    </script>
+</body>
+</html>
