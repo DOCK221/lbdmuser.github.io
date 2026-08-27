@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV Mouhamadou Sow — Assistant Chef de Projet Marketing · Sony Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,500&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #111111;
+      --muted: #2a2a2a;
+      --line: #d0d0d0;
+      --accent: #1a1a1a;
+      --accent-soft: #f0f0f0;
+      --sidebar: #111111;
+      --sidebar-muted: #f2f2f2;
+      --paper: #ffffff;
+      --sony: #c8ff00;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 0; }
+
+    html, body {
+      background: #d9d9d9;
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.32;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: 64mm 1fr;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.14);
+    }
+
+    .sidebar {
+      background: var(--sidebar);
+      color: #fff;
+      padding: 9mm 6.5mm 7mm 7mm;
+      display: flex;
+      flex-direction: column;
+      gap: 3.8mm;
+    }
+
+    .main {
+      padding: 8mm 8mm 6.5mm 7.5mm;
+      display: flex;
+      flex-direction: column;
+      gap: 3.2mm;
+    }
+
+    .brand-name {
+      font-family: "Fraunces", serif;
+      font-size: 18pt;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-role {
+      margin-top: 2mm;
+      font-size: 8.8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--sony);
+    }
+
+    .brand-target {
+      margin-top: 1.2mm;
+      font-size: 9.4pt;
+      color: var(--sidebar-muted);
+      font-weight: 600;
+    }
+
+    .highlight {
+      margin-top: 2.4mm;
+      background: rgba(200, 255, 0, 0.12);
+      border: 1.5px solid rgba(200, 255, 0, 0.45);
+      border-radius: 5px;
+      padding: 2.4mm;
+      font-size: 9.3pt;
+      line-height: 1.32;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .highlight strong {
+      display: block;
+      color: var(--sony);
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1mm;
+    }
+
+    .highlight b { color: #fff; font-size: 10pt; }
+
+    .side-block h2 {
+      font-size: 9.4pt;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--sony);
+      margin-bottom: 1.6mm;
+      font-weight: 700;
+    }
+
+    .contact-list,
+    .skill-list,
+    .lang-list,
+    .interest-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.3mm;
+    }
+
+    .contact-list li,
+    .skill-list li,
+    .lang-list li,
+    .interest-list li {
+      font-size: 9.4pt;
+      color: var(--sidebar-muted);
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    .contact-list strong,
+    .lang-list strong { color: #fff; font-weight: 700; }
+
+    .skill-list li::before {
+      content: "▸ ";
+      color: var(--sony);
+      font-weight: 700;
+    }
+
+    .main-header h1 {
+      font-family: "Fraunces", serif;
+      font-size: 20.5pt;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1;
+    }
+
+    .headline {
+      margin-top: 2mm;
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .pitch {
+      margin-top: 2mm;
+      color: var(--muted);
+      font-size: 9.9pt;
+      line-height: 1.36;
+      text-align: justify;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-size: 10.3pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      font-weight: 700;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1.1mm;
+      margin-bottom: 2.2mm;
+    }
+
+    .job, .edu { margin-bottom: 2.3mm; }
+    .job:last-child, .edu:last-child { margin-bottom: 0; }
+
+    .job-head, .edu-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 3mm;
+    }
+
+    .job-title, .edu-title {
+      font-weight: 700;
+      font-size: 10.4pt;
+      color: var(--ink);
+    }
+
+    .job-meta, .edu-meta {
+      font-size: 9.3pt;
+      color: var(--muted);
+      margin-top: 0.35mm;
+      font-weight: 600;
+    }
+
+    .job-date, .edu-date {
+      flex-shrink: 0;
+      font-size: 9.3pt;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .bullets {
+      margin-top: 0.9mm;
+      padding-left: 4mm;
+      color: var(--muted);
+      font-size: 9.8pt;
+      line-height: 1.3;
+      font-weight: 500;
+    }
+
+    .bullets li + li { margin-top: 0.4mm; }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4mm;
+    }
+
+    .badge {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 8.9pt;
+      font-weight: 700;
+      padding: 1.15mm 2.2mm;
+      border-radius: 4px;
+    }
+
+    @media print {
+      html, body { background: white; }
+      .page { box-shadow: none; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar">
+      <div>
+        <div class="brand-name">Mouhamadou<br />Sow</div>
+        <div class="brand-role">Assistant chef de projet marketing</div>
+        <div class="brand-target">Alternance · Sony Music · RCA / POP</div>
+        <div class="highlight">
+          <strong>Passion musique</strong>
+          Pratiquant · culture musicale forte<br />
+          <b>Motivé à 100% pour Sony Music</b><br />
+          Dispo. sept. 2026 · Paris 11e<br />
+          Rythme 2 sem. entreprise / 1 sem. école
+        </div>
+      </div>
+
+      <div class="side-block">
+        <h2>Contact</h2>
+        <ul class="contact-list">
+          <li><strong>07 45 71 90 20</strong></li>
+          <li><strong>doncopa9@gmail.com</strong></li>
+          <li>Bordeaux · Mobilité Paris</li>
+          <li>Disponible dès septembre 2026</li>
+        </ul>
+      </div>
+
+      <div class="side-block">
+        <h2>Compétences marketing</h2>
+        <ul class="skill-list">
+          <li>Suivi de projets FR / international</li>
+          <li>Plannings promo &amp; événementiel</li>
+          <li>Supports &amp; produits promotionnels</li>
+          <li>Arguments marketing / contenus</li>
+          <li>Organisation &amp; logistique artistes / events</li>
+          <li>Suivi administratif &amp; dossiers</li>
+          <li>Canva, Adobe, CapCut, PowerPoint</li>
+        </ul>
+      </div>
+
+      <div class="side-block">
+        <h2>Qualités</h2>
+        <ul class="skill-list">
+          <li>Passion musique authentique</li>
+          <li>Rigueur &amp; organisation</li>
+          <li>Polyvalence &amp; réactivité</li>
+          <li>Relationnel &amp; travail en équipe</li>
+          <li>Autonomie &amp; force de proposition</li>
+        </ul>
+      </div>
+
+      <div class="side-block">
+        <h2>Langues</h2>
+        <ul class="lang-list">
+          <li><strong>Français</strong> — maternelle</li>
+          <li><strong>Anglais</strong> — courant (B2+)</li>
+          <li><strong>Espagnol</strong> — B2</li>
+          <li><strong>Wolof</strong> — C2</li>
+        </ul>
+      </div>
+
+      <div class="side-block">
+        <h2>Musique &amp; centres d’intérêt</h2>
+        <ul class="interest-list">
+          <li>Pratique musicale &amp; création</li>
+          <li>Industrie musicale &amp; labels</li>
+          <li>Culture pop / scènes FR &amp; intl</li>
+          <li>Événementiel · Sport</li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="main-header">
+        <h1>Mouhamadou Sow</h1>
+        <p class="headline">Alternance Assistant Chef de Projet Marketing · Sony Music · Sept. 2026</p>
+        <p class="pitch">
+          Diplômé en Communication Digitale Internationale et admis en Master à l’Efrei (Bac+4/5),
+          je candidate avec une motivation très forte pour rejoindre la cellule POP du label RCA au sein de
+          <strong>Sony Music Entertainment</strong>. La musique est au cœur de ma vie : j’en écoute énormément,
+          j’en pratique et je cultive une vraie culture artistique. Disponible dès septembre 2026 sur Paris
+          (rythme <strong>2 semaines entreprise / 1 semaine école</strong>), je souhaite mettre mon organisation,
+          mon anglais courant et mon expérience en projets / promo / événementiel au service des artistes et des équipes marketing.
+        </p>
+      </header>
+
+      <section>
+        <h2 class="section-title">Formation</h2>
+        <div class="edu">
+          <div class="edu-head">
+            <div>
+              <div class="edu-title">Master Data Management et IA</div>
+              <div class="edu-meta">Efrei · Admis · Bac+4/5 · Rentrée septembre 2026 · Rythme 2 sem. entreprise / 1 sem. école</div>
+            </div>
+            <div class="edu-date">2026 – 2028</div>
+          </div>
+        </div>
+        <div class="edu">
+          <div class="edu-head">
+            <div>
+              <div class="edu-title">Bachelor Communication Digitale et Internationale</div>
+              <div class="edu-meta">Efrei Bordeaux · Diplômé · Marketing, communication, contenus &amp; stratégie</div>
+            </div>
+            <div class="edu-date">2023 – 2026</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Expériences professionnelles</h2>
+
+        <article class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Chargé de communication digitale</div>
+              <div class="job-meta">02 Radio · Bordeaux · Stage · Environnement média / musique</div>
+            </div>
+            <div class="job-date">Avr. – Juin 2024</div>
+          </div>
+          <ul class="bullets">
+            <li>Création de contenus et arguments promotionnels pour valoriser les programmes et la marque</li>
+            <li>Analyse d’engagement et optimisation des formats pour soutenir la visibilité</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Organisation d’événements &amp; communication digitale</div>
+              <div class="job-meta">Mare Summit · Malte · Stage international</div>
+            </div>
+            <div class="job-date">Sep. – Déc. 2024</div>
+          </div>
+          <ul class="bullets">
+            <li>Coordination logistique et promo de 2 événements internationaux (~80 participants)</li>
+            <li>Suivi de projets en anglais, reporting KPI et veille des tendances digitales</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Chargé de prospection &amp; communication digitale</div>
+              <div class="job-meta">Buroxia · Marseille · Stage alterné</div>
+            </div>
+            <div class="job-date">Fév. – Mai 2026</div>
+          </div>
+          <ul class="bullets">
+            <li>Production de supports / produits promo et suivi des plannings d’actions marketing</li>
+            <li>Organisation de 2 événements professionnels de A à Z (logistique, communication, coordination)</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Co-fondateur · Communication &amp; développement</div>
+              <div class="job-meta">Just Do It · Agence digitale · Création d’entreprise</div>
+            </div>
+            <div class="job-date">2024 – 2025</div>
+          </div>
+          <ul class="bullets">
+            <li>Pilotage de projets clients de la proposition à la livraison (priorisation, délais, livrables)</li>
+            <li>Création de supports marketing et suivi relationnel au quotidien</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Assistant commercial &amp; événementiel</div>
+              <div class="job-meta">Édition Limitée · Dakar · Stage 3 mois</div>
+            </div>
+            <div class="job-date">Juil. – Sep. 2024</div>
+          </div>
+          <ul class="bullets">
+            <li>Organisation de 2 événements corporate et coordination d’équipes (accueil, planning, suivi)</li>
+            <li>Appui administratif et suivi de dossiers clients / opérationnels</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">Compétences clés pour Sony Music / RCA</h2>
+        <div class="badge-row">
+          <span class="badge">Passion musique</span>
+          <span class="badge">Projets marketing</span>
+          <span class="badge">Plannings promo</span>
+          <span class="badge">Événementiel artistes</span>
+          <span class="badge">Supports promo</span>
+          <span class="badge">Suivi administratif</span>
+          <span class="badge">Anglais courant</span>
+          <span class="badge">International</span>
+          <span class="badge">Organisation</span>
+          <span class="badge">Canva / Adobe</span>
+          <span class="badge">PowerPoint</span>
+          <span class="badge">Travail en équipe</span>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
