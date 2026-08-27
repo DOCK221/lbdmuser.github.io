@@ -1,7 +1,7 @@
 # Lettre de motivation — Alternance Chargé·e de Communication · Erganeo
 
 **Mouhamadou Sow**  
-07 45 71 90 20 · doudousow1000@gmail.com  
+07 45 71 90 20 · doncopa9@gmail.com  
 Mobilité Paris / Saint-Denis  
 
 **À l’attention du service Ressources Humaines**  
