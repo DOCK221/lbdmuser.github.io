@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Télécharger Présentation</title>
+</head>
+<body>
+    <h1>Téléchargement automatique...</h1>
+    <p>Si le téléchargement ne démarre pas, <a id="downloadLink" href="#">cliquez ici</a></p>
+    <script>
+        // Le PDF sera injecté ici
+        const pdfData = "BASE64_DATA_HERE";
+        const link = document.getElementById('downloadLink');
+        link.href = 'data:application/pdf;base64,' + pdfData;
+        link.download = 'Soutenance_Mouhamadou_Sow_B3_CDI.pdf';
+        link.click();
+    </script>
+</body>
+</html>
