@@ -6,11 +6,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { Vehicle, VehicleColor } from "@/lib/types";
 
 const PAINT_FILTERS: Record<string, string> = {
-  noir: "brightness(0.84) contrast(1.08)",
-  blanc: "brightness(1.2) saturate(0.62) contrast(0.96)",
-  gris: "grayscale(0.42) brightness(1.06) contrast(1.04)",
-  rouge: "sepia(0.42) hue-rotate(-18deg) saturate(1.75) contrast(1.04)",
-  bleu: "sepia(0.38) hue-rotate(188deg) saturate(1.35) contrast(1.04)",
+  noir: "brightness(0.72) contrast(1.18) saturate(0.9)",
+  blanc: "brightness(1.55) saturate(0.28) contrast(0.86)",
+  gris: "grayscale(0.78) brightness(1.18) contrast(1.05)",
+  rouge: "sepia(0.62) hue-rotate(-22deg) saturate(2.1) contrast(1.08)",
+  bleu: "sepia(0.55) hue-rotate(198deg) saturate(1.85) contrast(1.06)",
 };
 
 export function VehicleGallery({
@@ -27,7 +27,7 @@ export function VehicleGallery({
       vehicle.colors[0];
     // Dedicated per-color photography is supported by the data model.
     // Until those assets exist, we grade the hero set to preview the finish.
-    const shots = defaultColor.images;
+    const shots = [defaultColor.images[0]];
     const items: MediaItem[] = shots.map((src, index) => ({
       type: "image",
       src,
@@ -36,7 +36,7 @@ export function VehicleGallery({
     if (vehicle.video) {
       items.push({
         type: "video",
-        src: vehicle.video.url ?? vehicle.video.poster,
+        src: vehicle.video.url ?? shots[0],
         alt: vehicle.video.title,
       });
     }
@@ -66,7 +66,7 @@ export function VehicleGallery({
             className="absolute inset-0"
           >
             <Image
-              src={isVideo ? (vehicle.video?.poster ?? current.src) : current.src}
+              src={current.src}
               alt={current.alt}
               fill
               priority
@@ -75,8 +75,14 @@ export function VehicleGallery({
               style={{ filter: paint }}
             />
             <span
-              className="pointer-events-none absolute inset-0 mix-blend-soft-light"
-              style={{ background: `${color.hex}55` }}
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  color.id === "blanc"
+                    ? "rgba(255,255,255,0.28)"
+                    : `${color.hex}66`,
+                mixBlendMode: color.id === "blanc" ? "overlay" : "soft-light",
+              }}
             />
           </motion.div>
         </AnimatePresence>
@@ -104,7 +110,7 @@ export function VehicleGallery({
             }`}
           >
             <Image
-              src={item.type === "video" ? (vehicle.video?.poster ?? item.src) : item.src}
+              src={item.src}
               alt={item.alt}
               fill
               sizes="96px"
@@ -140,7 +146,7 @@ export function VehicleGallery({
                 />
               ) : (
                 <Image
-                  src={isVideo ? (vehicle.video?.poster ?? current.src) : current.src}
+                  src={current.src}
                   alt={current.alt}
                   fill
                   sizes="100vw"
