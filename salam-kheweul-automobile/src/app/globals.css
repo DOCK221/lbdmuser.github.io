@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #070708;
+  --color-ink-soft: #0e0e10;
+  --color-anthracite: #16161a;
+  --color-charcoal: #222227;
+  --color-line: rgba(196, 165, 116, 0.18);
+  --color-mist: #b7b3ab;
+  --color-ivory: #f3efe6;
+  --color-ivory-soft: #d8d2c6;
+  --color-gold: #c4a574;
+  --color-gold-soft: #d8c4a0;
+  --color-gold-dim: #8a734c;
+  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-outfit);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2a2e transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-ivory);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(196, 165, 116, 0.28);
+  color: #fff;
+}
+
+.font-display {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.gold-hairline {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(196, 165, 116, 0.55),
+    transparent
+  );
+}
+
+.gold-border {
+  border: 1px solid rgba(196, 165, 116, 0.28);
+}
+
+.glass {
+  background: rgba(14, 14, 16, 0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(243, 239, 230, 0.06);
+}
+
+.grain {
+  position: relative;
+}
+
+.grain::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.kenburns {
+  animation: kenburns 28s ease-out forwards;
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1) translate3d(-1.5%, 0, 0);
+  }
+}
+
+.shine-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(243, 239, 230, 0.08) 48%,
+    transparent 62%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.9s ease;
+}
+
+.shine-hover:hover::before {
+  transform: translateX(120%);
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.6;
+}
