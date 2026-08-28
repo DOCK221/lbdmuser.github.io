@@ -6,19 +6,11 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/Button";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS, SITE } from "@/lib/constants";
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -27,15 +19,8 @@ export function SiteHeader() {
     };
   }, [open]);
 
-  const isHome = pathname === "/";
-  const solid = scrolled || !isHome || open;
-
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
-        solid ? "glass py-3" : "bg-transparent py-5"
-      }`}
-    >
+    <header className="glass fixed inset-x-0 top-0 z-50 py-3">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8">
         <Link href="/" aria-label="Accueil Salam Kheweul Automobile">
           <Logo compact={false} />
@@ -66,7 +51,13 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-4 lg:flex">
+          <a
+            href={`tel:${SITE.phoneTel}`}
+            className="text-[11px] tracking-[0.12em] text-ivory/80 hover:text-gold"
+          >
+            {SITE.phoneDisplay}
+          </a>
           <Button href="/rendez-vous" variant="line" size="sm">
             Prendre rendez-vous
           </Button>
@@ -125,6 +116,9 @@ export function SiteHeader() {
               </nav>
               <Button href="/rendez-vous" size="lg" className="w-full">
                 Prendre rendez-vous
+              </Button>
+              <Button href={`tel:${SITE.phoneTel}`} variant="ghost" size="lg" className="w-full">
+                Appeler {SITE.phoneDisplay}
               </Button>
             </div>
           </motion.div>

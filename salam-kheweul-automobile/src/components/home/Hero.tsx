@@ -1,81 +1,79 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
+import { Photo } from "@/components/ui/Photo";
 import { SITE } from "@/lib/constants";
-
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2400&q=80";
+import { whatsappLink } from "@/lib/whatsapp";
 
 export function Hero() {
   return (
-    <section className="relative isolate min-h-[100svh] overflow-hidden bg-ink grain">
-      <div className="absolute inset-0">
-        <Image
-          src={HERO_IMAGE}
-          alt="Véhicule premium Salam Kheweul Automobile"
-          fill
-          priority
-          sizes="100vw"
-          className="kenburns object-cover object-[72%_center]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-ink/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/30" />
-      </div>
+    <section className="relative bg-ink pt-[72px] lg:pt-0">
+      <div className="grid min-h-[100svh] lg:grid-cols-2">
+        <div className="relative order-2 flex flex-col justify-center px-5 py-12 sm:px-10 lg:order-1 lg:px-16 lg:py-28">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-[11px] uppercase tracking-[0.34em] text-gold"
+          >
+            Bienvenue à Dakar
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.95, delay: 0.15 }}
+            className="mt-4 max-w-xl font-display text-[2.6rem] leading-[1.08] text-ivory sm:text-6xl lg:text-7xl"
+          >
+            Salam Kheweul Automobile
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.9 }}
+            className="mt-5 max-w-lg text-base leading-relaxed text-mist sm:text-lg"
+          >
+            Votre prochaine voiture commence ici. Vente, achat, location et
+            essai — une concession premium, un accueil simple, un conseiller
+            pour vous.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+          >
+            <Button href="/vehicules" variant="ivory" size="lg">
+              Voir les voitures
+            </Button>
+            <Button href="/rendez-vous" variant="gold" size="lg">
+              Prendre rendez-vous
+            </Button>
+            <Button href={whatsappLink()} variant="ghost" size="lg">
+              WhatsApp
+            </Button>
+          </motion.div>
+          <p className="mt-8 text-sm text-ivory">
+            <a href={`tel:${SITE.phoneTel}`} className="text-gold hover:underline">
+              {SITE.phoneDisplay}
+            </a>
+            <span className="mx-3 text-white/20">·</span>
+            {SITE.hours}
+          </p>
+        </div>
 
-      <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-32 sm:px-8 lg:justify-center lg:pb-24">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[11px] uppercase tracking-[0.42em] text-gold"
-        >
-          {SITE.legalName}
-        </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 max-w-xl font-display text-5xl leading-[1.05] text-ivory sm:text-6xl lg:text-7xl"
-        >
-          Votre prochaine voiture commence ici.
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.75 }}
-          className="mt-6 max-w-md text-sm leading-relaxed text-mist"
-        >
-          Vente, achat, location et services automobiles. Une sélection exigeante,
-          un accompagnement confidentiel.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.95 }}
-          className="mt-10 flex flex-col gap-3 sm:flex-row"
-        >
-          <Button href="/vehicules" variant="ivory" size="lg">
-            Découvrir nos véhicules
-          </Button>
-          <Button href="/rendez-vous" variant="ghost" size="lg">
-            Prendre rendez-vous
-          </Button>
-        </motion.div>
+        <div className="relative order-1 min-h-[46vh] lg:order-2 lg:min-h-[100svh]">
+          <Photo
+            src="/ambiance/hero.jpg"
+            alt="Voiture premium exposée chez Salam Kheweul Automobile"
+            priority
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5 lg:hidden">
+            <p className="font-display text-2xl text-ivory">Collection 2026</p>
+          </div>
+        </div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 1 }}
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 lg:flex"
-      >
-        <span className="text-[9px] uppercase tracking-[0.3em] text-mist">
-          Défiler
-        </span>
-        <span className="h-10 w-px bg-gradient-to-b from-gold to-transparent" />
-      </motion.div>
     </section>
   );
 }

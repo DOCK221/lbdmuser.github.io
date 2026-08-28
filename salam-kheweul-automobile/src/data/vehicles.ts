@@ -1,7 +1,28 @@
 import type { SocialPost, Vehicle } from "@/lib/types";
 
-function img(id: string, w = 1800): string {
-  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+const LOCAL: Record<string, string> = {
+  "photo-1492144534655-ae79c964c9d7": "/ambiance/hero.jpg",
+  "photo-1485291571150-772bcfc10da5": "/vehicles/mercedes-c.jpg",
+  "photo-1617531653332-bd46c24f2068": "/vehicles/mercedes-gle.jpg",
+  "photo-1605559424843-9e4c228bf1c2": "/vehicles/mercedes-c-2.jpg",
+  "photo-1549317661-bd32c8ce0db2": "/vehicles/lexus.jpg",
+  "photo-1533473359331-0135ef1b58bf": "/vehicles/prado.jpg",
+  "photo-1519641471654-76ce0107ad1b": "/vehicles/range.jpg",
+  "photo-1563720360172-67b8f3dce741": "/vehicles/range-2.jpg",
+  "photo-1555215695-3004980ad54e": "/vehicles/bmw-x5.jpg",
+  "photo-1494905998402-395d579af36f": "/vehicles/bmw-x5-2.jpg",
+  "photo-1606664515524-ed2f786a0bd6": "/vehicles/audi.jpg",
+  "photo-1603386329225-868f9b1ee6c9": "/vehicles/audi-2.jpg",
+  "photo-1503376780353-7e6692767b70": "/vehicles/porsche.jpg",
+  "photo-1614162692292-7ac56d7f7f1e": "/vehicles/porsche-2.jpg",
+  "photo-1609521263047-f8f205293f24": "/vehicles/tucson.jpg",
+  "photo-1606016159991-dfe4f2746ad5": "/vehicles/peugeot.jpg",
+  "photo-1511919884226-fd3cad34687c": "/vehicles/prado-2.jpg",
+};
+
+function img(id: string, size = 1800): string {
+  void size;
+  return LOCAL[id] ?? "/vehicles/detail.jpg";
 }
 
 export const vehicles: Vehicle[] = [

@@ -7,30 +7,30 @@ import type { Vehicle } from "@/lib/types";
 
 export function FeaturedVehicles({ vehicles }: { vehicles: Vehicle[] }) {
   return (
-    <section className="bg-ink py-24">
+    <section className="bg-ink py-20 sm:py-24">
       <Container>
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <Reveal>
             <SectionHeading
-              eyebrow="Collection"
+              eyebrow="En stock à Dakar"
               title="Nos véhicules"
-              description="Une sélection rare, photographiée et inspectée. Chaque automobile a une histoire — et un standard."
+              description="Photos réelles, prix en FCFA, essai possible. Cliquez une carte pour tout voir : couleur, équipements, réservation."
             />
           </Reveal>
           <Reveal delay={0.15}>
             <Button href="/vehicules" variant="ghost">
-              Voir tout le catalogue
+              Tout le catalogue
             </Button>
           </Reveal>
         </div>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {vehicles.map((vehicle) => (
             <VehicleCard key={vehicle.id} vehicle={vehicle} />
           ))}
         </div>
-        <p className="mt-10 text-center text-sm text-mist lg:hidden">
-          <Link href="/vehicules" className="text-gold">
-            Voir tout le catalogue
+        <p className="mt-10 text-center lg:hidden">
+          <Link href="/vehicules" className="text-sm text-gold">
+            Voir tout le catalogue →
           </Link>
         </p>
       </Container>

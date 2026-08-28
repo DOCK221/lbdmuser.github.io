@@ -33,7 +33,7 @@ const empty: Partial<Vehicle> = {
       name: "Noir",
       hex: "#0B0B0C",
       images: [
-        "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1600&q=80",
+        "/vehicles/mercedes-c.jpg",
       ],
     },
   ],

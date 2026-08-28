@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { Photo } from "@/components/ui/Photo";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { getVehicleById } from "@/data/vehicles";
@@ -123,7 +123,7 @@ export function ReservationWizard() {
         vehicle && color ? (
           <div className="flex flex-col gap-6 sm:flex-row">
             <div className="relative h-40 w-full overflow-hidden bg-anthracite sm:w-64">
-              <Image src={color.images[0]} alt="" fill className="object-cover" />
+              <Photo src={color.images[0]} alt="" className="h-full w-full object-cover" />
             </div>
             <div>
               <p className="text-[11px] uppercase tracking-[0.24em] text-gold">

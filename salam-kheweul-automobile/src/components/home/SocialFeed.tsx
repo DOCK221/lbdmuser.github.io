@@ -1,11 +1,11 @@
-import Image from "next/image";
 import { Container, SectionHeading } from "@/components/ui/Container";
+import { Photo } from "@/components/ui/Photo";
 import { Reveal } from "@/components/ui/Reveal";
 import type { SocialPost } from "@/lib/types";
 
 export function SocialFeed({ posts }: { posts: SocialPost[] }) {
   return (
-    <section className="bg-ink py-24">
+    <section className="bg-ink py-20">
       <Container>
         <Reveal>
           <SectionHeading
@@ -23,14 +23,12 @@ export function SocialFeed({ posts }: { posts: SocialPost[] }) {
                 rel="noreferrer"
                 className="group relative block aspect-[4/5] overflow-hidden bg-anthracite"
               >
-                <Image
+                <Photo
                   src={post.image}
                   alt={post.caption}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 16vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-transparent" />
                 <div className="absolute inset-x-3 bottom-3">
                   <p className="text-[9px] uppercase tracking-[0.22em] text-gold">
                     {post.platform}
