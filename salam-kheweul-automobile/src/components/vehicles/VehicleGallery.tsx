@@ -5,6 +5,14 @@ import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Vehicle, VehicleColor } from "@/lib/types";
 
+const PAINT_FILTERS: Record<string, string> = {
+  noir: "brightness(0.84) contrast(1.08)",
+  blanc: "brightness(1.2) saturate(0.62) contrast(0.96)",
+  gris: "grayscale(0.42) brightness(1.06) contrast(1.04)",
+  rouge: "sepia(0.42) hue-rotate(-18deg) saturate(1.75) contrast(1.04)",
+  bleu: "sepia(0.38) hue-rotate(188deg) saturate(1.35) contrast(1.04)",
+};
+
 export function VehicleGallery({
   vehicle,
   color,
@@ -14,7 +22,13 @@ export function VehicleGallery({
 }) {
   const media = useMemo(() => {
     type MediaItem = { type: "image" | "video"; src: string; alt: string };
-    const items: MediaItem[] = color.images.map((src, index) => ({
+    const defaultColor =
+      vehicle.colors.find((item) => item.id === vehicle.defaultColorId) ??
+      vehicle.colors[0];
+    // Dedicated per-color photography is supported by the data model.
+    // Until those assets exist, we grade the hero set to preview the finish.
+    const shots = defaultColor.images;
+    const items: MediaItem[] = shots.map((src, index) => ({
       type: "image",
       src,
       alt: `${vehicle.brand} ${vehicle.model} — ${color.name} ${index + 1}`,
@@ -27,12 +41,13 @@ export function VehicleGallery({
       });
     }
     return items;
-  }, [color, vehicle]);
+  }, [color.name, vehicle]);
 
   const [active, setActive] = useState(0);
   const [zoomed, setZoomed] = useState(false);
   const current = media[Math.min(active, media.length - 1)] ?? media[0];
   const isVideo = current?.type === "video";
+  const paint = PAINT_FILTERS[color.id] ?? PAINT_FILTERS.noir;
 
   return (
     <div>
@@ -43,11 +58,11 @@ export function VehicleGallery({
       >
         <AnimatePresence mode="wait">
           <motion.div
-            key={`${color.id}-${current?.src}`}
-            initial={{ opacity: 0.4, scale: 1.03 }}
-            animate={{ opacity: 1, scale: 1 }}
+            key={`${color.id}-${current?.src}-${active}`}
+            initial={{ opacity: 0.35 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0"
           >
             <Image
@@ -56,7 +71,12 @@ export function VehicleGallery({
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 60vw"
-              className="object-cover"
+              className="object-cover transition-[filter] duration-700"
+              style={{ filter: paint }}
+            />
+            <span
+              className="pointer-events-none absolute inset-0 mix-blend-soft-light"
+              style={{ background: `${color.hex}55` }}
             />
           </motion.div>
         </AnimatePresence>
@@ -89,6 +109,7 @@ export function VehicleGallery({
               fill
               sizes="96px"
               className="object-cover"
+              style={{ filter: paint }}
             />
             {item.type === "video" ? (
               <span className="absolute inset-0 flex items-center justify-center bg-ink/30 text-[8px] uppercase tracking-[0.16em] text-ivory">
@@ -124,6 +145,7 @@ export function VehicleGallery({
                   fill
                   sizes="100vw"
                   className="object-contain"
+                  style={{ filter: paint }}
                 />
               )}
             </div>
