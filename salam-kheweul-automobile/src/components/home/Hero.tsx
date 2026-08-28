@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/constants";
 
 const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1618843479313-40f8aa4d1130?auto=format&fit=crop&w=2400&q=80";
+  "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2400&q=80";
 
 export function Hero() {
   return (
@@ -18,10 +18,10 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="kenburns object-cover object-[68%_center]"
+          className="kenburns object-cover object-[72%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-ink/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/30" />
       </div>
 
       <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-32 sm:px-8 lg:justify-center lg:pb-24">

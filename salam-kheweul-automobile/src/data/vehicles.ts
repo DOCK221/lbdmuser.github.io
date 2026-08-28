@@ -33,7 +33,7 @@ export const vehicles: Vehicle[] = [
         name: "Noir obsidienne",
         hex: "#0B0B0C",
         images: [
-          img("photo-1618843479313-40f8aa4d1130"),
+          img("photo-1485291571150-772bcfc10da5"),
           img("photo-1617531653332-bd46c24f2068"),
           img("photo-1605559424843-9e4c228bf1c2"),
         ],
@@ -44,7 +44,7 @@ export const vehicles: Vehicle[] = [
         hex: "#F4F1EA",
         images: [
           img("photo-1549317661-bd32c8ce0db2"),
-          img("photo-1618843479313-40f8aa4d1130"),
+          img("photo-1485291571150-772bcfc10da5"),
         ],
       },
       {
@@ -53,7 +53,7 @@ export const vehicles: Vehicle[] = [
         hex: "#8A8D91",
         images: [
           img("photo-1617531653332-bd46c24f2068"),
-          img("photo-1618843479313-40f8aa4d1130"),
+          img("photo-1485291571150-772bcfc10da5"),
         ],
       },
     ],
@@ -71,7 +71,7 @@ export const vehicles: Vehicle[] = [
     ],
     video: {
       title: "Présentation Classe C 300",
-      poster: img("photo-1618843479313-40f8aa4d1130", 1400),
+      poster: img("photo-1485291571150-772bcfc10da5", 1400),
     },
     rental: {
       available: true,
@@ -179,7 +179,7 @@ export const vehicles: Vehicle[] = [
         hex: "#1C3A6B",
         images: [
           img("photo-1555215695-3004980ad54e"),
-          img("photo-1556189250-72a95e67ea65"),
+          img("photo-1494905998402-395d579af36f"),
         ],
       },
       {
@@ -187,7 +187,7 @@ export const vehicles: Vehicle[] = [
         name: "Noir saphir",
         hex: "#0D0D10",
         images: [
-          img("photo-1556189250-72a95e67ea65"),
+          img("photo-1494905998402-395d579af36f"),
           img("photo-1555215695-3004980ad54e"),
         ],
       },
@@ -317,7 +317,7 @@ export const vehicles: Vehicle[] = [
         hex: "#5C5F64",
         images: [
           img("photo-1606664515524-ed2f786a0bd6"),
-          img("photo-1542282088-72c9aa374d31"),
+          img("photo-1603386329225-868f9b1ee6c9"),
         ],
       },
       {
@@ -325,7 +325,7 @@ export const vehicles: Vehicle[] = [
         name: "Noir mythos",
         hex: "#0C0C0E",
         images: [
-          img("photo-1542282088-72c9aa374d31"),
+          img("photo-1603386329225-868f9b1ee6c9"),
           img("photo-1606664515524-ed2f786a0bd6"),
         ],
       },
@@ -388,7 +388,7 @@ export const vehicles: Vehicle[] = [
         name: "Noir cosmos",
         hex: "#0A0A0C",
         images: [
-          img("photo-1618843479313-40f8aa4d1130"),
+          img("photo-1485291571150-772bcfc10da5"),
           img("photo-1617531653332-bd46c24f2068"),
           img("photo-1605559424843-9e4c228bf1c2"),
         ],
@@ -399,7 +399,7 @@ export const vehicles: Vehicle[] = [
         hex: "#F5F2EB",
         images: [
           img("photo-1549317661-bd32c8ce0db2"),
-          img("photo-1618843479313-40f8aa4d1130"),
+          img("photo-1485291571150-772bcfc10da5"),
         ],
       },
       {
@@ -408,7 +408,7 @@ export const vehicles: Vehicle[] = [
         hex: "#6B1D28",
         images: [
           img("photo-1503376780353-7e6692767b70"),
-          img("photo-1618843479313-40f8aa4d1130"),
+          img("photo-1485291571150-772bcfc10da5"),
         ],
       },
     ],
@@ -722,7 +722,7 @@ export const socialPosts: SocialPost[] = [
   {
     id: "ig-1",
     platform: "instagram",
-    image: img("photo-1618843479313-40f8aa4d1130", 900),
+    image: img("photo-1485291571150-772bcfc10da5", 900),
     caption: "Nouvelle arrivée · Mercedes-Benz Classe C",
     href: "https://instagram.com/salamkheweulautomobile",
     date: "2026-08-24",
