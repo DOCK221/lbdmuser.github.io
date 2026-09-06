@@ -23,7 +23,7 @@ export const metadata = createMetadata({
 });
 
 export default function HomePage() {
-  const featured = getFeaturedVehicles(9);
+  const featured = getFeaturedVehicles(4);
   return (
     <>
       <LocalBusinessJsonLd />

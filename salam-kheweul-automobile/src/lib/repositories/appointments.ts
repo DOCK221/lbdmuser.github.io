@@ -61,7 +61,7 @@ class MemoryAppointmentRepository implements AppointmentRepository {
     {
       id: "apt-1001",
       reference: "RDV-SKA-1001",
-      vehicleId: "veh-001",
+      vehicleId: "vehicle-001",
       type: "essai",
       date: "2026-09-02",
       time: "10:00",
@@ -78,7 +78,7 @@ class MemoryAppointmentRepository implements AppointmentRepository {
     {
       id: "apt-1002",
       reference: "RDV-SKA-1002",
-      vehicleId: "veh-004",
+      vehicleId: "vehicle-004",
       type: "visite",
       date: "2026-09-03",
       time: "15:00",

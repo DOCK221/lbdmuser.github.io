@@ -8,7 +8,7 @@ import { createMetadata } from "@/lib/seo";
 export const metadata = createMetadata({
   title: "Nos véhicules",
   description:
-    "Catalogue premium Salam Kheweul Automobile : Mercedes, BMW, Range Rover, Toyota et plus. Filtrez par prix, année, carburant.",
+    "Catalogue Salam Kheweul Automobile : photos réelles du stock à Dakar. Filtrez par marque, modèle, prix, année, carburant.",
   path: "/vehicules",
 });
 
@@ -42,7 +42,7 @@ export default async function VehiclesPage({
         <SectionHeading
           eyebrow="Catalogue"
           title="Nos véhicules"
-          description="Chaque automobile a été sélectionnée, inspectée et photographiée. Utilisez les filtres pour affiner."
+          description="Chaque automobile a été photographiée pour ce catalogue. Les champs non communiqués ne sont pas affichés comme s’ils existaient."
         />
         <div className="mt-12">
           <Suspense>
@@ -52,7 +52,7 @@ export default async function VehiclesPage({
         <p className="mt-8 text-[11px] uppercase tracking-[0.2em] text-mist">
           {list.length} véhicule{list.length > 1 ? "s" : ""}
         </p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-8 md:grid-cols-2">
           {list.map((vehicle) => (
             <VehicleCard key={vehicle.id} vehicle={vehicle} />
           ))}

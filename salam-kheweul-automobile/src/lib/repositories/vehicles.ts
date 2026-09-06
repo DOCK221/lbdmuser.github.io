@@ -33,7 +33,7 @@ class MemoryVehicleRepository implements VehicleRepository {
   async create(input: Omit<Vehicle, "id" | "createdAt">) {
     const vehicle: Vehicle = {
       ...input,
-      id: `veh-${Date.now()}`,
+      id: `vehicle-${Date.now()}`,
       createdAt: new Date().toISOString().slice(0, 10),
     };
     this.items.unshift(vehicle);

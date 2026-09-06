@@ -11,9 +11,7 @@ export function WhatsAppButton() {
     ? pathname.split("/")[2]
     : undefined;
   const vehicle = slug ? getVehicleBySlug(slug) : undefined;
-  const message = vehicle
-    ? vehicleWhatsAppMessage(vehicle.brand, vehicle.model)
-    : undefined;
+  const message = vehicle ? vehicleWhatsAppMessage(vehicle) : undefined;
 
   if (pathname.startsWith("/admin")) return null;
 

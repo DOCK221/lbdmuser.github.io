@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { getVehicleById } from "@/data/vehicles";
 import { PAYMENT_METHOD_LABELS, RESERVATION_TYPE_LABELS } from "@/lib/constants";
 import { formatPrice } from "@/lib/format";
+import { vehicleDisplayName } from "@/lib/vehicle";
 import { useSessionJson } from "@/lib/hooks/session";
 import type { Reservation } from "@/lib/types";
 
@@ -58,7 +59,7 @@ function ConfirmationInner() {
                 label="Véhicule"
                 value={
                   vehicle
-                    ? `${vehicle.brand} ${vehicle.model}`
+                    ? vehicleDisplayName(vehicle)
                     : reservation.vehicleId
                 }
               />

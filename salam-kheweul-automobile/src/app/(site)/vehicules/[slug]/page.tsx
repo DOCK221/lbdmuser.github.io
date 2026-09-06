@@ -5,7 +5,11 @@ import { VehicleJsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { getRelatedVehicles, getVehicleBySlug, vehicles } from "@/data/vehicles";
 import { createMetadata } from "@/lib/seo";
-import { formatPrice } from "@/lib/format";
+import {
+  vehicleMainImage,
+  vehicleSeoDescription,
+  vehicleSeoTitle,
+} from "@/lib/vehicle";
 
 export function generateStaticParams() {
   return vehicles.map((vehicle) => ({ slug: vehicle.slug }));
@@ -19,13 +23,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const vehicle = getVehicleBySlug(slug);
   if (!vehicle) return {};
-  const image =
-    vehicle.colors.find((c) => c.id === vehicle.defaultColorId)?.images[0];
   return createMetadata({
-    title: `${vehicle.brand} ${vehicle.model}`,
-    description: `${vehicle.brand} ${vehicle.model} ${vehicle.year} · ${formatPrice(vehicle.price)}. ${vehicle.description}`,
+    title: vehicleSeoTitle(vehicle),
+    description: vehicleSeoDescription(vehicle),
     path: `/vehicules/${vehicle.slug}`,
-    image,
+    image: vehicleMainImage(vehicle),
+    absoluteTitle: vehicleSeoTitle(vehicle),
   });
 }
 
@@ -50,7 +53,7 @@ export default async function VehicleDetailPage({
               Dans la même veine
             </p>
             <h2 className="mt-3 font-display text-4xl">Autres véhicules</h2>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {related.map((item) => (
                 <VehicleCard key={item.id} vehicle={item} />
               ))}

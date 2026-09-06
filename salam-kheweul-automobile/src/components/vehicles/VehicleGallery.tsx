@@ -1,81 +1,107 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Photo } from "@/components/ui/Photo";
+import { vehicleDisplayName, vehiclePhotos } from "@/lib/vehicle";
 import type { Vehicle, VehicleColor } from "@/lib/types";
-
-const PAINT_FILTERS: Record<string, string> = {
-  noir: "brightness(0.86) contrast(1.08)",
-  blanc: "brightness(1.35) saturate(0.45) contrast(0.92)",
-  gris: "grayscale(0.55) brightness(1.12)",
-  rouge: "sepia(0.5) hue-rotate(-20deg) saturate(1.7)",
-  bleu: "sepia(0.45) hue-rotate(195deg) saturate(1.5)",
-};
 
 export function VehicleGallery({
   vehicle,
   color,
 }: {
   vehicle: Vehicle;
-  color: VehicleColor;
+  color?: VehicleColor;
 }) {
   const media = useMemo(() => {
-    const defaultColor =
-      vehicle.colors.find((item) => item.id === vehicle.defaultColorId) ??
-      vehicle.colors[0];
-    const shots = defaultColor.images;
+    const shots = vehiclePhotos(vehicle);
+    const name = vehicleDisplayName(vehicle);
     return shots.map((src, index) => ({
       src,
-      alt: `${vehicle.brand} ${vehicle.model} — ${color.name} ${index + 1}`,
+      alt: `${name} — photo ${index + 1}`,
     }));
-  }, [color.name, vehicle]);
+  }, [vehicle]);
 
   const [active, setActive] = useState(0);
   const [zoomed, setZoomed] = useState(false);
-  const current = media[Math.min(active, media.length - 1)] ?? media[0];
-  const paint = PAINT_FILTERS[color.id] ?? PAINT_FILTERS.noir;
+  const current = media[Math.min(active, Math.max(media.length - 1, 0))] ?? media[0];
+
+  const go = useCallback(
+    (delta: number) => {
+      if (!media.length) return;
+      setActive((index) => (index + delta + media.length) % media.length);
+    },
+    [media.length],
+  );
+
+  useEffect(() => {
+    if (!zoomed) return;
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") setZoomed(false);
+      if (event.key === "ArrowRight") go(1);
+      if (event.key === "ArrowLeft") go(-1);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [zoomed, go]);
+
+  if (!current) return null;
 
   return (
     <div>
-      <button
-        type="button"
-        onClick={() => setZoomed(true)}
-        className="relative aspect-[16/10] w-full overflow-hidden bg-anthracite"
-      >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`${color.id}-${current?.src}-${active}`}
-            initial={{ opacity: 0.4 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.45 }}
-            className="absolute inset-0"
-          >
-            <Photo
-              src={current.src}
-              alt={current.alt}
-              priority
-              className="h-full w-full object-cover"
-            />
-            <span
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  color.id === "blanc" ? "rgba(255,255,255,0.22)" : `${color.hex}40`,
-                mixBlendMode: "soft-light",
-                filter: paint,
-              }}
-            />
-          </motion.div>
-        </AnimatePresence>
-        <span className="absolute bottom-4 left-4 rounded-full bg-ink/70 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-ivory">
-          {color.name}
-        </span>
-        <span className="absolute bottom-4 right-4 text-[10px] uppercase tracking-[0.2em] text-ivory/80">
-          Zoom
-        </span>
-      </button>
+      <div className="relative">
+        <button
+          type="button"
+          onClick={() => setZoomed(true)}
+          className="relative aspect-[16/10] w-full overflow-hidden bg-anthracite"
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${current.src}-${active}`}
+              initial={{ opacity: 0.4 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.45 }}
+              className="absolute inset-0"
+            >
+              <Photo
+                src={current.src}
+                alt={current.alt}
+                priority
+                className="h-full w-full object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
+          {color?.name ? (
+            <span className="absolute bottom-4 left-4 rounded-full bg-ink/70 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-ivory">
+              {color.name}
+            </span>
+          ) : null}
+          <span className="absolute bottom-4 right-4 text-[10px] uppercase tracking-[0.2em] text-ivory/80">
+            Agrandir
+          </span>
+        </button>
+        {media.length > 1 ? (
+          <>
+            <button
+              type="button"
+              aria-label="Photo précédente"
+              onClick={() => go(-1)}
+              className="absolute left-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center border border-white/20 bg-ink/60 text-ivory backdrop-blur-sm sm:flex"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              aria-label="Photo suivante"
+              onClick={() => go(1)}
+              className="absolute right-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center border border-white/20 bg-ink/60 text-ivory backdrop-blur-sm sm:flex"
+            >
+              →
+            </button>
+          </>
+        ) : null}
+      </div>
 
       <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
         {media.map((item, index) => (
@@ -101,7 +127,20 @@ export function VehicleGallery({
             className="fixed inset-0 z-[80] flex items-center justify-center bg-ink/95 p-4"
             onClick={() => setZoomed(false)}
           >
-            <div className="relative h-[80vh] w-full max-w-6xl">
+            <button
+              type="button"
+              className="absolute left-4 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center border border-white/20 text-ivory sm:flex"
+              onClick={(event) => {
+                event.stopPropagation();
+                go(-1);
+              }}
+            >
+              ←
+            </button>
+            <div
+              className="relative h-[80vh] w-full max-w-6xl"
+              onClick={(event) => event.stopPropagation()}
+            >
               <Photo
                 src={current.src}
                 alt={current.alt}
@@ -110,10 +149,23 @@ export function VehicleGallery({
             </div>
             <button
               type="button"
+              className="absolute right-4 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center border border-white/20 text-ivory sm:flex"
+              onClick={(event) => {
+                event.stopPropagation();
+                go(1);
+              }}
+            >
+              →
+            </button>
+            <button
+              type="button"
               className="absolute right-6 top-6 text-[11px] uppercase tracking-[0.2em] text-ivory"
             >
               Fermer
             </button>
+            <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[11px] uppercase tracking-[0.18em] text-mist">
+              {active + 1} / {media.length}
+            </p>
           </motion.div>
         ) : null}
       </AnimatePresence>

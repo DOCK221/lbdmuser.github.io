@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { useReservationStore } from "@/lib/store/reservation-store";
-import { vehicleWhatsAppMessage, whatsappLink } from "@/lib/whatsapp";
 import type { Vehicle, VehicleColor } from "@/lib/types";
 
 export function VehicleActions({
@@ -18,25 +17,26 @@ export function VehicleActions({
   const setVehicle = useReservationStore((state) => state.setVehicle);
   const [busy, setBusy] = useState(false);
 
-  function reserve() {
+  function order() {
     setBusy(true);
     setVehicle(vehicle.id, color.id);
-    router.push("/reservation");
+    router.push(`/reservation?vehicule=${vehicle.slug}`);
   }
 
   return (
     <div className="flex flex-col gap-3">
-      <Button onClick={reserve} disabled={busy || vehicle.availability === "vendu"}>
-        Réserver ce véhicule
-      </Button>
-      <Button href={`/rendez-vous?vehicule=${vehicle.slug}`} variant="ghost">
+      <Button href={`/rendez-vous?vehicule=${vehicle.slug}`}>
         Prendre rendez-vous
       </Button>
+      <Button href={`/informations?vehicule=${vehicle.slug}`} variant="ghost">
+        Demander plus d’informations
+      </Button>
       <Button
-        href={whatsappLink(vehicleWhatsAppMessage(vehicle.brand, vehicle.model))}
+        onClick={order}
+        disabled={busy || vehicle.availability === "vendu"}
         variant="line"
       >
-        Contacter un conseiller
+        Commander
       </Button>
     </div>
   );

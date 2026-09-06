@@ -8,7 +8,7 @@ export default async function AdminHomePage() {
     appointmentRepository.list(),
     reservationRepository.list(),
   ]);
-  const available = vehicles.filter((v) => v.availability === "disponible").length;
+  const available = vehicles.filter((v) => v.availability !== "vendu").length;
 
   const cards = [
     { href: "/admin/vehicules", label: "Véhicules", value: String(vehicles.length) },

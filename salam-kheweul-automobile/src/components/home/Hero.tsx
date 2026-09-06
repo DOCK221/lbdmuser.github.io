@@ -44,7 +44,7 @@ export function Hero() {
             className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
           >
             <Button href="/vehicules" variant="ivory" size="lg">
-              Voir les voitures
+              Voir tous les véhicules
             </Button>
             <Button href="/rendez-vous" variant="gold" size="lg">
               Prendre rendez-vous
@@ -70,7 +70,7 @@ export function Hero() {
             className="absolute inset-0 h-full w-full object-cover object-center"
           />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5 lg:hidden">
-            <p className="font-display text-2xl text-ivory">Collection 2026</p>
+            <p className="font-display text-2xl text-ivory">Nos véhicules</p>
           </div>
         </div>
       </div>

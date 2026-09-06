@@ -6,15 +6,18 @@ export function createMetadata({
   description,
   path = "/",
   image,
+  absoluteTitle,
 }: {
   title: string;
   description: string;
   path?: string;
   image?: string;
+  absoluteTitle?: string;
 }): Metadata {
   const url = `${SITE.url}${path}`;
   const fullTitle =
-    title === SITE.name ? title : `${title} · ${SITE.name}`;
+    absoluteTitle ??
+    (title === SITE.name ? title : `${title} · ${SITE.name}`);
 
   return {
     title: fullTitle,

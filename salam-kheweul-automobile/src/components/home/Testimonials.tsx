@@ -5,17 +5,17 @@ const quotes = [
   {
     name: "Awa Diop",
     role: "Dakar",
-    text: "Accueil chic, essai le jour même, papiers suivis. J’ai pris la Classe C sans stress.",
+    text: "Accueil soigné, essai possible, papiers suivis. Un conseiller disponible du premier message jusqu’à la remise des clés.",
   },
   {
     name: "Mamadou Ndiaye",
     role: "Almadies",
-    text: "Le Prado était comme sur les photos. Prix clair en FCFA, conseiller disponible sur WhatsApp.",
+    text: "Les photos correspondaient au véhicule vu en concession. Échanges clairs sur WhatsApp, rendez-vous respecté.",
   },
   {
     name: "Fatou Ba",
     role: "Mermoz",
-    text: "Location du GLE pour un mariage : véhicule impeccable, horaires respectés.",
+    text: "Un accompagnement calme, sans pression. On prend le temps de regarder le véhicule et de poser toutes les questions.",
   },
 ];
 

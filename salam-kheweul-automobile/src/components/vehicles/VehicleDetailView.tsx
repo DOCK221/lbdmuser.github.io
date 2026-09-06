@@ -7,6 +7,7 @@ import { VehicleActions } from "@/components/vehicles/VehicleActions";
 import { VehicleFeatures, VehicleSpecs } from "@/components/vehicles/VehicleSpecs";
 import { AvailabilityBadge } from "@/components/ui/AvailabilityBadge";
 import { formatPrice } from "@/lib/format";
+import { vehicleDisplayName } from "@/lib/vehicle";
 import type { Vehicle } from "@/lib/types";
 
 export function VehicleDetailView({ vehicle }: { vehicle: Vehicle }) {
@@ -15,6 +16,8 @@ export function VehicleDetailView({ vehicle }: { vehicle: Vehicle }) {
     () => vehicle.colors.find((item) => item.id === colorId) ?? vehicle.colors[0],
     [colorId, vehicle],
   );
+  const name = vehicleDisplayName(vehicle);
+  const showColors = vehicle.colors.length > 1;
 
   return (
     <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
@@ -24,7 +27,7 @@ export function VehicleDetailView({ vehicle }: { vehicle: Vehicle }) {
           {vehicle.brand}
         </p>
         <h1 className="mt-3 font-display text-4xl text-ivory sm:text-5xl">
-          {vehicle.model}
+          {vehicle.model || name}
         </h1>
         <div className="mt-4">
           <AvailabilityBadge value={vehicle.availability} />
@@ -35,14 +38,23 @@ export function VehicleDetailView({ vehicle }: { vehicle: Vehicle }) {
         <p className="mt-2 font-display text-4xl text-ivory">
           {formatPrice(vehicle.price)}
         </p>
-        <p className="mt-8 text-sm leading-relaxed text-mist">{vehicle.description}</p>
-        <div className="mt-10">
-          <ColorConfigurator
-            colors={vehicle.colors}
-            selectedId={color.id}
-            onSelect={setColorId}
-          />
-        </div>
+        {vehicle.description ? (
+          <p className="mt-8 text-sm leading-relaxed text-mist">{vehicle.description}</p>
+        ) : null}
+        {showColors ? (
+          <div className="mt-10">
+            <ColorConfigurator
+              colors={vehicle.colors}
+              selectedId={color.id}
+              onSelect={setColorId}
+            />
+          </div>
+        ) : vehicle.exteriorColor ? (
+          <p className="mt-8 text-sm text-mist">
+            Couleur extérieure :{" "}
+            <span className="text-ivory">{vehicle.exteriorColor}</span>
+          </p>
+        ) : null}
         <div className="mt-10">
           <VehicleActions vehicle={vehicle} color={color} />
         </div>

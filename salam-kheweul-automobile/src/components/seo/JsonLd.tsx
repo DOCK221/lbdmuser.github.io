@@ -1,28 +1,38 @@
 import { SITE } from "@/lib/constants";
+import { FUEL_LABELS, TRANSMISSION_LABELS } from "@/lib/constants";
+import { vehicleDisplayName, vehiclePhotos } from "@/lib/vehicle";
 import type { Vehicle } from "@/lib/types";
 
 export function VehicleJsonLd({ vehicle }: { vehicle: Vehicle }) {
   const color =
     vehicle.colors.find((item) => item.id === vehicle.defaultColorId) ??
     vehicle.colors[0];
-  const data = {
+  const data: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Car",
-    name: `${vehicle.brand} ${vehicle.model}`,
+    name: vehicleDisplayName(vehicle),
     brand: { "@type": "Brand", name: vehicle.brand },
-    model: vehicle.model,
-    vehicleModelDate: String(vehicle.year),
-    mileageFromOdometer: {
+    model: vehicle.model || undefined,
+    image: vehiclePhotos(vehicle),
+    url: `${SITE.url}/vehicules/${vehicle.slug}`,
+  };
+
+  if (vehicle.year) data.vehicleModelDate = String(vehicle.year);
+  if (vehicle.mileage != null) {
+    data.mileageFromOdometer = {
       "@type": "QuantitativeValue",
       value: vehicle.mileage,
       unitCode: "KMT",
-    },
-    color: color?.name,
-    vehicleTransmission: vehicle.transmission,
-    fuelType: vehicle.fuel,
-    seatingCapacity: vehicle.seats,
-    image: color?.images ?? [],
-    offers: {
+    };
+  }
+  if (color?.name) data.color = color.name;
+  if (vehicle.transmission) {
+    data.vehicleTransmission = TRANSMISSION_LABELS[vehicle.transmission];
+  }
+  if (vehicle.fuel) data.fuelType = FUEL_LABELS[vehicle.fuel];
+  if (vehicle.seats != null) data.seatingCapacity = vehicle.seats;
+  if (vehicle.price != null) {
+    data.offers = {
       "@type": "Offer",
       price: vehicle.price,
       priceCurrency: SITE.currency,
@@ -31,10 +41,10 @@ export function VehicleJsonLd({ vehicle }: { vehicle: Vehicle }) {
           ? "https://schema.org/InStock"
           : vehicle.availability === "vendu"
             ? "https://schema.org/SoldOut"
-            : "https://schema.org/PreOrder",
+            : "https://schema.org/LimitedAvailability",
       url: `${SITE.url}/vehicules/${vehicle.slug}`,
-    },
-  };
+    };
+  }
 
   return (
     <script

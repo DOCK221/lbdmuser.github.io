@@ -8,10 +8,10 @@ import { formatPrice } from "@/lib/format";
 import type { PaymentMethod } from "@/lib/types";
 
 const methods: { id: PaymentMethod; hint: string }[] = [
-  { id: "wave", hint: "Paiement mobile instantané" },
-  { id: "orange_money", hint: "Orange Money Sénégal" },
-  { id: "card", hint: "Visa / Mastercard via prestataire agréé" },
-  { id: "bank_transfer", hint: "Virement avec référence de transaction" },
+  { id: "wave", hint: "Wave — interface prévue, API non connectée" },
+  { id: "orange_money", hint: "Orange Money — interface prévue, API non connectée" },
+  { id: "card", hint: "Carte bancaire — aucun encaissement réel pour le moment" },
+  { id: "bank_transfer", hint: "Virement bancaire — références à confirmer avec un conseiller" },
 ];
 
 export function PaymentForm({
@@ -102,16 +102,17 @@ export function PaymentForm({
       </div>
 
       <p className="mt-8 max-w-lg text-xs leading-relaxed text-mist">
-        Les paiements sont traités par un prestataire agréé (PayDunya / PayTech).
-        Salam Kheweul Automobile ne stocke jamais vos données de carte, PIN ou
-        code secret. Seule la référence de transaction est conservée.
+        Aucune API de paiement n’est configurée. Cette page prépare Wave, Orange
+        Money, carte bancaire et virement. Aucun débit réel n’est effectué.
+        Salam Kheweul Automobile ne demande pas et ne stocke pas de données de
+        carte, PIN ou code secret.
       </p>
 
       {error ? <p className="mt-4 text-sm text-red-300">{error}</p> : null}
 
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
         <Button onClick={pay} disabled={busy} size="lg">
-          {busy ? "Traitement…" : "Payer maintenant"}
+          {busy ? "Enregistrement…" : "Confirmer le mode de paiement"}
         </Button>
         <Button
           href={`/confirmation?ref=${reservationRef ?? ""}&status=pending`}

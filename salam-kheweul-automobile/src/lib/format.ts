@@ -1,11 +1,17 @@
 import { SITE } from "@/lib/constants";
+import { UNAVAILABLE } from "@/lib/vehicle";
 
-export function formatPrice(amount: number, withCurrency = true): string {
+export function formatPrice(
+  amount: number | null | undefined,
+  withCurrency = true,
+): string {
+  if (amount == null) return UNAVAILABLE;
   const formatted = new Intl.NumberFormat("fr-FR").format(amount);
   return withCurrency ? `${formatted} ${SITE.currencyLabel}` : formatted;
 }
 
-export function formatMileage(km: number): string {
+export function formatMileage(km: number | null | undefined): string {
+  if (km == null) return UNAVAILABLE;
   return `${new Intl.NumberFormat("fr-FR").format(km)} km`;
 }
 
@@ -27,7 +33,7 @@ export function formatShortDate(isoDate: string): string {
 }
 
 export function vehicleTitle(brand: string, model: string): string {
-  return `${brand} ${model}`;
+  return [brand, model].filter((part) => part.trim()).join(" ");
 }
 
 export function generateReference(prefix: string): string {

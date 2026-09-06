@@ -65,7 +65,9 @@ export function AdminVehicleTable() {
               <tr key={vehicle.id} className="border-b border-white/5">
                 <td className="py-4">
                   {vehicle.brand} {vehicle.model}
-                  <span className="block text-xs text-mist">{vehicle.year}</span>
+                  <span className="block text-xs text-mist">
+                    {vehicle.year ?? "Année non renseignée"}
+                  </span>
                 </td>
                 <td className="py-4">{formatPrice(vehicle.price)}</td>
                 <td className="py-4">

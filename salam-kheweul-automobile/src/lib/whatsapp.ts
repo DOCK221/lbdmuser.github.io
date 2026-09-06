@@ -1,4 +1,6 @@
 import { SITE } from "@/lib/constants";
+import { vehicleInquiryMessage } from "@/lib/vehicle";
+import type { Vehicle } from "@/lib/types";
 
 export function whatsappLink(message?: string): string {
   const text = encodeURIComponent(
@@ -8,6 +10,6 @@ export function whatsappLink(message?: string): string {
   return `https://wa.me/${SITE.whatsappNumber}?text=${text}`;
 }
 
-export function vehicleWhatsAppMessage(brand: string, model: string): string {
-  return `Bonjour Salam Kheweul Automobile, je suis intéressé(e) par le ${brand} ${model}. Pouvez-vous me donner plus d'informations ?`;
+export function vehicleWhatsAppMessage(vehicle: Vehicle): string {
+  return `${vehicleInquiryMessage(vehicle)} Pouvez-vous me donner plus d'informations ?`;
 }

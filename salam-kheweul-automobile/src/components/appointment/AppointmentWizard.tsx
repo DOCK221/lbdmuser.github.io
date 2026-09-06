@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { vehicles } from "@/data/vehicles";
 import { APPOINTMENT_TYPE_LABELS } from "@/lib/constants";
 import { formatDate } from "@/lib/format";
+import { vehicleDisplayName } from "@/lib/vehicle";
 import type { AppointmentSlot, AppointmentType, CustomerInfo } from "@/lib/types";
 
 const field =
@@ -49,8 +50,8 @@ export function AppointmentWizard() {
 
   async function submit() {
     setError("");
-    if (!date || !time || !customer.firstName || !customer.lastName || !customer.phone) {
-      setError("Merci de renseigner le créneau et vos coordonnées.");
+    if (!date || !time || !customer.firstName || !customer.lastName || !customer.phone || !customer.email) {
+      setError("Merci de renseigner le créneau, vos nom, prénom, téléphone et email.");
       return;
     }
     setSubmitting(true);
@@ -89,11 +90,12 @@ export function AppointmentWizard() {
           <option value="" className="bg-ink">
             Conseil général (sans véhicule)
           </option>
-          {vehicles.map((vehicle) => (
-            <option key={vehicle.id} value={vehicle.id} className="bg-ink">
-              {vehicle.brand} {vehicle.model} · {vehicle.year}
-            </option>
-          ))}
+            {vehicles.map((vehicle) => (
+              <option key={vehicle.id} value={vehicle.id} className="bg-ink">
+                {vehicleDisplayName(vehicle)}
+                {vehicle.year ? ` · ${vehicle.year}` : ""}
+              </option>
+            ))}
         </select>
         <div className="mt-4 flex flex-wrap gap-2">
           {(Object.keys(APPOINTMENT_TYPE_LABELS) as AppointmentType[]).map((item) => (

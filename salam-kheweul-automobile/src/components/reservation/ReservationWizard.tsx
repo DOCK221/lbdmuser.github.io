@@ -1,14 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Photo } from "@/components/ui/Photo";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { getVehicleById } from "@/data/vehicles";
+import { getVehicleById, getVehicleBySlug } from "@/data/vehicles";
 import { DEPOSIT_RATE, RESERVATION_TYPE_LABELS } from "@/lib/constants";
 import { formatPrice } from "@/lib/format";
 import { useReservationStore } from "@/lib/store/reservation-store";
+import { vehicleDisplayName, vehicleMainImage } from "@/lib/vehicle";
 import type { ReservationType } from "@/lib/types";
 
 const field =
@@ -18,6 +19,7 @@ const steps = ["Informations", "Véhicule", "Type", "Paiement"];
 
 export function ReservationWizard() {
   const router = useRouter();
+  const params = useSearchParams();
   const store = useReservationStore();
   const [step, setStep] = useState(0);
   const [error, setError] = useState("");
@@ -25,7 +27,16 @@ export function ReservationWizard() {
   const vehicle = store.vehicleId ? getVehicleById(store.vehicleId) : undefined;
   const color =
     vehicle?.colors.find((item) => item.id === store.colorId) ?? vehicle?.colors[0];
-  const deposit = vehicle ? Math.round(vehicle.price * DEPOSIT_RATE) : 0;
+  const deposit =
+    vehicle?.price != null ? Math.round(vehicle.price * DEPOSIT_RATE) : 0;
+
+  useEffect(() => {
+    const slug = params.get("vehicule");
+    if (!slug) return;
+    const match = getVehicleBySlug(slug);
+    if (match) store.setVehicle(match.id, match.defaultColorId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- hydrate from URL once
+  }, [params]);
 
   const canNext = useMemo(() => {
     if (step === 0) {
@@ -123,14 +134,20 @@ export function ReservationWizard() {
         vehicle && color ? (
           <div className="flex flex-col gap-6 sm:flex-row">
             <div className="relative h-40 w-full overflow-hidden bg-anthracite sm:w-64">
-              <Photo src={color.images[0]} alt="" className="h-full w-full object-cover" />
+              <Photo
+                src={vehicleMainImage(vehicle)}
+                alt={vehicleDisplayName(vehicle)}
+                className="h-full w-full object-cover"
+              />
             </div>
             <div>
               <p className="text-[11px] uppercase tracking-[0.24em] text-gold">
                 {vehicle.brand}
               </p>
-              <h2 className="mt-2 font-display text-3xl">{vehicle.model}</h2>
-              <p className="mt-3 text-mist">{color.name}</p>
+              <h2 className="mt-2 font-display text-3xl">
+                {vehicle.model || vehicleDisplayName(vehicle)}
+              </h2>
+              {color.name ? <p className="mt-3 text-mist">{color.name}</p> : null}
               <p className="mt-4 text-xl">{formatPrice(vehicle.price)}</p>
             </div>
           </div>
@@ -173,23 +190,31 @@ export function ReservationWizard() {
         <div className="space-y-6">
           {store.type === "reservation" && vehicle ? (
             <>
-              <label className="flex cursor-pointer items-start gap-4 border border-white/10 p-5">
-                <input
-                  type="checkbox"
-                  checked={store.payDeposit}
-                  onChange={(e) => store.setPayDeposit(e.target.checked)}
-                  className="mt-1 accent-[#c4a574]"
-                />
-                <span>
-                  <span className="block font-display text-2xl">
-                    Verser un acompte de {formatPrice(deposit)}
+              {vehicle.price != null ? (
+                <label className="flex cursor-pointer items-start gap-4 border border-white/10 p-5">
+                  <input
+                    type="checkbox"
+                    checked={store.payDeposit}
+                    onChange={(e) => store.setPayDeposit(e.target.checked)}
+                    className="mt-1 accent-[#c4a574]"
+                  />
+                  <span>
+                    <span className="block font-display text-2xl">
+                      Verser un acompte de {formatPrice(deposit)}
+                    </span>
+                    <span className="mt-2 block text-sm text-mist">
+                      10 % du prix pour réserver le véhicule. Wave, Orange Money, carte
+                      ou virement. Interface de paiement uniquement — aucun encaissement
+                      réel n’est configuré pour le moment.
+                    </span>
                   </span>
-                  <span className="mt-2 block text-sm text-mist">
-                    10 % du prix pour réserver le véhicule. Wave, Orange Money, carte
-                    ou virement. Aucune donnée bancaire n’est stockée chez nous.
-                  </span>
-                </span>
-              </label>
+                </label>
+              ) : (
+                <p className="text-sm text-mist">
+                  Le prix n’est pas renseigné : un conseiller confirmera les modalités
+                  après votre demande. Aucun acompte n’est calculé automatiquement.
+                </p>
+              )}
               <p className="text-sm text-mist">
                 Prix du véhicule : {formatPrice(vehicle.price)}
               </p>

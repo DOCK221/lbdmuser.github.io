@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { getVehicleById } from "@/data/vehicles";
 import { APPOINTMENT_TYPE_LABELS } from "@/lib/constants";
 import { formatDate } from "@/lib/format";
+import { vehicleDisplayName } from "@/lib/vehicle";
 import { useSessionJson } from "@/lib/hooks/session";
 import type { Appointment } from "@/lib/types";
 
@@ -42,7 +43,7 @@ function ConfirmationInner() {
           <Row label="Référence" value={appointment.reference} />
           <Row
             label="Véhicule"
-            value={vehicle ? `${vehicle.brand} ${vehicle.model}` : "Conseil général"}
+            value={vehicle ? vehicleDisplayName(vehicle) : "Conseil général"}
           />
           <Row label="Type" value={APPOINTMENT_TYPE_LABELS[appointment.type]} />
           <Row label="Date" value={formatDate(appointment.date)} />

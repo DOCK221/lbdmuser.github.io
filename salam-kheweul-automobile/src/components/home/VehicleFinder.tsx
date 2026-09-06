@@ -18,7 +18,10 @@ export function VehicleFinder() {
     [],
   );
   const years = useMemo(
-    () => [...new Set(vehicles.map((vehicle) => vehicle.year))].sort((a, b) => b - a),
+    () =>
+      [...new Set(vehicles.map((vehicle) => vehicle.year).filter((year): year is number => year != null))].sort(
+        (a, b) => b - a,
+      ),
     [],
   );
   const [brand, setBrand] = useState("");
@@ -49,7 +52,7 @@ export function VehicleFinder() {
           <SectionHeading
             eyebrow="Recherche"
             title="Trouvez votre véhicule"
-            description="Affinez par marque, budget, motorisation. Nous vous présentons uniquement ce qui mérite votre attention."
+            description="Affinez par marque, budget, motorisation. Seuls les champs réellement renseignés sont filtrables."
           />
         </Reveal>
         <Reveal delay={0.12}>

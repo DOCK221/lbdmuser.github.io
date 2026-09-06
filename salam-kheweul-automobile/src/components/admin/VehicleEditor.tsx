@@ -11,39 +11,48 @@ const field =
 const empty: Partial<Vehicle> = {
   brand: "",
   model: "",
-  year: new Date().getFullYear(),
-  price: 0,
-  mileage: 0,
-  fuel: "essence",
-  transmission: "automatique",
+  year: null,
+  price: null,
+  currency: "FCFA",
+  mileage: null,
+  fuel: null,
+  transmission: null,
   engine: "",
   power: "",
-  seats: 5,
-  condition: "excellent",
-  origin: "Europe",
-  availability: "disponible",
-  category: "suv",
+  seats: null,
+  condition: null,
+  origin: "",
+  availability: "",
+  category: "",
   description: "",
+  exteriorColor: "",
+  interiorColor: "",
   slug: "",
-  defaultColorId: "noir",
+  defaultColorId: "unique",
+  images: [],
+  mainImage: "",
   features: [],
   colors: [
     {
-      id: "noir",
-      name: "Noir",
-      hex: "#0B0B0C",
-      images: [
-        "/vehicles/mercedes-c.jpg",
-      ],
+      id: "unique",
+      name: "",
+      hex: "#8A8D91",
+      images: [],
     },
   ],
   isNewArrival: true,
 };
 
+function optionalNumber(value: string): number | null {
+  if (value.trim() === "") return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+}
+
 export function VehicleEditor({ vehicleId }: { vehicleId?: string }) {
   const router = useRouter();
   const [data, setData] = useState<Partial<Vehicle>>(empty);
-  const [features, setFeatures] = useState("Climatisation, Caméra, GPS, Cuir, Bluetooth");
+  const [features, setFeatures] = useState("");
   const [photos, setPhotos] = useState("");
   const [video, setVideo] = useState("");
 
@@ -54,8 +63,13 @@ export function VehicleEditor({ vehicleId }: { vehicleId?: string }) {
       .then((payload) => {
         if (payload.vehicle) {
           setData(payload.vehicle);
-          setFeatures(payload.vehicle.features.join(", "));
-          setPhotos(payload.vehicle.colors?.[0]?.images.join("\n") ?? "");
+          setFeatures((payload.vehicle.features ?? []).join(", "));
+          setPhotos(
+            (payload.vehicle.images?.length
+              ? payload.vehicle.images
+              : payload.vehicle.colors?.[0]?.images ?? []
+            ).join("\n"),
+          );
           setVideo(payload.vehicle.video?.url ?? "");
         }
       });
@@ -73,12 +87,20 @@ export function VehicleEditor({ vehicleId }: { vehicleId?: string }) {
     const payload = {
       ...empty,
       ...data,
+      year: data.year ?? null,
+      price: data.price ?? null,
+      mileage: data.mileage ?? null,
       slug:
         data.slug ||
-        `${data.brand}-${data.model}-${data.year}`
+        `${data.brand}-${data.model}-${data.year ?? "stock"}`
           .toLowerCase()
           .replace(/[^a-z0-9]+/g, "-"),
-      features: features.split(",").map((item) => item.trim()).filter(Boolean),
+      features: features
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean),
+      images,
+      mainImage: images[0] ?? "",
       colors,
       video: video
         ? { title: "Présentation", poster: images[0] ?? colors[0].images[0], url: video }
@@ -109,10 +131,11 @@ export function VehicleEditor({ vehicleId }: { vehicleId?: string }) {
     <form onSubmit={onSubmit} className="grid gap-4 sm:grid-cols-2">
       <input className={field} placeholder="Marque" value={data.brand ?? ""} onChange={(e) => set("brand", e.target.value)} />
       <input className={field} placeholder="Modèle" value={data.model ?? ""} onChange={(e) => set("model", e.target.value)} />
-      <input className={field} type="number" placeholder="Année" value={data.year ?? ""} onChange={(e) => set("year", Number(e.target.value))} />
-      <input className={field} type="number" placeholder="Prix FCFA" value={data.price ?? ""} onChange={(e) => set("price", Number(e.target.value))} />
-      <input className={field} type="number" placeholder="Kilométrage" value={data.mileage ?? ""} onChange={(e) => set("mileage", Number(e.target.value))} />
-      <select className={field} value={data.availability} onChange={(e) => set("availability", e.target.value as Vehicle["availability"])}>
+      <input className={field} type="number" placeholder="Année (laisser vide si inconnue)" value={data.year ?? ""} onChange={(e) => set("year", optionalNumber(e.target.value))} />
+      <input className={field} type="number" placeholder="Prix FCFA (vide = non renseigné)" value={data.price ?? ""} onChange={(e) => set("price", optionalNumber(e.target.value))} />
+      <input className={field} type="number" placeholder="Kilométrage (vide = non renseigné)" value={data.mileage ?? ""} onChange={(e) => set("mileage", optionalNumber(e.target.value))} />
+      <select className={field} value={data.availability ?? ""} onChange={(e) => set("availability", e.target.value as Vehicle["availability"])}>
+        <option value="" className="bg-ink">Disponibilité non renseignée</option>
         <option value="disponible" className="bg-ink">Disponible</option>
         <option value="reserve" className="bg-ink">Réservé</option>
         <option value="vendu" className="bg-ink">Vendu</option>
@@ -120,19 +143,23 @@ export function VehicleEditor({ vehicleId }: { vehicleId?: string }) {
       </select>
       <input className={field} placeholder="Moteur" value={data.engine ?? ""} onChange={(e) => set("engine", e.target.value)} />
       <input className={field} placeholder="Puissance" value={data.power ?? ""} onChange={(e) => set("power", e.target.value)} />
-      <select className={field} value={data.fuel} onChange={(e) => set("fuel", e.target.value as Vehicle["fuel"])}>
+      <select className={field} value={data.fuel ?? ""} onChange={(e) => set("fuel", (e.target.value || null) as Vehicle["fuel"])}>
+        <option value="" className="bg-ink">Carburant non renseigné</option>
         <option value="essence" className="bg-ink">Essence</option>
         <option value="diesel" className="bg-ink">Diesel</option>
         <option value="hybride" className="bg-ink">Hybride</option>
         <option value="electrique" className="bg-ink">Électrique</option>
       </select>
-      <select className={field} value={data.transmission} onChange={(e) => set("transmission", e.target.value as Vehicle["transmission"])}>
+      <select className={field} value={data.transmission ?? ""} onChange={(e) => set("transmission", (e.target.value || null) as Vehicle["transmission"])}>
+        <option value="" className="bg-ink">Transmission non renseignée</option>
         <option value="automatique" className="bg-ink">Automatique</option>
         <option value="manuelle" className="bg-ink">Manuelle</option>
       </select>
+      <input className={field} placeholder="Couleur extérieure" value={data.exteriorColor ?? ""} onChange={(e) => set("exteriorColor", e.target.value)} />
+      <input className={field} placeholder="Couleur intérieure" value={data.interiorColor ?? ""} onChange={(e) => set("interiorColor", e.target.value)} />
       <textarea
         className="min-h-24 sm:col-span-2 border border-white/10 bg-transparent p-3 text-sm outline-none"
-        placeholder="Description"
+        placeholder="Description (laisser vide plutôt que d’inventer)"
         value={data.description ?? ""}
         onChange={(e) => set("description", e.target.value)}
       />
@@ -144,7 +171,7 @@ export function VehicleEditor({ vehicleId }: { vehicleId?: string }) {
       />
       <textarea
         className="min-h-24 sm:col-span-2 border border-white/10 bg-transparent p-3 text-sm outline-none"
-        placeholder="Photos (une URL par ligne) — une URL par couleur pourra être ajoutée plus tard"
+        placeholder="Photos (un chemin par ligne, ex. /vehicles/bmw-x5-2020/bmw-x5-2020-front.jpg)"
         value={photos}
         onChange={(e) => setPhotos(e.target.value)}
       />
@@ -155,8 +182,8 @@ export function VehicleEditor({ vehicleId }: { vehicleId?: string }) {
         onChange={(e) => setVideo(e.target.value)}
       />
       <p className="sm:col-span-2 text-xs text-mist">
-        Couleurs par défaut : Noir, extensible. Architecture prévue pour une image
-        distincte par teinte.
+        Ajoutez les fichiers dans /public/vehicles/&lt;slug&gt;/ puis listez les chemins ici.
+        Ne renseignez que les informations connues.
       </p>
       <div className="sm:col-span-2">
         <Button type="submit">{vehicleId ? "Enregistrer" : "Créer le véhicule"}</Button>

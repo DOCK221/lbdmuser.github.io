@@ -12,7 +12,13 @@ export function VehicleFilters() {
   const router = useRouter();
   const params = useSearchParams();
   const brands = [...new Set(vehicles.map((v) => v.brand))];
-  const years = [...new Set(vehicles.map((v) => v.year))].sort((a, b) => b - a);
+  const years = [
+    ...new Set(
+      vehicles
+        .map((v) => v.year)
+        .filter((year): year is number => year != null),
+    ),
+  ].sort((a, b) => b - a);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

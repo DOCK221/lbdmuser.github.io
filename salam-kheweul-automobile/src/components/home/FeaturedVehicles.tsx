@@ -14,23 +14,23 @@ export function FeaturedVehicles({ vehicles }: { vehicles: Vehicle[] }) {
             <SectionHeading
               eyebrow="En stock à Dakar"
               title="Nos véhicules"
-              description="Photos réelles, prix en FCFA, essai possible. Cliquez une carte pour tout voir : couleur, équipements, réservation."
+              description="Photos réelles du stock. Cliquez une carte pour la galerie, les informations disponibles, un rendez-vous ou une commande."
             />
           </Reveal>
           <Reveal delay={0.15}>
             <Button href="/vehicules" variant="ghost">
-              Tout le catalogue
+              Voir tous les véhicules
             </Button>
           </Reveal>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-8 md:grid-cols-2">
           {vehicles.map((vehicle) => (
             <VehicleCard key={vehicle.id} vehicle={vehicle} />
           ))}
         </div>
         <p className="mt-10 text-center lg:hidden">
           <Link href="/vehicules" className="text-sm text-gold">
-            Voir tout le catalogue →
+            Voir tous les véhicules →
           </Link>
         </p>
       </Container>

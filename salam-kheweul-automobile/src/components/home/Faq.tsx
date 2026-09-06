@@ -11,11 +11,11 @@ const faqs = [
   },
   {
     q: "Comment payer un acompte ?",
-    a: "Wave, Orange Money, carte bancaire ou virement. Nous ne stockons jamais vos données bancaires.",
+    a: "Wave, Orange Money, carte bancaire ou virement sont prévus. Aucune API de paiement n’est encore connectée : un conseiller confirme les modalités. Nous ne demandons pas vos données de carte.",
   },
   {
     q: "Les prix sont-ils en FCFA ?",
-    a: "Oui, tous les prix affichés sont en francs CFA (XOF), TTC indiqués sur la fiche.",
+    a: "Oui, lorsqu’un prix est communiqué il est affiché en francs CFA (FCFA). Les champs non fournis restent « Non renseigné ».",
   },
   {
     q: "Rachetez-vous mon ancienne voiture ?",

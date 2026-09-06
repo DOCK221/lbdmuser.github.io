@@ -52,6 +52,7 @@ export const AVAILABILITY_LABELS: Record<string, string> = {
   reserve: "Réservé",
   vendu: "Vendu",
   en_arrivage: "En arrivage",
+  "": "Non renseigné",
 };
 
 export const CONDITION_LABELS: Record<string, string> = {
@@ -87,13 +88,9 @@ export const PAYMENT_METHOD_LABELS: Record<string, string> = {
 };
 
 export const BRANDS = [
-  "Mercedes-Benz",
   "BMW",
-  "Audi",
-  "Range Rover",
-  "Porsche",
+  "Mercedes-Benz",
   "Toyota",
-  "Lexus",
-  "Hyundai",
-  "Peugeot",
+  "Samsung",
+  "Geely",
 ] as const;

@@ -39,8 +39,8 @@ class MemoryReservationRepository implements ReservationRepository {
     {
       id: "res-9001",
       reference: "RES-SKA-9001",
-      vehicleId: "veh-006",
-      colorId: "noir",
+      vehicleId: "vehicle-004",
+      colorId: "blanc",
       type: "reservation",
       customer: {
         firstName: "Fatou",
@@ -49,8 +49,8 @@ class MemoryReservationRepository implements ReservationRepository {
         whatsapp: "+221 77 555 66 77",
         email: "fatou.ba@email.sn",
       },
-      amountDue: 54000000,
-      depositAmount: 5400000,
+      amountDue: 57000000,
+      depositAmount: 5700000,
       paymentStatus: "success",
       orderStatus: "deposit_paid",
       paymentMethod: "wave",
@@ -76,7 +76,10 @@ class MemoryReservationRepository implements ReservationRepository {
     if (!vehicle) {
       throw new Error("Véhicule introuvable");
     }
-    const depositAmount = Math.round(vehicle.price * DEPOSIT_RATE);
+    const depositAmount =
+      input.payDeposit && vehicle.price != null
+        ? Math.round(vehicle.price * DEPOSIT_RATE)
+        : 0;
     const reservation: Reservation = {
       id: `res-${Date.now()}`,
       reference: generateReference("RES"),
@@ -85,7 +88,7 @@ class MemoryReservationRepository implements ReservationRepository {
       type: input.type,
       customer: input.customer,
       notes: input.notes,
-      amountDue: vehicle.price,
+      amountDue: vehicle.price ?? 0,
       depositAmount,
       paymentStatus: input.payDeposit ? "pending" : "idle",
       orderStatus: input.payDeposit ? "awaiting_payment" : "confirmed",
