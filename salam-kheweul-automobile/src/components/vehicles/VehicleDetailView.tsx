@@ -29,9 +29,11 @@ export function VehicleDetailView({ vehicle }: { vehicle: Vehicle }) {
         <h1 className="mt-3 font-display text-4xl text-ivory sm:text-5xl">
           {vehicle.model || name}
         </h1>
-        <div className="mt-4">
-          <AvailabilityBadge value={vehicle.availability} />
-        </div>
+        {vehicle.availability ? (
+          <div className="mt-4">
+            <AvailabilityBadge value={vehicle.availability} />
+          </div>
+        ) : null}
         <p className="mt-8 text-[11px] uppercase tracking-[0.24em] text-mist">
           Prix
         </p>

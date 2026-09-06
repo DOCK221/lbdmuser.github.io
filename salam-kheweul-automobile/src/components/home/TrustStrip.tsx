@@ -1,14 +1,16 @@
 import { Container } from "@/components/ui/Container";
+import { vehicles } from "@/data/vehicles";
 import { SITE } from "@/lib/constants";
 
-const items = [
-  { label: "Véhicules en stock", value: "10+" },
-  { label: "Services", value: "Vente · Achat · Location" },
-  { label: "Paiement", value: "Wave · OM · Carte" },
-  { label: "WhatsApp", value: SITE.phoneDisplay },
-];
-
 export function TrustStrip() {
+  const inStock = vehicles.filter((vehicle) => vehicle.availability !== "vendu").length;
+  const items = [
+    { label: "Véhicules en stock", value: String(inStock) },
+    { label: "Services", value: "Vente · Achat · Location" },
+    { label: "Paiement", value: "Wave · OM · Carte" },
+    { label: "WhatsApp", value: SITE.phoneDisplay },
+  ];
+
   return (
     <section className="border-y border-white/10 bg-ink-soft">
       <Container className="grid grid-cols-2 gap-6 py-8 lg:grid-cols-4">

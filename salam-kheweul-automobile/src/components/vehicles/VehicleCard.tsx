@@ -47,9 +47,11 @@ export function VehicleCard({
             className="h-full w-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.05]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-black/10" />
-          <div className="absolute left-4 top-4">
-            <AvailabilityBadge value={vehicle.availability} />
-          </div>
+          {vehicle.availability ? (
+            <div className="absolute left-4 top-4">
+              <AvailabilityBadge value={vehicle.availability} />
+            </div>
+          ) : null}
           {vehicle.isNewArrival ? (
             <div className="absolute right-4 top-4 rounded-full bg-gold px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-ink">
               Nouveau
