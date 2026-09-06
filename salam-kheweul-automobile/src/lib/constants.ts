@@ -3,7 +3,7 @@ export const SITE = {
   legalName: "SALAM KHEWEUL AUTOMOBILE",
   tagline: "Votre prochaine voiture commence ici.",
   description:
-    "Concession automobile premium à Dakar. Vente, achat, location et services automobiles. Véhicules sélectionnés, accompagnement personnalisé.",
+    "Concession automobile premium à Dakar. Vente, achat et services automobiles. Véhicules sélectionnés, accompagnement personnalisé.",
   phoneDisplay: "+221 77 347 39 20",
   phoneTel: "+221773473920",
   whatsappNumber: "221773473920",
@@ -16,9 +16,9 @@ export const SITE = {
   instagram:
     process.env.NEXT_PUBLIC_INSTAGRAM_URL ??
     "https://instagram.com/salamkheweulautomobile",
+  tiktokHandle: "@salamauto0",
   tiktok:
-    process.env.NEXT_PUBLIC_TIKTOK_URL ??
-    "https://www.tiktok.com/@salamkheweulautomobile",
+    process.env.NEXT_PUBLIC_TIKTOK_URL ?? "https://www.tiktok.com/@salamauto0",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   currency: "XOF",
   currencyLabel: "FCFA",
@@ -28,7 +28,6 @@ export const NAV_LINKS = [
   { href: "/", label: "Accueil" },
   { href: "/vehicules", label: "Véhicules" },
   { href: "/services", label: "Services" },
-  { href: "/location", label: "Location" },
   { href: "/a-propos", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ] as const;

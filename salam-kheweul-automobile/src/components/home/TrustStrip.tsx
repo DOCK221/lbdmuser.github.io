@@ -6,7 +6,7 @@ export function TrustStrip() {
   const inStock = vehicles.filter((vehicle) => vehicle.availability !== "vendu").length;
   const items = [
     { label: "Véhicules en stock", value: String(inStock) },
-    { label: "Services", value: "Vente · Achat · Location" },
+    { label: "Services", value: "Vente · Achat" },
     { label: "Paiement", value: "Wave · OM · Carte" },
     { label: "WhatsApp", value: SITE.phoneDisplay },
   ];

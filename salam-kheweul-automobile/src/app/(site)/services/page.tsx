@@ -6,7 +6,7 @@ import { createMetadata } from "@/lib/seo";
 export const metadata = createMetadata({
   title: "Services",
   description:
-    "Vente, achat, location et conseil automobile premium à Dakar — Salam Kheweul Automobile.",
+    "Vente, achat et conseil automobile premium à Dakar — Salam Kheweul Automobile.",
   path: "/services",
 });
 
@@ -18,10 +18,6 @@ const services = [
   {
     title: "Achat",
     text: "Vous souhaitez céder votre véhicule ? Estimation précise, offre ferme, paiement sécurisé. Nous rachetons les automobiles en bon état, toutes marques premium.",
-  },
-  {
-    title: "Location",
-    text: "Une flotte soignée pour vos déplacements d’affaires, vos événements et vos séjours. Contrats clairs, assistance, véhicules entretenus.",
   },
   {
     title: "Conseil automobile",
@@ -36,7 +32,7 @@ export default function ServicesPage() {
         <SectionHeading
           eyebrow="Savoir-faire"
           title="Services automobiles"
-          description="Quatre métiers, une même exigence : vous servir comme on aimerait l’être."
+          description="Trois métiers, une même exigence : vous servir comme on aimerait l’être."
         />
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {services.map((service, index) => (

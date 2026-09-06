@@ -14,11 +14,6 @@ const services = [
     text: "Nous évaluons et rachetons votre véhicule dans des conditions claires.",
   },
   {
-    href: "/location",
-    title: "Location",
-    text: "Une flotte soignée, à la journée ou à la semaine, avec dépôt sécurisé.",
-  },
-  {
     href: "/services",
     title: "Conseil automobile",
     text: "Orientation, budget, import, financement : un avis d’expert, sans pression.",

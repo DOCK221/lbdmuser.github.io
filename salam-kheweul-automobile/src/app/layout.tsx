@@ -27,7 +27,6 @@ export const metadata: Metadata = {
   keywords: [
     "voiture Dakar",
     "vente voiture Sénégal",
-    "location voiture Dakar",
     "Salam Kheweul Automobile",
     "concession automobile premium",
   ],

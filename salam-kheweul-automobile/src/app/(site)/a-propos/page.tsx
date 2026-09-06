@@ -5,7 +5,7 @@ import { createMetadata } from "@/lib/seo";
 export const metadata = createMetadata({
   title: "À propos",
   description:
-    "Salam Kheweul Automobile — concession premium à Dakar. Vente, achat, location et conseil.",
+    "Salam Kheweul Automobile — concession premium à Dakar. Vente, achat et conseil.",
   path: "/a-propos",
 });
 
@@ -27,7 +27,7 @@ export default function AboutPage() {
           <p>
             Nous accompagnons les familles, les entrepreneurs et les voyageurs —
             de la première conversation jusqu’à la remise des clés. Vente, rachat,
-            location, conseil : un seul interlocuteur, une parole tenue.
+            conseil : un seul interlocuteur, une parole tenue.
           </p>
         </div>
         <div className="mt-12">

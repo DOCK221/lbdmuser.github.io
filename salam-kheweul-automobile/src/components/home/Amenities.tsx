@@ -15,10 +15,6 @@ const amenities = [
     text: "Estimation claire, offre ferme, paiement sécurisé.",
   },
   {
-    title: "Location premium",
-    text: "À la journée ou à la semaine, pour un événement ou un séjour.",
-  },
-  {
     title: "Dossier & carte grise",
     text: "On vous guide sur les démarches administratives au Sénégal.",
   },

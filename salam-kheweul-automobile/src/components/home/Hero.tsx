@@ -33,9 +33,8 @@ export function Hero() {
             transition={{ delay: 0.4, duration: 0.9 }}
             className="mt-5 max-w-lg text-base leading-relaxed text-mist sm:text-lg"
           >
-            Votre prochaine voiture commence ici. Vente, achat, location et
-            essai — une concession premium, un accueil simple, un conseiller
-            pour vous.
+            Votre prochaine voiture commence ici. Vente, achat et essai —
+            une concession premium, un accueil simple, un conseiller pour vous.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 10 }}

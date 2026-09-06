@@ -56,7 +56,7 @@ export default function ContactPage() {
                   Instagram
                 </Button>
                 <Button href={SITE.tiktok} variant="ghost" size="sm">
-                  TikTok
+                  TikTok {SITE.tiktokHandle}
                 </Button>
                 <Button href={whatsappLink()} variant="line" size="sm">
                   WhatsApp

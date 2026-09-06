@@ -12,7 +12,7 @@ export function SiteFooter() {
           <div className="md:col-span-2">
             <Logo />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-mist">
-              Concession automobile premium à Dakar. Vente, achat, location et
+              Concession automobile premium à Dakar. Vente, achat et
               accompagnement sur-mesure pour votre prochain véhicule.
             </p>
           </div>
@@ -60,7 +60,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <a href={SITE.tiktok} className="hover:text-ivory">
-                  TikTok
+                  TikTok {SITE.tiktokHandle}
                 </a>
               </li>
               <li>{SITE.address}</li>
