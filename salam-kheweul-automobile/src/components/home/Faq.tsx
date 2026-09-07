@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { SITE } from "@/lib/constants";
 
 const faqs = [
   {
@@ -23,7 +24,7 @@ const faqs = [
   },
   {
     q: "Où êtes-vous situés ?",
-    a: "À Dakar. Horaires : lundi–samedi 9h–19h, dimanche sur rendez-vous. Appelez le +221 77 347 39 20.",
+    a: `À Dakar. Horaires : lundi–samedi 9h–19h, dimanche sur rendez-vous. Appelez le ${SITE.phoneDisplay}.`,
   },
 ];
 

@@ -1,5 +1,6 @@
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { SITE } from "@/lib/constants";
 
 const amenities = [
   {
@@ -20,7 +21,7 @@ const amenities = [
   },
   {
     title: "Conseil WhatsApp",
-    text: "Une question ? Un conseiller répond au +221 77 347 39 20.",
+    text: `Une question ? Un conseiller répond au ${SITE.phoneDisplay}.`,
   },
 ];
 

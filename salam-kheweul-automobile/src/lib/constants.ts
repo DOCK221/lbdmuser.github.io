@@ -4,9 +4,9 @@ export const SITE = {
   tagline: "Votre prochaine voiture commence ici.",
   description:
     "Concession automobile premium à Dakar. Vente, achat et services automobiles. Véhicules sélectionnés, accompagnement personnalisé.",
-  phoneDisplay: "+221 77 347 39 20",
-  phoneTel: "+221773473920",
-  whatsappNumber: "221773473920",
+  phoneDisplay: "+221 77 522 56 87",
+  phoneTel: "+221775225687",
+  whatsappNumber: "221775225687",
   email: "contact@salamkheweulautomobile.sn",
   address: "Dakar, Sénégal",
   city: "Dakar",

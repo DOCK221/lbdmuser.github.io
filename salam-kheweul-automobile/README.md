@@ -59,4 +59,4 @@ npm start
 
 ## Contact
 
-- Téléphone / WhatsApp : **+221 77 347 39 20**
+- Téléphone / WhatsApp : **+221 77 522 56 87**
