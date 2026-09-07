@@ -6,10 +6,12 @@ import { Photo } from "@/components/ui/Photo";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { getVehicleById, getVehicleBySlug } from "@/data/vehicles";
-import { DEPOSIT_RATE, RESERVATION_TYPE_LABELS } from "@/lib/constants";
+import { DEPOSIT_RATE, RESERVATION_TYPE_LABELS, SITE } from "@/lib/constants";
 import { formatPrice } from "@/lib/format";
 import { useReservationStore } from "@/lib/store/reservation-store";
 import { vehicleDisplayName, vehicleMainImage } from "@/lib/vehicle";
+import { createLocalReservation } from "@/lib/booking";
+import { whatsappLink } from "@/lib/whatsapp";
 import type { ReservationType } from "@/lib/types";
 
 const field =
@@ -53,27 +55,33 @@ export function ReservationWizard() {
     setSubmitting(true);
     setError("");
     try {
-      const response = await fetch("/api/reservations", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          vehicleId: vehicle.id,
-          colorId: color?.id ?? vehicle.defaultColorId,
-          type: store.type,
-          customer: store.customer,
-          payDeposit: store.payDeposit && store.type === "reservation",
-          notes: store.notes,
-        }),
+      const reservation = createLocalReservation({
+        vehicleId: vehicle.id,
+        colorId: color?.id ?? vehicle.defaultColorId,
+        type: store.type,
+        customer: store.customer,
+        payDeposit: store.payDeposit && store.type === "reservation",
+        notes: store.notes,
       });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error ?? "Erreur");
-      sessionStorage.setItem("ska-reservation", JSON.stringify(data.reservation));
+      sessionStorage.setItem("ska-reservation", JSON.stringify(reservation));
+      const body = [
+        `Bonjour ${SITE.name},`,
+        `Je souhaite ${RESERVATION_TYPE_LABELS[store.type].toLowerCase()} : ${vehicleDisplayName(vehicle)}.`,
+        `${store.customer.firstName} ${store.customer.lastName}`,
+        `Téléphone : ${store.customer.phone}`,
+        store.customer.email ? `Email : ${store.customer.email}` : "",
+        store.notes ? `Message : ${store.notes}` : "",
+        `Référence : ${reservation.reference}`,
+      ]
+        .filter(Boolean)
+        .join("\n");
+      window.open(whatsappLink(body), "_blank", "noopener,noreferrer");
       if (store.payDeposit && store.type === "reservation") {
         router.push(
-          `/paiement?reservation=${data.reservation.reference}&deposit=1&amount=${data.reservation.depositAmount}`,
+          `/paiement?reservation=${reservation.reference}&deposit=1&amount=${reservation.depositAmount}`,
         );
       } else {
-        router.push(`/confirmation?ref=${data.reservation.reference}`);
+        router.push(`/confirmation?ref=${reservation.reference}`);
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Une erreur est survenue.");

@@ -12,8 +12,20 @@ const field =
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
 
-  function onSubmit(event: FormEvent) {
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const body = [
+      `Bonjour ${SITE.name},`,
+      "Je vous écris depuis le site.",
+      `${data.get("firstName") ?? ""} ${data.get("lastName") ?? ""}`.trim(),
+      `Téléphone : ${data.get("phone") ?? ""}`,
+      data.get("email") ? `Email : ${data.get("email")}` : "",
+      `Message : ${data.get("message") ?? ""}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+    window.open(whatsappLink(body), "_blank", "noopener,noreferrer");
     setSent(true);
   }
 
@@ -69,12 +81,13 @@ export default function ContactPage() {
               <p className="font-display text-3xl">Message envoyé. Merci.</p>
             ) : (
               <form onSubmit={onSubmit} className="grid gap-4">
-                <input required className={field} placeholder="Nom" />
-                <input required className={field} placeholder="Prénom" />
-                <input required className={field} placeholder="Téléphone" />
-                <input className={field} type="email" placeholder="Email" />
+                <input required className={field} placeholder="Nom" name="lastName" />
+                <input required className={field} placeholder="Prénom" name="firstName" />
+                <input required className={field} placeholder="Téléphone" name="phone" />
+                <input className={field} type="email" placeholder="Email" name="email" />
                 <textarea
                   required
+                  name="message"
                   className="min-h-36 border border-white/10 bg-transparent p-4 text-sm outline-none focus:border-gold/40"
                   placeholder="Votre message"
                 />

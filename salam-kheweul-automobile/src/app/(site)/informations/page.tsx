@@ -10,12 +10,7 @@ export const metadata = createMetadata({
   path: "/informations",
 });
 
-export default async function InquiryPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ vehicule?: string }>;
-}) {
-  const { vehicule } = await searchParams;
+export default function InquiryPage() {
   return (
     <div className="bg-ink pt-28 pb-24">
       <Container className="max-w-3xl">
@@ -26,7 +21,7 @@ export default async function InquiryPage({
         />
         <div className="mt-14">
           <Suspense>
-            <InquiryForm initialSlug={vehicule} />
+            <InquiryForm />
           </Suspense>
         </div>
       </Container>

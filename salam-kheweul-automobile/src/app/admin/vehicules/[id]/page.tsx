@@ -1,4 +1,9 @@
 import { VehicleEditor } from "@/components/admin/VehicleEditor";
+import { vehicles } from "@/data/vehicles";
+
+export function generateStaticParams() {
+  return vehicles.map((vehicle) => ({ id: vehicle.id }));
+}
 
 export default async function EditVehiclePage({
   params,

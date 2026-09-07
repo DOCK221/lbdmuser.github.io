@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { ORDER_STATUS, PAYMENT_STATUS } from "./labels";
 import { formatPrice } from "@/lib/format";
+import { reservationRepository } from "@/lib/repositories/reservations";
 import type { Reservation } from "@/lib/types";
 
 export function AdminOrders() {
@@ -10,11 +11,9 @@ export function AdminOrders() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch("/api/reservations")
-      .then((res) => res.json())
-      .then((data) => {
-        if (!cancelled) setItems(data.reservations ?? []);
-      });
+    reservationRepository.list().then((reservations) => {
+      if (!cancelled) setItems(reservations);
+    });
     return () => {
       cancelled = true;
     };

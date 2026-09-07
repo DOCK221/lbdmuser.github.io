@@ -45,12 +45,12 @@ Aucune donnée bancaire n’est stockée. Seules les références prestataire, l
 
 Variables d’environnement : voir `.env.example`.
 
-## Déploiement (Vercel)
+## Déploiement
 
-1. Root Directory : `salam-kheweul-automobile`
-2. Variables : `NEXT_PUBLIC_SITE_URL` = URL de production
-3. Ajouter les clés PayDunya / PayTech uniquement en production
-4. Brancher `DATABASE_URL` lorsque la base est prête
+Le site se publie comme un site HTML classique (pas besoin de Node.js sur l’hébergeur).
+
+1. Construire : `npm run build` → dossier `out/`
+2. Envoyer **le contenu** de `out/` (le fichier `index.html` doit être à la racine) sur Netlify, Cloudflare Pages, GitHub Pages, ou tout hébergeur de fichiers.
 
 ```bash
 npm run build

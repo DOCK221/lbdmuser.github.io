@@ -3,6 +3,8 @@
 import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Container, SectionHeading } from "@/components/ui/Container";
+import { SITE } from "@/lib/constants";
+import { whatsappLink } from "@/lib/whatsapp";
 
 const field =
   "h-12 w-full border border-white/10 bg-transparent px-4 text-sm text-ivory outline-none focus:border-gold/40";
@@ -10,8 +12,23 @@ const field =
 export default function BuyPage() {
   const [sent, setSent] = useState(false);
 
-  function onSubmit(event: FormEvent) {
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const body = [
+      `Bonjour ${SITE.name},`,
+      "Je souhaite une estimation pour rachat.",
+      `${data.get("firstName") ?? ""} ${data.get("lastName") ?? ""}`.trim(),
+      `Téléphone : ${data.get("phone") ?? ""}`,
+      data.get("email") ? `Email : ${data.get("email")}` : "",
+      `Véhicule : ${data.get("brand") ?? ""} ${data.get("model") ?? ""}`.trim(),
+      data.get("year") ? `Année : ${data.get("year")}` : "",
+      data.get("mileage") ? `Kilométrage : ${data.get("mileage")}` : "",
+      data.get("notes") ? `Précisions : ${data.get("notes")}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+    window.open(whatsappLink(body), "_blank", "noopener,noreferrer");
     setSent(true);
   }
 

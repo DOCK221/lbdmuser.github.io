@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/Button";
-import { PAYMENT_METHOD_LABELS } from "@/lib/constants";
-import { formatPrice } from "@/lib/format";
+import { PAYMENT_METHOD_LABELS, SITE } from "@/lib/constants";
+import { formatPrice, generateReference } from "@/lib/format";
+import { whatsappLink } from "@/lib/whatsapp";
 import type { PaymentMethod } from "@/lib/types";
 
 const methods: { id: PaymentMethod; hint: string }[] = [
@@ -33,18 +34,8 @@ export function PaymentForm({
     setBusy(true);
     setError("");
     try {
-      const response = await fetch("/api/payments/initiate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          amount,
-          method,
-          reservationReference: reservationRef ?? params.get("reservation"),
-          isDeposit,
-        }),
-      });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error ?? "Paiement impossible");
+      const reference = generateReference("TX");
+      const reservationReference = reservationRef ?? params.get("reservation") ?? "";
       const cached = sessionStorage.getItem("ska-reservation");
       if (cached) {
         const reservation = JSON.parse(cached);
@@ -52,15 +43,30 @@ export function PaymentForm({
           "ska-reservation",
           JSON.stringify({
             ...reservation,
-            paymentStatus: "success",
-            orderStatus: "deposit_paid",
+            paymentStatus: "pending",
+            orderStatus: "awaiting_payment",
             paymentMethod: method,
-            transactionReference: data.session.reference,
+            transactionReference: reference,
           }),
         );
       }
+      window.open(
+        whatsappLink(
+          [
+            `Bonjour ${SITE.name},`,
+            `Je souhaite verser un acompte (${PAYMENT_METHOD_LABELS[method]}).`,
+            `Montant : ${formatPrice(amount)}`,
+            reservationReference ? `Réservation : ${reservationReference}` : "",
+            `Référence : ${reference}`,
+          ]
+            .filter(Boolean)
+            .join("\n"),
+        ),
+        "_blank",
+        "noopener,noreferrer",
+      );
       router.push(
-        `/confirmation?ref=${data.reservationReference ?? reservationRef}&tx=${data.session.reference}&status=success`,
+        `/confirmation?ref=${reservationReference}&tx=${reference}&status=pending`,
       );
     } catch (err) {
       setError(err instanceof Error ? err.message : "Paiement refusé.");

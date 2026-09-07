@@ -3,35 +3,29 @@
 import { useEffect, useState } from "react";
 import { APPOINTMENT_TYPE_LABELS } from "@/lib/constants";
 import { formatDate } from "@/lib/format";
+import { appointmentRepository } from "@/lib/repositories/appointments";
 import type { Appointment, AppointmentStatus } from "@/lib/types";
 
 export function AdminAppointments() {
   const [items, setItems] = useState<Appointment[]>([]);
 
   async function load() {
-    const res = await fetch("/api/appointments");
-    const data = await res.json();
-    setItems(data.appointments ?? []);
+    const appointments = await appointmentRepository.list();
+    setItems(appointments);
   }
 
   useEffect(() => {
     let cancelled = false;
-    fetch("/api/appointments")
-      .then((res) => res.json())
-      .then((data) => {
-        if (!cancelled) setItems(data.appointments ?? []);
-      });
+    appointmentRepository.list().then((appointments) => {
+      if (!cancelled) setItems(appointments);
+    });
     return () => {
       cancelled = true;
     };
   }, []);
 
   async function setStatus(id: string, status: AppointmentStatus) {
-    await fetch(`/api/appointments/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status }),
-    });
+    await appointmentRepository.updateStatus(id, status);
     load();
   }
 

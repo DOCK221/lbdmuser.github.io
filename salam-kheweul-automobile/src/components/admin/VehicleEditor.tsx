@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
+import { getVehicleById } from "@/data/vehicles";
 import type { Vehicle } from "@/lib/types";
 
 const field =
@@ -58,69 +59,21 @@ export function VehicleEditor({ vehicleId }: { vehicleId?: string }) {
 
   useEffect(() => {
     if (!vehicleId) return;
-    fetch(`/api/vehicles/${vehicleId}`)
-      .then((res) => res.json())
-      .then((payload) => {
-        if (payload.vehicle) {
-          setData(payload.vehicle);
-          setFeatures((payload.vehicle.features ?? []).join(", "));
-          setPhotos(
-            (payload.vehicle.images?.length
-              ? payload.vehicle.images
-              : payload.vehicle.colors?.[0]?.images ?? []
-            ).join("\n"),
-          );
-          setVideo(payload.vehicle.video?.url ?? "");
-        }
-      });
+    const vehicle = getVehicleById(vehicleId);
+    if (!vehicle) return;
+    setData(vehicle);
+    setFeatures((vehicle.features ?? []).join(", "));
+    setPhotos(
+      (vehicle.images?.length ? vehicle.images : vehicle.colors?.[0]?.images ?? []).join(
+        "\n",
+      ),
+    );
+    setVideo(vehicle.video?.url ?? "");
   }, [vehicleId]);
 
   async function onSubmit(event: FormEvent) {
     event.preventDefault();
-    const images = photos
-      .split("\n")
-      .map((line) => line.trim())
-      .filter(Boolean);
-    const colors = (data.colors ?? empty.colors!).map((color, index) =>
-      index === 0 && images.length ? { ...color, images } : color,
-    );
-    const payload = {
-      ...empty,
-      ...data,
-      year: data.year ?? null,
-      price: data.price ?? null,
-      mileage: data.mileage ?? null,
-      slug:
-        data.slug ||
-        `${data.brand}-${data.model}-${data.year ?? "stock"}`
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-"),
-      features: features
-        .split(",")
-        .map((item) => item.trim())
-        .filter(Boolean),
-      images,
-      mainImage: images[0] ?? "",
-      colors,
-      video: video
-        ? { title: "Présentation", poster: images[0] ?? colors[0].images[0], url: video }
-        : data.video,
-    };
-    if (vehicleId) {
-      await fetch(`/api/vehicles/${vehicleId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-    } else {
-      await fetch("/api/vehicles", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-    }
     router.push("/admin/vehicules");
-    router.refresh();
   }
 
   function set<K extends keyof Vehicle>(key: K, value: Vehicle[K]) {

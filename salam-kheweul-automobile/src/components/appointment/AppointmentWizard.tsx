@@ -4,9 +4,11 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { vehicles } from "@/data/vehicles";
-import { APPOINTMENT_TYPE_LABELS } from "@/lib/constants";
+import { APPOINTMENT_TYPE_LABELS, SITE } from "@/lib/constants";
 import { formatDate } from "@/lib/format";
+import { createLocalAppointment, generateAppointmentSlots } from "@/lib/booking";
 import { vehicleDisplayName } from "@/lib/vehicle";
+import { whatsappLink } from "@/lib/whatsapp";
 import type { AppointmentSlot, AppointmentType, CustomerInfo } from "@/lib/types";
 
 const field =
@@ -36,10 +38,7 @@ export function AppointmentWizard() {
 
   useEffect(() => {
     const from = new Date().toISOString().slice(0, 10);
-    fetch(`/api/appointments?from=${from}`)
-      .then((res) => res.json())
-      .then((data) => setSlots(data.slots ?? []))
-      .catch(() => setSlots([]));
+    setSlots(generateAppointmentSlots(from));
   }, []);
 
   const dates = useMemo(
@@ -56,22 +55,31 @@ export function AppointmentWizard() {
     }
     setSubmitting(true);
     try {
-      const response = await fetch("/api/appointments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          vehicleId: vehicleId || undefined,
-          type,
-          date,
-          time,
-          customer,
-          notes,
-        }),
+      const appointment = createLocalAppointment({
+        vehicleId: vehicleId || undefined,
+        type,
+        date,
+        time,
+        customer,
+        notes,
       });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error ?? "Erreur");
-      sessionStorage.setItem("ska-appointment", JSON.stringify(data.appointment));
-      router.push(`/rendez-vous/confirmation?ref=${data.appointment.reference}`);
+      const vehicle = vehicles.find((item) => item.id === vehicleId);
+      sessionStorage.setItem("ska-appointment", JSON.stringify(appointment));
+      const body = [
+        `Bonjour ${SITE.name},`,
+        `Je souhaite un rendez-vous (${APPOINTMENT_TYPE_LABELS[type]}).`,
+        vehicle ? `Véhicule : ${vehicleDisplayName(vehicle)}` : "Conseil général",
+        `Date : ${date} à ${time}`,
+        `${customer.firstName} ${customer.lastName}`,
+        `Téléphone : ${customer.phone}`,
+        customer.email ? `Email : ${customer.email}` : "",
+        notes ? `Message : ${notes}` : "",
+        `Référence : ${appointment.reference}`,
+      ]
+        .filter(Boolean)
+        .join("\n");
+      window.open(whatsappLink(body), "_blank", "noopener,noreferrer");
+      router.push(`/rendez-vous/confirmation?ref=${appointment.reference}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Impossible de confirmer.");
       setSubmitting(false);

@@ -1,45 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { AvailabilityBadge } from "@/components/ui/AvailabilityBadge";
 import { formatPrice } from "@/lib/format";
+import { vehicles as catalog } from "@/data/vehicles";
+import { vehicleDisplayName } from "@/lib/vehicle";
 import type { Vehicle } from "@/lib/types";
 
 export function AdminVehicleTable() {
-  const [items, setItems] = useState<Vehicle[]>([]);
+  const [items, setItems] = useState<Vehicle[]>(catalog);
 
-  async function load() {
-    const res = await fetch("/api/vehicles");
-    const data = await res.json();
-    setItems(data.vehicles ?? []);
+  function patch(id: string, body: Partial<Vehicle>) {
+    setItems((current) =>
+      current.map((vehicle) =>
+        vehicle.id === id ? { ...vehicle, ...body } : vehicle,
+      ),
+    );
   }
 
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/vehicles")
-      .then((res) => res.json())
-      .then((data) => {
-        if (!cancelled) setItems(data.vehicles ?? []);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  async function patch(id: string, body: Partial<Vehicle>) {
-    await fetch(`/api/vehicles/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    load();
-  }
-
-  async function remove(id: string) {
-    await fetch(`/api/vehicles/${id}`, { method: "DELETE" });
-    load();
+  function remove(id: string) {
+    setItems((current) => current.filter((vehicle) => vehicle.id !== id));
   }
 
   return (
@@ -64,7 +46,7 @@ export function AdminVehicleTable() {
             {items.map((vehicle) => (
               <tr key={vehicle.id} className="border-b border-white/5">
                 <td className="py-4">
-                  {vehicle.brand} {vehicle.model}
+                  {vehicleDisplayName(vehicle)}
                   <span className="block text-xs text-mist">
                     {vehicle.year ?? "Année non renseignée"}
                   </span>
