@@ -1,0 +1,30 @@
+import { Container } from "@/components/ui/Container";
+import { vehicles } from "@/data/vehicles";
+import { SITE } from "@/lib/constants";
+
+export function TrustStrip() {
+  const inStock = vehicles.filter((vehicle) => vehicle.availability !== "vendu").length;
+  const items = [
+    { label: "Véhicules en stock", value: String(inStock) },
+    { label: "Services", value: "Vente · Achat" },
+    { label: "Paiement", value: "Wave · OM · Carte" },
+    { label: "WhatsApp", value: SITE.phoneDisplay },
+  ];
+
+  return (
+    <section className="border-y border-white/10 bg-ink-soft">
+      <Container className="grid grid-cols-2 gap-6 py-8 lg:grid-cols-4">
+        {items.map((item) => (
+          <div key={item.label}>
+            <p className="text-[10px] uppercase tracking-[0.22em] text-gold">
+              {item.label}
+            </p>
+            <p className="mt-2 font-display text-xl text-ivory sm:text-2xl">
+              {item.value}
+            </p>
+          </div>
+        ))}
+      </Container>
+    </section>
+  );
+}
