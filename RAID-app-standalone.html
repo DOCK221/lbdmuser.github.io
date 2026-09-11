@@ -2,9 +2,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>RAID - L'aventure urbaine</title>
-    <style>
+<style>
 :root {
     --primary-red: #FF1744;
     --primary-blue: #2979FF;
@@ -881,11 +883,10 @@ body {
     }
 }
 
-    </style>
+</style>
 </head>
 <body>
-
-    <!-- Écran 1 : Accueil -->
+<!-- Écran 1 : Accueil -->
     <div id="screen-home" class="screen active">
         <div class="hero-bg">
             <div class="logo-container">
@@ -1275,8 +1276,7 @@ body {
     </div>
 
     <script src="script.js"></script>
-
-    <script>
+<script>
 // Variables globales
 let currentScreen = 'screen-home';
 let gameData = {
@@ -1583,6 +1583,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-    </script>
+</script>
 </body>
 </html>
