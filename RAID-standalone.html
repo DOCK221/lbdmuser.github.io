@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAID - Défis Urbains en Équipe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #FF1744;
+            --primary-blue: #2979FF;
+            --dark-blue: #0A1929;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--dark-blue);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #1a2f4a 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card h3 {
+            font-size: 3rem;
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        /* Concept Grid */
+        .concept {
+            background: #f5f5f5;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .concept-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .concept-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .concept-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+
+        /* Steps */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+
+        /* Challenges */
+        .challenges {
+            background: #f5f5f5;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .challenge-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary-red);
+        }
+
+        .challenge-card.points-3 {
+            border-left-color: #4CAF50;
+        }
+
+        .challenge-card.points-5 {
+            border-left-color: #2196F3;
+        }
+
+        .challenge-card.points-10 {
+            border-left-color: #FF9800;
+        }
+
+        .challenge-card.points-15 {
+            border-left-color: #F44336;
+        }
+
+        .challenge-points {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        .challenge-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+
+        .challenge-note {
+            background: var(--dark-blue);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* Rules */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .rule-card {
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .rule-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+
+        .rule-card ul {
+            list-style: none;
+        }
+
+        .rule-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #666;
+        }
+
+        .rule-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--primary-red);
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo-text">RAID</div>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#concept">Concept</a></li>
+                <li><a href="#defis">Défis</a></li>
+                <li><a href="#regles">Règles</a></li>
+            </ul>
+            <button class="cta-button">Organiser un RAID</button>
+        </div>
+    </nav>
+
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">RAID</h1>
+            <p class="hero-subtitle">L'aventure urbaine qui transforme ta ville en terrain de jeu</p>
+            <p class="hero-description">Des défis. Des amis. Une ville. Un chrono. Qui sera le vainqueur ?</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">Découvrir le concept</button>
+                <button class="btn-secondary">Voir les défis</button>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-card">
+                <h3>50</h3>
+                <p>Défis</p>
+            </div>
+            <div class="stat-card">
+                <h3>2h</h3>
+                <p>Chrono</p>
+            </div>
+            <div class="stat-card">
+                <h3>∞</h3>
+                <p>Fun</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="concept" class="concept">
+        <div class="container">
+            <h2 class="section-title">Le Concept</h2>
+            <p class="section-subtitle">RAID est un jeu d'aventure urbaine qui transforme ta ville en terrain de défis</p>
+            
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <div class="concept-icon">👥</div>
+                    <h3>En Équipe</h3>
+                    <p>Formez des équipes de 3 à 6 personnes et affrontez vos amis dans une compétition amicale</p>
+                </div>
+                
+                <div class="concept-card">
+                    <div class="concept-icon">🎯</div>
+                    <h3>50 Défis</h3>
+                    <p>Choisissez parmi 50 défis variés valant 3, 5, 10 ou 15 points selon leur difficulté</p>
+                </div>
+                
+                <div class="concept-card">
+                    <div class="concept-icon">⏱️</div>
+                    <h3>Contre la Montre</h3>
+                    <p>Vous avez 2 heures pour accomplir un maximum de défis et marquer le plus de points</p>
+                </div>
+                
+                <div class="concept-card">
+                    <div class="concept-icon">🏙️</div>
+                    <h3>Exploration Urbaine</h3>
+                    <p>Redécouvrez votre ville, interagissez avec des inconnus et vivez une aventure unique</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Comment ça marche ?</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Rassemblement</h3>
+                    <p>Toutes les équipes se retrouvent au point de départ</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Stratégie</h3>
+                    <p>Chaque équipe choisit ses défis prioritaires en fonction des points</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Action !</h3>
+                    <p>Top départ ! Vous avez 2 heures pour réaliser un maximum de défis</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Décompte</h3>
+                    <p>Retour au point de départ pour compter les points et désigner le vainqueur</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="defis" class="challenges">
+        <div class="container">
+            <h2 class="section-title">Exemples de Défis</h2>
+            <p class="section-subtitle">Des défis pour tous les goûts et tous les niveaux</p>
+            
+            <div class="challenges-grid">
+                <div class="challenge-card points-3">
+                    <div class="challenge-points">3 pts</div>
+                    <h3>Photo de Groupe</h3>
+                    <p>Prenez une photo d'équipe devant un monument emblématique de la ville</p>
+                </div>
+                
+                <div class="challenge-card points-5">
+                    <div class="challenge-points">5 pts</div>
+                    <h3>Le Photomaton</h3>
+                    <p>Toute l'équipe doit faire une photo dans un photomaton</p>
+                </div>
+                
+                <div class="challenge-card points-10">
+                    <div class="challenge-points">10 pts</div>
+                    <h3>10 Inconnus</h3>
+                    <p>Rassemblez 10 personnes inconnues pour prendre une photo avec votre équipe</p>
+                </div>
+                
+                <div class="challenge-card points-10">
+                    <div class="challenge-points">10 pts</div>
+                    <h3>Flash Mob</h3>
+                    <p>Organisez une mini chorégraphie avec des passants dans un lieu public</p>
+                </div>
+                
+                <div class="challenge-card points-15">
+                    <div class="challenge-points">15 pts</div>
+                    <h3>Cuisine Participative</h3>
+                    <p>Entrez dans un fast-food et demandez à participer à la préparation d'un plat</p>
+                </div>
+                
+                <div class="challenge-card points-15">
+                    <div class="challenge-points">15 pts</div>
+                    <h3>Interview Radio</h3>
+                    <p>Faites une fausse interview de rue filmée avec au moins 5 personnes</p>
+                </div>
+            </div>
+
+            <div class="challenge-note">
+                <p>Et 44 autres défis à découvrir ! Chaque RAID propose des défis adaptés à la ville et à l'ambiance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="regles" class="rules">
+        <div class="container">
+            <h2 class="section-title">Les Règles du Jeu</h2>
+            
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <h3>📋 Composition des Équipes</h3>
+                    <ul>
+                        <li>3 à 6 personnes par équipe</li>
+                        <li>Tous les membres doivent participer</li>
+                        <li>Une équipe = un seul compte-rendu</li>
+                    </ul>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>⏰ Temps et Points</h3>
+                    <ul>
+                        <li>Durée : 2 heures précises</li>
+                        <li>Défis à 3, 5, 10 ou 15 points</li>
+                        <li>Retour obligatoire au point de départ</li>
+                    </ul>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>📸 Preuves</h3>
+                    <ul>
+                        <li>Photos ou vidéos obligatoires</li>
+                        <li>Tous les membres doivent être visibles</li>
+                        <li>Pas de montage ou trucage</li>
+                    </ul>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>🎖️ Fair-Play</h3>
+                    <ul>
+                        <li>Respect des personnes et des lieux</li>
+                        <li>Pas de triche ou d'arrangement</li>
+                        <li>L'amusement avant la victoire !</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prêt à organiser ton RAID ?</h2>
+            <p>Rassemble tes amis et vivez une aventure urbaine inoubliable</p>
+            <button class="btn-cta">Organiser un RAID</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h2 style="margin-bottom: 1rem;">RAID</h2>
+            <p style="margin-bottom: 1rem;">L'aventure urbaine qui transforme ta ville</p>
+            <p>&copy; 2026 RAID. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
