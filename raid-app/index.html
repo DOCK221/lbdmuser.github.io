@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAID - L'aventure urbaine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Écran 1 : Accueil -->
+    <div id="screen-home" class="screen active">
+        <div class="hero-bg">
+            <div class="logo-container">
+                <h1 class="logo-title">RAID</h1>
+                <p class="logo-subtitle">PLUS QU'UN JEU<br>UNE AVENTURE</p>
+            </div>
+            
+            <div class="home-badges">
+                <span class="badge">SAME TEAM</span>
+                <span class="badge">MORE STORIES</span>
+            </div>
+            
+            <div class="home-actions">
+                <button class="btn-primary" onclick="goToScreen('screen-create')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    CRÉER UNE PARTIE
+                </button>
+                
+                <button class="btn-secondary" onclick="goToScreen('screen-join')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                        <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                        <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                        <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    REJOINDRE UNE PARTIE
+                </button>
+                
+                <a href="#" class="link-how" onclick="goToScreen('screen-how'); return false;">
+                    Comment ça marche ? →
+                </a>
+            </div>
+            
+            <div class="home-footer">
+                <div class="footer-text">
+                    <span>EXPLORE</span>
+                    <span>DÉFI</span>
+                    <span>PROUVE</span>
+                    <span>GAGNE</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Écran 2 : Comment ça marche -->
+    <div id="screen-how" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="goBack()">←</button>
+            <h2>Comment ça marche ?</h2>
+        </div>
+        
+        <div class="how-content">
+            <div class="how-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>FORME TON ÉQUIPE</h3>
+                    <p>2 à 6 joueurs par équipe. Entre amis, en soirée ou en événement, tout le monde peut jouer !</p>
+                    <div class="step-image">TEAM FIRST</div>
+                </div>
+            </div>
+            
+            <div class="how-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>RELÈVE LES DÉFIS</h3>
+                    <p>Pendant le temps de jeu, réalise un maximum de défis. Des défis funs, originaux et parfois fous !</p>
+                    <div class="step-image">DES DÉFIS POUR TOUS</div>
+                </div>
+            </div>
+            
+            <div class="how-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>PROUVE-LE</h3>
+                    <p>Prends une photo ou une vidéo directement dans l'app. Chaque défi validé rapporte des points (provisoires).</p>
+                    <div class="step-image">SHOOT & GO</div>
+                </div>
+            </div>
+            
+            <div class="how-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>PLACE AU JUGEMENT</h3>
+                    <p>À la fin, toutes les équipes regardent les preuves des autres et votent. Seuls les défis validés par la majorité comptent !</p>
+                    <div class="step-image">ON REGARDE ON VOTE</div>
+                </div>
+            </div>
+            
+            <div class="how-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>ET QUE LA MEILLEURE ÉQUIPE GAGNE !</h3>
+                    <p>Découvre le classement final et repars avec des souvenirs inoubliables !</p>
+                    <div class="step-image">WINNERS</div>
+                </div>
+            </div>
+            
+            <button class="btn-cta" onclick="goToScreen('screen-home')">C'EST PARTI !</button>
+        </div>
+    </div>
+
+    <!-- Écran 3 : Rejoindre une partie -->
+    <div id="screen-join" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="goBack()">←</button>
+            <h2>Rejoindre une partie</h2>
+        </div>
+        
+        <div class="join-content">
+            <p class="info-text">Entre le code à 4 chiffres pour rejoindre la partie</p>
+            
+            <div class="code-input">
+                <input type="text" maxlength="1" class="code-digit" oninput="nextInput(this, 0)">
+                <input type="text" maxlength="1" class="code-digit" oninput="nextInput(this, 1)">
+                <input type="text" maxlength="1" class="code-digit" oninput="nextInput(this, 2)">
+                <input type="text" maxlength="1" class="code-digit" oninput="nextInput(this, 3)">
+            </div>
+            
+            <p class="or-text">OU</p>
+            
+            <button class="btn-scan" onclick="scanQR()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                    <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                    <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                    <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Scanner le QR Code
+            </button>
+            
+            <button class="btn-primary" onclick="joinGame()">REJOINDRE</button>
+        </div>
+    </div>
+
+    <!-- Écran 4 : Créer une partie - Configuration -->
+    <div id="screen-create" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="goBack()">←</button>
+            <h2>Créer une partie</h2>
+        </div>
+        
+        <div class="create-content">
+            <div class="form-group">
+                <label>Ville</label>
+                <select class="form-select" id="city">
+                    <option value="">Sélectionne ta ville</option>
+                    <option value="paris">Paris</option>
+                    <option value="lyon">Lyon</option>
+                    <option value="marseille">Marseille</option>
+                    <option value="toulouse">Toulouse</option>
+                    <option value="bordeaux">Bordeaux</option>
+                    <option value="lille">Lille</option>
+                    <option value="nantes">Nantes</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Durée du parcours</label>
+                <div class="duration-options">
+                    <button class="duration-btn" onclick="selectDuration(this, 60)">1h</button>
+                    <button class="duration-btn active" onclick="selectDuration(this, 120)">2h</button>
+                    <button class="duration-btn" onclick="selectDuration(this, 180)">3h</button>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Nombre d'équipes</label>
+                <div class="counter">
+                    <button class="counter-btn" onclick="changeTeams(-1)">-</button>
+                    <span class="counter-value" id="teams-count">2</span>
+                    <button class="counter-btn" onclick="changeTeams(1)">+</button>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Joueurs par équipe</label>
+                <div class="counter">
+                    <button class="counter-btn" onclick="changePlayers(-1)">-</button>
+                    <span class="counter-value" id="players-count">4</span>
+                    <button class="counter-btn" onclick="changePlayers(1)">+</button>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Point de rendez-vous</label>
+                <input type="text" class="form-input" placeholder="Ex: Place de la République" id="meeting-point">
+            </div>
+            
+            <button class="btn-primary" onclick="goToScreen('screen-payment')">CONTINUER</button>
+        </div>
+    </div>
+
+    <!-- Écran 5 : Paiement -->
+    <div id="screen-payment" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="goBack()">←</button>
+            <h2>Paiement</h2>
+        </div>
+        
+        <div class="payment-content">
+            <div class="summary-card">
+                <h3>Récapitulatif</h3>
+                <div class="summary-row">
+                    <span>Ville</span>
+                    <span id="sum-city">Paris</span>
+                </div>
+                <div class="summary-row">
+                    <span>Durée</span>
+                    <span id="sum-duration">2h</span>
+                </div>
+                <div class="summary-row">
+                    <span>Équipes</span>
+                    <span id="sum-teams">2 équipes</span>
+                </div>
+                <div class="summary-row">
+                    <span>Joueurs par équipe</span>
+                    <span id="sum-players">4 joueurs</span>
+                </div>
+                <div class="summary-row">
+                    <span>Point de RDV</span>
+                    <span id="sum-meeting">Place de la République</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="sum-total">29.99€</span>
+                </div>
+            </div>
+            
+            <div class="payment-methods">
+                <button class="payment-btn active">
+                    <span>💳</span>
+                    Carte bancaire
+                </button>
+                <button class="payment-btn">
+                    <span>🅿️</span>
+                    PayPal
+                </button>
+                <button class="payment-btn">
+                    <span>🍎</span>
+                    Apple Pay
+                </button>
+            </div>
+            
+            <button class="btn-primary" onclick="processPayment()">PAYER 29.99€</button>
+        </div>
+    </div>
+
+    <!-- Écran 6 : Salle d'attente -->
+    <div id="screen-lobby" class="screen">
+        <div class="lobby-header">
+            <h2>Salle d'attente</h2>
+            <div class="game-code">
+                <span>Code de partie</span>
+                <h1 id="lobby-code">8264</h1>
+            </div>
+        </div>
+        
+        <div class="lobby-content">
+            <div class="qr-container">
+                <div class="qr-code">
+                    <div class="qr-placeholder">QR CODE</div>
+                </div>
+                <p>Scanne ce QR code pour rejoindre</p>
+            </div>
+            
+            <div class="teams-list">
+                <div class="team-card">
+                    <div class="team-header">
+                        <span>Team 1</span>
+                        <span class="team-count">3/4 joueurs</span>
+                    </div>
+                    <div class="team-players">
+                        <div class="player">Alex</div>
+                        <div class="player">Marie</div>
+                        <div class="player">Tom</div>
+                        <div class="player empty">+</div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-header">
+                        <span>Team 2</span>
+                        <span class="team-count">4/4 joueurs</span>
+                    </div>
+                    <div class="team-players">
+                        <div class="player">Sarah</div>
+                        <div class="player">Lucas</div>
+                        <div class="player">Emma</div>
+                        <div class="player">Hugo</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lobby-footer">
+                <p class="players-ready">7 joueurs connectés • Tous prêts ✓</p>
+                <button class="btn-launch" onclick="launchRaid()">LANCER LE RAID</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Écran 7 : Countdown -->
+    <div id="screen-countdown" class="screen">
+        <div class="countdown-container">
+            <h1 class="countdown-number" id="countdown">3</h1>
+            <p class="countdown-text">Préparez-vous...</p>
+        </div>
+    </div>
+
+    <!-- Écran 8 : Liste des défis -->
+    <div id="screen-challenges" class="screen">
+        <div class="challenges-header">
+            <div class="timer-bar">
+                <div class="timer-info">
+                    <span>⏱️</span>
+                    <span id="raid-timer">01:59:45</span>
+                </div>
+                <div class="score-info">
+                    <span>🎯</span>
+                    <span id="team-score">0 pts</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="challenges-content">
+            <div class="challenges-tabs">
+                <button class="tab active" onclick="filterChallenges('all')">Tous (50)</button>
+                <button class="tab" onclick="filterChallenges('3')">3 pts</button>
+                <button class="tab" onclick="filterChallenges('5')">5 pts</button>
+                <button class="tab" onclick="filterChallenges('10')">10 pts</button>
+                <button class="tab" onclick="filterChallenges('15')">15 pts</button>
+            </div>
+            
+            <div class="challenges-list" id="challenges-list">
+                <!-- Les défis seront générés par JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Écran 9 : Défi Flash -->
+    <div id="screen-flash" class="screen flash-challenge">
+        <div class="flash-overlay">
+            <div class="flash-content">
+                <h1 class="flash-title">⚡ DÉFI FLASH ⚡</h1>
+                <div class="flash-timer" id="flash-timer">00:60</div>
+                <div class="flash-challenge-card">
+                    <h2>Fais un high-five avec 5 inconnus !</h2>
+                    <p class="flash-points">+20 POINTS</p>
+                </div>
+                <button class="btn-flash-camera" onclick="takeFlashPhoto()">
+                    📸 PRENDRE LA PHOTO
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Écran 10 : Profil joueur (après scan QR) -->
+    <div id="screen-player" class="screen">
+        <div class="screen-header">
+            <h2>Rejoindre RAID 8264</h2>
+        </div>
+        
+        <div class="player-setup">
+            <div class="form-group">
+                <label>Choisis ton pseudo</label>
+                <input type="text" class="form-input" placeholder="Ton pseudo" id="player-name">
+            </div>
+            
+            <div class="form-group">
+                <label>Rejoins une équipe</label>
+                <div class="team-select">
+                    <button class="team-option" onclick="selectTeam(1)">
+                        <span>Team 1</span>
+                        <span class="team-slots">3/4</span>
+                    </button>
+                    <button class="team-option" onclick="selectTeam(2)">
+                        <span>Team 2</span>
+                        <span class="team-slots">4/4</span>
+                    </button>
+                </div>
+            </div>
+            
+            <button class="btn-primary" onclick="playerReady()">JE SUIS PRÊT</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
