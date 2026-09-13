@@ -206,6 +206,70 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
+        .info-row {
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .info-row.locked {
+            opacity: 0.9;
+        }
+
+        .locked-hint {
+            font-size: 0.85rem;
+            color: var(--gris);
+            font-weight: normal;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            transition: all 0.3s;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(243,156,18,0.2);
+        }
+
+        .edit-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .btn-modifier {
+            background: var(--violet);
+        }
+
+        .btn-annuler {
+            background: var(--gris);
+        }
+
+        .btn-sauver {
+            background: #27ae60;
+        }
+
+        .readonly-field {
+            background: var(--gris-clair);
+            padding: 0.8rem;
+            border-radius: 12px;
+            border: 2px solid #e0e0e0;
+            color: #2c3e50;
+        }
+
+        .tab-btn {
+            background: var(--jaune);
+            color: #2c3e50;
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -258,48 +322,50 @@
             <div id="userInfo"></div>
             <div id="gestesSecours"></div>
         </div>
-        <button id="logoutBtn" style="background: var(--gris); margin-top: 1rem;">🚪 Se déconnecter</button>
-    </div>
-</div>    
-    <div class="container">
-        <div id="infoTab" class="tab-content active">
-            <div class="card">
-             <h2>💬 Écrivez-nous</h2>
-                <div class="info-badge">Base de données locale (stockée dans votre navigateur)</div>
-    <div id="avisTab" class="tab-content">
-            <div class="card">
-   
-                <div class="avis-box">
-                    <form id="avisForm">
-                        <div class="form-group">
-                            <label>Votre nom (optionnel)</label>
-                            <input type="text" id="avisNom" placeholder="Votre nom">
-                        </div>
 
-                        <div class="form-group">
-                            <label>Votre avis *</label>
-                            <textarea id="avisMessage" rows="5" required placeholder="Partagez votre expérience, suggestions ou témoignage..."></textarea>
-                        </div>
-
-                        <button type="submit">📧 Envoyer mon avis</button>
-                    </form>
-
-                    <p style="margin-top: 1rem; color: var(--gris);">
-                        ⚠️ L'avis sera envoyé par email via votre messagerie.
-                    </p>
-                </div>
+        <div id="avisTab" class="card">
+            <h2>💬 Écrivez-nous</h2>
+            <div class="info-badge">Base de données locale (stockée dans votre navigateur)</div>
+            <div class="avis-box">
+                <form id="avisForm">
+                    <div class="form-group">
+                        <label>Votre nom (optionnel)</label>
+                        <input type="text" id="avisNom" placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label>Votre avis *</label>
+                        <textarea id="avisMessage" rows="5" required placeholder="Partagez votre expérience, suggestions ou témoignage..."></textarea>
+                    </div>
+                    <button type="submit">📧 Envoyer mon avis</button>
+                </form>
+                <p style="margin-top: 1rem; color: var(--gris);">
+                    ⚠️ L'avis sera envoyé par email via votre messagerie.
+                </p>
             </div>
         </div>
-</script>
+
+        <button id="logoutBtn" style="background: var(--gris); margin-top: 1rem;">🚪 Se déconnecter</button>
+    </div>
+</div>
 
 <script>
-    // Récupération des personnes stockées par l'admin
+    let currentUserId = null;
+    let isEditing = false;
+
     function getPersonnes() {
         const stored = localStorage.getItem('badges_mickael_personnes');
         return stored ? JSON.parse(stored) : [];
     }
 
-    // Connexion
+    function savePersonnes(personnes) {
+        localStorage.setItem('badges_mickael_personnes', JSON.stringify(personnes));
+    }
+
+    function getCurrentPersonne() {
+        if (!currentUserId) return null;
+        return getPersonnes().find(p => p.identifiant === currentUserId) || null;
+    }
+
     document.getElementById('loginForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const id = document.getElementById('userId').value.trim();
@@ -321,7 +387,8 @@
             return;
         }
 
-        // Connexion réussie
+        currentUserId = personne.identifiant;
+        isEditing = false;
         document.getElementById('loginScreen').classList.add('hidden');
         document.getElementById('mainApp').classList.remove('hidden');
         afficherInfos(personne);
@@ -329,13 +396,25 @@
     });
 
     function afficherInfos(personne) {
+        if (isEditing) {
+            afficherModeEdition(personne);
+        } else {
+            afficherModeLecture(personne);
+        }
+    }
+
+    function afficherModeLecture(personne) {
         const userDiv = document.getElementById('userInfo');
         userDiv.innerHTML = `
-            <p><strong>🆔 Identifiant :</strong> ${echapper(personne.identifiant)}</p>
-            <p><strong>👤 Nom complet :</strong> ${echapper(personne.prenom)} ${echapper(personne.nom)}</p>
-            <p><strong>🏠 Domiciliation :</strong> ${echapper(personne.domiciliation || 'Non renseignée')}</p>
-            <p><strong>📞 Téléphone :</strong> ${echapper(personne.numero)}</p>
-            <p><strong>📅 Inscrit le :</strong> ${echapper(personne.dateInscription || 'Non renseignée')}</p>
+            <div class="info-row locked"><strong>🆔 Identifiant :</strong> ${echapper(personne.identifiant)} <span class="locked-hint">(non modifiable)</span></div>
+            <div class="info-row locked"><strong>👤 Nom :</strong> ${echapper(personne.nom)} <span class="locked-hint">(non modifiable)</span></div>
+            <div class="info-row locked"><strong>👤 Prénom :</strong> ${echapper(personne.prenom)} <span class="locked-hint">(non modifiable)</span></div>
+            <div class="info-row"><strong>🏠 Domiciliation :</strong> ${echapper(personne.domiciliation || 'Non renseignée')}</div>
+            <div class="info-row"><strong>📞 Téléphone :</strong> ${echapper(personne.numero || 'Non renseigné')}</div>
+            <div class="info-row locked"><strong>📅 Date de création du compte :</strong> ${echapper(personne.dateInscription || 'Non renseignée')} <span class="locked-hint">(non modifiable)</span></div>
+            <div class="edit-actions">
+                <button type="button" class="btn-modifier" id="btnModifier">✏️ Modifier les données</button>
+            </div>
         `;
 
         const gestesDiv = document.getElementById('gestesSecours');
@@ -353,22 +432,108 @@
                 🚒 Pompiers : 18 ou 112 &nbsp;|&nbsp; 🚑 SAMU : 15 &nbsp;|&nbsp; 🚨 Police : 17
             </div>
         `;
+
+        document.getElementById('btnModifier').addEventListener('click', function() {
+            isEditing = true;
+            afficherInfos(getCurrentPersonne());
+        });
     }
 
-    // Bouton "SECOUR" (le gros rouge) : peut servir à ré-afficher les infos ou lancer un appel
-    document.getElementById('secourTabBtn').addEventListener('click', function() {
-        // Relance l'affichage (au cas où) mais surtout prépare un appel d'urgence
-        const userId = document.getElementById('userId').value.trim();
+    function afficherModeEdition(personne) {
+        const userDiv = document.getElementById('userInfo');
+        userDiv.innerHTML = `
+            <p style="margin-bottom: 1rem; color: var(--gris);">Les champs verrouillés ne peuvent pas être modifiés.</p>
+            <div class="form-group">
+                <label>🆔 Identifiant</label>
+                <div class="readonly-field">${echapper(personne.identifiant)}</div>
+            </div>
+            <div class="form-group">
+                <label>👤 Nom</label>
+                <div class="readonly-field">${echapper(personne.nom)}</div>
+            </div>
+            <div class="form-group">
+                <label>👤 Prénom</label>
+                <div class="readonly-field">${echapper(personne.prenom)}</div>
+            </div>
+            <div class="form-group">
+                <label for="editDomiciliation">🏠 Domiciliation</label>
+                <input type="text" id="editDomiciliation" value="${echapper(personne.domiciliation || '')}" placeholder="Adresse / domiciliation">
+            </div>
+            <div class="form-group">
+                <label for="editNumero">📞 Téléphone</label>
+                <input type="text" id="editNumero" value="${echapper(personne.numero || '')}" placeholder="Numéro de téléphone">
+            </div>
+            <div class="form-group">
+                <label>📅 Date de création du compte</label>
+                <div class="readonly-field">${echapper(personne.dateInscription || 'Non renseignée')}</div>
+            </div>
+        `;
+
+        const gestesDiv = document.getElementById('gestesSecours');
+        gestesDiv.innerHTML = `
+            <div class="geste-card" style="margin-top: 1.5rem;">
+                <h3>🤝 Aide à apporter</h3>
+                <div class="form-group" style="margin-top: 0.75rem; margin-bottom: 0;">
+                    <textarea id="editAideApporter" placeholder="Précisez l'aide à apporter...">${echapper(personne.aideApporter || '')}</textarea>
+                </div>
+            </div>
+            <div class="geste-card">
+                <h3>🚑 Gestes de premiers secours</h3>
+                <div class="form-group" style="margin-top: 0.75rem; margin-bottom: 0;">
+                    <textarea id="editGestesSecours" placeholder="Gestes de premiers secours spécifiques...">${echapper(personne.gestesSecours || '')}</textarea>
+                </div>
+            </div>
+            <div class="edit-actions">
+                <button type="button" class="btn-sauver" id="btnSauver">💾 Enregistrer</button>
+                <button type="button" class="btn-annuler" id="btnAnnuler">Annuler</button>
+            </div>
+            <div style="margin-top: 1rem; background: var(--jaune-clair); padding: 1rem; border-radius: 12px;">
+                <strong>📞 Numéros d'urgence :</strong><br>
+                🚒 Pompiers : 18 ou 112 &nbsp;|&nbsp; 🚑 SAMU : 15 &nbsp;|&nbsp; 🚨 Police : 17
+            </div>
+        `;
+
+        document.getElementById('btnSauver').addEventListener('click', sauvegarderModifications);
+        document.getElementById('btnAnnuler').addEventListener('click', function() {
+            isEditing = false;
+            afficherInfos(getCurrentPersonne());
+        });
+    }
+
+    function sauvegarderModifications() {
         const personnes = getPersonnes();
-        const personne = personnes.find(p => p.identifiant === userId);
+        const index = personnes.findIndex(p => p.identifiant === currentUserId);
+        if (index === -1) {
+            showToast("Erreur : utilisateur introuvable.");
+            return;
+        }
+
+        // Identifiant, nom, prénom et date de création restent intacts
+        personnes[index].domiciliation = document.getElementById('editDomiciliation').value.trim();
+        personnes[index].numero = document.getElementById('editNumero').value.trim();
+        personnes[index].aideApporter = document.getElementById('editAideApporter').value.trim();
+        personnes[index].gestesSecours = document.getElementById('editGestesSecours').value.trim();
+
+        savePersonnes(personnes);
+        isEditing = false;
+        afficherInfos(personnes[index]);
+        showToast("✅ Données enregistrées");
+    }
+
+    document.getElementById('secourTabBtn').addEventListener('click', function() {
+        const personne = getCurrentPersonne();
         if (personne) {
-            // On pourrait ouvrir le composeur téléphonique pour le 15
             window.location.href = 'tel:15';
         }
     });
 
-    // Déconnexion
+    document.querySelector('.tab-btn[data-tab="avis"]').addEventListener('click', function() {
+        document.getElementById('avisTab').scrollIntoView({ behavior: 'smooth' });
+    });
+
     document.getElementById('logoutBtn').addEventListener('click', function() {
+        currentUserId = null;
+        isEditing = false;
         document.getElementById('mainApp').classList.add('hidden');
         document.getElementById('loginScreen').classList.remove('hidden');
         document.getElementById('userId').value = '';
@@ -376,11 +541,10 @@
         document.getElementById('loginError').style.display = 'none';
     });
 
-    // Chargement du logo depuis le stockage admin (si défini)
     function chargerLogo() {
         const logoDiv = document.getElementById('logoPerso');
         const savedLogo = localStorage.getItem('badges_mickael_logo');
-        if (savedLogo) {
+        if (logoDiv && savedLogo) {
             logoDiv.style.backgroundImage = `url(${savedLogo})`;
             logoDiv.style.backgroundSize = 'cover';
             logoDiv.style.backgroundPosition = 'center';
@@ -389,7 +553,7 @@
 
     function echapper(str) {
         if (!str) return '';
-        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
     function showToast(msg) {
@@ -400,8 +564,7 @@
         setTimeout(() => toast.remove(), 3000);
     }
 
-
-function sendAvis(event) {
+    function sendAvis(event) {
         event.preventDefault();
 
         const nomAvis = document.getElementById('avisNom').value.trim();
@@ -420,6 +583,11 @@ function sendAvis(event) {
 
         showToast("📧 Ouverture de votre messagerie pour envoyer l'avis.");
         document.getElementById('avisForm').reset();
+    }
+
+    const avisForm = document.getElementById('avisForm');
+    if (avisForm) {
+        avisForm.addEventListener('submit', sendAvis);
     }
 </script>  
 </body>
