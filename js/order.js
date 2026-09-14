@@ -128,6 +128,14 @@
       img: "assets/dishes/caramel-macchiato.jpg",
     },
     {
+      id: "frappuccino-caramel",
+      cat: "coffee",
+      name: "Frappuccino caramel",
+      desc: "Café glacé crémeux, caramel et mousse onctueuse.",
+      price: 3500,
+      img: "assets/dishes/frappuccino-caramel.jpg",
+    },
+    {
       id: "cappuccino",
       cat: "coffee",
       name: "Cappuccino",
