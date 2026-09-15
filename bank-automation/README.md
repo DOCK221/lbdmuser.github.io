@@ -1,8 +1,31 @@
 # 🏦 Automatisation du Suivi Bancaire avec Node-RED
 
+[![Node-RED](https://img.shields.io/badge/Node--RED-Ready-red?logo=node-red)](https://nodered.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-14%2B-green?logo=node.js)](https://nodejs.org/)
+[![License](https://img.shields.io/badge/License-Educational-blue)](LICENSE)
+[![Français](https://img.shields.io/badge/Lang-Français-blue)](README.md)
+
+> 🎓 **Projet pédagogique complet** pour apprendre l'automatisation avec Node-RED
+
 ## 📋 Description du Projet
 
 Ce projet est un exercice académique qui permet de **suivre automatiquement plusieurs comptes bancaires** et de consulter les soldes à intervalles réguliers (toutes les heures par exemple).
+
+### ⚡ Démarrage Ultra-Rapide
+
+```bash
+# Installation (une seule fois)
+cd bank-automation
+./install.sh
+
+# Démarrage
+./start.sh    # Terminal 1 (API)
+node-red      # Terminal 2 (Node-RED)
+
+# Puis ouvrez http://localhost:1880/ui
+```
+
+**C'est tout !** En 2 minutes, vous avez un système d'automatisation bancaire fonctionnel.
 
 ## 🎯 Objectif
 
@@ -83,22 +106,44 @@ Pour utiliser de vraies API bancaires, vous devrez :
 2. Obtenir vos clés API
 3. Modifier les URLs dans le flow Node-RED
 
+## 🎯 Aperçu Rapide
+
+```
+Dashboard → http://localhost:1880/ui
+   │
+   │ Actualisation automatique toutes les heures
+   │
+   ▼
+Comptes Bancaires (Simulés)
+   ├─ 💳 Compte Courant : 2,450.75 €
+   ├─ 💰 Livret A : 8,920.50 €
+   ├─ 📊 Compte Épargne : 15,300.00 €
+   └─ 👥 Compte Joint : 3,720.25 €
+   
+   💵 Total : 30,391.50 EUR
+```
+
 ## 📁 Structure du Projet
 
 ```
 bank-automation/
-├── README.md                  # Ce fichier
-├── mock-bank-api.js          # API simulée pour l'exercice
-├── node-red-flow.json        # Flow Node-RED à importer
-├── package.json              # Dépendances Node.js
+├── 📄 README.md                  # Ce fichier
+├── 🚀 install.sh                 # Installation automatique
+├── ▶️  start.sh                  # Démarrage rapide (créé par install.sh)
+├── 🧪 test-system.sh             # Test du système
+├── ⚙️  mock-bank-api.js          # API simulée pour l'exercice
+├── 🔄 node-red-flow.json         # Flow Node-RED à importer
+├── 📦 package.json               # Dépendances Node.js
 ├── config/
-│   └── accounts.json         # Configuration des comptes
+│   └── accounts.json             # Configuration des comptes
 ├── docs/
-│   ├── GUIDE_COMPLET.md      # Guide détaillé
-│   └── CAPTURES/             # Captures d'écran
+│   ├── 📖 GUIDE_COMPLET.md       # Guide détaillé pas-à-pas
+│   ├── 🎓 GUIDE_PRESENTATION.md  # Pour présenter en cours
+│   ├── 🎨 VISUAL_EXAMPLES.md     # Aperçus visuels
+│   └── ❓ FAQ.md                 # Questions fréquentes
 └── alternative-solutions/
-    ├── python-script.py      # Alternative en Python
-    └── zapier-config.md      # Alternative avec Zapier
+    ├── python-script.py          # Alternative en Python
+    └── zapier-config.md          # Alternative avec Zapier/n8n
 ```
 
 ## 🔧 Configuration
@@ -162,15 +207,27 @@ Dans Node-RED :
 - ✅ Captures d'écran du dashboard
 - ✅ Présentation du flux Node-RED
 
+## 📚 Documentation
+
+| Document | Description | Temps de lecture |
+|----------|-------------|------------------|
+| [QUICK_START.md](QUICK_START.md) | Démarrage en 5 minutes | ⏱️ 5 min |
+| [docs/GUIDE_COMPLET.md](docs/GUIDE_COMPLET.md) | Installation et configuration détaillées | ⏱️ 20 min |
+| [docs/GUIDE_PRESENTATION.md](docs/GUIDE_PRESENTATION.md) | Comment présenter en cours | ⏱️ 15 min |
+| [docs/VISUAL_EXAMPLES.md](docs/VISUAL_EXAMPLES.md) | Aperçus visuels du système | ⏱️ 5 min |
+| [docs/FAQ.md](docs/FAQ.md) | 50+ questions/réponses | ⏱️ Variable |
+
 ## 🆚 Alternatives Envisagées
 
 | Solution | Complexité | Coût | Recommandé pour |
 |----------|-----------|------|-----------------|
-| **Node-RED** | ⭐⭐ Facile | Gratuit | Débutants, exercices |
-| Python + Cron | ⭐⭐⭐ Moyen | Gratuit | Développeurs |
+| **Node-RED** ⭐ | ⭐⭐ Facile | Gratuit | Débutants, exercices |
+| Python | ⭐⭐⭐ Moyen | Gratuit | Développeurs |
 | Zapier | ⭐ Très facile | Payant | Non-techniques |
 | n8n | ⭐⭐ Facile | Gratuit | Alternative à Node-RED |
 | Power Automate | ⭐⭐ Facile | Payant | Environnement Microsoft |
+
+**⭐ Node-RED est la solution recommandée pour cet exercice académique.**
 
 ## 🔐 Sécurité
 
