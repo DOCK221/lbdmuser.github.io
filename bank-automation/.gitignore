@@ -1,0 +1,15 @@
+node_modules/
+*.log
+npm-debug.log*
+.npm
+.node_repl_history
+*.tgz
+.env
+.env.local
+.DS_Store
+bank_history.json
+rapport_bancaire_*.html
+__pycache__/
+*.pyc
+.vscode/
+.idea/

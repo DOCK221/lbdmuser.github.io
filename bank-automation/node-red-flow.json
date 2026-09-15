@@ -1,0 +1,311 @@
+[
+  {
+    "id": "flow-bank-automation",
+    "type": "tab",
+    "label": "Suivi Bancaire Automatique",
+    "disabled": false,
+    "info": "Flow pour récupérer automatiquement les soldes bancaires toutes les heures"
+  },
+  {
+    "id": "inject-hourly",
+    "type": "inject",
+    "z": "flow-bank-automation",
+    "name": "Récupération horaire",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "3600",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "5",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 140,
+    "y": 80,
+    "wires": [
+      [
+        "function-prepare-requests"
+      ]
+    ]
+  },
+  {
+    "id": "inject-manual",
+    "type": "inject",
+    "z": "flow-bank-automation",
+    "name": "Récupération manuelle",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 140,
+    "y": 140,
+    "wires": [
+      [
+        "function-prepare-requests"
+      ]
+    ]
+  },
+  {
+    "id": "function-prepare-requests",
+    "type": "function",
+    "z": "flow-bank-automation",
+    "name": "Préparer les requêtes",
+    "func": "// Liste des comptes à interroger\nconst accounts = [\n    { id: 1, name: \"Compte Courant\" },\n    { id: 2, name: \"Livret A\" },\n    { id: 3, name: \"Compte Épargne\" },\n    { id: 4, name: \"Compte Joint\" }\n];\n\n// Créer un message pour chaque compte\nconst messages = accounts.map(account => ({\n    payload: {\n        accountId: account.id,\n        accountName: account.name,\n        url: `http://localhost:3000/api/account/${account.id}`\n    }\n}));\n\nreturn [messages];",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 390,
+    "y": 110,
+    "wires": [
+      [
+        "http-request-account"
+      ]
+    ]
+  },
+  {
+    "id": "http-request-account",
+    "type": "http request",
+    "z": "flow-bank-automation",
+    "name": "Requête API Bancaire",
+    "method": "GET",
+    "ret": "obj",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "",
+    "sendsPayload": false,
+    "x": 630,
+    "y": 110,
+    "wires": [
+      [
+        "function-process-response"
+      ]
+    ]
+  },
+  {
+    "id": "function-process-response",
+    "type": "function",
+    "z": "flow-bank-automation",
+    "name": "Traiter les données",
+    "func": "const accountData = msg.payload.account;\n\nmsg.payload = {\n    timestamp: new Date(),\n    accountId: accountData.id,\n    accountName: accountData.name,\n    bank: accountData.bank,\n    balance: accountData.balance,\n    currency: accountData.currency\n};\n\n// Sauvegarder dans le contexte global pour le dashboard\nconst allAccounts = global.get('allAccounts') || {};\nallAccounts[accountData.id] = msg.payload;\nglobal.set('allAccounts', allAccounts);\n\n// Calculer le total\nconst total = Object.values(allAccounts).reduce((sum, acc) => sum + acc.balance, 0);\nglobal.set('totalBalance', total);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 890,
+    "y": 110,
+    "wires": [
+      [
+        "debug-output",
+        "function-check-alert"
+      ]
+    ]
+  },
+  {
+    "id": "debug-output",
+    "type": "debug",
+    "z": "flow-bank-automation",
+    "name": "Log des comptes",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1140,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "function-check-alert",
+    "type": "function",
+    "z": "flow-bank-automation",
+    "name": "Vérifier alertes",
+    "func": "const SEUIL_ALERTE = 1000;\n\nif (msg.payload.balance < SEUIL_ALERTE) {\n    msg.payload.alert = true;\n    msg.payload.message = `⚠️ Attention: Le solde du compte ${msg.payload.accountName} est inférieur à ${SEUIL_ALERTE}€ (${msg.payload.balance}€)`;\n    return msg;\n}\n\nreturn null;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1130,
+    "y": 140,
+    "wires": [
+      [
+        "debug-alert"
+      ]
+    ]
+  },
+  {
+    "id": "debug-alert",
+    "type": "debug",
+    "z": "flow-bank-automation",
+    "name": "Alertes",
+    "active": true,
+    "tosidebar": true,
+    "console": true,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1330,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "ui-dashboard-accounts",
+    "type": "ui_template",
+    "z": "flow-bank-automation",
+    "group": "dashboard-group",
+    "name": "Dashboard Comptes",
+    "order": 1,
+    "width": "12",
+    "height": "8",
+    "format": "<div>\n  <h2>📊 Mes Comptes Bancaires</h2>\n  <div ng-repeat=\"account in msg.payload\">\n    <div style=\"padding: 10px; margin: 10px 0; background: #f5f5f5; border-radius: 5px;\">\n      <h3>{{account.accountName}} - {{account.bank}}</h3>\n      <p style=\"font-size: 24px; color: #2196F3;\">{{account.balance}} {{account.currency}}</p>\n      <small>Mis à jour: {{account.timestamp | date:'HH:mm:ss'}}</small>\n    </div>\n  </div>\n</div>",
+    "storeOutMessages": true,
+    "fwdInMessages": true,
+    "resendOnRefresh": true,
+    "templateScope": "local",
+    "x": 1150,
+    "y": 200,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "inject-dashboard-update",
+    "type": "inject",
+    "z": "flow-bank-automation",
+    "name": "Actualiser Dashboard",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "10",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 160,
+    "y": 280,
+    "wires": [
+      [
+        "function-get-all-accounts"
+      ]
+    ]
+  },
+  {
+    "id": "function-get-all-accounts",
+    "type": "function",
+    "z": "flow-bank-automation",
+    "name": "Récupérer tous les comptes",
+    "func": "const allAccounts = global.get('allAccounts') || {};\nconst totalBalance = global.get('totalBalance') || 0;\n\nmsg.payload = {\n    accounts: Object.values(allAccounts),\n    total: totalBalance,\n    timestamp: new Date()\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 280,
+    "wires": [
+      [
+        "ui-text-total",
+        "ui-chart-accounts"
+      ]
+    ]
+  },
+  {
+    "id": "ui-text-total",
+    "type": "ui_text",
+    "z": "flow-bank-automation",
+    "group": "dashboard-group",
+    "order": 2,
+    "width": "6",
+    "height": "2",
+    "name": "Solde Total",
+    "label": "💰 Solde Total",
+    "format": "{{msg.payload.total}} €",
+    "layout": "row-spread",
+    "x": 710,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "ui-chart-accounts",
+    "type": "ui_chart",
+    "z": "flow-bank-automation",
+    "name": "Graphique des comptes",
+    "group": "dashboard-group",
+    "order": 3,
+    "width": "12",
+    "height": "6",
+    "label": "Répartition des soldes",
+    "chartType": "bar",
+    "legend": "true",
+    "xformat": "HH:mm:ss",
+    "interpolate": "linear",
+    "nodata": "Aucune donnée disponible",
+    "dot": false,
+    "ymin": "0",
+    "ymax": "",
+    "removeOlder": "24",
+    "removeOlderPoints": "",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "useOneColor": false,
+    "useUTC": false,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a"
+    ],
+    "outputs": 1,
+    "x": 730,
+    "y": 300,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "dashboard-group",
+    "type": "ui_group",
+    "name": "Comptes Bancaires",
+    "tab": "dashboard-tab",
+    "order": 1,
+    "disp": true,
+    "width": "12",
+    "collapse": false
+  },
+  {
+    "id": "dashboard-tab",
+    "type": "ui_tab",
+    "name": "Suivi Bancaire",
+    "icon": "dashboard",
+    "order": 1,
+    "disabled": false,
+    "hidden": false
+  }
+]
