@@ -1,0 +1,39 @@
+{
+  "accounts": [
+    {
+      "id": "compte-1",
+      "name": "Compte Courant",
+      "bank": "Banque Populaire",
+      "api_url": "http://localhost:3000/api/account/1",
+      "alert_threshold": 500
+    },
+    {
+      "id": "compte-2",
+      "name": "Livret A",
+      "bank": "Caisse d'Épargne",
+      "api_url": "http://localhost:3000/api/account/2",
+      "alert_threshold": 1000
+    },
+    {
+      "id": "compte-3",
+      "name": "Compte Épargne",
+      "bank": "BNP Paribas",
+      "api_url": "http://localhost:3000/api/account/3",
+      "alert_threshold": 5000
+    },
+    {
+      "id": "compte-4",
+      "name": "Compte Joint",
+      "bank": "Crédit Mutuel",
+      "api_url": "http://localhost:3000/api/account/4",
+      "alert_threshold": 1000
+    }
+  ],
+  "settings": {
+    "update_frequency": "hourly",
+    "cron_expression": "0 * * * *",
+    "enable_alerts": true,
+    "enable_email_notifications": false,
+    "currency": "EUR"
+  }
+}
