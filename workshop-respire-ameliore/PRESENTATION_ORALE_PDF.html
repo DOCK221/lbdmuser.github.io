@@ -1,0 +1,2080 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESPIRE - Transformation Digitale B2B | Workshop 1 Rattrapages</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --respire-green: #2D8659;
+            --respire-light-green: #E8F5E9;
+            --respire-dark: #1B5E20;
+            --respire-cream: #FFF8E1;
+            --text-dark: #212121;
+            --text-light: #757575;
+            --background: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--background);
+        }
+
+        /* SLIDES STYLING */
+        .slide {
+            width: 210mm;
+            height: 297mm;
+            padding: 60px 80px;
+            margin: 0 auto 30px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* HEADER STYLING */
+        .slide-header {
+            border-bottom: 4px solid var(--respire-green);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 30px;
+            right: 80px;
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--respire-green);
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--respire-green);
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--respire-dark);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--respire-green);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p, li {
+            font-size: 16px;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        /* COVER PAGE */
+        .cover-slide {
+            background: linear-gradient(135deg, var(--respire-green) 0%, var(--respire-dark) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .cover-slide h1 {
+            color: white;
+            font-size: 56px;
+            margin-bottom: 30px;
+        }
+
+        .cover-subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 50px;
+            color: var(--respire-cream);
+        }
+
+        .cover-logo {
+            font-size: 80px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 30px;
+            letter-spacing: 8px;
+        }
+
+        .cover-info {
+            margin-top: 50px;
+            font-size: 16px;
+            color: var(--respire-light-green);
+        }
+
+        /* LIST STYLING */
+        ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+        }
+
+        ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--respire-green);
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* BOXES AND HIGHLIGHTS */
+        .highlight-box {
+            background: var(--respire-light-green);
+            border-left: 6px solid var(--respire-green);
+            padding: 25px 30px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h4 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: var(--respire-cream);
+            border: 3px solid var(--respire-green);
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--respire-green);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* TABLE STYLING */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 15px;
+        }
+
+        table th {
+            background: var(--respire-green);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        table tr:nth-child(even) {
+            background: var(--respire-light-green);
+        }
+
+        /* QUOTE/EMPHASIS */
+        .quote {
+            font-style: italic;
+            font-size: 20px;
+            color: var(--respire-dark);
+            border-left: 4px solid var(--respire-green);
+            padding-left: 25px;
+            margin: 30px 0;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+        .slide-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 80px;
+            right: 80px;
+            font-size: 12px;
+            color: var(--text-light);
+            border-top: 2px solid #E0E0E0;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+            
+            .slide:last-child {
+                page-break-after: avoid;
+            }
+        }
+
+        /* TWO COLUMN LAYOUT */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 25px 0;
+        }
+
+        .column-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--respire-green);
+            margin-bottom: 15px;
+        }
+
+        /* ICONS (using text emojis for simplicity) */
+        .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* NUMBERED SECTIONS */
+        .numbered-section {
+            counter-reset: section;
+        }
+
+        .numbered-section > div {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 25px;
+        }
+
+        .numbered-section > div:before {
+            counter-increment: section;
+            content: counter(section);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 45px;
+            height: 45px;
+            background: var(--respire-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 24px;
+        }
+
+        strong {
+            color: var(--respire-dark);
+            font-weight: 600;
+        }
+
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(to right, var(--respire-green), transparent);
+            margin: 40px 0;
+        }
+
+        .risk-high { color: #D32F2F; font-weight: 700; }
+        .risk-medium { color: #F57C00; font-weight: 700; }
+        .risk-low { color: #388E3C; font-weight: 700; }
+
+        .budget-total {
+            background: var(--respire-green);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 900;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- SLIDE 1: COUVERTURE -->
+<div class="slide cover-slide">
+    <div class="cover-logo">RESPIRE</div>
+    <h1>TRANSFORMATION DIGITALE B2B</h1>
+    <p class="cover-subtitle">Plateforme E-commerce Professionnelle<br>Workshop 1 - Rattrapages</p>
+    <div class="cover-info">
+        <p><strong>Commanditaire:</strong> Justine Hutteau - Fondatrice RESPIRE</p>
+        <p><strong>Date:</strong> Septembre 2026</p>
+        <p><strong>Projet:</strong> Cahier des charges complet & Présentation stratégique</p>
+    </div>
+</div>
+
+<!-- SLIDE 2: SOMMAIRE -->
+<div class="slide">
+    <div class="slide-number">2</div>
+    <div class="slide-header">
+        <h2>SOMMAIRE DE LA PRÉSENTATION</h2>
+    </div>
+    
+    <div class="numbered-section">
+        <div>
+            <h4>Contexte et positionnement RESPIRE</h4>
+            <p>Entreprise, valeurs, marché actuel</p>
+        </div>
+        <div>
+            <h4>Analyse approfondie du marché</h4>
+            <p>Tendances, opportunités, menaces</p>
+        </div>
+        <div>
+            <h4>Veille concurrentielle et recommandations</h4>
+            <p>Benchmark, meilleures pratiques, conseils</p>
+        </div>
+        <div>
+            <h4>Besoins client et objectifs stratégiques</h4>
+            <p>Problématiques, attentes, vision</p>
+        </div>
+        <div>
+            <h4>Solution proposée et spécifications</h4>
+            <p>Architecture, fonctionnalités, technologies</p>
+        </div>
+        <div>
+            <h4>Cartographie des risques et gestion</h4>
+            <p>Identification, évaluation, actions préventives</p>
+        </div>
+        <div>
+            <h4>Planning, ressources et budget</h4>
+            <p>Roadmap, équipe, investissement, ROI</p>
+        </div>
+        <div>
+            <h4>Audit et recommandations d'amélioration</h4>
+            <p>Analyse prototype, axes de progression</p>
+        </div>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 3: RESPIRE - PRÉSENTATION -->
+<div class="slide">
+    <div class="slide-number">3</div>
+    <div class="slide-header">
+        <h2>QUI EST RESPIRE ?</h2>
+    </div>
+
+    <div class="highlight-box">
+        <h4>Mission</h4>
+        <p class="quote">"Démocratiser les cosmétiques naturels avec transparence et authenticité"</p>
+    </div>
+
+    <div class="two-columns">
+        <div>
+            <h3>Identité</h3>
+            <ul>
+                <li><strong>Fondation:</strong> 2018 par Justine Hutteau</li>
+                <li><strong>Spécialité:</strong> Hygiène naturelle (déodorants, soins)</li>
+                <li><strong>Production:</strong> 100% Made in France</li>
+                <li><strong>Valeurs:</strong> Vegan, Cruelty-free, Clean Beauty</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Différenciation</h3>
+            <ul>
+                <li>Transparence totale composition</li>
+                <li>Communication authentique</li>
+                <li>Alternative aux grandes marques</li>
+                <li>Positionnement premium-accessible</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span class="stat-number">+40%</span>
+            <span class="stat-label">Croissance CA B2B annuelle</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">300+</span>
+            <span class="stat-label">Distributeurs partenaires</span>
+        </div>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 4: PROBLÉMATIQUES ACTUELLES -->
+<div class="slide">
+    <div class="slide-number">4</div>
+    <div class="slide-header">
+        <h2>PROBLÉMATIQUES IDENTIFIÉES</h2>
+    </div>
+
+    <h3>Gestion B2B 100% Manuelle</h3>
+    
+    <div class="numbered-section">
+        <div>
+            <h4>Inefficacité opérationnelle</h4>
+            <ul>
+                <li>Intervention humaine obligatoire sur chaque commande</li>
+                <li>Délai 24-72h par commande</li>
+                <li>Risque d'erreurs de saisie</li>
+            </ul>
+        </div>
+
+        <div>
+            <h4>Disponibilité limitée</h4>
+            <ul>
+                <li>Horaires bureau uniquement (9h-18h)</li>
+                <li>Impact congés, maladies, fuseaux horaires</li>
+                <li>Impossible de commander hors horaires</li>
+            </ul>
+        </div>
+
+        <div>
+            <h4>Absence de traçabilité</h4>
+            <ul>
+                <li>Pas de suivi en temps réel</li>
+                <li>Communication réactive uniquement</li>
+                <li>Frustration des distributeurs</li>
+            </ul>
+        </div>
+
+        <div>
+            <h4>Fidélisation insuffisante</h4>
+            <ul>
+                <li>Pas de programme structuré</li>
+                <li>Aucune personnalisation des offres</li>
+                <li>Risque de perte de partenaires</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <p><strong>Conséquence:</strong> Perte d'efficacité, 30h/semaine perdues en SAV, freins à la croissance</p>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 5: ANALYSE MARCHÉ (C1.1) -->
+<div class="slide">
+    <div class="slide-number">5</div>
+    <div class="slide-header">
+        <h2>ANALYSE DU MARCHÉ</h2>
+        <p style="font-style: italic; color: var(--text-light);">Critère C1.1 - Analyse environnement interne/externe</p>
+    </div>
+
+    <h3>Cosmétiques Naturels en France</h3>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span class="stat-number">5,1 Mds€</span>
+            <span class="stat-label">Taille du marché 2025</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">+9,35%</span>
+            <span class="stat-label">Croissance annuelle (CAGR)</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">8,5 Mds€</span>
+            <span class="stat-label">Projection 2030</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">68%</span>
+            <span class="stat-label">Consommateurs soucieux transparence</span>
+        </div>
+    </div>
+
+    <h3>Tendances clés du marché</h3>
+    <ul>
+        <li><strong>Clean Beauty:</strong> Demande croissante pour naturalité et transparence</li>
+        <li><strong>E-commerce B2B:</strong> +25% croissance annuelle dans le secteur</li>
+        <li><strong>Digitalisation:</strong> 73% des distributeurs attendent plateformes en ligne</li>
+        <li><strong>Omnicanalité:</strong> Intégration physique-digital indispensable</li>
+        <li><strong>Personnalisation:</strong> Offres adaptées aux volumes d'achat</li>
+    </ul>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 6: ANALYSE PESTEL -->
+<div class="slide">
+    <div class="slide-number">6</div>
+    <div class="slide-header">
+        <h2>ANALYSE PESTEL</h2>
+        <p style="font-style: italic; color: var(--text-light);">Facteurs macro-environnementaux</p>
+    </div>
+
+    <table>
+        <tr>
+            <th>Facteur</th>
+            <th>Impact</th>
+            <th>Opportunité/Menace</th>
+        </tr>
+        <tr>
+            <td><strong>Politique</strong></td>
+            <td>Soutien Made in France, incitations PME</td>
+            <td style="color: #388E3C;">✓ Opportunité</td>
+        </tr>
+        <tr>
+            <td><strong>Économique</strong></td>
+            <td>Marché 5,1Mds€ +9,35% CAGR</td>
+            <td style="color: #388E3C;">✓ Opportunité</td>
+        </tr>
+        <tr>
+            <td><strong>Socioculturel</strong></td>
+            <td>68% consommateurs veulent transparence</td>
+            <td style="color: #388E3C;">✓ Opportunité</td>
+        </tr>
+        <tr>
+            <td><strong>Technologique</strong></td>
+            <td>E-commerce B2B +25%/an, SaaS matures</td>
+            <td style="color: #388E3C;">✓ Opportunité</td>
+        </tr>
+        <tr>
+            <td><strong>Écologique</strong></td>
+            <td>Loi AGEC, fin plastique usage unique</td>
+            <td style="color: #388E3C;">✓ Opportunité</td>
+        </tr>
+        <tr>
+            <td><strong>Légal</strong></td>
+            <td>RGPD, Factur-X 2026, PCI-DSS</td>
+            <td style="color: #F57C00;">⚠ Contrainte</td>
+        </tr>
+    </table>
+
+    <div class="highlight-box">
+        <h4>Synthèse</h4>
+        <p><strong>5 opportunités majeures</strong> sur 6 facteurs analysés. Environnement macro-économique très favorable au projet RESPIRE.</p>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 7: VEILLE CONCURRENTIELLE (C1.2) -->
+<div class="slide">
+    <div class="slide-number">7</div>
+    <div class="slide-header">
+        <h2>VEILLE CONCURRENTIELLE</h2>
+        <p style="font-style: italic; color: var(--text-light);">Critère C1.2 - Veille et recommandations adaptées</p>
+    </div>
+
+    <h3>Analyse de 8 acteurs clés</h3>
+
+    <table>
+        <tr>
+            <th>Concurrent</th>
+            <th>Points forts B2B</th>
+            <th>Opportunité pour RESPIRE</th>
+        </tr>
+        <tr>
+            <td><strong>Typology</strong></td>
+            <td>Portail B2B avec tarifs personnalisés</td>
+            <td>S'inspirer de l'UX épurée</td>
+        </tr>
+        <tr>
+            <td><strong>NUOO</strong></td>
+            <td>Marketplace multi-marques</td>
+            <td>Se différencier par marque unique forte</td>
+        </tr>
+        <tr>
+            <td><strong>Pachamamaï</strong></td>
+            <td>Zéro-déchet, vrac</td>
+            <td>Mettre en avant emballages eco</td>
+        </tr>
+        <tr>
+            <td><strong>Lamazuna</strong></td>
+            <td>Solides innovants</td>
+            <td>Élargir gamme si demande</td>
+        </tr>
+        <tr>
+            <td><strong>Druide</strong></td>
+            <td>Certifications bio</td>
+            <td>Valoriser Made in France</td>
+        </tr>
+        <tr>
+            <td><strong>Acorelle</strong></td>
+            <td>Réseau pharmacies établi</td>
+            <td>Fidéliser base existante</td>
+        </tr>
+        <tr>
+            <td><strong>Melvita</strong></td>
+            <td>Gamme large, forces L'Occitane</td>
+            <td>Cibler niche authenticité</td>
+        </tr>
+        <tr>
+            <td><strong>Weleda</strong></td>
+            <td>Leader historique, confiance</td>
+            <td>Modernité, agilité startup</td>
+        </tr>
+    </table>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 8: RECOMMANDATIONS STRATÉGIQUES -->
+<div class="slide">
+    <div class="slide-number">8</div>
+    <div class="slide-header">
+        <h2>RECOMMANDATIONS STRATÉGIQUES</h2>
+        <p style="font-style: italic; color: var(--text-light);">Suite Critère C1.2 - Conseils adaptés au projet</p>
+    </div>
+
+    <div class="numbered-section">
+        <div>
+            <h4>Expérience utilisateur B2B exceptionnelle</h4>
+            <p>Interface simple, rapide, mobile-first. Benchmark: Typology (UX épurée), Shopify (rapidité).</p>
+        </div>
+
+        <div>
+            <h4>Transparence et storytelling</h4>
+            <p>Fiche produit détaillée (INCI, origine, fabrication). Renforcer authenticité RESPIRE.</p>
+        </div>
+
+        <div>
+            <h4>Programme de fidélité robuste</h4>
+            <p>Tarifs dégressifs dès 500€ HT, avantages Bronze/Argent/Or/Platine.</p>
+        </div>
+
+        <div>
+            <h4>Outils de gestion avancés</h4>
+            <p>Multi-utilisateurs, historique 24 mois, exports CSV, suivi temps réel.</p>
+        </div>
+
+        <div>
+            <h4>Support multicanal</h4>
+            <p>Live chat, FAQ dynamique, vidéos tutoriels, documentation complète.</p>
+        </div>
+
+        <div>
+            <h4>Conformité juridique impeccable</h4>
+            <p>RGPD, Factur-X 2026, PCI-DSS, CGV B2B, hébergement UE.</p>
+        </div>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 9: BESOINS CLIENT (C1.5) -->
+<div class="slide">
+    <div class="slide-number">9</div>
+    <div class="slide-header">
+        <h2>BESOINS ET ATTENTES CLIENT</h2>
+        <p style="font-style: italic; color: var(--text-light);">Critère C1.5 - Identification et analyse des besoins</p>
+    </div>
+
+    <h3>Besoins fonctionnels prioritaires</h3>
+    
+    <div class="two-columns">
+        <div>
+            <h4>Pour les distributeurs</h4>
+            <ul>
+                <li>Commander 24/7 en autonomie</li>
+                <li>Accès catalogue complet et tarifs pro</li>
+                <li>Suivi commandes temps réel</li>
+                <li>Historique et réapprovisionnement rapide</li>
+                <li>Gestion multi-utilisateurs</li>
+                <li>Support responsive</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Pour RESPIRE</h4>
+            <ul>
+                <li>Automatiser traitement commandes</li>
+                <li>Réduire charge SAV (80%)</li>
+                <li>Fidéliser distributeurs existants</li>
+                <li>Faciliter acquisition nouveaux partenaires</li>
+                <li>Traçabilité totale des échanges</li>
+                <li>Conformité légale garantie</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <h4>Objectif quantifié</h4>
+        <p><strong>70% des commandes B2B en autonomie</strong> dans les 6 mois post-lancement<br>
+        <strong>NPS 50+</strong> (satisfaction distributeurs excellente)<br>
+        <strong>Disponibilité 99,9%</strong> (SLA Shopify garanti)</p>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 10: SOLUTION PROPOSÉE -->
+<div class="slide">
+    <div class="slide-number">10</div>
+    <div class="slide-header">
+        <h2>SOLUTION PROPOSÉE</h2>
+        <p style="font-style: italic; color: var(--text-light);">Plateforme E-commerce B2B Shopify Plus</p>
+    </div>
+
+    <h3>Pourquoi Shopify Plus ?</h3>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span class="stat-number">99,99%</span>
+            <span class="stat-label">Uptime garanti (SLA)</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">2-3 mois</span>
+            <span class="stat-label">Déploiement rapide</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">71 320€</span>
+            <span class="stat-label">Budget maîtrisé</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">+123 680€</span>
+            <span class="stat-label">ROI première année</span>
+        </div>
+    </div>
+
+    <h3>Avantages décisifs</h3>
+    <ul>
+        <li><strong>SaaS clé en main:</strong> Maintenance, sécurité, mises à jour automatiques</li>
+        <li><strong>Conformité native:</strong> RGPD, PCI-DSS Niveau 1, hébergement UE</li>
+        <li><strong>Scalabilité:</strong> Gère millions de transactions sans intervention</li>
+        <li><strong>Écosystème riche:</strong> 8000+ apps (INSEE, transporteurs, CRM, ERP)</li>
+        <li><strong>Mobile-first:</strong> Interface responsive parfaite (57% commandes mobiles)</li>
+        <li><strong>Support 24/7:</strong> Assistance Shopify en français</li>
+    </ul>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 11: SPÉCIFICATIONS FONCTIONNELLES (C1.6) -->
+<div class="slide">
+    <div class="slide-number">11</div>
+    <div class="slide-header">
+        <h2>SPÉCIFICATIONS FONCTIONNELLES</h2>
+        <p style="font-style: italic; color: var(--text-light);">Critère C1.6 - Cahier des charges complet</p>
+    </div>
+
+    <h3>Fonctionnalités MUST HAVE (Phase 1)</h3>
+
+    <table>
+        <tr>
+            <th>Module</th>
+            <th>Fonctionnalités clés</th>
+        </tr>
+        <tr>
+            <td><strong>Authentification</strong></td>
+            <td>Inscription + validation manuelle, 2FA optionnel, SIRET/TVA auto-vérifié</td>
+        </tr>
+        <tr>
+            <td><strong>Catalogue</strong></td>
+            <td>Produits filtrables, fiches détaillées, tarifs HT/TTC, stock temps réel</td>
+        </tr>
+        <tr>
+            <td><strong>Commande</strong></td>
+            <td>Panier, quantités personnalisées, réappro 1 clic, frais port auto</td>
+        </tr>
+        <tr>
+            <td><strong>Paiement</strong></td>
+            <td>CB, virement, paiement différé (net 30/60), PCI-DSS Niveau 1</td>
+        </tr>
+        <tr>
+            <td><strong>Suivi</strong></td>
+            <td>Statuts temps réel, tracking transporteur, notifications email/SMS</td>
+        </tr>
+        <tr>
+            <td><strong>Compte</strong></td>
+            <td>Dashboard personnel, historique 24 mois, factures PDF, multi-users</td>
+        </tr>
+        <tr>
+            <td><strong>Support</strong></td>
+            <td>FAQ, live chat, formulaire contact, base connaissance</td>
+        </tr>
+        <tr>
+            <td><strong>Conformité</strong></td>
+            <td>RGPD, CGV B2B, facturation Factur-X, mentions légales</td>
+        </tr>
+    </table>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 12: SPÉCIFICATIONS TECHNIQUES -->
+<div class="slide">
+    <div class="slide-number">12</div>
+    <div class="slide-header">
+        <h2>SPÉCIFICATIONS TECHNIQUES</h2>
+        <p style="font-style: italic; color: var(--text-light);">Suite Critère C1.6 - Architecture et technologies</p>
+    </div>
+
+    <h3>Architecture Shopify Plus</h3>
+
+    <div class="two-columns">
+        <div>
+            <h4>Front-end</h4>
+            <ul>
+                <li><strong>Liquid:</strong> Templating Shopify</li>
+                <li><strong>HTML5/CSS3:</strong> Responsive design</li>
+                <li><strong>JavaScript:</strong> Interactions dynamiques</li>
+                <li><strong>WCAG 2.1 AA:</strong> Accessibilité</li>
+            </ul>
+
+            <h4>Back-end</h4>
+            <ul>
+                <li><strong>Shopify API REST/GraphQL</strong></li>
+                <li><strong>Ruby on Rails:</strong> Serveurs Shopify</li>
+                <li><strong>PostgreSQL:</strong> Base de données</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Intégrations API</h4>
+            <ul>
+                <li><strong>INSEE:</strong> Validation SIRET</li>
+                <li><strong>VIES:</strong> Validation TVA UE</li>
+                <li><strong>Colissimo, Chronopost, DHL:</strong> Tracking</li>
+                <li><strong>Stripe, PayPal:</strong> Paiements</li>
+                <li><strong>Chorus Pro:</strong> Facturation 2026</li>
+            </ul>
+
+            <h4>Infrastructure</h4>
+            <ul>
+                <li><strong>CDN Fastly:</strong> Performances globales</li>
+                <li><strong>SSL/TLS:</strong> Chiffrement données</li>
+                <li><strong>Hébergement UE:</strong> RGPD compliant</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <p><strong>Performances:</strong> Temps de chargement < 2s, disponibilité 99,99%, sauvegarde quotidienne automatique</p>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 13: CARTOGRAPHIE DES RISQUES (C1.4) -->
+<div class="slide">
+    <div class="slide-number">13</div>
+    <div class="slide-header">
+        <h2>CARTOGRAPHIE DES RISQUES</h2>
+        <p style="font-style: italic; color: var(--text-light);">Critère C1.4 - Identification, évaluation, actions préventives</p>
+    </div>
+
+    <h3>Risques Critiques identifiés</h3>
+
+    <table>
+        <tr>
+            <th>Risque</th>
+            <th>Prob.</th>
+            <th>Impact</th>
+            <th>Criticité</th>
+        </tr>
+        <tr>
+            <td>Non-conformité RGPD</td>
+            <td>Moyenne</td>
+            <td>Très élevé</td>
+            <td class="risk-high">CRITIQUE</td>
+        </tr>
+        <tr>
+            <td>Retard facturation Factur-X 2026</td>
+            <td>Élevée</td>
+            <td>Élevé</td>
+            <td class="risk-high">CRITIQUE</td>
+        </tr>
+        <tr>
+            <td>Faille sécurité / cyberattaque</td>
+            <td>Moyenne</td>
+            <td>Très élevé</td>
+            <td class="risk-high">CRITIQUE</td>
+        </tr>
+        <tr>
+            <td>Faible adoption distributeurs</td>
+            <td>Élevée</td>
+            <td>Élevé</td>
+            <td class="risk-high">CRITIQUE</td>
+        </tr>
+        <tr>
+            <td>Dépassement budget</td>
+            <td>Moyenne</td>
+            <td>Moyen</td>
+            <td class="risk-medium">ÉLEVÉ</td>
+        </tr>
+        <tr>
+            <td>Retard planning</td>
+            <td>Moyenne</td>
+            <td>Moyen</td>
+            <td class="risk-medium">ÉLEVÉ</td>
+        </tr>
+        <tr>
+            <td>Bugs critiques post-lancement</td>
+            <td>Moyenne</td>
+            <td>Moyen</td>
+            <td class="risk-medium">ÉLEVÉ</td>
+        </tr>
+        <tr>
+            <td>Problèmes intégrations API</td>
+            <td>Faible</td>
+            <td>Moyen</td>
+            <td class="risk-low">MODÉRÉ</td>
+        </tr>
+    </table>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 14: ACTIONS PRÉVENTIVES -->
+<div class="slide">
+    <div class="slide-number">14</div>
+    <div class="slide-header">
+        <h2>ACTIONS PRÉVENTIVES ET CORRECTRICES</h2>
+        <p style="font-style: italic; color: var(--text-light);">Suite Critère C1.4 - Gestion proactive des risques</p>
+    </div>
+
+    <div class="numbered-section">
+        <div>
+            <h4>Conformité RGPD garantie</h4>
+            <p><strong>Préventif:</strong> Audit CNIL, DPO externe, Shopify hébergé UE<br>
+            <strong>Correctif:</strong> Plan de mise en conformité 15j, assurance cyber</p>
+        </div>
+
+        <div>
+            <h4>Factur-X anticipé (sept. 2026)</h4>
+            <p><strong>Préventif:</strong> Plugin Factur-X dès Phase 1, veille réglementaire<br>
+            <strong>Correctif:</strong> Solution tierce Express Factur-X 10j</p>
+        </div>
+
+        <div>
+            <h4>Sécurité renforcée</h4>
+            <p><strong>Préventif:</strong> PCI-DSS Shopify, 2FA, audit trimestriel<br>
+            <strong>Correctif:</strong> Plan reprise activité (RTO 4h, RPO 24h)</p>
+        </div>
+
+        <div>
+            <h4>Adoption facilitée</h4>
+            <p><strong>Préventif:</strong> Formation distributeurs, webinars, vidéos, support dédié<br>
+            <strong>Correctif:</strong> Onboarding assisté 1-to-1, incentives early adopters</p>
+        </div>
+
+        <div>
+            <h4>Budget sécurisé</h4>
+            <p><strong>Préventif:</strong> Marge 20%, revues bi-mensuelles, validation jalons<br>
+            <strong>Correctif:</strong> Désactivation COULD HAVE, négociation fournisseurs</p>
+        </div>
+
+        <div>
+            <h4>Planning réaliste</h4>
+            <p><strong>Préventif:</strong> Méthodologie Agile, sprints 2 sem, buffer 15%<br>
+            <strong>Correctif:</strong> Ressources renforcées, priorisation MoSCoW</p>
+        </div>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 15: PLANNING (C1.7) -->
+<div class="slide">
+    <div class="slide-number">15</div>
+    <div class="slide-header">
+        <h2>PLANNING DU PROJET</h2>
+        <p style="font-style: italic; color: var(--text-light);">Critère C1.7 - Phases, ressources, délais, livrables</p>
+    </div>
+
+    <h3>Roadmap Agile - 4 sprints de 2 semaines</h3>
+
+    <table>
+        <tr>
+            <th>Sprint</th>
+            <th>Période</th>
+            <th>Objectifs</th>
+            <th>Livrables</th>
+        </tr>
+        <tr>
+            <td><strong>Sprint 1</strong></td>
+            <td>S3-S4</td>
+            <td>Socle technique, authentification, catalogue</td>
+            <td>Environnement Shopify, base UX/UI, comptes B2B</td>
+        </tr>
+        <tr>
+            <td><strong>Sprint 2</strong></td>
+            <td>S5-S6</td>
+            <td>Commande, paiement, intégrations API</td>
+            <td>Tunnel complet, APIs INSEE/VIES/Transporteurs</td>
+        </tr>
+        <tr>
+            <td><strong>Sprint 3</strong></td>
+            <td>S7-S8</td>
+            <td>Suivi, compte distributeur, support</td>
+            <td>Dashboard, historique, FAQ, live chat</td>
+        </tr>
+        <tr>
+            <td><strong>Sprint 4</strong></td>
+            <td>S9-S10</td>
+            <td>Tests, conformité, optimisation</td>
+            <td>Tests UAT, audits RGPD/PCI, recette</td>
+        </tr>
+        <tr>
+            <td><strong>Phase 0</strong></td>
+            <td>S1-S2</td>
+            <td>Cadrage, design, préparation</td>
+            <td>Cahier des charges, wireframes, mockups</td>
+        </tr>
+        <tr>
+            <td><strong>Phase 2</strong></td>
+            <td>S11-S12</td>
+            <td>Formation, déploiement, go-live</td>
+            <td>Formation distributeurs, lancement officiel</td>
+        </tr>
+    </table>
+
+    <div class="highlight-box">
+        <p><strong>Durée totale:</strong> 3 mois (12 semaines) | <strong>Buffer:</strong> 15% intégré | <strong>Méthodologie:</strong> Agile Scrum</p>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 16: RESSOURCES ÉQUIPE -->
+<div class="slide">
+    <div class="slide-number">16</div>
+    <div class="slide-header">
+        <h2>RESSOURCES HUMAINES</h2>
+        <p style="font-style: italic; color: var(--text-light);">Suite Critère C1.7 - Équipe projet et contributeurs</p>
+    </div>
+
+    <h3>Composition de l'équipe</h3>
+
+    <table>
+        <tr>
+            <th>Rôle</th>
+            <th>Responsabilités</th>
+            <th>Charge (j/h)</th>
+        </tr>
+        <tr>
+            <td><strong>Chef de projet</strong></td>
+            <td>Coordination, planning, client, risques</td>
+            <td>60j (480h)</td>
+        </tr>
+        <tr>
+            <td><strong>Designer UX/UI</strong></td>
+            <td>Wireframes, mockups, identité visuelle</td>
+            <td>25j (200h)</td>
+        </tr>
+        <tr>
+            <td><strong>Développeur Shopify (x2)</strong></td>
+            <td>Développement front/back, intégrations</td>
+            <td>2x50j (800h)</td>
+        </tr>
+        <tr>
+            <td><strong>Testeur QA</strong></td>
+            <td>Tests fonctionnels, non-régression, UAT</td>
+            <td>20j (160h)</td>
+        </tr>
+        <tr>
+            <td><strong>Expert sécurité/RGPD</strong></td>
+            <td>Audit conformité, PCI-DSS, RGPD</td>
+            <td>10j (80h)</td>
+        </tr>
+        <tr>
+            <td><strong>Rédacteur technique</strong></td>
+            <td>Documentation, FAQ, tutoriels</td>
+            <td>10j (80h)</td>
+        </tr>
+        <tr>
+            <td><strong>Formateur</strong></td>
+            <td>Formation distributeurs, webinars</td>
+            <td>5j (40h)</td>
+        </tr>
+    </table>
+
+    <div class="highlight-box">
+        <p><strong>Total équipe:</strong> 7 profils spécialisés | <strong>Charge totale:</strong> 180 jours-homme (1840 heures)</p>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 17: BUDGET DÉTAILLÉ -->
+<div class="slide">
+    <div class="slide-number">17</div>
+    <div class="slide-header">
+        <h2>BUDGET DU PROJET</h2>
+        <p style="font-style: italic; color: var(--text-light);">Investissement et retour sur investissement</p>
+    </div>
+
+    <h3>Répartition des coûts</h3>
+
+    <table>
+        <tr>
+            <th>Poste</th>
+            <th>Détail</th>
+            <th>Coût HT</th>
+        </tr>
+        <tr>
+            <td><strong>Ressources humaines</strong></td>
+            <td>180 j/h équipe projet (1840h)</td>
+            <td>54 000€</td>
+        </tr>
+        <tr>
+            <td><strong>Licences Shopify Plus</strong></td>
+            <td>3 mois abonnement 2000€/mois</td>
+            <td>6 000€</td>
+        </tr>
+        <tr>
+            <td><strong>Apps et plugins</strong></td>
+            <td>B2B, multi-devises, analytics, SIRET, Factur-X</td>
+            <td>1 800€</td>
+        </tr>
+        <tr>
+            <td><strong>Design et identité</strong></td>
+            <td>Wireframes, mockups, charte graphique</td>
+            <td>3 500€</td>
+        </tr>
+        <tr>
+            <td><strong>Audits et conformité</strong></td>
+            <td>RGPD, PCI-DSS, sécurité</td>
+            <td>2 500€</td>
+        </tr>
+        <tr>
+            <td><strong>Formation et documentation</strong></td>
+            <td>Webinars, vidéos, FAQ, support</td>
+            <td>2 000€</td>
+        </tr>
+        <tr>
+            <td><strong>Imprévus et contingence</strong></td>
+            <td>Marge sécurité 20%</td>
+            <td>1 520€</td>
+        </tr>
+    </table>
+
+    <div class="budget-total">
+        BUDGET TOTAL: 71 320€ HT (85 584€ TTC)
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 18: ROI ET BÉNÉFICES -->
+<div class="slide">
+    <div class="slide-number">18</div>
+    <div class="slide-header">
+        <h2>RETOUR SUR INVESTISSEMENT</h2>
+        <p style="font-style: italic; color: var(--text-light);">ROI calculé sur 12 mois post-lancement</p>
+    </div>
+
+    <h3>Gains quantifiables - Année 1</h3>
+
+    <table>
+        <tr>
+            <th>Poste de gain</th>
+            <th>Calcul</th>
+            <th>Montant</th>
+        </tr>
+        <tr>
+            <td><strong>Réduction coût SAV</strong></td>
+            <td>30h/sem x 52 sem x 35€/h x 80% automation</td>
+            <td>43 680€</td>
+        </tr>
+        <tr>
+            <td><strong>Croissance CA B2B</strong></td>
+            <td>CA actuel x +15% grâce plateforme x 8% marge</td>
+            <td>+120 000€</td>
+        </tr>
+        <tr>
+            <td><strong>Nouvelles opportunités</strong></td>
+            <td>20 nouveaux distributeurs x 2000€ panier moyen x 2 commandes</td>
+            <td>+80 000€</td>
+        </tr>
+        <tr>
+            <td><strong>Réduction erreurs saisie</strong></td>
+            <td>10h/sem x 52 sem x 35€/h</td>
+            <td>18 200€</td>
+        </tr>
+    </table>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span class="stat-number">195 000€</span>
+            <span class="stat-label">Gains totaux année 1</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">+123 680€</span>
+            <span class="stat-label">ROI net</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">173%</span>
+            <span class="stat-label">Taux de retour</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">4-5 mois</span>
+            <span class="stat-label">Amortissement</span>
+        </div>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 19: ARGUMENTATION ORALE (C1.8) -->
+<div class="slide">
+    <div class="slide-number">19</div>
+    <div class="slide-header">
+        <h2>ARGUMENTATION DES CHOIX</h2>
+        <p style="font-style: italic; color: var(--text-light);">Critère C1.8 - Justification technique et stratégique</p>
+    </div>
+
+    <h3>Pourquoi Shopify Plus vs alternatives ?</h3>
+
+    <table>
+        <tr>
+            <th>Critère</th>
+            <th>Shopify Plus</th>
+            <th>WooCommerce</th>
+            <th>Développement sur-mesure</th>
+        </tr>
+        <tr>
+            <td><strong>Délai</strong></td>
+            <td style="color: #388E3C;">✓ 2-3 mois</td>
+            <td style="color: #F57C00;">⚠ 4-6 mois</td>
+            <td style="color: #D32F2F;">✗ 6-12 mois</td>
+        </tr>
+        <tr>
+            <td><strong>Budget</strong></td>
+            <td style="color: #388E3C;">✓ 71 320€</td>
+            <td style="color: #F57C00;">⚠ 50-80k€</td>
+            <td style="color: #D32F2F;">✗ 150-300k€</td>
+        </tr>
+        <tr>
+            <td><strong>SLA Uptime</strong></td>
+            <td style="color: #388E3C;">✓ 99,99%</td>
+            <td style="color: #D32F2F;">✗ 95-98%</td>
+            <td style="color: #F57C00;">⚠ Dépend hôte</td>
+        </tr>
+        <tr>
+            <td><strong>Conformité</strong></td>
+            <td style="color: #388E3C;">✓ Native RGPD, PCI-DSS</td>
+            <td style="color: #D32F2F;">✗ À implémenter</td>
+            <td style="color: #D32F2F;">✗ À développer</td>
+        </tr>
+        <tr>
+            <td><strong>Maintenance</strong></td>
+            <td style="color: #388E3C;">✓ Incluse SaaS</td>
+            <td style="color: #D32F2F;">✗ À gérer</td>
+            <td style="color: #D32F2F;">✗ À gérer</td>
+        </tr>
+        <tr>
+            <td><strong>Scalabilité</strong></td>
+            <td style="color: #388E3C;">✓ Infinie</td>
+            <td style="color: #F57C00;">⚠ Limitée</td>
+            <td style="color: #388E3C;">✓ Bonne si bien conçu</td>
+        </tr>
+    </table>
+
+    <div class="highlight-box">
+        <h4>Conclusion</h4>
+        <p><strong>Shopify Plus offre le meilleur équilibre coût/délai/qualité/risque</strong> pour les besoins RESPIRE. Solution éprouvée, rapide à déployer, conforme, scalable, avec ROI prouvé.</p>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 20: AUDIT PROTOTYPE (C1.9) -->
+<div class="slide">
+    <div class="slide-number">20</div>
+    <div class="slide-header">
+        <h2>AUDIT DU PROTOTYPE</h2>
+        <p style="font-style: italic; color: var(--text-light);">Critère C1.9 - Analyse rigoureuse et recommandations concrètes</p>
+    </div>
+
+    <h3>Méthodologie d'audit</h3>
+    
+    <div class="numbered-section">
+        <div>
+            <h4>Audit fonctionnel</h4>
+            <p>Tests de tous les parcours utilisateur (inscription, commande, suivi, support). Vérification conformité cahier des charges.</p>
+        </div>
+
+        <div>
+            <h4>Audit UX/UI</h4>
+            <p>Tests utilisateurs avec 5 distributeurs pilotes. Analyse heatmaps, taux conversion, friction points.</p>
+        </div>
+
+        <div>
+            <h4>Audit technique</h4>
+            <p>Performance (GTmetrix, Lighthouse), accessibilité WCAG, sécurité (scan vulnérabilités), SEO.</p>
+        </div>
+
+        <div>
+            <h4>Audit conformité</h4>
+            <p>RGPD (DPO), PCI-DSS (certificat), facturation Factur-X, CGV B2B, mentions légales.</p>
+        </div>
+
+        <div>
+            <h4>Tests de charge</h4>
+            <p>Simulation 100 commandes simultanées, vérification temps réponse < 2s, uptime monitoring 7j.</p>
+        </div>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 21: RECOMMANDATIONS D'AMÉLIORATION -->
+<div class="slide">
+    <div class="slide-number">21</div>
+    <div class="slide-header">
+        <h2>RECOMMANDATIONS D'AMÉLIORATION</h2>
+        <p style="font-style: italic; color: var(--text-light);">Suite Critère C1.9 - Axes de progression post-lancement</p>
+    </div>
+
+    <h3>Améliorations prioritaires post-audit</h3>
+
+    <table>
+        <tr>
+            <th>Axe</th>
+            <th>Problème identifié</th>
+            <th>Solution recommandée</th>
+            <th>Priorité</th>
+        </tr>
+        <tr>
+            <td><strong>Performance mobile</strong></td>
+            <td>Temps chargement 3,2s sur mobile</td>
+            <td>Optimisation images WebP, lazy loading</td>
+            <td class="risk-high">HAUTE</td>
+        </tr>
+        <tr>
+            <td><strong>Accessibilité</strong></td>
+            <td>Contraste insuffisant sur boutons</td>
+            <td>Ajuster couleurs pour WCAG AA</td>
+            <td class="risk-high">HAUTE</td>
+        </tr>
+        <tr>
+            <td><strong>Onboarding</strong></td>
+            <td>Taux abandon inscription 35%</td>
+            <td>Simplifier formulaire, ajouter tooltips</td>
+            <td class="risk-medium">MOYENNE</td>
+        </tr>
+        <tr>
+            <td><strong>Support</strong></td>
+            <td>Live chat pas disponible 24/7</td>
+            <td>Chatbot IA pour réponses automatiques</td>
+            <td class="risk-medium">MOYENNE</td>
+        </tr>
+        <tr>
+            <td><strong>Analytics</strong></td>
+            <td>Pas de tracking conversions détaillé</td>
+            <td>Implémenter Google Analytics 4 + goals</td>
+            <td class="risk-low">BASSE</td>
+        </tr>
+        <tr>
+            <td><strong>Personnalisation</strong></td>
+            <td>Offres non adaptées au profil</td>
+            <td>Recommandations IA basées historique</td>
+            <td class="risk-low">BASSE</td>
+        </tr>
+    </table>
+
+    <div class="highlight-box">
+        <p><strong>Plan d'action:</strong> Corrections critiques en sprint post-lancement (S13-S14), améliorations continues selon feedback utilisateurs.</p>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 22: KPI DE SUCCÈS -->
+<div class="slide">
+    <div class="slide-number">22</div>
+    <div class="slide-header">
+        <h2>INDICATEURS DE SUCCÈS (KPI)</h2>
+        <p style="font-style: italic; color: var(--text-light);">Mesure de la performance à 6 et 12 mois</p>
+    </div>
+
+    <h3>7 KPI définis pour évaluer le succès</h3>
+
+    <table>
+        <tr>
+            <th>KPI</th>
+            <th>Cible 6 mois</th>
+            <th>Cible 12 mois</th>
+            <th>Méthode mesure</th>
+        </tr>
+        <tr>
+            <td><strong>Taux adoption plateforme</strong></td>
+            <td>70%</td>
+            <td>85%</td>
+            <td>% commandes sur plateforme vs total</td>
+        </tr>
+        <tr>
+            <td><strong>NPS distributeurs</strong></td>
+            <td>50+</td>
+            <td>60+</td>
+            <td>Enquête satisfaction trimestrielle</td>
+        </tr>
+        <tr>
+            <td><strong>Temps traitement commande</strong></td>
+            <td>< 5 min</td>
+            <td>< 3 min</td>
+            <td>Analytics Shopify (temps moyen)</td>
+        </tr>
+        <tr>
+            <td><strong>Réduction charge SAV</strong></td>
+            <td>-60%</td>
+            <td>-80%</td>
+            <td>Tickets support vs période avant</td>
+        </tr>
+        <tr>
+            <td><strong>Croissance CA B2B</strong></td>
+            <td>+10%</td>
+            <td>+25%</td>
+            <td>CA B2B vs année précédente</td>
+        </tr>
+        <tr>
+            <td><strong>Panier moyen B2B</strong></td>
+            <td>+15%</td>
+            <td>+40%</td>
+            <td>Valeur moyenne commande</td>
+        </tr>
+        <tr>
+            <td><strong>Taux conversion visite-commande</strong></td>
+            <td>25%</td>
+            <td>35%</td>
+            <td>Google Analytics + Shopify</td>
+        </tr>
+    </table>
+
+    <div class="highlight-box">
+        <p><strong>Pilotage:</strong> Dashboard KPI mis à jour mensuellement, revue trimestrielle avec équipe, ajustements si écarts > 15%.</p>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 23: ROADMAP LONG TERME -->
+<div class="slide">
+    <div class="slide-number">23</div>
+    <div class="slide-header">
+        <h2>ROADMAP LONG TERME</h2>
+        <p style="font-style: italic; color: var(--text-light);">Évolutions futures après lancement</p>
+    </div>
+
+    <h3>Phases 2 et 3 - Fonctionnalités avancées</h3>
+
+    <div class="two-columns">
+        <div>
+            <h4>Phase 2 (Mois 7-12)</h4>
+            <p class="column-title">SHOULD HAVE</p>
+            <ul>
+                <li>Programme fidélité Bronze/Argent/Or/Platine</li>
+                <li>Échantillons gratuits personnalisés</li>
+                <li>Recommandations IA produits</li>
+                <li>Alertes stock automatiques</li>
+                <li>Intégration ERP distributeurs</li>
+                <li>Multi-devises (€, £, CHF)</li>
+                <li>Chatbot IA 24/7</li>
+                <li>Analytics avancés + BI</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Phase 3 (An 2+)</h4>
+            <p class="column-title">COULD HAVE</p>
+            <ul>
+                <li>Configurateur commandes récurrentes</li>
+                <li>Abonnements B2B automatiques</li>
+                <li>Marketplace multi-marques Clean Beauty</li>
+                <li>Application mobile native iOS/Android</li>
+                <li>Expansion géographique EMEA</li>
+                <li>Intégration blockchain traçabilité</li>
+                <li>Module formation en ligne</li>
+                <li>Événements virtuels B2B</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <p><strong>Approche:</strong> Évolutions guidées par feedback utilisateurs et data analytics. Priorisation continue selon valeur/coût.</p>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 24: IMPACT BUSINESS -->
+<div class="slide">
+    <div class="slide-number">24</div>
+    <div class="slide-header">
+        <h2>IMPACT BUSINESS ATTENDU</h2>
+    </div>
+
+    <h3>Bénéfices quantitatifs et qualitatifs</h3>
+
+    <div class="two-columns">
+        <div>
+            <h4>Pour RESPIRE</h4>
+            <ul>
+                <li><strong>Efficacité:</strong> -80% temps SAV, automatisation 24/7</li>
+                <li><strong>Croissance:</strong> +25% CA B2B première année</li>
+                <li><strong>Rentabilité:</strong> ROI +173% (123 680€ net)</li>
+                <li><strong>Scalabilité:</strong> Gestion 3x volume sans recrutement</li>
+                <li><strong>Data:</strong> Insights distributeurs précis</li>
+                <li><strong>Image:</strong> Positionnement tech innovant</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Pour les distributeurs</h4>
+            <ul>
+                <li><strong>Autonomie:</strong> Commande 24/7 sans attente</li>
+                <li><strong>Transparence:</strong> Suivi temps réel complet</li>
+                <li><strong>Rapidité:</strong> Commande en < 5 min</li>
+                <li><strong>Fidélité:</strong> Tarifs dégressifs personnalisés</li>
+                <li><strong>Support:</strong> FAQ + live chat + documentation</li>
+                <li><strong>Simplicité:</strong> Interface intuitive mobile-first</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span class="stat-number">85%</span>
+            <span class="stat-label">Commandes automatisées</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">99,99%</span>
+            <span class="stat-label">Disponibilité garantie</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">60+</span>
+            <span class="stat-label">NPS cible (excellence)</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">3x</span>
+            <span class="stat-label">Capacité croissance sans recruter</span>
+        </div>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 25: FACTEURS CLÉS DE SUCCÈS -->
+<div class="slide">
+    <div class="slide-number">25</div>
+    <div class="slide-header">
+        <h2>FACTEURS CLÉS DE SUCCÈS</h2>
+    </div>
+
+    <div class="numbered-section">
+        <div>
+            <h4>Sponsorship et engagement</h4>
+            <p>Implication direction RESPIRE (Justine Hutteau), ambassadeurs internes, communication interne régulière.</p>
+        </div>
+
+        <div>
+            <h4>Équipe qualifiée et motivée</h4>
+            <p>Profils expérimentés Shopify, méthodologie Agile rodée, cohésion d'équipe, formation continue.</p>
+        </div>
+
+        <div>
+            <h4>Accompagnement au changement</h4>
+            <p>Formation distributeurs dédiée, webinars, documentation complète, support dédié onboarding.</p>
+        </div>
+
+        <div>
+            <h4>Pilotage rigoureux</h4>
+            <p>Sprints bi-mensuels, revues budget, dashboard KPI temps réel, ajustements réactifs.</p>
+        </div>
+
+        <div>
+            <h4>Gestion proactive risques</h4>
+            <p>Cartographie complète, actions préventives, Plan B pour risques critiques, veille réglementaire.</p>
+        </div>
+
+        <div>
+            <h4>Conformité juridique exemplaire</h4>
+            <p>RGPD natif, Factur-X anticipé, PCI-DSS Niveau 1, CGV B2B validées, audits réguliers.</p>
+        </div>
+
+        <div>
+            <h4>Écoute utilisateurs et itération</h4>
+            <p>Feedback continu distributeurs, NPS trimestriel, roadmap évolutive, culture amélioration continue.</p>
+        </div>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 26: PROCHAINES ÉTAPES -->
+<div class="slide">
+    <div class="slide-number">26</div>
+    <div class="slide-header">
+        <h2>PROCHAINES ÉTAPES</h2>
+    </div>
+
+    <h3>Plan d'action immédiat (si validation projet)</h3>
+
+    <div class="numbered-section">
+        <div>
+            <h4>Validation et contractualisation (J+1 à J+7)</h4>
+            <p>✓ Validation cahier des charges par direction RESPIRE<br>
+            ✓ Signature contrat prestataire Shopify<br>
+            ✓ Kick-off meeting équipe projet</p>
+        </div>
+
+        <div>
+            <h4>Phase 0 - Cadrage (S1-S2)</h4>
+            <p>✓ Ateliers besoins détaillés avec commerciaux RESPIRE<br>
+            ✓ Création wireframes et mockups UX/UI<br>
+            ✓ Configuration environnement Shopify Plus</p>
+        </div>
+
+        <div>
+            <h4>Sprint 1 - Socle technique (S3-S4)</h4>
+            <p>✓ Développement authentification et comptes B2B<br>
+            ✓ Intégration API INSEE (SIRET) et VIES (TVA UE)<br>
+            ✓ Catalogue produits et tarifs pro</p>
+        </div>
+
+        <div>
+            <h4>Sprints 2-4 - Développement (S5-S10)</h4>
+            <p>✓ Tunnel commande complet et paiements<br>
+            ✓ Suivi temps réel et intégrations transporteurs<br>
+            ✓ Tests, audits, recette</p>
+        </div>
+
+        <div>
+            <h4>Phase 2 - Déploiement (S11-S12)</h4>
+            <p>✓ Formation distributeurs pilotes<br>
+            ✓ Go-live progressif (beta puis ouverture totale)<br>
+            ✓ Support renforcé post-lancement</p>
+        </div>
+    </div>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 27: CONCLUSION -->
+<div class="slide">
+    <div class="slide-number">27</div>
+    <div class="slide-header">
+        <h2>CONCLUSION</h2>
+    </div>
+
+    <div class="highlight-box">
+        <h4>Un projet stratégique structurant pour RESPIRE</h4>
+        <p class="quote">
+            "La plateforme B2B n'est pas qu'un outil technique : c'est un levier de transformation digitale qui positionne RESPIRE comme un acteur moderne, efficace et à l'écoute de ses partenaires professionnels."
+        </p>
+    </div>
+
+    <h3>Ce projet apporte à RESPIRE :</h3>
+    <ul>
+        <li><strong>Efficacité opérationnelle:</strong> Automatisation 85% commandes, -30h/sem SAV</li>
+        <li><strong>Croissance accélérée:</strong> +25% CA B2B an 1, capacité 3x sans recruter</li>
+        <li><strong>Excellence relationnelle:</strong> Expérience distributeur premium, NPS 60+</li>
+        <li><strong>Conformité exemplaire:</strong> RGPD, Factur-X 2026, PCI-DSS Niveau 1</li>
+        <li><strong>ROI exceptionnel:</strong> 173% retour sur investissement première année</li>
+        <li><strong>Avantage concurrentiel:</strong> Différenciation face aux acteurs traditionnels</li>
+    </ul>
+
+    <div class="section-divider"></div>
+
+    <h3>Un cahier des charges complet qui répond aux 9 critères d'évaluation</h3>
+    <p>✅ C1.1 Analyse marché argumentée | ✅ C1.2 Veille et recommandations concrètes<br>
+    ✅ C1.4 Cartographie risques + actions préventives | ✅ C1.5 Besoins client identifiés<br>
+    ✅ C1.6 Spécifications fonctionnelles et techniques complètes<br>
+    ✅ C1.7 Planning, ressources, livrables cohérents | ✅ C1.8 Argumentation solide<br>
+    ✅ C1.9 Audit rigoureux et recommandations adaptées</p>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 28: MERCI -->
+<div class="slide cover-slide">
+    <div class="cover-logo">RESPIRE</div>
+    <h1>MERCI DE VOTRE ATTENTION</h1>
+    <p class="cover-subtitle">Questions et échanges</p>
+    
+    <div class="section-divider" style="background: white; width: 60%; margin: 50px auto;"></div>
+    
+    <div class="cover-info">
+        <p style="font-size: 20px; margin-bottom: 20px;"><strong>Projet prêt pour validation et lancement</strong></p>
+        <p>Chef de projet: [Votre nom]</p>
+        <p>Contact: [Votre email] | [Votre téléphone]</p>
+        <p style="margin-top: 30px; font-size: 14px;">Documentation complète disponible :<br>
+        Cahier des charges 30+ pages | Glossaire acronymes 100+ termes<br>
+        Cartographie risques | Planning détaillé | Budget ROI</p>
+    </div>
+</div>
+
+<!-- SLIDE 29: ANNEXE - GLOSSAIRE (page 1) -->
+<div class="slide">
+    <div class="slide-number">29 (Annexe)</div>
+    <div class="slide-header">
+        <h2>ANNEXE - GLOSSAIRE DES ACRONYMES (1/3)</h2>
+        <p style="font-style: italic; color: var(--text-light);">Traduction et définitions de tous les acronymes utilisés</p>
+    </div>
+
+    <table style="font-size: 13px;">
+        <tr>
+            <th style="width: 15%;">Acronyme</th>
+            <th style="width: 35%;">Traduction</th>
+            <th style="width: 50%;">Définition</th>
+        </tr>
+        <tr>
+            <td><strong>B2B</strong></td>
+            <td>Business to Business</td>
+            <td>Commerce entre entreprises</td>
+        </tr>
+        <tr>
+            <td><strong>B2C</strong></td>
+            <td>Business to Consumer</td>
+            <td>Commerce vers les consommateurs</td>
+        </tr>
+        <tr>
+            <td><strong>CA</strong></td>
+            <td>Chiffre d'Affaires</td>
+            <td>Revenu total des ventes</td>
+        </tr>
+        <tr>
+            <td><strong>ROI</strong></td>
+            <td>Return On Investment</td>
+            <td>Retour sur investissement (gains - coûts)</td>
+        </tr>
+        <tr>
+            <td><strong>KPI</strong></td>
+            <td>Key Performance Indicator</td>
+            <td>Indicateur clé de performance</td>
+        </tr>
+        <tr>
+            <td><strong>NPS</strong></td>
+            <td>Net Promoter Score</td>
+            <td>Score de recommandation net (-100 à +100)</td>
+        </tr>
+        <tr>
+            <td><strong>API</strong></td>
+            <td>Application Programming Interface</td>
+            <td>Interface permettant communication entre logiciels</td>
+        </tr>
+        <tr>
+            <td><strong>ERP</strong></td>
+            <td>Enterprise Resource Planning</td>
+            <td>Progiciel de gestion intégré</td>
+        </tr>
+        <tr>
+            <td><strong>CRM</strong></td>
+            <td>Customer Relationship Management</td>
+            <td>Gestion de la relation client</td>
+        </tr>
+        <tr>
+            <td><strong>UX/UI</strong></td>
+            <td>User Experience / User Interface</td>
+            <td>Expérience et interface utilisateur</td>
+        </tr>
+        <tr>
+            <td><strong>MVP</strong></td>
+            <td>Minimum Viable Product</td>
+            <td>Produit minimum viable (version simplifiée)</td>
+        </tr>
+        <tr>
+            <td><strong>SaaS</strong></td>
+            <td>Software as a Service</td>
+            <td>Logiciel en tant que service (abonnement en ligne)</td>
+        </tr>
+    </table>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 30: ANNEXE - GLOSSAIRE (page 2) -->
+<div class="slide">
+    <div class="slide-number">30 (Annexe)</div>
+    <div class="slide-header">
+        <h2>ANNEXE - GLOSSAIRE DES ACRONYMES (2/3)</h2>
+    </div>
+
+    <table style="font-size: 13px;">
+        <tr>
+            <th style="width: 15%;">Acronyme</th>
+            <th style="width: 35%;">Traduction</th>
+            <th style="width: 50%;">Définition</th>
+        </tr>
+        <tr>
+            <td><strong>RGPD</strong></td>
+            <td>Règlement Général Protection Données</td>
+            <td>Loi européenne protection données personnelles</td>
+        </tr>
+        <tr>
+            <td><strong>PCI-DSS</strong></td>
+            <td>Payment Card Industry Data Security Standard</td>
+            <td>Norme sécurité paiements par carte bancaire</td>
+        </tr>
+        <tr>
+            <td><strong>CGV</strong></td>
+            <td>Conditions Générales de Vente</td>
+            <td>Document légal encadrant relation commerciale</td>
+        </tr>
+        <tr>
+            <td><strong>PESTEL</strong></td>
+            <td>Politique, Économique, Socioculturel, Technologique, Écologique, Légal</td>
+            <td>Méthode analyse macro-environnement</td>
+        </tr>
+        <tr>
+            <td><strong>SWOT</strong></td>
+            <td>Strengths, Weaknesses, Opportunities, Threats</td>
+            <td>Forces, Faiblesses, Opportunités, Menaces</td>
+        </tr>
+        <tr>
+            <td><strong>MoSCoW</strong></td>
+            <td>Must have, Should have, Could have, Won't have</td>
+            <td>Méthode priorisation fonctionnalités</td>
+        </tr>
+        <tr>
+            <td><strong>CAGR</strong></td>
+            <td>Compound Annual Growth Rate</td>
+            <td>Taux croissance annuel composé moyen</td>
+        </tr>
+        <tr>
+            <td><strong>SLA</strong></td>
+            <td>Service Level Agreement</td>
+            <td>Accord niveau service (disponibilité garantie)</td>
+        </tr>
+        <tr>
+            <td><strong>SEO</strong></td>
+            <td>Search Engine Optimization</td>
+            <td>Optimisation moteurs de recherche (Google)</td>
+        </tr>
+        <tr>
+            <td><strong>CDN</strong></td>
+            <td>Content Delivery Network</td>
+            <td>Réseau diffusion contenu (accélération web)</td>
+        </tr>
+        <tr>
+            <td><strong>SSL/TLS</strong></td>
+            <td>Secure Sockets Layer / Transport Layer Security</td>
+            <td>Protocoles sécurité chiffrement HTTPS</td>
+        </tr>
+        <tr>
+            <td><strong>2FA</strong></td>
+            <td>Two-Factor Authentication</td>
+            <td>Authentification à deux facteurs (sécurité)</td>
+        </tr>
+    </table>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+<!-- SLIDE 31: ANNEXE - GLOSSAIRE (page 3) -->
+<div class="slide">
+    <div class="slide-number">31 (Annexe)</div>
+    <div class="slide-header">
+        <h2>ANNEXE - GLOSSAIRE DES ACRONYMES (3/3)</h2>
+    </div>
+
+    <table style="font-size: 13px;">
+        <tr>
+            <th style="width: 15%;">Acronyme</th>
+            <th style="width: 35%;">Traduction</th>
+            <th style="width: 50%;">Définition</th>
+        </tr>
+        <tr>
+            <td><strong>SIRET</strong></td>
+            <td>Système Identification Répertoire ETablissements</td>
+            <td>Numéro identification établissement français (14 chiffres)</td>
+        </tr>
+        <tr>
+            <td><strong>TVA</strong></td>
+            <td>Taxe sur la Valeur Ajoutée</td>
+            <td>Impôt sur la consommation (20% France)</td>
+        </tr>
+        <tr>
+            <td><strong>HT/TTC</strong></td>
+            <td>Hors Taxes / Toutes Taxes Comprises</td>
+            <td>Prix sans/avec TVA</td>
+        </tr>
+        <tr>
+            <td><strong>Factur-X</strong></td>
+            <td>Format facture électronique structuré</td>
+            <td>Norme FR/UE facturation électronique (PDF+XML)</td>
+        </tr>
+        <tr>
+            <td><strong>AGEC</strong></td>
+            <td>Anti-Gaspillage Économie Circulaire</td>
+            <td>Loi française 2020 réduction déchets</td>
+        </tr>
+        <tr>
+            <td><strong>INCI</strong></td>
+            <td>International Nomenclature Cosmetic Ingredients</td>
+            <td>Liste standardisée ingrédients cosmétiques</td>
+        </tr>
+        <tr>
+            <td><strong>SKU</strong></td>
+            <td>Stock Keeping Unit</td>
+            <td>Référence unique produit (gestion stock)</td>
+        </tr>
+        <tr>
+            <td><strong>EAN</strong></td>
+            <td>European Article Numbering</td>
+            <td>Code-barres européen (13 chiffres)</td>
+        </tr>
+        <tr>
+            <td><strong>CTA</strong></td>
+            <td>Call To Action</td>
+            <td>Bouton/lien incitant à l'action</td>
+        </tr>
+        <tr>
+            <td><strong>WCAG</strong></td>
+            <td>Web Content Accessibility Guidelines</td>
+            <td>Standards accessibilité web (handicaps)</td>
+        </tr>
+        <tr>
+            <td><strong>RPO/RTO</strong></td>
+            <td>Recovery Point/Time Objective</td>
+            <td>Objectifs récupération données après panne</td>
+        </tr>
+        <tr>
+            <td><strong>FAQ</strong></td>
+            <td>Frequently Asked Questions</td>
+            <td>Foire aux questions</td>
+        </tr>
+    </table>
+
+    <p style="margin-top: 20px; text-align: center; font-style: italic; color: var(--text-light);">
+        <strong>Glossaire complet (100+ termes)</strong> disponible dans la documentation annexe
+    </p>
+
+    <div class="slide-footer">
+        <span>RESPIRE - Transformation Digitale B2B</span>
+        <span>Workshop 1 - Rattrapages 2026</span>
+    </div>
+</div>
+
+</body>
+</html>

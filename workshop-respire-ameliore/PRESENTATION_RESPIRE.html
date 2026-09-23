@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Digital RESPIRE - Transformation Digitale B2B</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .slide {
+            width: 1024px;
+            height: 768px;
+            margin: 20px auto;
+            background: white;
+            padding: 60px 80px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            page-break-after: always;
+            position: relative;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        h1 {
+            color: #2d5f3f;
+            font-size: 48px;
+            margin-bottom: 20px;
+            border-bottom: 4px solid #7fb069;
+            padding-bottom: 15px;
+        }
+        
+        h2 {
+            color: #2d5f3f;
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+        
+        h3 {
+            color: #5a8c67;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        h4 {
+            color: #2d5f3f;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin-left: 40px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        .title-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .highlight {
+            background: #e8f5e9;
+            padding: 20px;
+            border-left: 5px solid #7fb069;
+            margin: 20px 0;
+        }
+        
+        .box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .emoji {
+            font-size: 32px;
+            margin-right: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th {
+            background: #2d5f3f;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 18px;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            font-size: 18px;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .metric {
+            text-align: center;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 8px;
+        }
+        
+        .metric-value {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2d5f3f;
+        }
+        
+        .metric-label {
+            font-size: 18px;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        .status-ok {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .status-warn {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        
+        .status-critical {
+            color: #f44336;
+            font-weight: bold;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- SLIDE 1 : Page de titre -->
+<div class="slide title-slide">
+    <h1>Projet Digital RESPIRE</h1>
+    <p class="subtitle">Transformation Digitale B2B</p>
+    <p class="subtitle" style="margin-top: 40px;">Développement d'une plateforme e-commerce B2B pour optimiser la distribution professionnelle et accélérer la croissance de Respire</p>
+    <p style="margin-top: 60px; font-size: 18px; color: #999;">[Votre nom]<br>Septembre 2026<br>Version 2.0 - Rattrapages</p>
+</div>
+
+<!-- SLIDE 2 : RESPIRE - Histoire & Mission -->
+<div class="slide">
+    <h2>RESPIRE - Histoire & Mission</h2>
+    
+    <div class="two-columns">
+        <div>
+            <h4>Histoire</h4>
+            <p>Marque française fondée en <strong>2018</strong> par <strong>Justine Hutteau</strong>, spécialisée dans les produits d'hygiène naturels et vegans.</p>
+        </div>
+        <div>
+            <h4>Valeurs Clés</h4>
+            <ul>
+                <li>Transparence totale</li>
+                <li>Communication authentique</li>
+                <li>Ingrédients naturels</li>
+                <li>Production locale</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="highlight">
+        <h4>Positionnement</h4>
+        <p>Alternative sincère et moderne dans un marché dominé par les grandes marques historiques (Dove, Nivea, L'Oréal).</p>
+    </div>
+    
+    <div class="slide-number">2</div>
+</div>
+
+<!-- SLIDE 3 : Distribution Actuelle -->
+<div class="slide">
+    <h2>Distribution Actuelle : Un Modèle Hybride</h2>
+    
+    <div class="two-columns">
+        <div class="box">
+            <h3 class="center">🛍️ B2C - Vente Directe</h3>
+            <ul>
+                <li>Site e-commerce (limite 10 produits)</li>
+                <li>Pharmacies et parapharmacies</li>
+                <li>Grandes surfaces (GMS)</li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <h3 class="center">🏢 B2B - Vente Professionnelle</h3>
+            <ul>
+                <li>Commandes par mail et téléphone</li>
+                <li>Intervention commerciale obligatoire</li>
+                <li>Processus manuel et chronophage</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="slide-number">3</div>
+</div>
+
+<!-- SLIDE 4 : Limitations Critiques -->
+<div class="slide">
+    <h2>Limitations Critiques du Système Actuel</h2>
+    
+    <div style="margin-top: 40px;">
+        <div class="box" style="margin-bottom: 20px;">
+            <h4>👥 Dépendance Humaine</h4>
+            <p>Toutes les commandes B2B nécessitent l'intervention d'un commercial, limitant la scalabilité.</p>
+            <p style="color: #f44336; font-weight: bold;">→ 30h/semaine perdues en saisie manuelle</p>
+        </div>
+        
+        <div class="box" style="margin-bottom: 20px;">
+            <h4>⏰ Disponibilité Restreinte</h4>
+            <p>Service non continu : vacances, maladies et absences impactent les commandes urgentes.</p>
+        </div>
+        
+        <div class="box" style="margin-bottom: 20px;">
+            <h4>📦 Suivi Inexistant</h4>
+            <p>Aucun suivi en temps réel des commandes, créant incertitude et frustration chez les distributeurs.</p>
+        </div>
+        
+        <div class="box">
+            <h4>💔 Fidélisation Limitée</h4>
+            <p>Absence de programme structuré, seule la gratuité de livraison à partir de 200€.</p>
+        </div>
+    </div>
+    
+    <div class="slide-number">4</div>
+</div>
+
+<!-- SLIDE 5 : Analyse du Marché -->
+<div class="slide">
+    <h2>Analyse du Marché - Données Clés</h2>
+    
+    <div class="two-columns" style="margin-top: 40px;">
+        <div class="metric">
+            <div class="metric-value">48,04 Md$</div>
+            <div class="metric-label">Marché mondial cosmétique naturelle (2023)</div>
+        </div>
+        
+        <div class="metric">
+            <div class="metric-value">+9,35%</div>
+            <div class="metric-label">Croissance annuelle (CAGR 2024-2030)</div>
+        </div>
+    </div>
+    
+    <div class="two-columns" style="margin-top: 20px;">
+        <div class="metric">
+            <div class="metric-value">3ème</div>
+            <div class="metric-label">France - Marché européen cosmétique bio</div>
+        </div>
+        
+        <div class="metric">
+            <div class="metric-value">68%</div>
+            <div class="metric-label">Consommateurs français privilégient le naturel</div>
+        </div>
+    </div>
+    
+    <p style="text-align: center; margin-top: 40px; font-size: 18px; color: #666;">
+        <em>Sources : Études de marché 2024, Grand View Research</em>
+    </p>
+    
+    <div class="slide-number">5</div>
+</div>
+
+<!-- SLIDE 6 : Analyse PESTEL -->
+<div class="slide">
+    <h2>Analyse PESTEL - Facteurs Clés</h2>
+    
+    <table style="font-size: 16px;">
+        <tr>
+            <th width="20%">Facteur</th>
+            <th>Impact sur le projet</th>
+        </tr>
+        <tr>
+            <td><strong>🏛️ Politique</strong></td>
+            <td>Réglementation stricte, soutien aux entreprises éco-responsables</td>
+        </tr>
+        <tr>
+            <td><strong>💰 Économique</strong></td>
+            <td>Marché en croissance, inflation matières premières (+15-25%)</td>
+        </tr>
+        <tr>
+            <td><strong>👥 Socioculturel</strong></td>
+            <td>Clean beauty, 82% Gen Z vérifient la composition</td>
+        </tr>
+        <tr>
+            <td><strong>🔬 Technologique</strong></td>
+            <td>E-commerce +127% depuis 2020, IA, blockchain traçabilité</td>
+        </tr>
+        <tr>
+            <td><strong>🌱 Écologique</strong></td>
+            <td>92% considèrent l'impact environnemental, labels bio obligatoires</td>
+        </tr>
+        <tr>
+            <td><strong>⚖️ Légal</strong></td>
+            <td>RGPD, loi AGEC, facturation électronique 2026</td>
+        </tr>
+    </table>
+    
+    <div class="slide-number">6</div>
+</div>
+
+<!-- SLIDE 7 : Tendances B2B -->
+<div class="slide">
+    <h2>Tendances B2B - Pourquoi Agir Maintenant ?</h2>
+    
+    <div style="margin-top: 30px;">
+        <div class="box" style="margin-bottom: 15px;">
+            <h4>📈 Tendance 1 : Digitalisation accélérée</h4>
+            <p><strong>73%</strong> des acheteurs B2B préfèrent commander en ligne (Forrester 2024)</p>
+        </div>
+        
+        <div class="box" style="margin-bottom: 15px;">
+            <h4>🎯 Tendance 2 : Expérience B2B = B2C</h4>
+            <p><strong>80%</strong> des distributeurs attendent une expérience aussi fluide qu'en B2C</p>
+        </div>
+        
+        <div class="box" style="margin-bottom: 15px;">
+            <h4>💎 Tendance 3 : Programmes de fidélité</h4>
+            <p>Augmentent la rétention de <strong>25-40%</strong> (Bain & Company)</p>
+        </div>
+        
+        <div class="box" style="margin-bottom: 15px;">
+            <h4>🤖 Tendance 4 : Automatisation</h4>
+            <p>Réduit les erreurs de <strong>50%</strong></p>
+        </div>
+        
+        <div class="box">
+            <h4>📱 Tendance 5 : Mobilité</h4>
+            <p><strong>57%</strong> des commandes B2B initiées sur mobile</p>
+        </div>
+    </div>
+    
+    <div class="highlight" style="margin-top: 20px;">
+        <p class="center"><strong>→ Le digital B2B n'est plus une option, c'est un standard de marché</strong></p>
+    </div>
+    
+    <div class="slide-number">7</div>
+</div>
+
+<!-- SLIDE 8 : SWOT -->
+<div class="slide">
+    <h2>Positionnement Concurrentiel (SWOT)</h2>
+    
+    <div class="two-columns" style="margin-top: 30px;">
+        <div>
+            <div class="box" style="background: #e8f5e9;">
+                <h4 style="color: #2d5f3f;">✅ Forces</h4>
+                <ul>
+                    <li>Marque forte, communauté engagée</li>
+                    <li>Transparence reconnue</li>
+                    <li>Qualité produit certifiée</li>
+                    <li>Made in France valorisé</li>
+                </ul>
+            </div>
+            
+            <div class="box" style="background: #fff3e0; margin-top: 20px;">
+                <h4 style="color: #f57c00;">🚀 Opportunités</h4>
+                <ul>
+                    <li>Marché +9,35%/an</li>
+                    <li>Digitalisation tardive (rattrapage)</li>
+                    <li>Demande clean beauty croissante</li>
+                    <li>Potentiel export (UE)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div>
+            <div class="box" style="background: #ffebee;">
+                <h4 style="color: #c62828;">❌ Faiblesses</h4>
+                <ul>
+                    <li>Absence plateforme B2B</li>
+                    <li>Service limité (horaires bureau)</li>
+                    <li>Pas de fidélisation structurée</li>
+                    <li>Processus manuels générateurs d'erreurs</li>
+                </ul>
+            </div>
+            
+            <div class="box" style="background: #fce4ec; margin-top: 20px;">
+                <h4 style="color: #880e4f;">⚠️ Menaces</h4>
+                <ul>
+                    <li>Concurrents équipés (Avril, Centifolia)</li>
+                    <li>Nouveaux entrants (saturation)</li>
+                    <li>Inflation matières premières</li>
+                    <li>Dépendance distributeurs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide-number">8</div>
+</div>
+
+<!-- SLIDE 9 : Veille Concurrentielle -->
+<div class="slide">
+    <h2>Veille Concurrentielle - Benchmark</h2>
+    
+    <table style="font-size: 16px;">
+        <tr>
+            <th>Critère</th>
+            <th>AVRIL</th>
+            <th>CENTIFOLIA</th>
+            <th>GAIIA</th>
+            <th><span style="color: #7fb069;">RESPIRE (futur)</span></th>
+        </tr>
+        <tr>
+            <td><strong>Plateforme B2B</strong></td>
+            <td>✅ Depuis 2019</td>
+            <td>✅ Sur-mesure</td>
+            <td>✅ Shopify Plus</td>
+            <td><span class="status-ok">✅ Shopify Plus</span></td>
+        </tr>
+        <tr>
+            <td><strong>Interface</strong></td>
+            <td>❌ Vieillissante</td>
+            <td>❌ Complexe</td>
+            <td>✅ Moderne</td>
+            <td><span class="status-ok">✅ Moderne +</span></td>
+        </tr>
+        <tr>
+            <td><strong>Mobile</strong></td>
+            <td>❌ Non</td>
+            <td>❌ Non</td>
+            <td>✅ Oui</td>
+            <td><span class="status-ok">✅ Oui</span></td>
+        </tr>
+        <tr>
+            <td><strong>Fidélité</strong></td>
+            <td>✅ Remises</td>
+            <td>✅ Avancé</td>
+            <td>⚠️ Basique</td>
+            <td><span class="status-ok">✅ Dégressif auto</span></td>
+        </tr>
+        <tr>
+            <td><strong>Notre avantage</strong></td>
+            <td>Design moderne</td>
+            <td>Simplicité</td>
+            <td>Fonctionnalités +</td>
+            <td><strong>Best of breed</strong></td>
+        </tr>
+    </table>
+    
+    <div class="slide-number">9</div>
+</div>
+
+<!-- SLIDE 10 : Veille Technique -->
+<div class="slide">
+    <h2>Veille Technique - Comparaison des Solutions</h2>
+    
+    <table style="font-size: 15px;">
+        <tr>
+            <th width="15%">Solution</th>
+            <th width="25%">Avantages</th>
+            <th width="25%">Inconvénients</th>
+            <th width="12%">Déploiement</th>
+            <th width="13%">Coût</th>
+            <th width="10%">Choix</th>
+        </tr>
+        <tr>
+            <td><strong>Shopify Plus</strong></td>
+            <td>Rapide, natif B2B, maintenance simple, scalable</td>
+            <td>Personnalisation limitée, coût récurrent</td>
+            <td>2-3 mois</td>
+            <td>2000€/mois</td>
+            <td><span class="status-ok">⭐ RETENU</span></td>
+        </tr>
+        <tr>
+            <td><strong>WooCommerce</strong></td>
+            <td>Open-source, personnalisable</td>
+            <td>Maintenance lourde, moins scalable</td>
+            <td>4-6 mois</td>
+            <td>500€/mois</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <td><strong>Sur-mesure</strong></td>
+            <td>Personnalisation totale, maîtrise technique</td>
+            <td>Délai long, coût élevé, dette technique</td>
+            <td>6-12 mois</td>
+            <td>50-100k€</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <td><strong>Odoo (ERP)</strong></td>
+            <td>Tout-en-un (ERP+CRM+e-commerce)</td>
+            <td>Complexe, UX moins moderne</td>
+            <td>6-9 mois</td>
+            <td>Variable</td>
+            <td>Phase 2</td>
+        </tr>
+    </table>
+    
+    <div class="highlight" style="margin-top: 30px;">
+        <p><strong>→ Justification :</strong> Shopify Plus offre le meilleur équilibre rapidité/fonctionnalités/coût pour un lancement en 3 mois.</p>
+    </div>
+    
+    <div class="slide-number">10</div>
+</div>
+
+<!-- SLIDE 11 : Veille Réglementaire -->
+<div class="slide">
+    <h2>Veille Réglementaire - Obligations Légales</h2>
+    
+    <div style="margin-top: 40px;">
+        <div class="box" style="margin-bottom: 20px;">
+            <h4>🔐 RGPD (Réglementation Générale sur la Protection des Données)</h4>
+            <ul>
+                <li>Hébergement UE obligatoire</li>
+                <li>Consentement explicite</li>
+                <li>Droit à l'oubli et export des données</li>
+            </ul>
+        </div>
+        
+        <div class="box" style="margin-bottom: 20px; background: #fff3e0;">
+            <h4>🧾 Facturation Électronique 2026 ⚠️ ANTICIPATION</h4>
+            <ul>
+                <li><strong>Obligatoire dès septembre 2026</strong> pour toutes transactions B2B en France</li>
+                <li>Format : Factur-X ou UBL (formats structurés)</li>
+                <li><strong>Action : Intégration dès phase 1 du projet</strong></li>
+            </ul>
+        </div>
+        
+        <div class="box" style="margin-bottom: 20px;">
+            <h4>📜 CGV B2B (Conditions Générales de Vente)</h4>
+            <ul>
+                <li>Spécifiques au B2B (différentes du B2C)</li>
+                <li>Mentions obligatoires : délais de paiement, pénalités de retard</li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <h4>✅ Certifications et Sécurité</h4>
+            <ul>
+                <li>PCI-DSS (paiements sécurisés)</li>
+                <li>Conformité labels bio et certifications produits</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="slide-number">11</div>
+</div>
+
+<!-- SLIDE 12 : Besoins Clients -->
+<div class="slide">
+    <h2>Besoins Clients - Analyse Détaillée</h2>
+    
+    <div style="margin-top: 30px;">
+        <div class="box" style="background: #ffebee; margin-bottom: 15px;">
+            <h4 class="status-critical">🔴 Besoin 1 : Automatisation (CRITIQUE)</h4>
+            <p><em>"Chaque commande nécessite l'intervention d'un commercial"</em></p>
+            <p><strong>Impact actuel :</strong> 30h/semaine perdues, erreurs humaines</p>
+            <p><strong>Objectif :</strong> 80% des commandes en autonomie</p>
+            <p><strong>Critère de succès :</strong> Commande complète en < 5 min</p>
+        </div>
+        
+        <div class="box" style="background: #ffebee; margin-bottom: 15px;">
+            <h4 class="status-critical">🔴 Besoin 2 : Disponibilité 24/7 (CRITIQUE)</h4>
+            <p><em>"Nos distributeurs étrangers ne peuvent pas nous joindre"</em></p>
+            <p><strong>Impact actuel :</strong> Commandes perdues, image dégradée</p>
+            <p><strong>Objectif :</strong> Service continu sans dépendance humaine</p>
+            <p><strong>Critère de succès :</strong> Uptime 99,9%, tous fuseaux horaires</p>
+        </div>
+        
+        <div class="box" style="background: #ffebee;">
+            <h4 class="status-critical">🔴 Besoin 3 : Suivi temps réel (CRITIQUE)</h4>
+            <p><em>"Appels incessants pour savoir où en est la commande"</em></p>
+            <p><strong>Impact actuel :</strong> 20h/semaine SAV, frustration</p>
+            <p><strong>Objectif :</strong> Transparence totale sur statut commande</p>
+            <p><strong>Critère de succès :</strong> Tracking accessible en 1 clic, notifications auto</p>
+        </div>
+    </div>
+    
+    <div class="slide-number">12</div>
+</div>
+
+<!-- SLIDE 13 : Priorisation MoSCoW -->
+<div class="slide">
+    <h2>Priorisation des Fonctionnalités (MoSCoW)</h2>
+    
+    <div class="two-columns" style="margin-top: 30px;">
+        <div>
+            <div class="box" style="background: #ffebee;">
+                <h4 class="status-critical">🔴 MUST HAVE (Phase 1)</h4>
+                <ul style="font-size: 17px;">
+                    <li>Tunnel de commande automatisé</li>
+                    <li>Authentification B2B (SIRET/TVA)</li>
+                    <li>Catalogue + recherche</li>
+                    <li>Suivi commandes temps réel</li>
+                    <li>Paiement sécurisé</li>
+                    <li>Factures téléchargeables</li>
+                    <li>Responsive (mobile-first)</li>
+                </ul>
+            </div>
+            
+            <div class="box" style="background: #fff3e0; margin-top: 15px;">
+                <h4 class="status-warn">🟠 SHOULD HAVE (Phase 1)</h4>
+                <ul style="font-size: 17px;">
+                    <li>Tarification dégressive auto</li>
+                    <li>Multi-utilisateurs (rôles)</li>
+                    <li>Alertes réassort</li>
+                    <li>Facturation électronique 2026</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div>
+            <div class="box" style="background: #fffde7;">
+                <h4 style="color: #f57f17;">🟡 COULD HAVE (Phase 2)</h4>
+                <ul style="font-size: 17px;">
+                    <li>Chat support intégré</li>
+                    <li>Recommandations IA</li>
+                    <li>Dark mode</li>
+                    <li>Tutoriels vidéo</li>
+                </ul>
+            </div>
+            
+            <div class="box" style="background: #f5f5f5; margin-top: 15px;">
+                <h4 style="color: #757575;">⚪ WON'T HAVE (Phase 3+)</h4>
+                <ul style="font-size: 17px;">
+                    <li>App mobile native</li>
+                    <li>Multilangue (EN, ES)</li>
+                    <li>Intégration ERP interne</li>
+                    <li>Personnalisation emballage</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide-number">13</div>
+</div>
+
+<!-- SLIDE 14 : Architecture Technique -->
+<div class="slide">
+    <h2>Architecture Technique - Vue d'Ensemble</h2>
+    
+    <div style="margin-top: 40px; text-align: center;">
+        <div class="box" style="background: #e3f2fd; margin-bottom: 15px;">
+            <h4>👥 DISTRIBUTEURS B2B</h4>
+            <p>Pharmacies, Parapharmacies, Boutiques Bio</p>
+        </div>
+        
+        <div style="font-size: 24px; margin: 10px 0;">↓ HTTPS / SSL ↓</div>
+        
+        <div class="box" style="background: #e8f5e9; margin-bottom: 15px;">
+            <h4>🎨 SHOPIFY PLUS - Front-end</h4>
+            <p>Interface responsive • Auth B2B • Catalogue • Tunnel commande</p>
+        </div>
+        
+        <div style="font-size: 24px; margin: 10px 0;">↓</div>
+        
+        <div class="box" style="background: #f3e5f5; margin-bottom: 15px;">
+            <h4>⚙️ SHOPIFY PLUS - Back-end</h4>
+            <p>Gestion produits/stock • Tarification auto • Paiements • Automatisations</p>
+        </div>
+        
+        <div style="font-size: 24px; margin: 10px 0;">↙ ↓ ↘</div>
+        
+        <div class="two-columns">
+            <div class="box" style="background: #fff3e0; font-size: 15px;">
+                <h4>📱 APPS</h4>
+                <p>Locksmith<br>Wholesale<br>Klaviyo</p>
+            </div>
+            <div class="box" style="background: #ffebee; font-size: 15px;">
+                <h4>💳 PAIEMENTS</h4>
+                <p>Shopify Pay<br>Stripe<br>PayPal</p>
+            </div>
+            <div class="box" style="background: #e0f2f1; font-size: 15px;">
+                <h4>📦 TRANSPORTEURS</h4>
+                <p>Colissimo<br>Chronopost<br>DPD</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide-number">14</div>
+</div>
+
+<!-- SLIDE 15 : User Stories -->
+<div class="slide">
+    <h2>User Stories - Exemples Clés</h2>
+    
+    <div style="margin-top: 30px;">
+        <div class="box" style="background: #e8f5e9; margin-bottom: 20px;">
+            <h4>US1 : Inscription professionnelle</h4>
+            <p><em>En tant que</em> distributeur<br>
+            <em>Je veux</em> créer un compte B2B avec mon SIRET<br>
+            <em>Afin de</em> commander à tarifs pro</p>
+            <p style="margin-top: 10px;"><strong>✅ Critères :</strong> Validation SIRET < 5 sec, accès immédiat</p>
+        </div>
+        
+        <div class="box" style="background: #e8f5e9; margin-bottom: 20px;">
+            <h4>US2 : Commander en autonomie</h4>
+            <p><em>En tant que</em> distributeur<br>
+            <em>Je veux</em> sélectionner des produits et valider ma commande seul<br>
+            <em>Afin de</em> ne plus dépendre d'un commercial</p>
+            <p style="margin-top: 10px;"><strong>✅ Critères :</strong> Commande complète < 5 min, confirmation immédiate</p>
+        </div>
+        
+        <div class="box" style="background: #e8f5e9;">
+            <h4>US3 : Suivre ma commande</h4>
+            <p><em>En tant que</em> distributeur<br>
+            <em>Je veux</em> voir en temps réel où en est ma commande<br>
+            <em>Afin de</em> ne plus appeler le SAV</p>
+            <p style="margin-top: 10px;"><strong>✅ Critères :</strong> Statut mis à jour en temps réel, numéro tracking dès expédition</p>
+        </div>
+    </div>
+    
+    <div class="slide-number">15</div>
+</div>
+
+<!-- SLIDE 16 : Spécifications Techniques -->
+<div class="slide">
+    <h2>Spécifications Techniques - Sécurité et Conformité</h2>
+    
+    <div class="two-columns" style="margin-top: 30px;">
+        <div>
+            <div class="box" style="background: #e8f5e9;">
+                <h4>🔐 Sécurité</h4>
+                <ul>
+                    <li>HTTPS / SSL (certificat inclus)</li>
+                    <li>Authentification sécurisée (bcrypt)</li>
+                    <li>2FA optionnel</li>
+                    <li>PCI-DSS Niveau 1</li>
+                    <li>Sauvegardes quotidiennes auto</li>
+                </ul>
+            </div>
+            
+            <div class="box" style="background: #e3f2fd; margin-top: 20px;">
+                <h4>⚡ Performance</h4>
+                <ul>
+                    <li>Chargement pages : < 2s</li>
+                    <li>Recherche produit : < 500ms</li>
+                    <li>Validation commande : < 5s</li>
+                    <li>Capacité : 100 commandes simultanées</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div>
+            <div class="box" style="background: #fff3e0;">
+                <h4>✅ Conformité</h4>
+                <ul>
+                    <li>RGPD : Hébergement UE, droit à l'oubli</li>
+                    <li>Facturation électronique 2026</li>
+                    <li>CGV B2B : mentions légales obligatoires</li>
+                    <li>Certifications : Bio, Vegan, Made in France</li>
+                </ul>
+            </div>
+            
+            <div class="box" style="background: #f3e5f5; margin-top: 20px;">
+                <h4>🔄 Évolutivité</h4>
+                <ul>
+                    <li>Architecture modulaire</li>
+                    <li>API documentée (intégrations futures)</li>
+                    <li>Scalabilité automatique (Shopify)</li>
+                    <li>Multilangue prévu (Phase 2)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide-number">16</div>
+</div>
+
+<!-- SLIDE 17 : Fonctionnalités -->
+<div class="slide">
+    <h2>Fonctionnalités de la Plateforme B2B</h2>
+    
+    <div class="two-columns" style="margin-top: 30px;">
+        <div>
+            <div class="box" style="margin-bottom: 15px;">
+                <h4>🔐 Accès Sécurisé</h4>
+                <p>Connexion professionnelle via SIRET/TVA avec validation automatique des credentials.</p>
+            </div>
+            
+            <div class="box" style="margin-bottom: 15px;">
+                <h4>💰 Tarification Pro</h4>
+                <p>Tarifs dégressifs selon les volumes, remises exclusives et conditions préférentielles.</p>
+            </div>
+            
+            <div class="box">
+                <h4>📊 Tableau de Bord</h4>
+                <p>Suivi en temps réel des commandes, historique, factures et gestion des réassorts.</p>
+            </div>
+        </div>
+        
+        <div>
+            <div class="box" style="margin-bottom: 15px;">
+                <h4>🤖 Automatisation</h4>
+                <p>Processus complet automatisé : commande, paiement, facturation et suivi logistique.</p>
+            </div>
+            
+            <div class="box" style="margin-bottom: 15px;">
+                <h4>📱 Responsive</h4>
+                <p>Interface optimisée mobile, tablette et desktop. 57% des commandes B2B sur mobile.</p>
+            </div>
+            
+            <div class="box">
+                <h4>📄 Documents</h4>
+                <p>Accès factures, bons de livraison, certificats produits, visuels HD téléchargeables.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide-number">17</div>
+</div>
+
+<!-- SLIDE 18 : Identification Risques -->
+<div class="slide">
+    <h2>Identification des Risques Majeurs</h2>
+    
+    <table style="font-size: 16px;">
+        <tr>
+            <th width="40%">Risque</th>
+            <th width="15%">Probabilité</th>
+            <th width="15%">Impact</th>
+            <th width="30%">Criticité</th>
+        </tr>
+        <tr>
+            <td><strong>Retard de déploiement</strong></td>
+            <td>40%</td>
+            <td>Élevé</td>
+            <td><span class="status-critical">🔴 CRITIQUE</span></td>
+        </tr>
+        <tr>
+            <td><strong>Adoption faible distributeurs</strong></td>
+            <td>35%</td>
+            <td>Élevé</td>
+            <td><span class="status-critical">🔴 CRITIQUE</span></td>
+        </tr>
+        <tr>
+            <td><strong>Problèmes techniques post-lancement</strong></td>
+            <td>25%</td>
+            <td>Élevé</td>
+            <td><span class="status-warn">🟠 MOYENNE</span></td>
+        </tr>
+        <tr>
+            <td><strong>Non-conformité réglementaire 2026</strong></td>
+            <td>10%</td>
+            <td>Très élevé</td>
+            <td><span class="status-warn">🟠 MOYENNE</span></td>
+        </tr>
+        <tr>
+            <td><strong>Dépassement budgétaire</strong></td>
+            <td>30%</td>
+            <td>Moyen</td>
+            <td><span class="status-warn">🟠 MOYENNE</span></td>
+        </tr>
+        <tr>
+            <td><strong>Concurrence plus rapide</strong></td>
+            <td>20%</td>
+            <td>Moyen</td>
+            <td><span class="status-ok">🟡 FAIBLE</span></td>
+        </tr>
+        <tr>
+            <td><strong>Rupture de stock</strong></td>
+            <td>15%</td>
+            <td>Moyen</td>
+            <td><span class="status-ok">🟡 FAIBLE</span></td>
+        </tr>
+    </table>
+    
+    <div class="slide-number">18</div>
+</div>
+
+<!-- SLIDE 19 : Actions Préventives Risques -->
+<div class="slide">
+    <h2>Risques Critiques - Actions Préventives</h2>
+    
+    <div class="box" style="background: #ffebee; margin-top: 30px; margin-bottom: 20px;">
+        <h4 class="status-critical">🔴 Risque 1 : Retard de déploiement (40%)</h4>
+        <p><strong>Actions préventives :</strong></p>
+        <ul>
+            <li>✅ Planning avec jalons hebdomadaires + buffer 2 semaines</li>
+            <li>✅ Méthodologie Agile (sprints 2 semaines)</li>
+            <li>✅ Développeur dédié 80% minimum</li>
+            <li>✅ Priorisation stricte (MVP si nécessaire)</li>
+        </ul>
+        <p style="margin-top: 10px;"><strong>Plan B :</strong> Développeur freelance en renfort (5000€), réduction périmètre</p>
+    </div>
+    
+    <div class="box" style="background: #ffebee;">
+        <h4 class="status-critical">🔴 Risque 2 : Adoption faible distributeurs (35%)</h4>
+        <p><strong>Actions préventives :</strong></p>
+        <ul>
+            <li>✅ Webinaires de formation (2 sessions)</li>
+            <li>✅ Vidéos tutoriels 24/7</li>
+            <li>✅ Incitation : -10% première commande en ligne</li>
+            <li>✅ Support renforcé 2 premiers mois (réponse < 2h)</li>
+            <li>✅ Communication positive (bénéfices mis en avant)</li>
+        </ul>
+        <p style="margin-top: 10px;"><strong>Plan B :</strong> Accompagnement individuel gros clients, programme ambassadeurs</p>
+    </div>
+    
+    <div class="slide-number">19</div>
+</div>
+
+<!-- SLIDE 20 : Gestion Proactive -->
+<div class="slide">
+    <h2>Gestion Proactive des Risques</h2>
+    
+    <div class="two-columns" style="margin-top: 40px;">
+        <div>
+            <div class="box" style="background: #e3f2fd;">
+                <h4>📋 Avant le projet</h4>
+                <ul>
+                    <li>Équipe avec disponibilités garanties</li>
+                    <li>Budget avec marge 15%</li>
+                    <li>Sélection bêta-testeurs (10 distributeurs)</li>
+                </ul>
+            </div>
+            
+            <div class="box" style="background: #fff3e0; margin-top: 20px;">
+                <h4>⚙️ Pendant le projet</h4>
+                <ul>
+                    <li>Points hebdomadaires (planning, budget, risques)</li>
+                    <li>Tests continus (unitaires, intégration, ergonomie)</li>
+                    <li>Veille réglementaire et concurrentielle</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div>
+            <div class="box" style="background: #e8f5e9;">
+                <h4>🚀 Après le projet</h4>
+                <ul>
+                    <li>Monitoring quotidien (performance, bugs, usage)</li>
+                    <li>Support client renforcé (hotline dédiée)</li>
+                    <li>Analyse retours utilisateurs (amélioration continue)</li>
+                    <li>Plan de formation continu (nouveaux distributeurs)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="highlight" style="margin-top: 30px;">
+        <p class="center"><strong>→ Approche proactive : anticiper plutôt que subir</strong></p>
+    </div>
+    
+    <div class="slide-number">20</div>
+</div>
+
+<!-- SLIDE 21 : Planning Global -->
+<div class="slide">
+    <h2>Planning Global - Vue d'Ensemble</h2>
+    
+    <table style="font-size: 17px; margin-top: 40px;">
+        <tr>
+            <th width="30%">Phase</th>
+            <th width="15%">Durée</th>
+            <th width="55%">Livrables clés</th>
+        </tr>
+        <tr>
+            <td><strong>Phase 1 : Cadrage</strong></td>
+            <td>S1-S2</td>
+            <td>Cahier des charges, équipe constituée, environnements</td>
+        </tr>
+        <tr>
+            <td><strong>Phase 2 : Développement</strong></td>
+            <td>S3-S8</td>
+            <td>Modules fonctionnels (4 sprints : Socle, Catalogue, Commande, Avancé)</td>
+        </tr>
+        <tr>
+            <td><strong>Phase 3 : Fonctionnalités avancées</strong></td>
+            <td>S9</td>
+            <td>Tarification dégressive, suivi temps réel, documents</td>
+        </tr>
+        <tr>
+            <td><strong>Phase 4 : Tests et recette</strong></td>
+            <td>S10</td>
+            <td>Tests charge, multi-devices, recette complète</td>
+        </tr>
+        <tr>
+            <td><strong>Phase 5 : Bêta-test</strong></td>
+            <td>S11</td>
+            <td>10 distributeurs pilotes, corrections</td>
+        </tr>
+        <tr>
+            <td><strong>Phase 6 : Lancement</strong></td>
+            <td>S12</td>
+            <td>Formation, mise en prod, monitoring intensif</td>
+        </tr>
+    </table>
+    
+    <div class="highlight" style="margin-top: 30px;">
+        <p class="center"><strong>→ Durée totale : 12 semaines (3 mois)</strong></p>
+        <p class="center"><strong>Date de lancement cible : [Date + 3 mois]</strong></p>
+    </div>
+    
+    <div class="slide-number">21</div>
+</div>
+
+<!-- SLIDE 22 : Sprints Développement -->
+<div class="slide">
+    <h2>Sprints de Développement - Détail</h2>
+    
+    <div style="margin-top: 30px;">
+        <div class="box" style="background: #e3f2fd; margin-bottom: 15px;">
+            <h4>⚙️ Sprint 1 (S3-S4) : Socle technique</h4>
+            <p>Installation Shopify Plus • Inscription B2B (SIRET/TVA) • Authentification sécurisée • Intégration API INSEE/VIES</p>
+        </div>
+        
+        <div class="box" style="background: #f3e5f5; margin-bottom: 15px;">
+            <h4>📦 Sprint 2 (S5-S6) : Catalogue</h4>
+            <p>Import produits complet • Recherche intelligente + filtres • Fiches produits détaillées • Visuels HD</p>
+        </div>
+        
+        <div class="box" style="background: #fff3e0; margin-bottom: 15px;">
+            <h4>🛒 Sprint 3 (S7-S8) : Commande</h4>
+            <p>Panier et gestion quantités • Tunnel de commande (checkout) • Paiements sécurisés (Shopify Payments, Stripe) • Emails automatiques</p>
+        </div>
+        
+        <div class="box" style="background: #e8f5e9;">
+            <h4>🚀 Sprint 4 (S9) : Avancé</h4>
+            <p>Tarification dégressive automatique • Tableau de bord distributeur • Suivi commandes + tracking transporteurs • Accès factures et documents</p>
+        </div>
+    </div>
+    
+    <div class="slide-number">22</div>
+</div>
+
+<!-- SLIDE 23 : Équipe et Ressources -->
+<div class="slide">
+    <h2>Équipe Projet et Ressources</h2>
+    
+    <div style="margin-top: 30px;">
+        <h3>👥 Équipe permanente</h3>
+        
+        <div class="box" style="margin-bottom: 15px;">
+            <h4>👨‍💼 Chef de projet digital (80% sur le projet)</h4>
+            <p><strong>Responsabilités :</strong> Pilotage global, coordination, interface commanditaire, formation distributeurs</p>
+            <p><strong>Durée :</strong> 12 semaines | <strong>Coût :</strong> Interne RESPIRE</p>
+        </div>
+        
+        <div class="box" style="margin-bottom: 15px;">
+            <h4>👨‍💻 Développeur fullstack Shopify (80% sur le projet)</h4>
+            <p><strong>Responsabilités :</strong> Développement front/back, intégrations API, tests techniques, astreinte post-lancement</p>
+            <p><strong>Durée :</strong> 12 + 2 semaines | <strong>Coût :</strong> 30 000€ (si freelance)</p>
+        </div>
+        
+        <div class="box">
+            <h4>🎨 Product Designer UI/UX (40% sur le projet)</h4>
+            <p><strong>Responsabilités :</strong> Design interface, maquettes, responsive, ergonomie, supports visuels</p>
+            <p><strong>Durée :</strong> 6 semaines | <strong>Coût :</strong> 8 000€ (si freelance)</p>
+        </div>
+    </div>
+    
+    <div class="highlight" style="margin-top: 20px;">
+        <p><strong>Ressources ponctuelles :</strong> Équipe commerciale (sélection bêta-testeurs), Équipe marketing (contenus), Expert comptable/juriste (1000€)</p>
+    </div>
+    
+    <div class="slide-number">23</div>
+</div>
+
+<!-- SLIDE 24 : Budget Détaillé -->
+<div class="slide">
+    <h2>Budget Détaillé</h2>
+    
+    <div class="two-columns" style="margin-top: 30px;">
+        <div>
+            <h4>💰 Coûts ponctuels (one-time)</h4>
+            <table style="font-size: 16px;">
+                <tr>
+                    <td>Développement (12 semaines)</td>
+                    <td style="text-align: right;"><strong>30 000€</strong></td>
+                </tr>
+                <tr>
+                    <td>Design UI/UX (6 semaines)</td>
+                    <td style="text-align: right;"><strong>8 000€</strong></td>
+                </tr>
+                <tr>
+                    <td>Consultation juridique/comptable</td>
+                    <td style="text-align: right;"><strong>1 000€</strong></td>
+                </tr>
+                <tr>
+                    <td>Formation et supports (vidéos, guides)</td>
+                    <td style="text-align: right;"><strong>2 000€</strong></td>
+                </tr>
+                <tr>
+                    <td>Buffer imprévus (15%)</td>
+                    <td style="text-align: right;"><strong>5 000€</strong></td>
+                </tr>
+                <tr style="background: #e8f5e9;">
+                    <td><strong>Sous-total lancement</strong></td>
+                    <td style="text-align: right;"><strong>46 000€</strong></td>
+                </tr>
+            </table>
+            
+            <h4 style="margin-top: 25px;">🔄 Coûts récurrents (mensuels)</h4>
+            <table style="font-size: 16px;">
+                <tr>
+                    <td>Shopify Plus (licence B2B)</td>
+                    <td style="text-align: right;"><strong>2 000€/mois</strong></td>
+                </tr>
+                <tr>
+                    <td>Apps (Locksmith, Wholesale, etc.)</td>
+                    <td style="text-align: right;"><strong>95€/mois</strong></td>
+                </tr>
+                <tr>
+                    <td>Outils design (Figma)</td>
+                    <td style="text-align: right;"><strong>15€/mois</strong></td>
+                </tr>
+                <tr style="background: #fff3e0;">
+                    <td><strong>Sous-total mensuel</strong></td>
+                    <td style="text-align: right;"><strong>2 110€/mois</strong></td>
+                </tr>
+                <tr style="background: #fff3e0;">
+                    <td><strong>Sous-total annuel</strong></td>
+                    <td style="text-align: right;"><strong>25 320€/an</strong></td>
+                </tr>
+            </table>
+        </div>
+        
+        <div>
+            <div class="metric" style="background: #e3f2fd; margin-bottom: 20px;">
+                <div class="metric-value">71 320€</div>
+                <div class="metric-label">INVESTISSEMENT TOTAL (1ère année)</div>
+            </div>
+            
+            <h4 style="margin-top: 30px;">📈 ROI attendu (1ère année)</h4>
+            <div class="box" style="background: #e8f5e9;">
+                <p><strong>CA B2B +40% :</strong> +120 000€</p>
+                <p><strong>Temps commercial libéré :</strong><br>30h/sem × 50€/h × 50 sem = 75 000€/an</p>
+                <hr style="margin: 15px 0;">
+                <p style="font-size: 24px; color: #2d5f3f;"><strong>ROI net : +123 680€</strong></p>
+                <p style="color: #666;"><strong>Retour sur investissement : 4 mois</strong></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide-number">24</div>
+</div>
+
+<!-- SLIDE 25 : Livrables -->
+<div class="slide">
+    <h2>Livrables Attendus</h2>
+    
+    <div class="two-columns" style="margin-top: 30px;">
+        <div>
+            <h4>📄 Livrables documentaires</h4>
+            <ul>
+                <li>Cahier des charges complet</li>
+                <li>Maquettes UI/UX (Figma)</li>
+                <li>Documentation technique</li>
+                <li>Guide utilisateur distributeur</li>
+                <li>Vidéos tutoriels (5-10 vidéos)</li>
+                <li>Rapport de recette et tests</li>
+                <li>Rapport de bêta-test</li>
+                <li>Bilan de lancement (J+30)</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h4>⚙️ Livrables techniques</h4>
+            <ul>
+                <li>Environnements (dev, staging, production)</li>
+                <li>Modules fonctionnels :
+                    <ul style="font-size: 18px;">
+                        <li>Inscription/authentification B2B</li>
+                        <li>Catalogue et recherche</li>
+                        <li>Tunnel de commande</li>
+                        <li>Suivi temps réel</li>
+                    </ul>
+                </li>
+                <li>Intégrations API (INSEE, VIES, transporteurs)</li>
+                <li>Catalogue produits complet importé</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="highlight" style="margin-top: 30px;">
+        <p class="center"><strong>Total : 18 livrables (11 documentaires + 7 techniques)</strong></p>
+    </div>
+    
+    <div class="slide-number">25</div>
+</div>
+
+<!-- SLIDE 26 : Solution Digitale -->
+<div class="slide">
+    <h2>Solution Digitale : Plateforme B2B RESPIRE</h2>
+    
+    <div style="margin-top: 50px; text-align: center;">
+        <h3 style="color: #2d5f3f; font-size: 32px;">Plateforme e-commerce B2B dédiée</h3>
+        <p style="font-size: 22px; margin: 30px 0;">pour automatiser, fluidifier et professionnaliser les échanges avec nos distributeurs partenaires.</p>
+    </div>
+    
+    <div class="two-columns" style="margin-top: 50px;">
+        <div class="box" style="background: #e8f5e9;">
+            <h4>🎯 Objectifs</h4>
+            <ul>
+                <li>Automatiser 80% des commandes</li>
+                <li>Service disponible 24/7</li>
+                <li>Traçabilité totale des commandes</li>
+                <li>Fidélisation par tarification dégressive</li>
+            </ul>
+        </div>
+        
+        <div class="box" style="background: #e3f2fd;">
+            <h4>🚀 Bénéfices</h4>
+            <ul>
+                <li>Scalabilité : capacité × 3</li>
+                <li>Réduction coûts opérationnels</li>
+                <li>Amélioration expérience distributeur</li>
+                <li>ROI positif dès 4 mois</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="slide-number">26</div>
+</div>
+
+<!-- SLIDE 27 : Analyse Comparative -->
+<div class="slide">
+    <h2>Analyse Comparative des Solutions</h2>
+    
+    <div style="margin-top: 40px;">
+        <div class="box" style="background: #e8f5e9; margin-bottom: 20px;">
+            <h4>⭐ Solution A : Shopify Plus B2B (RETENUE)</h4>
+            <p><strong>✅ Avantages :</strong> Intégration native B2B, déploiement rapide (3 mois), fonctionnalités prêtes à l'emploi, maintenance simplifiée</p>
+            <p><strong>⚠️ Inconvénients :</strong> Personnalisation limitée (acceptable phase 1), coût récurrent 2000€/mois (justifié par ROI)</p>
+            <p style="margin-top: 10px; color: #2d5f3f;"><strong>→ Choix optimal pour équilibre rapidité/simplicité/évolutivité</strong></p>
+        </div>
+        
+        <div class="box" style="background: #ffebee; margin-bottom: 20px;">
+            <h4>❌ Solution B : Plateforme Indépendante (sur-mesure)</h4>
+            <p><strong>Avantages :</strong> Personnalisation totale, maîtrise technique</p>
+            <p><strong>❌ Inconvénients :</strong> Délai prohibitif (6-12 mois), coût élevé (50-100k€), dette technique, maintenance complexe</p>
+            <p style="margin-top: 10px; color: #c62828;"><strong>→ REJETÉ : Ne répond pas au besoin d'urgence</strong></p>
+        </div>
+        
+        <div class="box" style="background: #fff3e0;">
+            <h4>⏸️ Solution C : Marketplace Complète (Odoo ERP)</h4>
+            <p><strong>Avantages :</strong> Solution avancée tout-en-un (ERP+CRM+e-commerce), analytics et logistique intégrés</p>
+            <p><strong>⚠️ Inconvénients :</strong> Complexité élevée, délai long (6-9 mois), UX moins moderne</p>
+            <p style="margin-top: 10px; color: #f57c00;"><strong>→ REPORTÉ en Phase 2 pour intégration ERP globale</strong></p>
+        </div>
+    </div>
+    
+    <div class="slide-number">27</div>
+</div>
+
+<!-- SLIDE 28 : Bénéfices Attendus -->
+<div class="slide">
+    <h2>Bénéfices Attendus</h2>
+    
+    <div class="two-columns" style="margin-top: 40px;">
+        <div class="metric" style="margin-bottom: 20px;">
+            <div class="icon">⏰</div>
+            <div class="metric-value">24/7</div>
+            <div class="metric-label">Disponibilité<br>Service continu sans dépendance humaine</div>
+        </div>
+        
+        <div class="metric" style="margin-bottom: 20px;">
+            <div class="icon">🤖</div>
+            <div class="metric-value">100%</div>
+            <div class="metric-label">Automatisation<br>Processus de commande entièrement digitalisé</div>
+        </div>
+    </div>
+    
+    <div class="two-columns">
+        <div class="metric">
+            <div class="icon">📈</div>
+            <div class="metric-value">× 3</div>
+            <div class="metric-label">Scalabilité<br>Capacité de traitement multipliée</div>
+        </div>
+        
+        <div class="metric">
+            <div class="icon">💰</div>
+            <div class="metric-value">-60%</div>
+            <div class="metric-label">Coûts opérationnels<br>Temps commercial libéré : 30h/sem</div>
+        </div>
+    </div>
+    
+    <div class="highlight" style="margin-top: 40px;">
+        <h4>📊 KPI de succès (6 mois post-lancement)</h4>
+        <p>70% commandes autonomes • -60% temps traitement • +40% panier moyen • 50% taux récommande • NPS 50+ • -50% demandes SAV</p>
+    </div>
+    
+    <div class="slide-number">28</div>
+</div>
+
+<!-- SLIDE 29 : Prochaines Étapes -->
+<div class="slide">
+    <h2>Prochaines Étapes</h2>
+    
+    <div style="margin-top: 50px;">
+        <div class="box" style="background: #e3f2fd; margin-bottom: 20px;">
+            <h3>01 - Phase 1 : Déploiement</h3>
+            <p>Configuration Shopify Plus et intégration des fonctionnalités B2B essentielles.</p>
+            <p style="margin-top: 10px; color: #666;"><strong>Durée :</strong> 8 semaines (S3-S10)</p>
+        </div>
+        
+        <div class="box" style="background: #fff3e0; margin-bottom: 20px;">
+            <h3>02 - Phase 2 : Formation</h3>
+            <p>Accompagnement des distributeurs et formation à la nouvelle plateforme.</p>
+            <p style="margin-top: 10px; color: #666;"><strong>Durée :</strong> 1 semaine (S11 - bêta-test)</p>
+        </div>
+        
+        <div class="box" style="background: #e8f5e9; margin-bottom: 20px;">
+            <h3>03 - Phase 3 : Lancement</h3>
+            <p>Mise en production finale, campagne de communication, monitoring intensif.</p>
+            <p style="margin-top: 10px; color: #666;"><strong>Durée :</strong> 1 semaine (S12)</p>
+        </div>
+        
+        <div class="box" style="background: #f3e5f5;">
+            <h3>04 - Phase 4 : Optimisation continue</h3>
+            <p>Analyse des performances, ajustements basés sur retours utilisateurs, évolutions (IA, analytics, multilangue).</p>
+            <p style="margin-top: 10px; color: #666;"><strong>Durée :</strong> Post-lancement (amélioration continue)</p>
+        </div>
+    </div>
+    
+    <div class="highlight" style="margin-top: 30px;">
+        <p class="center"><strong>→ Objectif : Lancement opérationnel dans les 3 prochains mois</strong></p>
+    </div>
+    
+    <div class="slide-number">29</div>
+</div>
+
+<!-- SLIDE 30 : Conclusion partie 6 -->
+<div class="slide">
+    <h2>Transformation Digitale Réussie</h2>
+    
+    <div style="margin-top: 60px; text-align: center;">
+        <div class="box" style="background: #e8f5e9; padding: 40px;">
+            <h3 style="font-size: 32px; color: #2d5f3f;">De 30h/semaine perdues</h3>
+            <p style="font-size: 24px; margin: 20px 0;">À une plateforme automatisée 24/7</p>
+            <h3 style="font-size: 32px; color: #2d5f3f; margin-top: 40px;">Investissement : 71 320€</h3>
+            <h3 style="font-size: 36px; color: #4caf50; margin-top: 20px;">ROI : +123 680€ (retour en 4 mois)</h3>
+        </div>
+    </div>
+    
+    <div class="slide-number">30</div>
+</div>
+
+<!-- SLIDE 31 : Audit Solution -->
+<div class="slide">
+    <h2>Audit de la Solution - Analyse Critique</h2>
+    
+    <div class="two-columns" style="margin-top: 30px;">
+        <div>
+            <div class="box" style="background: #e8f5e9;">
+                <h4>✅ Points forts Shopify Plus</h4>
+                <ul>
+                    <li>Rapidité de déploiement (3 mois)</li>
+                    <li>Maintenance simplifiée (Shopify gère infra)</li>
+                    <li>Fonctionnalités B2B natives</li>
+                    <li>Scalabilité automatique</li>
+                    <li>Écosystème riche (8000+ apps)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div>
+            <div class="box" style="background: #fff3e0;">
+                <h4>⚠️ Points de vigilance</h4>
+                <ul>
+                    <li>Dépendance à un tiers (mitigation : export données possible)</li>
+                    <li>Personnalisation limitée (acceptable phase 1)</li>
+                    <li>Coût récurrent élevé (justifié par ROI)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 30px;">
+        <h4>🔄 Alternatives envisagées</h4>
+        <div class="box" style="background: #f5f5f5;">
+            <ul>
+                <li><strong>WooCommerce :</strong> Rejeté (maintenance trop lourde, moins scalable)</li>
+                <li><strong>Sur-mesure :</strong> Rejeté (délai/coût prohibitifs : 6-12 mois, 50-100k€)</li>
+                <li><strong>Odoo :</strong> Reporté phase 2 (complexité d'intégration élevée)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="highlight" style="margin-top: 20px;">
+        <p><strong>Plan B :</strong> Si Shopify Plus ne convient pas après bêta-test → Migration vers Odoo (délai +3 mois)</p>
+    </div>
+    
+    <div class="slide-number">31</div>
+</div>
+
+<!-- SLIDE 32 : KPI Succès -->
+<div class="slide">
+    <h2>KPI de Succès - Mesure de la Performance</h2>
+    
+    <h4 style="margin-top: 30px;">📊 Objectifs à 6 mois post-lancement</h4>
+    
+    <table style="font-size: 17px; margin-top: 20px;">
+        <tr>
+            <th width="40%">KPI</th>
+            <th width="30%">Objectif</th>
+            <th width="30%">Méthode de mesure</th>
+        </tr>
+        <tr>
+            <td>📊 Taux d'adoption</td>
+            <td><strong>70%</strong> commandes autonomes</td>
+            <td>Shopify Analytics</td>
+        </tr>
+        <tr>
+            <td>⏱️ Temps de traitement</td>
+            <td><strong>-60%</strong> vs manuel</td>
+            <td>Comparaison avant/après</td>
+        </tr>
+        <tr>
+            <td>💰 Panier moyen B2B</td>
+            <td><strong>+40%</strong></td>
+            <td>Shopify Reports</td>
+        </tr>
+        <tr>
+            <td>🔄 Taux de récommande</td>
+            <td><strong>50%</strong> clients actifs</td>
+            <td>Cohorte mensuelle</td>
+        </tr>
+        <tr>
+            <td>😊 Satisfaction (NPS)</td>
+            <td><strong>50+</strong></td>
+            <td>Enquête post-commande</td>
+        </tr>
+        <tr>
+            <td>📉 Demandes SAV</td>
+            <td><strong>-50%</strong></td>
+            <td>Tickets support</td>
+        </tr>
+        <tr>
+            <td>🚀 Uptime plateforme</td>
+            <td><strong>99,9%</strong></td>
+            <td>Monitoring (Uptime Robot)</td>
+        </tr>
+    </table>
+    
+    <div class="highlight" style="margin-top: 30px;">
+        <p><strong>Revue trimestrielle :</strong> Analyse des KPI + plan d'action si écart</p>
+    </div>
+    
+    <div class="slide-number">32</div>
+</div>
+
+<!-- SLIDE 33 : Conclusion et Recommandations -->
+<div class="slide">
+    <h2>Conclusion et Recommandations</h2>
+    
+    <div style="margin-top: 30px;">
+        <h4>✅ Synthèse du projet</h4>
+        <div class="box" style="background: #e8f5e9; margin-bottom: 20px;">
+            <ul>
+                <li>✅ Problématique B2B identifiée et chiffrée (30h/sem perdues)</li>
+                <li>✅ Marché porteur (+9,35%/an, digitalisation B2B standard)</li>
+                <li>✅ Solution technique pertinente (Shopify Plus : rapidité + fonctionnalités)</li>
+                <li>✅ Budget maîtrisé avec ROI démontré (retour en 4 mois)</li>
+                <li>✅ Risques identifiés et actions préventives en place</li>
+            </ul>
+        </div>
+        
+        <h4>🎯 5 Recommandations finales</h4>
+        <div class="box" style="background: #e3f2fd;">
+            <ol>
+                <li><strong>Lancer le projet rapidement :</strong> Opportunité marché, retard concurrentiel à combler</li>
+                <li><strong>Prioriser le MVP :</strong> Fonctionnalités MUST HAVE, itérations ensuite</li>
+                <li><strong>Impliquer les distributeurs :</strong> Bêta-test crucial pour adoption</li>
+                <li><strong>Monitorer les KPI :</strong> Amélioration continue basée sur données</li>
+                <li><strong>Anticiper la phase 2 :</strong> Multilangue, app mobile, intégration ERP</li>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="highlight" style="margin-top: 30px; text-align: center;">
+        <h3 style="font-size: 28px; color: #2d5f3f;">→ Validation attendue : GO / NO-GO pour lancement du projet</h3>
+    </div>
+    
+    <div class="slide-number">33</div>
+</div>
+
+<!-- SLIDE 34 : Merci -->
+<div class="slide title-slide">
+    <h1>Merci de votre attention</h1>
+    <p class="subtitle" style="margin-top: 60px;">Questions / Discussion</p>
+    <p style="margin-top: 80px; font-size: 18px; color: #999;">[Votre nom]<br>[Votre email]<br>Septembre 2026</p>
+</div>
+
+<div style="text-align: center; padding: 40px; background: #f5f5f5;">
+    <p style="font-size: 14px; color: #999;">
+        Présentation créée pour les rattrapages Workshop 1 - RESPIRE<br>
+        Pour convertir en PDF : Ctrl+P → Enregistrer au format PDF<br>
+        Ou ouvrir dans votre navigateur et imprimer
+    </p>
+</div>
+
+</body>
+</html>
